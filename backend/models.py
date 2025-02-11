@@ -15,6 +15,7 @@ flashcard_set_association = Table(
 
 class FlashcardSet(Base):
     __tablename__ = "flashcard_sets"
+    __table_args__ = {'schema': 'flashcards'}
     
     id = Column(Integer, primary_key=True)
     title = Column(String(255), nullable=False)
