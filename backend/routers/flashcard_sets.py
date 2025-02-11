@@ -1,8 +1,8 @@
 from fastapi import APIRouter, Depends, HTTPException
 from sqlalchemy.orm import Session
 from typing import List
-from ..database import get_db
-from ..models import FlashcardSet
+from backend.database import get_db
+from backend.models import FlashcardSet
 from pydantic import BaseModel
 
 router = APIRouter()
