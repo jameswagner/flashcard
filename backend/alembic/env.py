@@ -6,7 +6,7 @@ from dotenv import load_dotenv
 import os
 
 # Import our models
-from backend.models import Base
+from models import Base
 
 # Load local env if it exists, otherwise use system env vars
 if os.path.exists(".env.local"):
