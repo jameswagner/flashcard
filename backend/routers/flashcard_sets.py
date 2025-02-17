@@ -2,49 +2,39 @@ from fastapi import APIRouter, Depends, HTTPException
 from sqlalchemy.orm import Session
 from typing import List
 from database import get_db
-from models import FlashcardSet
-from pydantic import BaseModel
+from services.flashcard_set import FlashcardSetService
+from api.models.requests.flashcard_set import FlashcardSetCreate, FlashcardSetUpdate
+from api.models.responses.flashcard_set import FlashcardSetResponse, FlashcardSetDetailResponse
 
 router = APIRouter()
 
-class FlashcardSetCreate(BaseModel):
-    title: str
-    description: str | None = None
-
-class FlashcardSetResponse(BaseModel):
-    id: int
-    title: str
-    description: str | None = None
-    card_count: int
-
-    class Config:
-        from_attributes = True
-
 @router.get("/", response_model=List[FlashcardSetResponse])
 async def get_flashcard_sets(db: Session = Depends(get_db)):
-    sets = db.query(FlashcardSet).all()
-    return [{
-        "id": s.id,
-        "title": s.title,
-        "description": s.description,
-        "card_count": len(s.flashcards)
-    } for s in sets]
+    """Get all flashcard sets."""
+    service = FlashcardSetService(db)
+    return service.get_sets()
+
+@router.get("/{set_id}", response_model=FlashcardSetDetailResponse)
+async def get_flashcard_set(set_id: int, db: Session = Depends(get_db)):
+    """Get a specific flashcard set with all its cards."""
+    service = FlashcardSetService(db)
+    return service.get_set(set_id)
 
 @router.post("/", response_model=FlashcardSetResponse)
 async def create_flashcard_set(
     flashcard_set: FlashcardSetCreate,
     db: Session = Depends(get_db)
 ):
-    db_set = FlashcardSet(
-        title=flashcard_set.title,
-        description=flashcard_set.description
-    )
-    db.add(db_set)
-    db.commit()
-    db.refresh(db_set)
-    return {
-        "id": db_set.id,
-        "title": db_set.title,
-        "description": db_set.description,
-        "card_count": 0
-    } 
+    """Create a new flashcard set with optional initial cards."""
+    service = FlashcardSetService(db)
+    return service.create_set(flashcard_set)
+
+@router.patch("/{set_id}", response_model=FlashcardSetResponse)
+async def update_flashcard_set(
+    set_id: int,
+    set_update: FlashcardSetUpdate,
+    db: Session = Depends(get_db)
+):
+    """Update a flashcard set's metadata."""
+    service = FlashcardSetService(db)
+    return service.update_set(set_id, set_update) 

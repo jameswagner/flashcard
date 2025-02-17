@@ -38,3 +38,12 @@ env/
 # Database
 *.sqlite3
 *.db 
+
+# Google Service Account
+service_account.json
+
+# Project specific
+scripts/
+logs/
+docs/
+.coverage
