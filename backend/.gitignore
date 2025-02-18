@@ -46,4 +46,5 @@ service_account.json
 scripts/
 logs/
 docs/
+output_files/
 .coverage

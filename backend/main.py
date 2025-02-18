@@ -3,13 +3,13 @@ from fastapi.middleware.cors import CORSMiddleware
 import uvicorn
 import logging
 
-from config.logging import setup_logging
+from config.logging import configure_logging
 from config.env import settings, load_active_scoring_config
 from routers import flashcard_sets, flashcards, ai_generation, study_sessions
 from utils.ai_scoring.model_manager import ModelManager
 
-# Set up logging
-setup_logging()
+# Set up logging with Unicode support
+configure_logging()
 logger = logging.getLogger(__name__)
 
 app = FastAPI(

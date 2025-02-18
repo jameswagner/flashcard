@@ -8,7 +8,9 @@ from datetime import datetime, UTC
 from pydantic import BaseModel, HttpUrl
 
 from database import get_db
-from services.ai_generation import AIGenerationService
+from services.content_upload import ContentUploadService
+from services.content_processing import ContentProcessingService
+from services.ai_flashcard import AIFlashcardService
 from api.models.requests.ai_generation import (
     FlashcardGenerationRequest,
     URLUploadRequest,
@@ -40,7 +42,7 @@ async def upload_youtube_video(
     logger.info(f"Received YouTube upload request for video: {request.video_id}")
     
     try:
-        service = AIGenerationService(db)
+        service = ContentUploadService(db)
         result = await service.upload_youtube_video(
             video_id=request.video_id,
             video_title=request.title,
@@ -65,7 +67,7 @@ async def upload_source_file(
     db: Session = Depends(get_db)
 ):
     """Upload a source file to S3 and create a database record."""
-    service = AIGenerationService(db)
+    service = ContentUploadService(db)
     return service.upload_source_file(file, user_id)
 
 @router.post("/upload/url", response_model=SourceFileUploadResponse)
@@ -74,7 +76,7 @@ async def upload_url(
     db: Session = Depends(get_db)
 ):
     """Upload content from a URL and create a database record."""
-    service = AIGenerationService(db)
+    service = ContentUploadService(db)
     return await service.upload_url(str(request.url), request.user_id)
 
 @router.post("/generate/{source_file_id}", response_model=FlashcardGenerationResponse)
@@ -90,8 +92,6 @@ async def generate_flashcards(
     db: Session = Depends(get_db)
 ):
     """Generate flashcards from a source file using AI."""
-    service = AIGenerationService(db)
-    
     # Parse model parameters if provided
     parsed_model_params = None
     if model_params:
@@ -111,4 +111,8 @@ async def generate_flashcards(
         use_sentences=use_sentences
     )
     
-    return await service.generate_flashcards(source_file_id, generation_request) 
+    # Initialize services
+    content_processor = ContentProcessingService(db)
+    ai_flashcard_service = AIFlashcardService(db, content_processor)
+    
+    return await ai_flashcard_service.generate_flashcards(source_file_id, generation_request) 

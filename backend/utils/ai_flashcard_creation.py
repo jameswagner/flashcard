@@ -15,39 +15,14 @@ import re
 import asyncio
 import time
 import sys
-import codecs
 import logging
 from concurrent.futures import ThreadPoolExecutor
 from utils.html_processing import HTMLContent
 from models.enums import FileType
 import json
 
-# Configure logging to handle Unicode in Windows
+# Get logger for this module
 logger = logging.getLogger(__name__)
-logger.setLevel(logging.INFO)
-
-# Configure OpenAI's logger to handle Unicode
-openai_logger = logging.getLogger("openai")
-openai_logger.setLevel(logging.WARNING)  # Reduce verbosity of OpenAI's logging
-
-# Create handlers with UTF-8 encoding for Windows
-if sys.platform == 'win32':
-    # Ensure stdout can handle UTF-8
-    sys.stdout.reconfigure(encoding='utf-8', errors='replace')
-    handler = logging.StreamHandler(codecs.getwriter('utf-8')(sys.stdout.buffer, 'replace'))
-    openai_handler = logging.StreamHandler(codecs.getwriter('utf-8')(sys.stdout.buffer, 'replace'))
-else:
-    handler = logging.StreamHandler()
-    openai_handler = logging.StreamHandler()
-
-# Set formatters
-formatter = logging.Formatter('%(asctime)s - %(name)s - %(levelname)s - %(message)s')
-handler.setFormatter(formatter)
-openai_handler.setFormatter(formatter)
-
-# Add handlers
-logger.addHandler(handler)
-openai_logger.addHandler(openai_handler)
 
 # Rate limiting configuration
 TOKENS_PER_MINUTE = 200_000  # OpenAI's rate limit
@@ -317,16 +292,9 @@ async def create_flashcards_from_text(
     return all_flashcards 
 
 def parse_ai_response(content: str) -> List[Dict[str, Any]]:
-    """Parse and validate the AI model's response into a list of flashcards.
+    """Parse and validate the AI model's response into a list of flashcards."""
+    logger.info("\n=== PARSING AI RESPONSE ===")
     
-    Args:
-        content: Raw response content from the AI model
-        
-    Returns:
-        List of validated flashcards
-    """
-    
-        
     # Clean up the response if it's not valid JSON
     content = content.strip()
     if content.startswith("```json"):
@@ -335,7 +303,7 @@ def parse_ai_response(content: str) -> List[Dict[str, Any]]:
         content = content[:-3]
     content = content.strip()
     
-# Clean special characters
+    # Clean special characters
     content = re.sub(r'[\x00-\x1F\x7F-\x9F]', '', content)
     content = content.replace('•', '-')
     content = content.replace('·', '-')
@@ -352,8 +320,10 @@ def parse_ai_response(content: str) -> List[Dict[str, Any]]:
     try:
         # First try direct JSON parsing
         flashcards = json.loads(content)
+        logger.info(f"Successfully parsed JSON response. Raw content type: {type(flashcards)}")
     except json.JSONDecodeError:
         # If that fails, try to extract JSON from markdown code blocks
+        logger.info("Initial JSON parsing failed, attempting to extract from markdown blocks")
         if '```json' in content:
             content = content.split('```json', 1)[1]
         elif '```' in content:
@@ -363,39 +333,86 @@ def parse_ai_response(content: str) -> List[Dict[str, Any]]:
         content = content.strip()
         try:
             flashcards = json.loads(content)
+            logger.info("Successfully parsed JSON from markdown block")
         except json.JSONDecodeError as e:
+            logger.error(f"Failed to parse AI response: {str(e)}")
+            logger.error(f"Content causing error: {content[:500]}...")
             raise ValueError(f"Failed to parse AI response: {str(e)}")
             
-# Extract flashcards array if wrapped in object
+    # Extract flashcards array if wrapped in object
     if isinstance(flashcards, dict) and 'flashcards' in flashcards:
+        logger.info("Found flashcards wrapped in object, extracting array")
         flashcards = flashcards['flashcards']
     elif not isinstance(flashcards, list):
+        logger.error(f"Unexpected response format. Expected list or dict with 'flashcards' key, got: {type(flashcards)}")
         raise ValueError(f"Expected list or dict with 'flashcards' key, got: {type(flashcards)}")
+    
+    logger.info(f"Processing {len(flashcards)} flashcards")
+    
+    # Validate flashcard format
+    for i, card in enumerate(flashcards):
+        if not isinstance(card, dict):
+            logger.error(f"Card {i+1} is not a dict: {type(card)}")
+            raise ValueError(f"Expected dict for card, got: {type(card)}")
         
-        # Validate flashcard format
-    for card in flashcards:
-            if not isinstance(card, dict):
-                raise ValueError(f"Expected dict for card, got: {type(card)}")
+        # Log card structure before validation
+        logger.info(f"Card {i+1} content preview: {str(card)[:200]}...")
             
-            # Check required fields
-            for field in ['front', 'back']:
-                if field not in card:
-                    raise ValueError(f"Card missing required field: {field}")
+        # Check required fields
+        for field in ['front', 'back']:
+            if field not in card:
+                logger.error(f"Card {i+1} missing required field: {field}")
+                raise ValueError(f"Card missing required field: {field}")
             
-            # Check citations
-            citations = card.get('citations', [])
-            if citations:
-                for citation in citations:
-                        # Validate citation format
-                        if isinstance(citation, (list, tuple)):
-                            if len(citation) != 2:
-                                continue
-                            if not all(isinstance(x, int) for x in citation):
-                                continue
-                        elif isinstance(citation, dict):
-                            if 'citation_type' not in citation:
-                                continue
-                            if 'range' not in citation and 'id' not in citation:
-                                continue
+        # Check citations
+        citations = card.get('citations', [])
+        if citations:
+            for j, citation in enumerate(citations):                # Validate citation format
+                if isinstance(citation, (list, tuple)):
+                    if len(citation) != 2:
+                        logger.warning(f"Skipping invalid citation tuple length: {len(citation)}")
+                        continue
+                    if not all(isinstance(x, int) for x in citation):
+                        logger.warning("Skipping citation with non-integer values")
+                        continue
+                elif isinstance(citation, dict):
+                    if 'citation_type' not in citation:
+                        logger.warning("Skipping citation missing citation_type")
+                        continue
+                    if 'range' not in citation and 'id' not in citation:
+                        logger.warning("Skipping citation missing range or id")
+                        continue
+                        
+        # Validate key terms and concepts
+        key_terms = card.get('key_terms', [])
+        if key_terms and not isinstance(key_terms, list):
+            logger.warning(f"Card {i+1} has invalid key_terms type: {type(key_terms)}, setting to empty list")
+            card['key_terms'] = []
+        elif key_terms:
+            card['key_terms'] = [str(term) for term in key_terms if term]
             
+        key_concepts = card.get('key_concepts', [])
+        if key_concepts and not isinstance(key_concepts, list):
+            logger.warning(f"Card {i+1} has invalid key_concepts type: {type(key_concepts)}, setting to empty list")
+            card['key_concepts'] = []
+        elif key_concepts:
+            card['key_concepts'] = [str(concept) for concept in key_concepts if concept]
+            
+        # Validate abbreviations
+        abbreviations = card.get('abbreviations', [])
+        if abbreviations:
+            if not isinstance(abbreviations, list):
+                logger.warning(f"Card {i+1} has invalid abbreviations type: {type(abbreviations)}, setting to empty list")
+                card['abbreviations'] = []
+            else:
+                valid_abbreviations = []
+                for abbr in abbreviations:
+                    # Handle both old dict format and new list format
+                    if isinstance(abbr, dict) and 'short' in abbr and 'long' in abbr:
+                        valid_abbreviations.append([str(abbr['long']), str(abbr['short'])])
+                    elif isinstance(abbr, (list, tuple)) and len(abbr) == 2:
+                        valid_abbreviations.append([str(abbr[0]), str(abbr[1])])
+                card['abbreviations'] = valid_abbreviations
+    
+    logger.info("\n=== FINISHED PARSING AI RESPONSE ===")
     return flashcards

@@ -52,17 +52,10 @@ class FlashcardSetService:
                 continue
 
             formatted_citations = [
-                CitationResponse(
-                    preview_text=citation.preview_text,
-                    citation_data=[
-                        {"start": range_pair[0], "end": range_pair[1]}
-                        for range_pair in (
-                            citation.citation_data if isinstance(citation.citation_data, list)
-                            else citation.citation_data.get('range') if isinstance(citation.citation_data, dict)
-                            else [[0, 0]]  # Fallback for invalid data
-                        )
-                    ]
-                )
+                {
+                    "preview_text": citation.preview_text,
+                    "citation_data": citation.citation_data.get('range') if isinstance(citation.citation_data, dict) else citation.citation_data
+                }
                 for citation in card.citations
             ]
 
@@ -72,7 +65,12 @@ class FlashcardSetService:
                 back=card.back,
                 is_ai_generated=card.is_ai_generated,
                 citations=formatted_citations,
-                card_index=assoc.card_index
+                card_index=assoc.card_index,
+                key_terms=card.key_terms,
+                key_concepts=card.key_concepts,
+                abbreviations=card.abbreviations,
+                created_at=card.created_at,
+                updated_at=card.updated_at
             ))
 
         # Sort flashcards by card_index

@@ -12,6 +12,7 @@ class FlashcardResponse(BaseModel):
     card_index: int
     key_terms: Optional[List[str]] = None
     key_concepts: Optional[List[str]] = None
+    abbreviations: Optional[List[List[str]]] = None
     
     model_config = ConfigDict(from_attributes=True)
 

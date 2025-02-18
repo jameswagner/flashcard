@@ -167,13 +167,6 @@ class AIGenerationService:
         content = HTMLContent.from_json(processed_json)
         print(f"Title: {content.title}")
         print(f"Number of sections: {len(content.sections)}")
-        for i, section in enumerate(content.sections):
-            print(f"\nSection {i+1}:")
-            print(f"  Level: {section.level}")
-            print(f"  Heading: {section.heading}")
-            print(f"  Number of paragraphs: {len(section.paragraphs)}")
-            if section.paragraphs:
-                print(f"  First paragraph preview: {section.paragraphs[0][:100]}...")
         
         return content
 
@@ -533,6 +526,129 @@ class AIGenerationService:
         flashcard_set.source_files.append(source_file)
         return flashcard_set
 
+    def _build_element_index(self, html_structure: dict) -> dict:
+        """Build an index of elements for faster position lookups.
+        
+        Args:
+            html_structure: Dictionary containing the parsed HTML structure
+            
+        Returns:
+            dict: Mapping of {element_key: (position_tuple, element_type)}
+            where position_tuple is (level_1_idx, level_2_idx, ..., element_idx)
+        """
+        element_index = {}
+        element_type_order = {
+            'html_section': 0,
+            'html_paragraph': 1,
+            'html_list': 2,
+            'html_table': 3
+        }
+
+        def process_section(section: dict, current_path: tuple) -> None:
+            """Recursively process a section and its subsections.
+            
+            Args:
+                section: Section dictionary to process
+                current_path: Tuple of indices representing current position in hierarchy
+            """
+            # Extract section number from heading
+            if 'heading' in section:
+                section_match = re.search(r'\[Section (\d+)(?:\.\d+)*\]', section['heading'])
+                if section_match:
+                    section_num = int(section_match.group(1))
+                    element_index[f"section_{section_num}"] = (
+                        current_path + (0,) * (10 - len(current_path)),  # Pad path to fixed length
+                        element_type_order['html_section']
+                    )
+            
+            # Process elements at this level
+            element_position = 0
+            for element in section.get('paragraphs', []):
+                if element.startswith('[Paragraph'):
+                    match = re.search(r'\[Paragraph (\d+)\]', element)
+                    if match:
+                        para_num = int(match.group(1))
+                        element_index[f"paragraph_{para_num}"] = (
+                            current_path + (element_position,) + (0,) * (9 - len(current_path)),
+                            element_type_order['html_paragraph']
+                        )
+                elif element.startswith('[List'):
+                    match = re.search(r'\[List (\d+)\]', element)
+                    if match:
+                        list_num = int(match.group(1))
+                        element_index[f"list_{list_num}"] = (
+                            current_path + (element_position,) + (0,) * (9 - len(current_path)),
+                            element_type_order['html_list']
+                        )
+                elif element.startswith('[Table'):
+                    match = re.search(r'\[Table (\d+)\]', element)
+                    if match:
+                        table_num = int(match.group(1))
+                        element_index[f"table_{table_num}"] = (
+                            current_path + (element_position,) + (0,) * (9 - len(current_path)),
+                            element_type_order['html_table']
+                        )
+                element_position += 1
+            
+            # Recursively process nested sections
+            for i, subsection in enumerate(section.get('sections', [])):
+                # Get the level from the subsection
+                level = subsection.get('level', len(current_path) + 1)
+                # Ensure we're at the right nesting level by padding if needed
+                padding_needed = level - len(current_path) - 1
+                if padding_needed > 0:
+                    new_path = current_path + (0,) * padding_needed + (i,)
+                else:
+                    new_path = current_path + (i,)
+                process_section(subsection, new_path)
+        
+        # Process each top-level section
+        for i, section in enumerate(html_structure.get('sections', [])):
+            process_section(section, (i,))
+        
+        return element_index
+
+    async def _get_element_position(self, citation: dict, html_structure: dict, element_index: Optional[dict] = None) -> tuple:
+        """Get the actual position of an element in the HTML structure.
+        
+        Args:
+            citation: Citation dictionary with type and location info
+            html_structure: Dictionary containing the parsed HTML structure
+            element_index: Optional pre-built element index
+            
+        Returns:
+            tuple: Position tuple for sorting, consisting of:
+                  (level_1_idx, level_2_idx, ..., level_9_idx, element_type)
+        """
+        # Default position for unfound elements
+        default_position = (float('inf'),) * 9 + (4,)  # 9 levels + element type
+        
+        citation_type = citation.get('citation_type')
+        if not citation_type:
+            return default_position
+        
+        # Build or use existing element index
+        if element_index is None:
+            element_index = self._build_element_index(html_structure)
+        
+        # Try to get position from index
+        element_num = None
+        if citation.get('range'):
+            # For range-based citations, use the start number
+            element_num = citation['range'][0]
+        elif citation.get('id'):
+            # For element-based citations, use the ID directly
+            element_num = citation['id']
+            
+        if element_num is not None:
+            element_key = f"{citation_type.split('html_')[1]}_{element_num}"
+            indexed_position = element_index.get(element_key)
+            if indexed_position:
+                position_tuple, element_type = indexed_position
+                return position_tuple + (element_type,)
+        
+        return default_position
+
     async def _create_flashcards_and_citations(
         self,
         generated_cards: list,
@@ -542,20 +658,54 @@ class AIGenerationService:
         db_template: PromptTemplate,
         generation_request: FlashcardGenerationRequest,
         use_sentences: bool,
-        text_content: str
+        text_content: str,
+        html_structure: dict = None
     ) -> None:
         """Create flashcards and their citations."""
-        for index, card_data in enumerate(generated_cards, start=1):
-            logger.debug(f"Processing card {index} with data: {card_data}")
+        # Build element index once for all cards if using HTML structure
+        element_index = self._build_element_index(html_structure) if html_structure else None
+        
+        # First, extract earliest citation position for each card
+        cards_with_positions = []
+        for card_index, card_data in enumerate(generated_cards):
+            earliest_position = (float('inf'),) * 9 + (4,)  # 9 levels + element type
+            citations = card_data.get("citations", [])
+            
+            for citation in citations:
+                if html_structure:
+                    # Get position based on HTML structure using the pre-built index
+                    position = await self._get_element_position(citation, html_structure, element_index)
+                    earliest_position = min(earliest_position, position)
+                else:
+                    # Fallback to simple numeric ordering for non-HTML content
+                    if isinstance(citation, (list, tuple)) and len(citation) == 2:
+                        earliest_position = min(earliest_position, (0,) * 8 + (citation[0], 1))
+                    elif isinstance(citation, dict):
+                        if 'range' in citation:
+                            range_data = citation['range']
+                            if isinstance(range_data, (list, tuple)) and len(range_data) == 2:
+                                earliest_position = min(earliest_position, (0,) * 8 + (range_data[0], 1))
+            
+            cards_with_positions.append((card_data, earliest_position))
+        
+        # Sort cards by earliest citation position
+        cards_with_positions.sort(key=lambda x: x[1])
+        
+        # Create flashcards in sorted order
+        for i, (card, _) in enumerate(cards_with_positions):
             flashcard = Flashcard(
-                front=card_data["front"],
-                back=card_data["back"],
+                front=card["front"],
+                back=card["back"],
                 is_ai_generated=True,
                 generation_model=model.value.lower(),
                 prompt_template_id=db_template.id,
                 prompt_parameters={"num_cards": len(generated_cards)},
-                model_parameters=generation_request.model_params
+                model_parameters=generation_request.model_params,
+                key_terms=card.get("key_terms", []),
+                key_concepts=card.get("key_concepts", []),
+                abbreviations=card.get("abbreviations", [])
             )
+            
             self.db.add(flashcard)
             self.db.flush()
             
@@ -563,18 +713,18 @@ class AIGenerationService:
             stmt = flashcard_set_association.insert().values(
                 flashcard_id=flashcard.id,
                 set_id=flashcard_set.id,
-                card_index=index,
+                card_index=i + 1,
                 created_at=datetime.now(UTC)
             )
             self.db.execute(stmt)
             
             await self._process_citations(
-                card_data.get("citations", []),
+                card.get("citations", []),
                 flashcard,
                 source_file,
                 use_sentences,
                 text_content,
-                index
+                i + 1
             )
 
     def _parse_citation(self, citation) -> tuple[Optional[int], Optional[int], Optional[str], Optional[str]]:
@@ -582,7 +732,7 @@ class AIGenerationService:
         
         Returns:
             Tuple of (start_num, end_num, citation_type, context)
-            For element-based citations (tables, lists), start_num will be the element ID
+            For element-based citations (tables, lists), start_num and end_num will be the same element ID
         """
         if isinstance(citation, dict):
             citation_type = citation.get('citation_type')
@@ -606,6 +756,7 @@ class AIGenerationService:
                 if not isinstance(element_id, int):
                     logger.warning(f"Invalid element ID: {element_id}")
                     return None, None, None, None
+                # Explicitly use element ID for both start and end
                 start_num = end_num = element_id
                 
             else:
@@ -647,7 +798,7 @@ class AIGenerationService:
         for citation in citations:
             try:
                 # Parse citation data
-                start_num, end_num, citation_type, context = self._parse_citation(citation)
+                start_num, end_num, citation_type, _ = self._parse_citation(citation)  # Ignore context
                 if start_num is None:
                     continue
                 
@@ -690,29 +841,28 @@ class AIGenerationService:
                             logger.debug(f"[x] Segment outside citation range [{segment_start:.2f}-{segment_end:.2f}]s")
                     
                     preview = ' '.join(preview_text)
-                    logger.info(f"Found {matching_segments} matching segments")
-                    logger.info(f"Generated preview text ({len(preview)} chars): {preview[:100]}...")
+
                 elif source_file.file_type == FileType.HTML.value:
                     preview = self._get_html_preview(
                         text_content=text_content,
                         start_num=start_num,
                         end_num=end_num,
-                        citation_type=citation_type,
-                        context=context
+                        citation_type=citation_type
                     )
                 elif use_sentences:
                     preview = get_text_from_sentence_numbers(text_content, start_num, end_num)
                 else:
                     preview = get_text_from_line_numbers(text_content, start_num, end_num)
                 
-                logger.debug(f"Creating citation: type={citation_type}, range={start_num}-{end_num}, context={context}")
+                logger.debug(f"Creating citation: type={citation_type}, range={start_num}-{end_num}")
                 logger.debug(f"Preview text: {preview[:100]}...")
                     
+                # Create citation with ONLY the range data, no dictionary structure
                 citation_obj = Citation(
                     flashcard=flashcard,
                     source_file=source_file,
                     citation_type=citation_type,
-                    citation_data=[[start_num, end_num]],  # Store just the range array
+                    citation_data=[[start_num, end_num]],  # Store as simple list of ranges
                     preview_text=preview
                 )
                 self.db.add(citation_obj)
@@ -728,8 +878,7 @@ class AIGenerationService:
         text_content: str, 
         start_num: int, 
         end_num: int, 
-        citation_type: str,
-        context: Optional[str] = None
+        citation_type: str
     ) -> str:
         """Extract preview text from HTML content based on citation type."""
         lines = text_content.split('\n')

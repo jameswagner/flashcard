@@ -90,8 +90,9 @@ class Flashcard(Base):
     model_parameters = Column(JSON, nullable=True)  # Model-specific parameters (temperature, etc.)
     
     # Learning metadata
-    key_terms = Column(JSON, nullable=True)  # List of key terms from the answer
-    key_concepts = Column(JSON, nullable=True)  # List of underlying concepts/principles
+    key_terms = Column(sa.ARRAY(String), nullable=True)  # List of key terms from the answer
+    key_concepts = Column(sa.ARRAY(String), nullable=True)  # List of underlying concepts/principles
+    abbreviations = Column(sa.ARRAY(String, dimensions=2), nullable=True)  # List of [full_term, abbreviation] pairs
     
     created_at = Column(DateTime, default=lambda: datetime.now(UTC))
     updated_at = Column(DateTime, default=lambda: datetime.now(UTC), onupdate=lambda: datetime.now(UTC))

@@ -290,7 +290,7 @@ export function EditSetForm({ initialSet, onSaveComplete }: EditSetFormProps) {
               </div>
 
               {/* Expandable Citations & Feedback */}
-              {((flashcard.citations && flashcard.citations.length > 0) || flashcard.is_ai_generated || flashcard.key_terms?.length || flashcard.key_concepts?.length) && (
+              {((flashcard.citations && flashcard.citations.length > 0) || flashcard.is_ai_generated) && (
                 <div className="mt-4">
                   <Button
                     type="button"
@@ -311,40 +311,61 @@ export function EditSetForm({ initialSet, onSaveComplete }: EditSetFormProps) {
                   </Button>
 
                   <div id={`card-${flashcard.id}-details`} className="mt-4 space-y-6" style={{ display: 'none' }}>
-                    {/* Key Terms Section */}
-                    <div>
-                      <Label className="text-xs font-medium uppercase tracking-wide text-slate-500">Key Terms</Label>
-                      <div className="mt-2 flex flex-wrap gap-2">
-                        {flashcard.key_terms?.map((term, index) => (
-                          <span
-                            key={index}
-                            className="inline-flex items-center px-2.5 py-1 rounded-md text-sm bg-blue-50 text-blue-700 ring-1 ring-inset ring-blue-700/10"
-                          >
-                            {term}
-                          </span>
-                        ))}
-                        {(!flashcard.key_terms || flashcard.key_terms.length === 0) && (
-                          <span className="text-sm text-slate-500">No key terms defined</span>
-                        )}
+                    {/* Citations Section */}
+                    {flashcard.citations && flashcard.citations.length > 0 ? (
+                      <div>
+                        <Label className="text-xs font-medium uppercase tracking-wide text-slate-500">Source Citations</Label>
+                        <div className="mt-2 space-y-2">
+                          {flashcard.citations.map((citation, index) => (
+                            <div key={index} className="bg-slate-50/50 p-4 rounded-lg text-sm text-slate-600 ring-1 ring-inset ring-slate-100">
+                              {citation.preview_text}
+                            </div>
+                          ))}
+                        </div>
                       </div>
+                    ) : (
+                      <div>
+                        <Label className="text-xs font-medium uppercase tracking-wide text-slate-500">Source Citations</Label>
+                        <div className="mt-2 p-4 rounded-lg text-sm text-slate-500 bg-slate-50/50 ring-1 ring-inset ring-slate-100">
+                          No citations available for this flashcard.
+                        </div>
+                      </div>
+                    )}
+
+                    {/* Key Terms Section */}
+                    <div className="mt-6">
+                      <Label className="text-xs font-medium uppercase tracking-wide text-slate-500">Key Terms</Label>
+                      {flashcard.key_terms && flashcard.key_terms.length > 0 ? (
+                        <div className="mt-2 flex flex-wrap gap-2">
+                          {flashcard.key_terms.map((term, index) => (
+                            <span key={index} className="inline-flex items-center px-3 py-1 rounded-full text-sm font-medium bg-emerald-50 text-emerald-700 ring-1 ring-inset ring-emerald-700/10">
+                              {term}
+                            </span>
+                          ))}
+                        </div>
+                      ) : (
+                        <div className="mt-2 p-4 rounded-lg text-sm text-slate-500 bg-slate-50/50 ring-1 ring-inset ring-slate-100">
+                          No key terms identified for this flashcard.
+                        </div>
+                      )}
                     </div>
 
                     {/* Key Concepts Section */}
-                    <div>
+                    <div className="mt-6">
                       <Label className="text-xs font-medium uppercase tracking-wide text-slate-500">Key Concepts</Label>
-                      <div className="mt-2 flex flex-wrap gap-2">
-                        {flashcard.key_concepts?.map((concept, index) => (
-                          <span
-                            key={index}
-                            className="inline-flex items-center px-2.5 py-1 rounded-md text-sm bg-purple-50 text-purple-700 ring-1 ring-inset ring-purple-700/10"
-                          >
-                            {concept}
-                          </span>
-                        ))}
-                        {(!flashcard.key_concepts || flashcard.key_concepts.length === 0) && (
-                          <span className="text-sm text-slate-500">No key concepts defined</span>
-                        )}
-                      </div>
+                      {flashcard.key_concepts && flashcard.key_concepts.length > 0 ? (
+                        <div className="mt-2 flex flex-wrap gap-2">
+                          {flashcard.key_concepts.map((concept, index) => (
+                            <span key={index} className="inline-flex items-center px-3 py-1 rounded-full text-sm font-medium bg-blue-50 text-blue-700 ring-1 ring-inset ring-blue-700/10">
+                              {concept}
+                            </span>
+                          ))}
+                        </div>
+                      ) : (
+                        <div className="mt-2 p-4 rounded-lg text-sm text-slate-500 bg-slate-50/50 ring-1 ring-inset ring-slate-100">
+                          No key concepts identified for this flashcard.
+                        </div>
+                      )}
                     </div>
 
                     {/* Feedback Section */}

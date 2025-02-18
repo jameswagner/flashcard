@@ -9,12 +9,14 @@ export interface Flashcard {
   id: number;
   front: string;
   back: string;
-  isNew?: boolean;
-  is_ai_generated?: boolean;
+  set_id: number;
   citations?: Citation[];
+  feedback?: string;
   key_terms?: string[];
+  key_concepts?: string[];
   abbreviations?: [string, string][];
-  card_index: number;
+  created_at: string;
+  updated_at: string;
 }
 
 export interface FlashcardSetDetail extends FlashcardSet {
