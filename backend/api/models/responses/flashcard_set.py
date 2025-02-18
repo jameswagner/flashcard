@@ -3,6 +3,13 @@ from typing import List, Optional, Dict
 from datetime import datetime
 from api.models.responses.flashcard import FlashcardResponse
 
+class Citation(BaseModel):
+    id: int = Field(..., description="Citation ID")
+    source_file_id: int = Field(..., description="Source file ID")
+    citation_type: str = Field(..., description="Type of citation (e.g., sentence_range, html_paragraph)")
+    citation_data: List[List[int]] = Field(..., description="Citation data as list of [start, end] integer pairs")
+    preview_text: Optional[str] = Field(None, description="Preview text of the cited content")
+
 class CitationResponse(BaseModel):
     preview_text: str = Field(..., description="Preview text of the citation")
     citation_data: List[Dict[str, int]] = Field(..., description="Citation data containing location information")

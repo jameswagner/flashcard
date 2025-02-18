@@ -20,6 +20,7 @@ from concurrent.futures import ThreadPoolExecutor
 from utils.html_processing import HTMLContent
 from models.enums import FileType
 import json
+from .citation_processing.citation_sorting import sort_flashcards_by_earliest_citation
 
 # Get logger for this module
 logger = logging.getLogger(__name__)
@@ -287,9 +288,19 @@ async def create_flashcards_from_text(
     # Merge results from all chunks
     logger.info("\n=== MERGING RESULTS ===")
     all_flashcards = merge_flashcard_results(chunk_results)
-    logger.info(f"Generated {len(all_flashcards)} total flashcards")
     
-    return all_flashcards 
+    # Sort cards by earliest citation
+    html_content = None
+    if file_type == FileType.HTML.value and isinstance(processed_text, str):
+        try:
+            html_content = json.loads(processed_text)
+        except json.JSONDecodeError:
+            logger.warning("Failed to parse HTML content for sorting")
+    
+    sorted_cards = sort_flashcards_by_earliest_citation(all_flashcards, file_type, html_content)
+    
+    logger.info(f"Generated {len(sorted_cards)} total flashcards")
+    return sorted_cards
 
 def parse_ai_response(content: str) -> List[Dict[str, Any]]:
     """Parse and validate the AI model's response into a list of flashcards."""
@@ -416,3 +427,13 @@ def parse_ai_response(content: str) -> List[Dict[str, Any]]:
     
     logger.info("\n=== FINISHED PARSING AI RESPONSE ===")
     return flashcards
+
+def merge_flashcard_results(results: List[Dict[str, Any]]) -> List[Dict[str, Any]]:
+    """Merge multiple flashcard generation results."""
+    merged = []
+    for result in results:
+        if isinstance(result, dict) and 'flashcards' in result:
+            merged.extend(result['flashcards'])
+        elif isinstance(result, list):
+            merged.extend(result)
+    return merged

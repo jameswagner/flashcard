@@ -87,8 +87,11 @@ export interface CitationData {
 }
 
 export interface Citation {
-  preview_text: string;
-  citation_data: CitationData[];
+  id: number;
+  source_file_id: number;
+  citation_type: string;
+  citation_data: [number, number][];  // Array of [start, end] tuples
+  preview_text: string | null;
 }
 
 // API Response Types

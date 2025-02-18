@@ -53,8 +53,11 @@ class FlashcardSetService:
 
             formatted_citations = [
                 {
-                    "preview_text": citation.preview_text,
-                    "citation_data": citation.citation_data.get('range') if isinstance(citation.citation_data, dict) else citation.citation_data
+                    "id": citation.id,
+                    "source_file_id": citation.source_file_id,
+                    "citation_type": citation.citation_type,
+                    "citation_data": citation.citation_data,
+                    "preview_text": citation.preview_text
                 }
                 for citation in card.citations
             ]
