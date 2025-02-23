@@ -3,6 +3,7 @@ from fastapi import HTTPException, UploadFile
 import logging
 from typing import Optional
 from datetime import datetime, UTC
+import json
 
 from models.source import SourceFile
 from models.enums import FileType
@@ -10,8 +11,11 @@ from utils.s3 import (
     upload_file,
     generate_s3_key,
     store_html_content,
+    store_processed_text as s3_store_processed_text,
 )
 from utils.html_processing import scrape_url, process_html
+from utils.youtube_processing import fetch_transcript
+from scripts.get_video_info import get_video_info
 
 logger = logging.getLogger(__name__)
 
@@ -43,6 +47,7 @@ class ContentUploadService:
                 s3_key=raw_key,
                 url=url,
                 file_type=FileType.HTML.value,
+                processed_text_s3_key=processed_key,
                 processed_text_type='html_structure'
             )
             self.db.add(source_file)
@@ -73,7 +78,9 @@ class ContentUploadService:
         source_file = SourceFile(
             filename=file.filename,
             s3_key=s3_key,
-            file_type=extension
+            file_type=extension,
+            processed_text_s3_key=None,  # Initialize as None, will be set during processing
+            processed_text_type=None  # Initialize as None, will be set during processing
         )
         self.db.add(source_file)
         self.db.commit()
@@ -93,7 +100,6 @@ class ContentUploadService:
         
         try:
             # Fetch video metadata from YouTube API
-            from scripts.get_video_info import get_video_info
             video_info = get_video_info(video_id)
             if 'error' in video_info:
                 logger.error(f"Failed to fetch video info: {video_info['error']}")
@@ -103,8 +109,24 @@ class ContentUploadService:
             actual_title = video_title or video_info['title']
             actual_description = description or video_info['description']
             
-            # Generate S3 key and store metadata
+            # Fetch transcript - removed await since it's not async
+            content = fetch_transcript(video_id, actual_title, actual_description)
+            if not content:
+                raise HTTPException(status_code=404, detail=f"Could not fetch transcript for video {video_id}")
+            
+            # Add additional metadata from video_info
+            content.channel = video_info['channel']
+            content.published_at = video_info['published_at']
+            content.duration = video_info['duration']['formatted']
+            content.statistics = video_info['statistics']
+            
+            # Generate S3 key and store content
             s3_key = generate_s3_key(f"{video_id}.json", user_id)
+            processed_key = s3_store_processed_text(
+                json.dumps(content.to_dict()),
+                s3_key,
+                processing_type='youtube_transcript'
+            )
             
             # Create database record
             source_file = SourceFile(
@@ -112,6 +134,7 @@ class ContentUploadService:
                 s3_key=s3_key,
                 url=f"https://www.youtube.com/watch?v={video_id}",
                 file_type=FileType.YOUTUBE_TRANSCRIPT.value,
+                processed_text_s3_key=processed_key,
                 processed_text_type='youtube_transcript'
             )
             self.db.add(source_file)
@@ -121,6 +144,5 @@ class ContentUploadService:
             return {"id": source_file.id, "filename": source_file.filename}
             
         except Exception as e:
-            self.db.rollback()
-            logger.error(f"Error processing YouTube video {video_id}: {str(e)}", exc_info=True)
-            raise HTTPException(status_code=500, detail=str(e)) 
+            logger.error(f"Error uploading YouTube video: {str(e)}")
+            raise HTTPException(status_code=500, detail=f"Error uploading YouTube video: {str(e)}") 

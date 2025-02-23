@@ -20,11 +20,11 @@ class CitationType(enum.Enum):
     line_numbers = "line_numbers"
     pdf_bbox = "pdf_bbox"
     semantic_chunk = "semantic_chunk"
-    sentence_range = "sentence_range"
-    html_paragraph = "html_paragraph"
-    html_section = "html_section"  # For citing entire sections with headings
-    html_table = "html_table"  # For citing tables
-    html_list = "html_list"  # For citing lists (ordered or unordered)
+    sentence_range = "sentence_range"  # Used for unstructured content fallback
+    paragraph = "paragraph"  # For citing paragraphs in any content type
+    section = "section"  # For citing entire sections with headings
+    table = "table"  # For citing tables
+    list = "list"  # For citing lists (ordered or unordered)
     video_timestamp = "video_timestamp"  # For citing specific video timestamps
     video_chapter = "video_chapter"  # For citing entire video chapters
 

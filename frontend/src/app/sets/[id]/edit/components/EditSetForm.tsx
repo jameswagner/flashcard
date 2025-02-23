@@ -4,14 +4,16 @@ import { useState } from 'react';
 import { useRouter } from 'next/navigation';
 import {
   FlashcardSetDetail,
-  Flashcard
+  Flashcard,
+  FlashcardSetSourceResponse
 } from '@/types';
-import { updateFlashcardSet, addCardToSet, updateCard, deleteCard, submitCardFeedback } from '@/api/flashcards';
+import { updateFlashcardSet, addCardToSet, updateCard, deleteCard, submitCardFeedback, getSetSourceText } from '@/api/flashcards';
 import { Button } from '@/components/ui/button';
 import { Card, CardContent } from '@/components/ui/card';
 import { Input } from '@/components/ui/input';
 import { Textarea } from '@/components/ui/textarea';
 import { Label } from '@/components/ui/label';
+import { SourceTextDisplay } from './SourceTextDisplay';
 
 interface FlashcardFeedbackState {
   type?: 'thumbs_up' | 'thumbs_down';
@@ -35,6 +37,8 @@ export function EditSetForm({ initialSet, onSaveComplete }: EditSetFormProps) {
   );
   const [deletedFlashcardIds, setDeletedFlashcardIds] = useState<number[]>([]);
   const [flashcardFeedback, setFlashcardFeedback] = useState<Record<number, FlashcardFeedbackState>>({});
+  const [sourceText, setSourceText] = useState<FlashcardSetSourceResponse | null>(null);
+  const [isSourceTextVisible, setIsSourceTextVisible] = useState(false);
 
   const handleAddFlashcard = () => {
     setFlashcards([
@@ -151,6 +155,16 @@ export function EditSetForm({ initialSet, onSaveComplete }: EditSetFormProps) {
     }
   };
 
+  const fetchSourceText = async () => {
+    try {
+      const response = await getSetSourceText(initialSet.id);
+      setSourceText(response);
+    } catch (err) {
+      console.error('Error fetching source text:', err);
+      setError('Failed to fetch source text');
+    }
+  };
+
   return (
     <form onSubmit={handleSubmit} className="min-h-screen bg-gradient-to-b from-slate-50 to-white pb-24">
       <div className="container max-w-[1600px] mx-auto px-4 py-8">
@@ -219,6 +233,42 @@ export function EditSetForm({ initialSet, onSaveComplete }: EditSetFormProps) {
               </Button>
             )}
           </div>
+
+          {/* Source Text Toggle Button */}
+          <div className="mt-4 border-t border-slate-200 pt-4">
+            <Button
+              type="button"
+              variant="outline"
+              onClick={() => {
+                if (!sourceText) {
+                  fetchSourceText();
+                }
+                setIsSourceTextVisible(!isSourceTextVisible);
+              }}
+              className="flex items-center gap-2"
+            >
+              <svg className="h-4 w-4" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                <path strokeLinecap="round" strokeLinejoin="round" strokeWidth="2" d="M9 12h6m-6 4h6m2 5H7a2 2 0 01-2-2V5a2 2 0 012-2h5.586a1 1 0 01.707.293l5.414 5.414a1 1 0 01.293.707V19a2 2 0 01-2 2z" />
+              </svg>
+              {isSourceTextVisible ? 'Hide Source Text' : 'Show Source Text'}
+            </Button>
+          </div>
+
+          {/* Source Text Panel */}
+          {isSourceTextVisible && (
+            <div className="mt-4 space-y-4 max-h-[500px] overflow-y-auto">
+              {sourceText ? (
+                sourceText.sources.map((source) => (
+                  <SourceTextDisplay key={source.source_file_id} source={source} />
+                ))
+              ) : (
+                <div className="text-center py-8">
+                  <div className="animate-spin rounded-full h-8 w-8 border-b-2 border-blue-600 mx-auto"></div>
+                  <p className="mt-4 text-slate-600">Loading source text...</p>
+                </div>
+              )}
+            </div>
+          )}
         </div>
 
         {/* Flashcards Grid */}
@@ -318,7 +368,7 @@ export function EditSetForm({ initialSet, onSaveComplete }: EditSetFormProps) {
                         <div className="mt-2 space-y-2">
                           {flashcard.citations.map((citation, index) => (
                             <div key={index} className="bg-slate-50/50 p-4 rounded-lg text-sm text-slate-600 ring-1 ring-inset ring-slate-100">
-                              {citation.preview_text}
+                              {citation.preview_text || `[No preview text available - ${citation.citation_type}]`}
                             </div>
                           ))}
                         </div>
@@ -335,11 +385,16 @@ export function EditSetForm({ initialSet, onSaveComplete }: EditSetFormProps) {
                     {/* Key Terms Section */}
                     <div className="mt-6">
                       <Label className="text-xs font-medium uppercase tracking-wide text-slate-500">Key Terms</Label>
-                      {flashcard.key_terms && flashcard.key_terms.length > 0 ? (
+                      {flashcard.answer_key_terms && flashcard.answer_key_terms.length > 0 ? (
                         <div className="mt-2 flex flex-wrap gap-2">
-                          {flashcard.key_terms.map((term, index) => (
+                          {flashcard.answer_key_terms.map((term, index) => (
                             <span key={index} className="inline-flex items-center px-3 py-1 rounded-full text-sm font-medium bg-emerald-50 text-emerald-700 ring-1 ring-inset ring-emerald-700/10">
-                              {term}
+                              {term.terms[0]}
+                              {term.terms.length > 1 && (
+                                <span className="ml-1 text-emerald-500/70">
+                                  (+{term.terms.length - 1})
+                                </span>
+                              )}
                             </span>
                           ))}
                         </div>

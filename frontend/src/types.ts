@@ -5,6 +5,13 @@ export interface FlashcardSet {
   card_count: number;
 }
 
+export interface AnswerKeyTerm {
+  terms: string[];
+  weight: number;
+  exact_match: boolean;
+  explanation: string;
+}
+
 export interface Flashcard {
   id: number;
   front: string;
@@ -12,11 +19,14 @@ export interface Flashcard {
   set_id: number;
   citations?: Citation[];
   feedback?: string;
-  key_terms?: string[];
+  answer_key_terms?: AnswerKeyTerm[];
   key_concepts?: string[];
   abbreviations?: [string, string][];
   created_at: string;
   updated_at: string;
+  is_ai_generated?: boolean;
+  card_index?: number;
+  isNew?: boolean;  // Used for tracking new cards in the UI
 }
 
 export interface FlashcardSetDetail extends FlashcardSet {
@@ -80,18 +90,47 @@ export interface CitationData {
   start_char?: number;
   end_char?: number;
   page_number?: number;
-  bbox?: [number, number, number, number];
+  bbox?: [number, number, number, number];  // [x1, y1, x2, y2] for PDF bounding boxes
   text?: string;
   start_time?: number;  // For video timestamps (in seconds)
   end_time?: number;    // For video timestamps (in seconds)
+  section_id?: number;  // For PDF sections
+  paragraph_id?: number;  // For PDF paragraphs
+  is_header?: boolean;  // For PDF headers/titles
 }
 
 export interface Citation {
   id: number;
   source_file_id: number;
-  citation_type: string;
+  citation_type: 'character_range' | 'line_numbers' | 'pdf_bbox' | 'semantic_chunk' | 
+                 'sentence_range' | 'html_paragraph' | 'html_section' | 'html_table' | 
+                 'html_list' | 'video_timestamp' | 'video_chapter';
   citation_data: [number, number][];  // Array of [start, end] tuples
   preview_text: string | null;
+}
+
+export interface SourceTextWithCitations {
+  source_file_id: number;
+  filename: string;
+  text_content: string;
+  citations: {
+    citation_id: number;
+    citation_type: string;
+    citation_data: [number, number][];
+    preview_text: string | null;
+    card_id: number;
+    card_front: string;
+    card_back: string;
+    card_index: number;
+  }[];
+  file_type: string;
+  processed_text_type: string | null;
+}
+
+export interface FlashcardSetSourceResponse {
+  set_id: number;
+  title: string;
+  sources: SourceTextWithCitations[];
 }
 
 // API Response Types

@@ -1,5 +1,5 @@
 from pydantic import BaseModel, Field, ConfigDict
-from typing import List, Optional, Dict
+from typing import List, Optional, Dict, Any
 from datetime import datetime
 from api.models.responses.flashcard import FlashcardResponse
 
@@ -27,4 +27,22 @@ class FlashcardSetResponse(BaseModel):
 class FlashcardSetDetailResponse(FlashcardSetResponse):
     flashcards: List[FlashcardResponse] = Field(default_factory=list, description="List of flashcards in the set")
 
-    model_config = ConfigDict(from_attributes=True) 
+    model_config = ConfigDict(from_attributes=True)
+
+class SourceTextWithCitations(BaseModel):
+    """Response model for source text with citation highlights."""
+    source_file_id: int
+    filename: str
+    text_content: str
+    citations: List[Dict[str, Any]] = Field(
+        ...,
+        description="List of citation data with card references. Each citation includes citation_id, citation_type, citation_data, preview_text, card_id, card_front, card_back, and card_index."
+    )
+    file_type: str
+    processed_text_type: Optional[str] = None
+
+class FlashcardSetSourceResponse(BaseModel):
+    """Response model for a flashcard set's source text with citations."""
+    set_id: int
+    title: str
+    sources: List[SourceTextWithCitations] 

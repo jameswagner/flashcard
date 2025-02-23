@@ -101,8 +101,9 @@ export default function CreateSet() {
   const handleFileChange = (e: React.ChangeEvent<HTMLInputElement>) => {
     if (e.target.files && e.target.files[0]) {
       const selectedFile = e.target.files[0];
-      if (selectedFile.type !== 'text/plain') {
-        setError('Please upload a .txt file');
+      const fileType = selectedFile.type;
+      if (fileType !== 'text/plain' && fileType !== 'application/pdf') {
+        setError('Please upload a .txt or .pdf file');
         return;
       }
       setFile(selectedFile);
@@ -195,23 +196,23 @@ export default function CreateSet() {
             
             <Tabs defaultValue="file" className="w-full">
               <TabsList className="grid w-full grid-cols-3">
-                <TabsTrigger value="file">Text File</TabsTrigger>
+                <TabsTrigger value="file">File Upload</TabsTrigger>
                 <TabsTrigger value="text">Direct Text</TabsTrigger>
                 <TabsTrigger value="url">URL</TabsTrigger>
               </TabsList>
               
               <TabsContent value="file" className="space-y-4">
                 <div>
-                  <Label htmlFor="file">Text File</Label>
+                  <Label htmlFor="file">Upload File</Label>
                   <Input
                     id="file"
                     type="file"
-                    accept=".txt"
+                    accept=".txt,.pdf"
                     onChange={handleFileChange}
                     className="mt-1"
                   />
                   <p className="text-xs text-gray-500 mt-1">
-                    Only .txt files are supported
+                    Supported file types: .txt, .pdf
                   </p>
                 </div>
               </TabsContent>

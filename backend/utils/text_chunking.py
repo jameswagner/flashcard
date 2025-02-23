@@ -4,6 +4,9 @@ from models.enums import AIModel
 from utils.html_processing import HTMLContent
 from config.env import settings
 import re
+import logging
+
+logger = logging.getLogger(__name__)
 
 def count_tokens(text: str, model: AIModel = AIModel.GPT4O_MINI) -> int:
     """Count tokens for a given text using the appropriate tokenizer.
@@ -41,6 +44,8 @@ def chunk_text(
         max_tokens = settings.text_processing.max_tokens_per_chunk
     if overlap_tokens is None:
         overlap_tokens = settings.text_processing.overlap_tokens
+
+    logger.info(f"Chunking text with max_tokens={max_tokens}, overlap_tokens={overlap_tokens}")
     
     # Initialize chunks list
     chunks = []
@@ -50,6 +55,7 @@ def chunk_text(
     
     # Split text into marked sentences
     sentences = [s.strip() for s in text.split('\n') if s.strip()]
+    logger.info(f"Total sentences to process: {len(sentences)}")
     
     # Initialize first chunk
     current_chunk = []
@@ -62,22 +68,28 @@ def chunk_text(
             
         # Count tokens in this sentence
         sentence_tokens = len(encoding.encode(sentence))
+        logger.info(f"Sentence {i+1}: {sentence_tokens} tokens")
         
         # If this single sentence is too long, we have to split it
         # (this should be rare since we're using sentence markers)
         if sentence_tokens > max_tokens:
-            print(f"WARNING: Found very long sentence ({sentence_tokens} tokens)")
+            logger.warning(f"Found very long sentence ({sentence_tokens} tokens) at index {i+1}")
             if current_chunk:  # Save current chunk first
-                chunks.append('\n'.join(current_chunk))
+                chunk_text = '\n'.join(current_chunk)
+                chunks.append(chunk_text)
+                logger.info(f"Saved chunk of {current_tokens} tokens")
                 current_chunk = []
                 current_tokens = 0
             chunks.append(sentence)  # Add long sentence as its own chunk
+            logger.info(f"Added long sentence as standalone chunk")
             continue
             
         # If adding this sentence would exceed max tokens, save current chunk
         if current_tokens + sentence_tokens > max_tokens and current_chunk:
             # Join current chunk sentences with newlines
-            chunks.append('\n'.join(current_chunk))
+            chunk_text = '\n'.join(current_chunk)
+            chunks.append(chunk_text)
+            logger.info(f"Saved chunk of {current_tokens} tokens")
             
             # Start new chunk with overlap
             # Take the last few sentences that fit within overlap_tokens
@@ -96,27 +108,19 @@ def chunk_text(
             # Start new chunk with overlap sentences
             current_chunk = overlap_chunk
             current_tokens = overlap_tokens_count
+            logger.info(f"Started new chunk with {overlap_tokens_count} overlap tokens")
         
         # Add sentence to current chunk
         current_chunk.append(sentence)
         current_tokens += sentence_tokens
-        
-        # Print progress for long texts
-        if i % 100 == 0:
-            print(f"Processed {i}/{len(sentences)} sentences...")
     
-    # Add the last chunk if there's anything left
+    # Add final chunk if there is one
     if current_chunk:
-        chunks.append('\n'.join(current_chunk))
+        chunk_text = '\n'.join(current_chunk)
+        chunks.append(chunk_text)
+        logger.info(f"Saved final chunk of {current_tokens} tokens")
     
-    # Print chunk statistics
-    total_tokens = sum(len(encoding.encode(chunk)) for chunk in chunks)
-    print(f"\nChunking Statistics:")
-    print(f"Total sentences: {len(sentences)}")
-    print(f"Total chunks: {len(chunks)}")
-    print(f"Total tokens: {total_tokens}")
-    print(f"Average tokens per chunk: {total_tokens / len(chunks):.0f}")
-    
+    logger.info(f"Created {len(chunks)} chunks in total")
     return chunks
 
 def merge_flashcard_results(chunk_results: List[List[Dict[str, Any]]]) -> List[Dict[str, Any]]:
@@ -255,6 +259,10 @@ def chunk_youtube_transcript(
     if overlap_tokens is None:
         overlap_tokens = settings.text_processing.overlap_tokens
     
+    logger.info("Starting YouTube transcript chunking")
+    logger.info(f"Input text length: {len(text)}")
+    logger.info(f"First 500 chars: {text[:500]}")
+    
     # Initialize chunks list
     chunks = []
     
@@ -262,9 +270,12 @@ def chunk_youtube_transcript(
     encoding = tiktoken.encoding_for_model("gpt-4")
     
     # Split text into segments (each starting with a timestamp)
-    # Use positive lookbehind to ensure we don't split within timestamp markers
-    segments = re.split(r'(?<=\])\s*(?=\[\d+\.\d+s-\d+\.\d+s\])', text)
+    segments = text.split('\n')
+    logger.info(f"Split into {len(segments)} initial segments")
+    
+    # Filter and clean segments
     segments = [s.strip() for s in segments if s.strip()]
+    logger.info(f"After filtering, have {len(segments)} non-empty segments")
     
     # Initialize first chunk
     current_chunk = []
@@ -273,25 +284,23 @@ def chunk_youtube_transcript(
     for i, segment in enumerate(segments):
         # Skip empty segments
         if not segment:
-            continue
-            
-        # Ensure segment starts with a timestamp
-        if not segment.startswith('['):
-            print(f"WARNING: Segment {i} missing timestamp, skipping: {segment[:100]}...")
+            logger.info(f"Skipping empty segment at index {i}")
             continue
             
         # Count tokens in this segment
         segment_tokens = len(encoding.encode(segment))
+        logger.info(f"Segment {i} has {segment_tokens} tokens")
         
         # If this single segment is too long, we have to split it
-        # (this should be rare since segments are usually short)
         if segment_tokens > max_tokens:
-            print(f"WARNING: Found very long segment ({segment_tokens} tokens)")
+            logger.info(f"Found very long segment ({segment_tokens} tokens)")
             if current_chunk:  # Save current chunk first
                 chunks.append('\n'.join(current_chunk))
+                logger.info(f"Saved chunk with {len(current_chunk)} segments")
                 current_chunk = []
                 current_tokens = 0
             chunks.append(segment)  # Add long segment as its own chunk
+            logger.info("Added long segment as standalone chunk")
             continue
             
         # If adding this segment would exceed max tokens, save current chunk
@@ -316,35 +325,23 @@ def chunk_youtube_transcript(
             # Start new chunk with overlap segments
             current_chunk = overlap_chunk
             current_tokens = overlap_tokens_count
+            logger.info(f"Started new chunk with {overlap_tokens_count} overlap tokens")
         
         # Add segment to current chunk
         current_chunk.append(segment)
         current_tokens += segment_tokens
-        
-        # Print progress for long transcripts
-        if i % 20 == 0:
-            print(f"Processed {i}/{len(segments)} segments...")
-            if current_chunk:
-                print(f"Current chunk preview: {current_chunk[-1][:100]}...")
     
-    # Add the last chunk if there's anything left
+    # Add final chunk if there is one
     if current_chunk:
         chunks.append('\n'.join(current_chunk))
+        logger.info(f"Added final chunk with {len(current_chunk)} segments")
     
-    # Print chunk statistics and previews
+    # Log final statistics
     total_tokens = sum(len(encoding.encode(chunk)) for chunk in chunks)
-    print(f"\nYouTube Chunking Statistics:")
-    print(f"Total segments: {len(segments)}")
-    print(f"Total chunks: {len(chunks)}")
-    print(f"Total tokens: {total_tokens}")
-    print(f"Average tokens per chunk: {total_tokens / len(chunks):.0f}")
-    
-    # Print chunk boundaries for verification
-    print("\nChunk Boundary Verification:")
-    for i, chunk in enumerate(chunks):
-        first_timestamp = re.search(r'\[\d+\.\d+s-\d+\.\d+s\]', chunk)
-        last_timestamp = list(re.finditer(r'\[\d+\.\d+s-\d+\.\d+s\]', chunk))[-1] if chunk else None
-        if first_timestamp and last_timestamp:
-            print(f"Chunk {i+1}: {first_timestamp.group(0)} to {last_timestamp.group(0)}")
+    logger.info(f"Chunking complete. Created {len(chunks)} chunks with {total_tokens} total tokens")
+    if chunks:
+        logger.info(f"Average tokens per chunk: {total_tokens / len(chunks):.0f}")
+    else:
+        logger.info("Warning: No chunks were created!")
     
     return chunks 

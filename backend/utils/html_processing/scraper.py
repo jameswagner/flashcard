@@ -11,9 +11,14 @@ from datetime import datetime
 import pathlib
 from ..prompt_handling.image_prompts import analyze_image
 from fastapi import HTTPException
+import asyncio
 
 # Get logger for this module
 logger = logging.getLogger(__name__)
+
+# Constants for image processing
+MAX_CONCURRENT_IMAGES = 10  # Maximum number of images to process in parallel
+MAX_TOTAL_IMAGES = 50     # Maximum total images to process per page
 
 def save_cleaned_text(text: str, title: str) -> str:
     """Save cleaned text to a file in the output_files directory.
@@ -79,15 +84,62 @@ async def scrape_url(url: str) -> Tuple[str, str]:
             response = await client.get(url, headers=headers)
             response.raise_for_status()
             
-            # Parse HTML
-            soup = BeautifulSoup(response.text, 'html.parser')
+            # Log response headers and encoding info
+            logger.info(f"Response headers: {dict(response.headers)}")
+            logger.info(f"Response apparent encoding: {response.encoding}")
+            
+            # Get document encoding from Content-Type header
+            content_type = response.headers.get('content-type', '').lower()
+            declared_encoding = None
+            if 'charset=' in content_type:
+                declared_encoding = content_type.split('charset=')[-1].strip()
+            logger.info(f"Declared charset in Content-Type: {declared_encoding}")
+            
+            # Use UTF-8 as primary encoding, with fallbacks
+            encodings_to_try = ['utf-8']
+            if declared_encoding and declared_encoding.lower() != 'utf-8':
+                encodings_to_try.append(declared_encoding)
+            encodings_to_try.extend(['latin1', 'cp1252', 'iso-8859-1'])
+            
+            # Try each encoding
+            text = None
+            used_encoding = None
+            for encoding in encodings_to_try:
+                try:
+                    text = response.content.decode(encoding)
+                    used_encoding = encoding
+                    logger.info(f"Successfully decoded content using {encoding} encoding")
+                    break
+                except UnicodeDecodeError:
+                    continue
+            
+            if text is None:
+                logger.warning("Failed to decode with all encodings, using UTF-8 with error handling")
+                text = response.content.decode('utf-8', errors='replace')
+                used_encoding = 'utf-8 (with replacements)'
+            
+            # Parse HTML with explicit encoding
+            soup = BeautifulSoup(text, 'html.parser', from_encoding=used_encoding)
+            
+            # Check meta charset
+            meta_charset = None
+            charset_tag = soup.find('meta', charset=True)
+            if charset_tag:
+                meta_charset = charset_tag.get('charset')
+            elif soup.find('meta', {'http-equiv': 'Content-Type'}):
+                meta_content = soup.find('meta', {'http-equiv': 'Content-Type'}).get('content', '')
+                if 'charset=' in meta_content:
+                    meta_charset = meta_content.split('charset=')[-1].strip()
+            
+            logger.info(f"Meta charset declaration: {meta_charset}")
+            logger.info(f"Final encoding used: {used_encoding}")
             
             # Get title
             title = soup.title.string if soup.title else url.split('/')[-1]
             title = title.strip()
             
             # Clean HTML
-            cleaned_html = await clean_html(response.text, url)
+            cleaned_html = await clean_html(text, url)
             
             return cleaned_html, title
             
@@ -283,6 +335,39 @@ async def remove_unwanted_elements(soup: BeautifulSoup) -> None:
             element.decompose()
         logger.debug(f"Length after removing {tag} elements: {len(str(soup))}")
         logger.debug(f"Paragraphs after removing {tag} elements: {len(soup.find_all('p'))}")
+        
+    target_div = soup.find(id="author-meta-23")
+    if target_div:
+        logger.info(f"Found div. Style attribute: '{target_div.get('style')}'")
+    else:
+        logger.info("Div not found!")
+    
+    # Remove elements with inline CSS that hides them
+    hidden_elements = soup.find_all(
+        lambda tag: tag.get('style') and (
+            'display: none' in tag['style'].lower() or
+            'display:none' in tag['style'].lower() or
+            'visibility: hidden' in tag['style'].lower() or
+            'visibility:hidden' in tag['style'].lower() or
+            'opacity: 0' in tag['style'].lower() or
+            'opacity:0' in tag['style'].lower()
+        )
+    )
+    logger.info(f"Removing {len(hidden_elements)} elements hidden by inline CSS")
+    for element in hidden_elements:
+        element.decompose()
+    
+    # Remove elements with hidden attribute
+    hidden_attr_elements = soup.find_all(attrs={'hidden': True})
+    logger.info(f"Removing {len(hidden_attr_elements)} elements with hidden attribute")
+    for element in hidden_attr_elements:
+        element.decompose()
+    
+    # Remove elements with aria-hidden="true"
+    aria_hidden_elements = soup.find_all(attrs={'aria-hidden': 'true'})
+    logger.info(f"Removing {len(aria_hidden_elements)} elements with aria-hidden=true")
+    for element in aria_hidden_elements:
+        element.decompose()
 
 async def remove_navigation_elements(soup: BeautifulSoup) -> None:
     """Remove navigation-related elements from the soup."""
@@ -340,16 +425,73 @@ async def process_images_in_content(soup: BeautifulSoup, url: str) -> None:
     images = soup.find_all('img')
     logger.info(f"Found {len(images)} images")
     
+    # Limit total number of images
+    if len(images) > MAX_TOTAL_IMAGES:
+        logger.warning(f"Too many images ({len(images)}), processing only first {MAX_TOTAL_IMAGES}")
+        images = images[:MAX_TOTAL_IMAGES]
+    
+    # Collect all image URLs and their tags
+    img_data = []
     for img in images:
         try:
-            img_text = await process_image(img, url)
-            if img_text:
-                img.replace_with(soup.new_string(img_text))
+            # Get raw image URL
+            src = img.get('src', '') or img.get('data-src', '')
+            if not src:
+                continue
+
+            # Handle various URL formats
+            if src.startswith('//'):
+                img_url = f"https:{src}"
+            elif src.startswith('http://') or src.startswith('https://'):
+                img_url = src
+            elif src.startswith('/'):
+                parsed_base = urlparse(url)
+                img_url = f"{parsed_base.scheme}://{parsed_base.netloc}{src}"
             else:
-                img.decompose()
+                img_url = urljoin(url, src)
+
+            # Skip data URLs
+            if img_url.startswith('data:image/'):
+                continue
+
+            # Validate URL
+            try:
+                parsed = urlparse(img_url)
+                if not all([parsed.scheme, parsed.netloc]):
+                    continue
+                img_data.append((img, img_url))
+            except Exception as e:
+                logger.warning(f"Error parsing image URL {img_url}: {str(e)}")
+                continue
+
         except Exception as e:
             logger.error(f"Error processing image: {str(e)}")
-            img.decompose()
+    
+    if not img_data:
+        return
+
+    # Process images in batches
+    for i in range(0, len(img_data), MAX_CONCURRENT_IMAGES):
+        batch = img_data[i:i + MAX_CONCURRENT_IMAGES]
+        batch_urls = [url for _, url in batch]
+        
+        logger.info(f"Processing batch of {len(batch)} images ({i + 1}-{i + len(batch)} of {len(img_data)})")
+        descriptions = await asyncio.gather(*[analyze_image(url) for url in batch_urls])
+
+        # Replace images with their descriptions
+        for (img, _), description in zip(batch, descriptions):
+            try:
+                if description:
+                    img.replace_with(soup.new_string(f"[IMG: desc: {description}]"))
+                else:
+                    alt_text = img.get('alt', '').strip() or img.get('title', '').strip()
+                    if alt_text:
+                        img.replace_with(soup.new_string(f"[IMG: alt: {alt_text}]"))
+                    else:
+                        img.decompose()
+            except Exception as e:
+                logger.error(f"Error replacing image with description: {str(e)}")
+                img.decompose()
 
 def clean_whitespace(soup: BeautifulSoup) -> None:
     """Clean excess whitespace from text nodes."""
@@ -429,6 +571,13 @@ async def clean_html(html: str, url: str = '') -> str:
     soup = BeautifulSoup(html, 'html.parser')
     
     try:
+        # Preserve pre tags before cleaning
+        pre_tags = {}
+        for i, pre in enumerate(soup.find_all('pre')):
+            placeholder = f"[PRE_TAG_{i}]"
+            pre_tags[placeholder] = str(pre)
+            pre.replace_with(soup.new_string(placeholder))
+        
         # Remove unwanted and navigation elements
         await remove_unwanted_elements(soup)
         await remove_navigation_elements(soup)
@@ -443,13 +592,18 @@ async def clean_html(html: str, url: str = '') -> str:
         # Extract main content
         soup = extract_main_content(soup)
         
+        logger.info(f"Main content: {soup.get_text()[:100]}")
+        
         # Process images
         await process_images_in_content(soup, url)
         
         # Clean whitespace
         clean_whitespace(soup)
         
+        # Restore pre tags
         cleaned_html = str(soup)
+        for placeholder, pre_content in pre_tags.items():
+            cleaned_html = cleaned_html.replace(placeholder, pre_content)
         
         # Validate output
         if len(cleaned_html.strip()) == 0:
@@ -511,7 +665,7 @@ def process_reference_range(start_link, next_links, soup):
     if start_num >= end_num or (end_num - start_num) > 10:  # Limit range size for safety
         return False, 0, None, []
             
-    logger.info(f"Processing reference range: {start_num}-{end_num} with prefix {prefix}")
+    logger.debug(f"Processing reference range: {start_num}-{end_num} with prefix {prefix}")
     
     # Collect all references in range
     range_refs = []
@@ -539,6 +693,6 @@ def process_reference_range(start_link, next_links, soup):
     
     # Create combined reference text
     combined_text = f"[REFS {start_num}-{end_num}: {'; '.join(range_refs)}] "
-    logger.info(f"Combined text: {combined_text}")
+    logger.debug(f"Combined text: {combined_text}")
     
     return True, 1, combined_text, containers_to_remove 

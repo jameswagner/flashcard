@@ -13,7 +13,7 @@ from utils.s3 import (
 )
 from utils.html_processing import process_html, HTMLContent
 from utils.youtube_processing import YouTubeContent
-from utils.sentence_processing import add_sentence_markers
+from utils.plaintext_processing.processor import process_text
 
 logger = logging.getLogger(__name__)
 
@@ -54,12 +54,16 @@ class ContentProcessingService:
         else:  # TXT files
             logger.info("Processing plain text file...")
             text_content = get_file_content(source_file.s3_key)
-            processed_text = s3_get_processed_text(source_file.s3_key)
             
-            if processed_text is None:
-                logger.debug("No existing processed text found, processing now...")
-                processed_text = add_sentence_markers(text_content)
-                s3_store_processed_text(processed_text, source_file.s3_key)
+            if not source_file.processed_text_s3_key:
+                logger.debug("No processed text found, processing now...")
+                processed_text = process_text(text_content)
+                processed_key = s3_store_processed_text(processed_text, source_file.s3_key)
+                source_file.processed_text_s3_key = processed_key
+                source_file.processed_text_type = 'sentences'
+                self.db.commit()
+            else:
+                processed_text = s3_get_processed_text(source_file.processed_text_s3_key)
             
             text_content = processed_text
             content_structure = (

@@ -1,6 +1,6 @@
 """Citation sorting utilities."""
 
-from typing import List, Dict, Any, Optional
+from typing import List, Dict, Any, Optional, Tuple
 import logging
 from models.enums import CitationType, FileType
 
@@ -49,55 +49,64 @@ def _get_earliest_linear_position(citations: List[Dict[str, Any]]) -> int:
             
     return earliest
 
-def _build_element_index(html_content: Dict) -> Dict[str, int]:
-    """Build index mapping each element to its position in the document.
+def _build_element_index(html_content: Dict) -> Dict[str, Tuple[int, ...]]:
+    """Build index mapping each element to its hierarchical position in the document.
     
     Args:
         html_content: JSON structure containing sections and their contents
         
     Returns:
-        Dict mapping element keys (e.g. 'paragraph_1', 'list_2') to their position
+        Dict mapping element keys (e.g. 'paragraph_1', 'list_2') to their position tuple.
+        Position tuple format: (section_level_1, section_level_2, ..., element_index)
     """
     element_index = {}
-    current_position = 0
     
-    def process_section(section: Dict):
-        nonlocal current_position
+    def process_section(section: Dict, current_path: Tuple[int, ...], section_idx: int):
+        # Current section's path includes its index at this level
+        section_path = current_path + (section_idx,)
         
         # Process section itself
         if 'heading' in section:
-            section_num = int(section['heading'].split('[Section ')[1].split(']')[0])
-            element_index[f'section_{section_num}'] = current_position
-            current_position += 1
+            # Extract section number from heading, preserving hierarchical structure
+            section_parts = section['heading'].split('[Section ')[1].split(']')[0].split('.')
+            section_key = f'section_{section_parts[0]}'  # Use first number as main identifier
+            element_index[section_key] = section_path
+            
+            # Also index the full hierarchical path
+            if len(section_parts) > 1:
+                full_section_key = f'section_{"_".join(section_parts)}'
+                element_index[full_section_key] = section_path
         
         # Process elements in this section
-        for paragraph in section.get('paragraphs', []):
+        for elem_idx, paragraph in enumerate(section.get('paragraphs', [])):
+            # Element path includes its index within the section
+            element_path = section_path + (elem_idx,)
+            
             # Check for different element types
             if paragraph.startswith('[Paragraph '):
                 num = int(paragraph.split('[Paragraph ')[1].split(']')[0])
-                element_index[f'paragraph_{num}'] = current_position
+                element_index[f'paragraph_{num}'] = element_path
             elif paragraph.startswith('[List '):
                 num = int(paragraph.split('[List ')[1].split(']')[0])
-                element_index[f'list_{num}'] = current_position
+                element_index[f'list_{num}'] = element_path
             elif paragraph.startswith('[Table '):
                 num = int(paragraph.split('[Table ')[1].split(']')[0])
-                element_index[f'table_{num}'] = current_position
-            current_position += 1
+                element_index[f'table_{num}'] = element_path
             
-        # Process nested sections
-        for subsection in section.get('sections', []):
-            process_section(subsection)
+        # Process nested sections, maintaining their level in the path
+        for subsection_idx, subsection in enumerate(section.get('sections', [])):
+            process_section(subsection, section_path, subsection_idx)
     
     # Process all top-level sections
-    for section in html_content.get('sections', []):
-        process_section(section)
+    for section_idx, section in enumerate(html_content.get('sections', [])):
+        process_section(section, (), section_idx)
         
     return element_index
 
 def _get_earliest_html_position(citations: List[Dict[str, Any]], html_content: Dict) -> tuple:
     """Get earliest position for HTML content using document structure."""
     element_index = _build_element_index(html_content)
-    earliest_position = float('inf')
+    earliest_position = None
     
     for citation in citations:
         if isinstance(citation, dict):
@@ -118,7 +127,11 @@ def _get_earliest_html_position(citations: List[Dict[str, Any]], html_content: D
                 element_key = f'{element_type}_{element_num}'
                 
                 # Get position from index
-                if element_key in element_index:
-                    earliest_position = min(earliest_position, element_index[element_key])
+                position = element_index.get(element_key)
+                if position:
+                    if earliest_position is None:
+                        earliest_position = position
+                    else:
+                        earliest_position = min(earliest_position, position)
     
-    return (earliest_position,) 
+    return earliest_position if earliest_position is not None else (float('inf'),) 

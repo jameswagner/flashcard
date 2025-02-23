@@ -1,0 +1,541 @@
+{
+  "title": "Opinion: To save whales, look to the sky",
+  "sections": [
+    {
+      "header": "Opinion: To save whales, look to the sky",
+      "content": [
+        {
+          "sentences": [
+            "Maxime S ebe \u0001 a,b,c,1 and Sophie Gourguet d Human activity threatens whales.",
+            "Whale populations face indirect impacts such as ocean noise and pollu- tion, as well as direct impacts from whaling, ﬁ shing gear entanglements, and ship collisions (1).",
+            "Such col- lisions are believed to kill about 80 whales on the US West Coast each year (2).",
+            "Although precise estimates have not been tabulated, whale deaths likely amount to several thousand annually worldwide."
+          ],
+          "is_first_in_section": true
+        },
+        {
+          "sentences": [
+            "Simple steps could reduce this toll, but these have yet to be put in place in a systemized way (3 – 5).",
+            "With maritime traf ﬁ c expanding, the threat to whales can be expected to increase.",
+            "It is therefore critical that we investigate what can be learned from the management of other transport systems to reduce collision and improve whale conservation."
+          ],
+          "is_first_in_section": false
+        },
+        {
+          "sentences": [
+            "Shipping routes have been compared with roads, and concepts from terrestrial ecology have been bor- rowed to assess the direct and indirect ecological impacts from shipping on marine giants (6).",
+            "For example, some have suggested that the addition of transition zones adjacent to maritime routes may help buffer the spread of shipping environmental impact.",
+            "We extend this approach to draw lessons from the aviation industry on how to manage colli- sions with wildlife, lessons that point to crucial steps for better protecting the ocean ’ s whales (Fig.",
+            "1)."
+          ],
+          "is_first_in_section": false
+        }
+      ]
+    },
+    {
+      "header": "Key Comparisons",
+      "content": [
+        {
+          "sentences": [
+            "There are some key theoretical similarities with the avia- tion industry (Fig.",
+            "2).",
+            "Both whale – ship and bird – aircraft Fig.",
+            "1.",
+            "The aviation industry offers useful lessons for the shipping industry on how to manage wildlife collisions, which point to crucial steps for better protecting whales.",
+            "Image credit: Shutterstock/Manamana.",
+            "a University of Brest, Ifremer, CNRS, UMR 6308, AMURE, IUEM, Plouzan e 29280, France; \u0003 b Centre de Recherche en Gestion, \u0003 Ecole Polytechnique,"
+          ],
+          "is_first_in_section": true
+        }
+      ]
+    },
+    {
+      "header": "Paris, B atiment Ensta, Palaiseau 91762, France; ^ c Aix Marseille Univ., Universit e de Toulon, CNRS, IRD, MIO UM 110, Marseille 13009, France; and \u0003",
+      "content": [
+        {
+          "sentences": [
+            "d Ifremer, University of Brest, CNRS, UMR 6308, AMURE, Unit e d \u0003 ’ Economie Maritime, IUEM, Plouzan e 29280, France \u0003 The authors declare no competing interest.",
+            "This article is distributed under Creative Commons Attribution-NonCommercial-NoDerivatives License 4.0 (CC BY-NC-ND) .",
+            "Any opinions, ﬁ ndings, conclusions, or recommendations expressed in this work are those of the authors and have not been endorsed by the National Academy of Sciences.",
+            "1 To whom correspondence may be addressed.",
+            "Email: maxime.sebe@polytechnique.edu.",
+            "Published December 28, 2021."
+          ],
+          "is_first_in_section": true
+        },
+        {
+          "sentences": [
+            "https://doi.org/10.1073/pnas.2121360119 j 1 of 4 PNAS 2022 Vol.",
+            "119 No.",
+            "1 e2121360119"
+          ],
+          "is_first_in_section": false
+        },
+        {
+          "sentences": [
+            "OPINION"
+          ],
+          "is_first_in_section": false
+        }
+      ]
+    },
+    {
+      "header": "O P I N I O N",
+      "content": [
+        {
+          "sentences": [
+            "Downloaded from https://www.pnas.org by 96.41.228.213 on February 21, 2025 from IP address 96.41.228.213."
+          ],
+          "is_first_in_section": true
+        },
+        {
+          "sentences": [
+            "collisions occur in three-dimensional space.",
+            "Ship draught can reach a depth of 20 m, and some whale species spend considerable time at these depths.",
+            "These include Bryde's whales in the Hauraki Gulf, which spend 91% of their time between 0 and 14 m beneath the surface (7).",
+            "Proactive actions are crucial toprevent animal losses resulting from collisions with ships and aircraft."
+          ],
+          "is_first_in_section": false
+        },
+        {
+          "sentences": [
+            "Although this environment seems to permit ani- mals to ﬂ y or dive to avoid being hit, studies have shown that whales and birds often do not detect oncoming vehicles (5, 8).",
+            "The three-dimensional envi- ronment also hinders the detection of animals by those on aircraft and ships.",
+            "Plus, the viewing angle of pilots is often limited.",
+            "Even if pilots do see animals, the high speed and low maneuverability of large air- craft and ships hamper last-minute avoidance (9)."
+          ],
+          "is_first_in_section": false
+        },
+        {
+          "sentences": [
+            "Aerial and maritime transportation journeys are both planned in advance, which could allow the modeling of collision probability along given routes.",
+            "Modeling capacity is already high for the skies near airports (10), and the emergence of Big Data techni- ques will offer the same improvements for whale detection in data-poor environments such as the world ’ s oceans (11).",
+            "Another similarity between trans- port by sky and sea is that neither has routes marked with asphalt and rails, hence hot spots of animal strikes are not limited to con ﬁ ned areas but instead span broader and unmarked regions."
+          ],
+          "is_first_in_section": false
+        },
+        {
+          "sentences": [
+            "Finally, both aircraft and ships frequently cross international borders and so their management leans on international regulation, through the International Civil Aircraft Organization (ICAO) and International Maritime Organization (IMO).",
+            "The ICAO is a United Nations agency “ whose mission is to achieve safe, secure, and sustainable development of civil avi- ation.",
+            "” The IMO is the counterpart for maritime transportation."
+          ],
+          "is_first_in_section": false
+        },
+        {
+          "sentences": [
+            "Despite these similarities between bird – aircraft and whale – ship collisions, the primary motivations to avoid these collisions are clearly different, resulting in different management processes.",
+            "Because bird strikes can be fatal for those on a plane, the primary concern for aerial collisions is the safety of the crew and passengers.",
+            "This human safety consideration has led the aviation industry to adopt standardized pro- cesses over the last decades (12)."
+          ],
+          "is_first_in_section": false
+        },
+        {
+          "sentences": [
+            "Bird – aircraft collision management follows a coor- dinated top-down process supervised by the ICAO, which manages a global strike database, encourages strike reporting, and advocates for risk assessment and cost-effectiveness analysis, through internal stan- dardized processes (13).",
+            "As such, bird – aircraft colli- sion management now includes proactive solutions (12).",
+            "For instance, new airport sites are carefully con- sidered to avoid wildlife hazards.",
+            "Moreover, under- standing the seasonal and diurnal migration of birds helps the aviation industry plan safe routes and even alter schedules as necessary.",
+            "This knowledge also"
+          ],
+          "is_first_in_section": false
+        },
+        {
+          "sentences": [
+            "allows adequate environmental compensation on the basis of national or international law (e.g., European Union Directive 2004/35/EC)."
+          ],
+          "is_first_in_section": false
+        },
+        {
+          "sentences": [
+            "Risks to safety and property from whale – ship colli- sions are lower, and so the shipping industry treats animal strikes as a relatively low priority (14).",
+            "That makes environmental concerns the major driver to reduce whale – ship collisions.",
+            "Consequently, despite IMO guidelines on ship strikes (15), few standardized processes have emerged.",
+            "When a collision hot spot"
+          ],
+          "is_first_in_section": false
+        },
+        {
+          "sentences": [
+            "identi ﬁ ed, is Non-Governmental Organizations (NGOs) and governments propose solutions at the regional level, and sometimes at the IMO level (5), following a bottom-up process (i.e., countries pro- pose measures to the IMO)."
+          ],
+          "is_first_in_section": false
+        }
+      ]
+    },
+    {
+      "header": "Seeking Solutions",
+      "content": [
+        {
+          "sentences": [
+            "Proposals for mitigation submitted to the IMO must follow a lengthy process (4), and the fate of such pro- posals often depends on two factors.",
+            "First, the IMO is more likely to accept these solutions if the party sub- mitting them has already implemented the solutions at a national or regional level (3).",
+            "Second, measures are more likely to be considered by the IMO if the pro- posal includes an analysis of costs, bene ﬁ ts, and risk reductions triggered by the proposed measures (15)."
+          ],
+          "is_first_in_section": true
+        },
+        {
+          "sentences": [
+            "Up until now, only nine proposals have been adopted; as in many proposals, neither of these con- ditions are met (5).",
+            "For instance, a proposal for a Traf- ﬁ c Separation Scheme and recommended speed limitations around the Strait of Gibraltar near Tangier was rejected because it lacked key details such as estimates of vessel strike risks.",
+            "In addition, mandatory speed reductions, which represent one of the most effective solutions, have never been accepted by the IMO, mainly because of related high costs (e.g., delays arriving at a given port).",
+            "Hence, without a comprehensive and robust proposal, the IMO deci- sion makers cannot make a decision (3 – 5, 14)."
+          ],
+          "is_first_in_section": false
+        },
+        {
+          "sentences": [
+            "Proactive actions are crucial to prevent animal losses resulting from collisions with ships and aircraft (16).",
+            "Much could be learned from the ICAO standard- ized management process for aviation.",
+            "Speci ﬁ cally, the ICAO has established a global mandatory report- ing system, which is followed by 196 countries, to collect multiple parameters on collisions [e.g., spe- cies, speed, damage (17)].",
+            "This ICAO Bird Strike Information System (IBIS) has collected more than 150,000 extensive collision reports since 2000 (18)."
+          ],
+          "is_first_in_section": false
+        },
+        {
+          "sentences": [
+            "Although, the probability of collision might be of similar magnitude for aircraft and ships (14), in the case of whale – ship collisions, mandatory reporting measures are scarce and rely on initiatives from indi- vidual nations.",
+            "At the international level, the IMO casualty event database does not include any whale- ship collision events [Global Integrated Shipping Information System (GISIS) (3)]."
+          ],
+          "is_first_in_section": false
+        },
+        {
+          "sentences": [
+            "The International Whaling Commission (IWC) manages the largest independent whale – ship colli- sion database through voluntary reports of collisions, gathering 501 events since 2000 (19).",
+            "We, therefore, recommend that the IMO integrate the IWC"
+          ],
+          "is_first_in_section": false
+        },
+        {
+          "sentences": [
+            "S ebe and Gourguet \u0001 2 of 4 j PNAS"
+          ],
+          "is_first_in_section": false
+        },
+        {
+          "sentences": [
+            "https://doi.org/10.1073/pnas.2121360119 To save whales, look to the sky Downloaded from https://www.pnas.org by 96.41.228.213 on February 21, 2025 from IP address 96.41.228.213."
+          ],
+          "is_first_in_section": false
+        },
+        {
+          "sentences": [
+            "database into GISIS, in addition to implementing mandatory strike reporting."
+          ],
+          "is_first_in_section": false
+        },
+        {
+          "sentences": [
+            "This should signi ﬁ cantly reduce the current high level of ship strike under-reporting, and help better understand collisions, in particular on their dynamics (e.g., temporal and spatial distributions of events).",
+            "The presence of these events in the GISIS database would therefore provide the shipping industry with informa- tion on high-risk collision areas.",
+            "This information could be essential for identifying mitigation solutions, but also for supporting measures related to other environmental issues that would also bene ﬁ t whale conservation [e.g., speed reduction for greenhouse gas emissions and underwater noise pollution problems (20)]."
+          ],
+          "is_first_in_section": false
+        },
+        {
+          "sentences": [
+            "The ICAO extensive knowledge of collisions allows for the implementation of effective measures to prevent these events (17).",
+            "Because main wildlife – aircraft colli- sions occur in the vicinity of airports, the ICAO imposes dedicated teams to monitor the risk in each facility.",
+            "The same rationale may be challenging for shipping, but mandatory crew training in whale detection could be implemented by the IMO, as it has been proven that crews on ships are less likely to detect whales than trained observers (21).",
+            "The ICAO also requires airports to implement regular risk assessment followed by effec- tive mitigation measures, through short- and long-term management plans that integrate laws and regulations on rare and endangered species (17)."
+          ],
+          "is_first_in_section": false
+        },
+        {
+          "sentences": [
+            "The ICAO already asks those causing the colli- sions to carry out risk assessments and that this should not be initiated by governments and NGOs.",
+            "However, for whales, when risk analyses are pro- duced, NGOs or governments usually conduct them.",
+            "The IMO could thus apply the ICAO requirement to"
+          ],
+          "is_first_in_section": false
+        },
+        {
+          "sentences": [
+            "ports and shipping companies for maritime routes that cross identi ﬁ ed whale hot spots [e.g., Important Marine Mammal Areas; IMMA (22)] or areas with poor data knowledge (23).",
+            "Again, the mandatory ICAO data collection and risk assessments lead to proactive measures for preventing wildlife – aircraft collisions [e.g., airport selection, adaptation of ﬂ ight schedules to seasonal and daily migration, compen- sation (12, 24)]."
+          ],
+          "is_first_in_section": false
+        },
+        {
+          "sentences": [
+            "Overall, for whale – ship collision management, the lack of a coordinated top-down process, an extensive global strike database, and standardized protocols often leads to a low level of compliance with suggested mitigation measures (3, 5, 14).",
+            "Following the ICAO rationale, because compliance markedly increases with regulation (25), these companies would be more likely to comply with IMO mandatory measures aiming at mitigating their impacts on whales."
+          ],
+          "is_first_in_section": false
+        },
+        {
+          "sentences": [
+            "Furthermore, similar IMO measures for whales would also not only reduce threats to whales but also prevent further damages to vessels — and sometimes passengers — and bad publicity for shipping compa- nies (14).",
+            "Entering port with a 14-m-long dead ﬁ n whale draped over the bow bulb of a ship is poor advertising; yet shipping companies are keen to maintain a positive image among members of the public, to improve social acceptability and prosperity.",
+            "Although incentives for the maritime industry might not be linked to damage costs or human safety, it is in their best interest to preserve whales by reducing collisions."
+          ],
+          "is_first_in_section": false
+        },
+        {
+          "sentences": [
+            "In sum, the IMO should 1) implement a global mandatory reporting of the collision events; 2) under- take a joint coordination of the collision database Fig.",
+            "2.",
+            "Comparing the primary features of wildlife – vehicle collisions among four transportation industries highlights important differences and commonalities.",
+            "Whale – ship collisions share more characteristics with bird – aircraft collisions than with terrestrial wildlife – vehicle collisions.",
+            "S ebe and Gourguet \u0001"
+          ],
+          "is_first_in_section": false
+        },
+        {
+          "sentences": [
+            "PNAS j 3 of 4 https://doi.org/10.1073/pnas.2121360119 To save whales, look to the sky Downloaded from https://www.pnas.org by 96.41.228.213 on February 21, 2025 from IP address 96.41.228.213."
+          ],
+          "is_first_in_section": false
+        },
+        {
+          "sentences": [
+            "with the IWC and other local initiatives; 3) compel training of crews in whale detection; 4) incentivize ports and shipping companies to implement risk assessments in key areas, particularly in cases of planned increases in shipping activity; and 5) ask of the same ports and shipping companies to imple- ment short- and long-term management plans for rare and endangered whale species to mitigate the identi ﬁ ed risks.",
+            "Implementing these measures by the IMO, as the ICAO has done in the past albeit for"
+          ],
+          "is_first_in_section": false
+        },
+        {
+          "sentences": [
+            "different motivations, should greatly increase knowl- edge and induce proactive actions to reduce colli- sions.",
+            "If it does not, the long-term survival of some endangered whale populations could be at risk."
+          ],
+          "is_first_in_section": false
+        }
+      ]
+    },
+    {
+      "header": "Acknowledgments",
+      "content": [
+        {
+          "sentences": [
+            "We warmly thank our colleagues Linwood Pendleton, Tony Charles, Anne Rabault, and Susan Heydler for reviewing a ﬁ rst draft of this article.",
+            "We are grateful for the constructive comments provided by the reviewers and editors.",
+            "1 P. O. Thomas, R. R. Reeves, R. L. Brownell, Status of the world ’ s baleen whales.",
+            "Mar.",
+            "Mamm.",
+            "Sci.",
+            "32 , 682 – 734 (2016).",
+            "2 R. C. Rockwood, J. Calambokidis, J. Jahncke, High mortality of blue, humpback and ﬁ n whales from modeling of vessel collisions"
+          ],
+          "is_first_in_section": true
+        }
+      ]
+    },
+    {
+      "header": "on the U.S. West Coast suggests population impacts and insuf ﬁ cient protection. PLoS One 12 , e0183052 (2017).",
+      "content": [
+        {
+          "sentences": [
+            "3 M. S ebe, A. C. Kontovas, L. Pendleton, A decision-making framework to reduce the risk of collisions between ships and whales.",
+            "\u0001"
+          ],
+          "is_first_in_section": true
+        }
+      ]
+    },
+    {
+      "header": "Mar. Policy 109 , 1 – 12 (2019).",
+      "content": [
+        {
+          "sentences": [
+            "4 C. K. A. Geijer, P. J. S. Jones, A network approach to migratory whale conservation: Are MPAs the way forward or do all roads lead"
+          ],
+          "is_first_in_section": true
+        }
+      ]
+    },
+    {
+      "header": "to the IMO? Mar. Policy 51 , 1 – 12 (2015).",
+      "content": [
+        {
+          "sentences": [
+            "5 G. K. Silber et al.",
+            ", The role of the International Maritime Organization in reducing vessel threat to whales: Process, options, action"
+          ],
+          "is_first_in_section": true
+        }
+      ]
+    },
+    {
+      "header": "and effectiveness. Mar. Policy 36 , 1221 – 1233 (2012).",
+      "content": [
+        {
+          "sentences": [
+            "6 V. Pirotta, A. Grech, I. D. Jonsen, W. F. Laurance, R. G. Harcourt, Consequences of global shipping traf ﬁ c for marine giants.",
+            "Front."
+          ],
+          "is_first_in_section": true
+        }
+      ]
+    },
+    {
+      "header": "Ecol. Environ. 17 , 39 – 47 (2019).",
+      "content": [
+        {
+          "sentences": [
+            "7 R. Constantine et al.",
+            ", Mitigation of vessel-strike mortality of endangered Bryde ’ s whales in the Hauraki Gulf, New Zealand.",
+            "Biol."
+          ],
+          "is_first_in_section": true
+        }
+      ]
+    },
+    {
+      "header": "Conserv. 186 , 149 – 157 (2015).",
+      "content": [
+        {
+          "sentences": [
+            "8 S. L. Lima, B. F. Blackwell, T. L. DeVault, E. Fern andez-Juricic, Animal reactions to oncoming vehicles: A conceptual review.",
+            "\u0003 Biol."
+          ],
+          "is_first_in_section": true
+        }
+      ]
+    },
+    {
+      "header": "Rev. Camb. Philos. Soc. 90 , 60 – 76 (2015).",
+      "content": [
+        {
+          "sentences": [
+            "9 M. Weinrich, C. Pekarcik, J. Tackaberry, The effectiveness of dedicated observers in reducing risks of marine mammal collisions"
+          ],
+          "is_first_in_section": true
+        }
+      ]
+    },
+    {
+      "header": "with ferries: A test of the technique. Mar. Mamm. Sci. 26 , 460 – 470 (2010).",
+      "content": [
+        {
+          "sentences": [
+            "10 M. Lopez-lago, R. Casado, A. Bermudez, J. Serna, A predictive model for risk assessment on imminent bird strikes on airport areas."
+          ],
+          "is_first_in_section": true
+        },
+        {
+          "sentences": [
+            "Aerosp.",
+            "Sci.",
+            "Technol.",
+            "62 , 19 – 30 (2017).",
+            "11 S. E. Hampton et al.",
+            ", Big data and the future of ecology.",
+            "Front.",
+            "Ecol.",
+            "Environ.",
+            "11 , 156 – 162 (2013).",
+            "12 T. L. Devault, E. Fern andez-Juricic, R. A. Dolbeer, Wildlife collisions with aircraft: A missing component of land-use planning for air- \u0003"
+          ],
+          "is_first_in_section": false
+        },
+        {
+          "sentences": [
+            "ports.",
+            "Landsc.",
+            "Urban Plan.",
+            "J.",
+            "93 , 1 – 9 (2009).",
+            "13 ICAO, Safety Management Manual (ICAO, Quebec, Canada, ed.",
+            "4, 2017).",
+            "14 M. S ebe, C. A. Kontovas, L. Pendleton, Reducing whale-ship collisions by better estimating damages to ships.",
+            "\u0001 Sci.",
+            "Total Environ."
+          ],
+          "is_first_in_section": false
+        },
+        {
+          "sentences": [
+            "713 , 136643 (2020).",
+            "15 IMO, Guidance document for minimizing the risk of ship strikes with cetaceans - MEPC.1/Circ.674 (IMO, London, UK, 2009).",
+            "16 D. J. McCauley, et al.",
+            ", Marine defaunation: Animal loss in the global ocean.",
+            "Science 347 , 247 – 254 (2015).",
+            "17 ICAO, Airport Services Manual - Part 3: Wildlife Control and Reduction (ICAO, Quebec, Canada, 2012).",
+            "18 ICAO, 2008-2015 Wildlife strike analyses (IBIS), International Civil Aviation Organization - EB 2017/25 (ICAO, Quebec, Canada,"
+          ],
+          "is_first_in_section": false
+        },
+        {
+          "sentences": [
+            "2017).",
+            "19 C. Winkler, S. Panigada, S. Murphy, F. Ritter, Global Numbers of Ship Strikes: An Assessment of Collisions between Vessels and"
+          ],
+          "is_first_in_section": false
+        },
+        {
+          "sentences": [
+            "Cetaceans Using Available Data in the IWC Ship Strike Database (IWC/68B/SC HIM09, International Whaling Commission, Cam- bridge, UK, 2020).",
+            "20 R. Leaper, The role of slower vessel speeds in reducing greenhouse gas emissions, underwater noise and collision risk to whales."
+          ],
+          "is_first_in_section": false
+        },
+        {
+          "sentences": [
+            "Front.",
+            "Mar.",
+            "Sci.",
+            "6 , 1 – 8 (2019).",
+            "21 P. Mayol, D etectabilit \u0003 e des grands c \u0003 etac \u0003 es \u0003 \u0001 a bord des Navires \u0001 a Grande Vitesse pour limiter les risques de collision (M emoire pour \u0003"
+          ],
+          "is_first_in_section": false
+        },
+        {
+          "sentences": [
+            "l ’ Ecole Pratique des Hautes Etudes, Paris, France, 2007).",
+            "22 C. M. Corrigan et al.",
+            ", Developing important marine mammal area criteria: Learning from ecologically or biologically signi ﬁ cant"
+          ],
+          "is_first_in_section": false
+        },
+        {
+          "sentences": [
+            "areas and key biodiversity areas.",
+            "Aquat.",
+            "Conserv.",
+            "24 , 166 – 183 (2014).",
+            "23 L. Mannocci et al.",
+            ", Assessing cetacean surveys throughout the Mediterranean Sea: A gap analysis in environmental space.",
+            "Sci.",
+            "Rep."
+          ],
+          "is_first_in_section": false
+        },
+        {
+          "sentences": [
+            "8 , 3126 (2018).",
+            "24 ICAO, Wildlife Management and Control Regulatory Framework & Guidance Material (ICAO, Quebec, Canada, 2018).",
+            "25 M. F. McKenna, S. L. Katz, C. Condit, S. Walbridge, Response of commercial ships to a voluntary speed reduction measure: Are vol-"
+          ],
+          "is_first_in_section": false
+        },
+        {
+          "sentences": [
+            "untary strategies adequate for mitigating ship-strike risk?",
+            "Coast.",
+            "Manage.",
+            "40 , 634 – 650 (2012)."
+          ],
+          "is_first_in_section": false
+        },
+        {
+          "sentences": [
+            "S ebe and Gourguet \u0001 4 of 4 j PNAS"
+          ],
+          "is_first_in_section": false
+        },
+        {
+          "sentences": [
+            "https://doi.org/10.1073/pnas.2121360119 To save whales, look to the sky Downloaded from https://www.pnas.org by 96.41.228.213 on February 21, 2025 from IP address 96.41.228.213."
+          ],
+          "is_first_in_section": false
+        }
+      ]
+    }
+  ],
+  "metadata": {
+    "page_count": 4,
+    "filename": "sèbe-gourguet-2021-opinion-to-save-whales-look-to-the-sky.pdf",
+    "title": "Opinion: To save whales, look to the sky"
+  }
+}

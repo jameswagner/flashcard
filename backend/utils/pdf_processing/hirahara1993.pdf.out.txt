@@ -1,0 +1,1737 @@
+{
+  "title": "hirahara1993.pdf",
+  "sections": [
+    {
+      "header": "MATERIALS AND METHODS",
+      "content": "Materials Materials were purchased from the following suppliers: Dulbecco phosphate buffer, Dulbecco MEM, FCS(Gibco, USA), ECGS(Calbiochem, USA), Freund's adjuvant(Difco, USA), FITC conjugated anti-rabbit IgG(Cappe1, USA), Evans blue, potassium hydroxide(KOH, Kanto Kagaku, Japan), phosphoric acid(Wako Pure Chemical, Japan), Guinea pig complement(Kyokuto, Japan), and Human FXIII(Fibrogammin P, Behringwerke, FRG). Vol. 71, No. 2 PERMEABILITY INHIBITION BY FXIII 141 Preparation of anti-guinea pig endothelial cell antiserum Guinea pig endothelial cells were isolated from the main artery and vena cava(l6), then cells were inoculated into tissue culture dishes and incubated for several days with Dulbecco MEM containing 15% FCS and 37.5 pg/ml ECGS till reaching confluency. Confluent monolayer was harvested by a cell scraper. The cells were rinsed twice with Dulbecco phosphate buffered saline(pH 7.2). These cells were used as an antigen for the production of anti-endothelial cell antiserum. The antiserum was obtained from rabbits immunized with emulsion of Freund's complete adjuvant with guinea pig endothelial cells, and boosted with emulsion of Freund's incomplete adjuvant. After several times of boosting, the antibody titer was measured with guinea pig endothelial cells by the methods of cytolysis and indirect immunofluorescence microscopy using FITC conjugated anti-rabbit IgG(17). Measurement of antibody titer of anti-endothelial cell antiserum Confluent monolayer of guinea pig endothelial cells in a 96-well plate was incubated with 50 ~1 of variously diluted antiserum in Dulbecco MEM-15% FCS for 30 min. The medium was then replaced to 50 11 of 5% guinea pig complement in Dulbecco MEM-15% FCS and the cells were further incubated for 30 min. After addition of 10 ~1 of trypan blue solution, the cell layers were photographed to evaluate the extent of cell lysis. Indirect immunofluorescence microscopy was done as follows. The antiserum was serially diluted two times. The diluted antiserum was then incubated with the main artery at room temperature for 1 hour and rinsed 3 times with Dulbecco phosphate buffer. After washing, lOOO-fold dilution of FITC conjugated anti-rabbit IgG was added to the sections, incubated for 30 minutes at room temperature, and washed 3 times with Dulbecco phosphate buffer. All sections were observed by a Nikon microscope equipped with a mercury lamp. The titer was taken as a highest dilution which gave a fluorescent staining just above the background staining of normal serum controls. Duration of activity of permeability enhancement Measurement of permeability was studied according to Yamamoto et al. (18) . A 100 ~1 portion of 50-fold diluted antiserum was intradermally injected into the back of a guinea pig before intravenous injection of 0.5 ml of 1 % Evans blue. After 15 minutes of the Evans blue injection, the back skins were harvested and the blue lesions were observed. Suppressive effect of FXIII on the permeability enhancement A 100 ~1 portion of either each diluted antiserum or the mixture of equal volume of FXIII and the diluted antiserum was",
+      "page_number": 2,
+      "paragraphs": [
+        {
+          "sentences": [
+            "Materials"
+          ],
+          "text": "Materials",
+          "is_first_in_section": true,
+          "debug_info": {
+            "x_positions": [
+              49.92021179199219
+            ],
+            "regular_x": 49.92021179199219,
+            "block_indices": [
+              28
+            ],
+            "reasons": [
+              "follows header"
+            ]
+          }
+        },
+        {
+          "sentences": [
+            "Materials were purchased from the following suppliers: Dulbecco phosphate buffer, Dulbecco MEM, FCS(Gibco, USA), ECGS(Calbiochem, USA), Freund's adjuvant(Difco, USA), FITC conjugated anti-rabbit IgG(Cappe1, USA), Evans blue, potassium hydroxide(KOH, Kanto Kagaku, Japan), phosphoric acid(Wako Pure Chemical, Japan), Guinea pig complement(Kyokuto, Japan), and Human FXIII(Fibrogammin P, Behringwerke, FRG)."
+          ],
+          "text": "Materials were purchased from the following suppliers: Dulbecco phosphate buffer, Dulbecco MEM, FCS(Gibco, USA), ECGS(Calbiochem, USA), Freund's adjuvant(Difco, USA), FITC conjugated anti-rabbit IgG(Cappe1, USA), Evans blue, potassium hydroxide(KOH, Kanto Kagaku, Japan), phosphoric acid(Wako Pure Chemical, Japan), Guinea pig complement(Kyokuto, Japan), and Human FXIII(Fibrogammin P, Behringwerke, FRG).",
+          "is_first_in_section": false,
+          "debug_info": {
+            "x_positions": [
+              49.92021179199219,
+              49.92021179199219,
+              50.161163330078125,
+              50.88099670410156,
+              50.1611328125,
+              49.92119598388672,
+              50.16215515136719
+            ],
+            "regular_x": 49.92021179199219,
+            "block_indices": [
+              28,
+              28,
+              28,
+              28,
+              28,
+              28,
+              28
+            ],
+            "reasons": [
+              "follows header",
+              "x0=49.9 vs regular_x=49.9",
+              "x0=50.2 vs regular_x=49.9",
+              "x0=50.9 vs regular_x=49.9",
+              "x0=50.2 vs regular_x=49.9",
+              "x0=49.9 vs regular_x=49.9",
+              "x0=50.2 vs regular_x=49.9"
+            ]
+          }
+        },
+        {
+          "sentences": [
+            "Vol.",
+            "71, No.",
+            "2 PERMEABILITY INHIBITION BY FXIII 141 Preparation of anti-guinea pig endothelial cell antiserum"
+          ],
+          "text": "Vol. 71, No. 2 PERMEABILITY INHIBITION BY FXIII 141 Preparation of anti-guinea pig endothelial cell antiserum",
+          "is_first_in_section": false,
+          "debug_info": {
+            "x_positions": [
+              53.7599983215332
+            ],
+            "regular_x": 53.7599983215332,
+            "block_indices": [
+              26
+            ],
+            "reasons": [
+              "x0=53.8 vs regular_x=53.8"
+            ]
+          }
+        },
+        {
+          "sentences": [
+            "Guinea pig endothelial cells were isolated from the main artery and vena cava(l6), then cells were inoculated into tissue culture dishes and incubated for several days with Dulbecco MEM containing 15% FCS and 37.5 pg/ml ECGS till reaching confluency.",
+            "Confluent monolayer was harvested by a cell scraper.",
+            "The cells were rinsed twice with Dulbecco phosphate buffered saline(pH 7.2).",
+            "These cells were used as an antigen for the production of anti-endothelial cell antiserum.",
+            "The antiserum was obtained from rabbits immunized with emulsion of Freund's complete adjuvant with guinea pig endothelial cells, and boosted with emulsion of Freund's incomplete adjuvant.",
+            "After several times of boosting, the antibody titer was measured with guinea pig endothelial cells by the methods of cytolysis and indirect immunofluorescence microscopy using FITC conjugated anti-rabbit IgG(17).",
+            "Measurement of antibody titer of anti-endothelial cell antiserum"
+          ],
+          "text": "Guinea pig endothelial cells were isolated from the main artery and vena cava(l6), then cells were inoculated into tissue culture dishes and incubated for several days with Dulbecco MEM containing 15% FCS and 37.5 pg/ml ECGS till reaching confluency. Confluent monolayer was harvested by a cell scraper. The cells were rinsed twice with Dulbecco phosphate buffered saline(pH 7.2). These cells were used as an antigen for the production of anti-endothelial cell antiserum. The antiserum was obtained from rabbits immunized with emulsion of Freund's complete adjuvant with guinea pig endothelial cells, and boosted with emulsion of Freund's incomplete adjuvant. After several times of boosting, the antibody titer was measured with guinea pig endothelial cells by the methods of cytolysis and indirect immunofluorescence microscopy using FITC conjugated anti-rabbit IgG(17). Measurement of antibody titer of anti-endothelial cell antiserum",
+          "is_first_in_section": false,
+          "debug_info": {
+            "x_positions": [
+              53.75995635986328
+            ],
+            "regular_x": 53.75995635986328,
+            "block_indices": [
+              28
+            ],
+            "reasons": [
+              "x0=53.8 vs regular_x=53.8"
+            ]
+          }
+        },
+        {
+          "sentences": [
+            "Confluent monolayer of guinea pig endothelial cells in a 96-well plate was incubated with 50 ~1 of variously diluted antiserum in Dulbecco MEM-15% FCS for 30 min.",
+            "The medium was then replaced to 50 11 of 5% guinea pig complement in Dulbecco MEM-15% FCS and the cells were further incubated for 30 min.",
+            "After addition of 10 ~1 of trypan blue solution, the cell layers were photographed to evaluate the extent of cell lysis.",
+            "Indirect immunofluorescence microscopy was done as follows.",
+            "The antiserum was serially diluted two times.",
+            "The diluted antiserum was then incubated with the main artery at room temperature for 1 hour and rinsed 3 times with Dulbecco phosphate buffer.",
+            "After washing, lOOO-fold dilution of FITC conjugated anti-rabbit IgG was added to the sections, incubated for 30 minutes at room temperature, and washed 3 times with Dulbecco phosphate buffer.",
+            "All sections were observed by a Nikon microscope equipped with a mercury lamp.",
+            "The titer was taken as a highest dilution which gave a fluorescent staining just above the background staining of normal serum controls.",
+            "Duration of activity of permeability enhancement"
+          ],
+          "text": "Confluent monolayer of guinea pig endothelial cells in a 96-well plate was incubated with 50 ~1 of variously diluted antiserum in Dulbecco MEM-15% FCS for 30 min. The medium was then replaced to 50 11 of 5% guinea pig complement in Dulbecco MEM-15% FCS and the cells were further incubated for 30 min. After addition of 10 ~1 of trypan blue solution, the cell layers were photographed to evaluate the extent of cell lysis. Indirect immunofluorescence microscopy was done as follows. The antiserum was serially diluted two times. The diluted antiserum was then incubated with the main artery at room temperature for 1 hour and rinsed 3 times with Dulbecco phosphate buffer. After washing, lOOO-fold dilution of FITC conjugated anti-rabbit IgG was added to the sections, incubated for 30 minutes at room temperature, and washed 3 times with Dulbecco phosphate buffer. All sections were observed by a Nikon microscope equipped with a mercury lamp. The titer was taken as a highest dilution which gave a fluorescent staining just above the background staining of normal serum controls. Duration of activity of permeability enhancement",
+          "is_first_in_section": false,
+          "debug_info": {
+            "x_positions": [
+              53.28009796142578
+            ],
+            "regular_x": 52.562286376953125,
+            "block_indices": [
+              32
+            ],
+            "reasons": [
+              "x0=53.3 vs regular_x=52.6"
+            ]
+          }
+        },
+        {
+          "sentences": [
+            "Measurement of permeability was studied according to Yamamoto et al.",
+            "(18) .",
+            "A 100 ~1 portion of 50-fold diluted antiserum was intradermally injected into the back of a guinea pig before intravenous injection of 0.5 ml of 1 % Evans blue.",
+            "After 15 minutes of the Evans blue injection, the back skins were harvested and the blue lesions were observed.",
+            "Suppressive effect of FXIII on the permeability enhancement"
+          ],
+          "text": "Measurement of permeability was studied according to Yamamoto et al. (18) . A 100 ~1 portion of 50-fold diluted antiserum was intradermally injected into the back of a guinea pig before intravenous injection of 0.5 ml of 1 % Evans blue. After 15 minutes of the Evans blue injection, the back skins were harvested and the blue lesions were observed. Suppressive effect of FXIII on the permeability enhancement",
+          "is_first_in_section": false,
+          "debug_info": {
+            "x_positions": [
+              53.04219055175781
+            ],
+            "regular_x": 52.08238220214844,
+            "block_indices": [
+              33
+            ],
+            "reasons": [
+              "x0=53.0 vs regular_x=52.1"
+            ]
+          }
+        },
+        {
+          "sentences": [
+            "A 100 ~1 portion of either each diluted antiserum or the mixture of equal volume of FXIII and the diluted antiserum was"
+          ],
+          "text": "A 100 ~1 portion of either each diluted antiserum or the mixture of equal volume of FXIII and the diluted antiserum was",
+          "is_first_in_section": false,
+          "debug_info": {
+            "x_positions": [
+              52.08238220214844,
+              52.80223846435547
+            ],
+            "regular_x": 52.08238220214844,
+            "block_indices": [
+              33,
+              33
+            ],
+            "reasons": [
+              "follows header",
+              "x0=52.8 vs regular_x=52.1"
+            ]
+          }
+        }
+      ],
+      "is_numbered": false,
+      "font_size": 9.599040031433105
+    },
+    {
+      "header": "142 PERMEABILITY INHIBITION BY FXIII Vol. 71, No. 2",
+      "content": "intradermally injected into the dorsal skin of guinea pigs after intravenous injection of Evans blue. After 15 minutes, skins were harvested and blue lesions in the skins were observed. Extraction of Evans blue from guinea pig skins Evans blue was extracted from skins, soaked with 1 ml of 1 M KOH solution, and incubated at 37'C overnight. After the incubation, 3 ml of 0.6 N phosphoric acid and 3 ml of FRIGEN(Behringwerke, FRG), a defatting agent, was added to each tube and mixed for 30 sec. with a Vortex mixer. Each tube was centrifuged at 3000 rpm for 15 minutes, and the absorbance of the supernatant was measured at 620 nm(19). Suppressive effect of FXIII on the swelling One milliliter of equal volume mixture of FXIII and the intact antiserum was subcutaneously injected into the dorsum of guinea pigs. After days 1, 2 and 3, the skins were harvested and the thickness was measured with a slide caliper at injection sites as a marker of swelling. The swelling was shown by the difference of the thicknesses between a injection and a non-injection site.",
+      "page_number": 4,
+      "paragraphs": [
+        {
+          "sentences": [
+            "intradermally injected into the dorsal skin of guinea pigs after intravenous injection of Evans blue.",
+            "After 15 minutes, skins were harvested and blue lesions in the skins were observed.",
+            "Extraction of Evans blue from guinea pig skins"
+          ],
+          "text": "intradermally injected into the dorsal skin of guinea pigs after intravenous injection of Evans blue. After 15 minutes, skins were harvested and blue lesions in the skins were observed. Extraction of Evans blue from guinea pig skins",
+          "is_first_in_section": false,
+          "debug_info": {
+            "x_positions": [
+              49.4495849609375
+            ],
+            "regular_x": 49.208656311035156,
+            "block_indices": [
+              27
+            ],
+            "reasons": [
+              "x0=49.4 vs regular_x=49.2"
+            ]
+          }
+        },
+        {
+          "sentences": [
+            "Evans blue was extracted from skins, soaked with 1 ml of 1 M KOH solution, and incubated at 37'C overnight.",
+            "After the incubation, 3 ml of 0.6 N phosphoric acid and 3 ml of FRIGEN(Behringwerke, FRG), a defatting agent, was added to each tube and mixed for 30 sec.",
+            "with a Vortex mixer.",
+            "Each tube was centrifuged at 3000 rpm for 15 minutes, and the absorbance of the supernatant was measured at 620 nm(19).",
+            "Suppressive effect of FXIII on the swelling"
+          ],
+          "text": "Evans blue was extracted from skins, soaked with 1 ml of 1 M KOH solution, and incubated at 37'C overnight. After the incubation, 3 ml of 0.6 N phosphoric acid and 3 ml of FRIGEN(Behringwerke, FRG), a defatting agent, was added to each tube and mixed for 30 sec. with a Vortex mixer. Each tube was centrifuged at 3000 rpm for 15 minutes, and the absorbance of the supernatant was measured at 620 nm(19). Suppressive effect of FXIII on the swelling",
+          "is_first_in_section": false,
+          "debug_info": {
+            "x_positions": [
+              49.4486083984375
+            ],
+            "regular_x": 48.24884796142578,
+            "block_indices": [
+              28
+            ],
+            "reasons": [
+              "x0=49.4 vs regular_x=48.2"
+            ]
+          }
+        },
+        {
+          "sentences": [
+            "One milliliter of equal volume mixture of FXIII and the intact antiserum was subcutaneously injected into the dorsum of guinea pigs.",
+            "After days 1, 2 and 3, the skins were harvested and the thickness was measured with a slide caliper at injection sites as a marker of swelling.",
+            "The swelling was shown by the difference of the thicknesses between a injection and a non-injection site."
+          ],
+          "text": "One milliliter of equal volume mixture of FXIII and the intact antiserum was subcutaneously injected into the dorsum of guinea pigs. After days 1, 2 and 3, the skins were harvested and the thickness was measured with a slide caliper at injection sites as a marker of swelling. The swelling was shown by the difference of the thicknesses between a injection and a non-injection site.",
+          "is_first_in_section": false,
+          "debug_info": {
+            "x_positions": [
+              48.72875213623047,
+              48.96870422363281,
+              48.24884796142578,
+              48.729766845703125,
+              48.729766845703125,
+              48.48980712890625
+            ],
+            "regular_x": 48.24884796142578,
+            "block_indices": [
+              28,
+              28,
+              28,
+              28,
+              28,
+              28
+            ],
+            "reasons": [
+              "follows header",
+              "x0=49.0 vs regular_x=48.2",
+              "x0=48.2 vs regular_x=48.2",
+              "x0=48.7 vs regular_x=48.2",
+              "x0=48.7 vs regular_x=48.2",
+              "x0=48.5 vs regular_x=48.2",
+              "x0=226.1 vs regular_x=48.2 (indented)"
+            ]
+          }
+        }
+      ],
+      "is_numbered": false,
+      "font_size": 8.582786560058594
+    },
+    {
+      "header": "RESULTS",
+      "content": "Characterization of polyclonal anti-guinea pig endothelial cell antiserum The antibody titer was determined with guinea pig endothelial cells by the methods of cytolysis and indirect immunofluoresence microscopy using FITC conjugated anti-rabbit IgG. As a result, the 50% cytolysis was observed by the 60-fold dilution of antiserum, and the fluorescence was observed by 400-fold dilution. The antiserum exhibited the reactivity with not only guinea pig but also human endothelial cells. However it did not react with guinea pig fibroblasts. When the cryosection of the main artery of a guinea pig was used for the indirect immunofluorescence test, the fluorescence was observed on the inner membrane which was seemed to be endothelial cell. It was also found that the antiserum reacted with the extracellular matrix proteins produced by endothelial cells(data not shown). Enhanced permeability First, we studied whether this antiserum induced the permeability in guinea pigs. The variation of permeability after intradermal injection is shown in Fig. 1. The permeability reached the maximum within 5 minutes. This activity for enhancing the permeability almost disappeared within 30 minutes after the injection. This permeability enhancing phenomenon was classified as a short lasting reaction. We next investigated the dose response of this antiserum. As shown in Fig. 2, the activity of",
+      "page_number": 4,
+      "paragraphs": [
+        {
+          "sentences": [
+            "Characterization of polyclonal anti-guinea pig endothelial cell antiserum"
+          ],
+          "text": "Characterization of polyclonal anti-guinea pig endothelial cell antiserum",
+          "is_first_in_section": true,
+          "debug_info": {
+            "x_positions": [
+              48.9697265625,
+              48.729774475097656
+            ],
+            "regular_x": 47.290069580078125,
+            "block_indices": [
+              30,
+              30
+            ],
+            "reasons": [
+              "follows header",
+              "x0=48.7 vs regular_x=47.3"
+            ]
+          }
+        },
+        {
+          "sentences": [
+            "The antibody titer was determined with guinea pig endothelial cells by the methods of cytolysis and indirect immunofluoresence microscopy using FITC conjugated anti-rabbit IgG.",
+            "As a result, the 50% cytolysis was observed by the 60-fold dilution of antiserum, and the fluorescence was observed by 400-fold dilution.",
+            "The antiserum exhibited the reactivity with not only guinea pig but also human endothelial cells.",
+            "However it did not react with guinea pig fibroblasts.",
+            "When the cryosection of the main artery of a guinea pig was used for the indirect immunofluorescence test, the fluorescence was observed on the inner membrane which was seemed to be endothelial cell.",
+            "It was also found that the antiserum reacted with the extracellular matrix proteins produced by endothelial cells(data not shown).",
+            "Enhanced permeability"
+          ],
+          "text": "The antibody titer was determined with guinea pig endothelial cells by the methods of cytolysis and indirect immunofluoresence microscopy using FITC conjugated anti-rabbit IgG. As a result, the 50% cytolysis was observed by the 60-fold dilution of antiserum, and the fluorescence was observed by 400-fold dilution. The antiserum exhibited the reactivity with not only guinea pig but also human endothelial cells. However it did not react with guinea pig fibroblasts. When the cryosection of the main artery of a guinea pig was used for the indirect immunofluorescence test, the fluorescence was observed on the inner membrane which was seemed to be endothelial cell. It was also found that the antiserum reacted with the extracellular matrix proteins produced by endothelial cells(data not shown). Enhanced permeability",
+          "is_first_in_section": false,
+          "debug_info": {
+            "x_positions": [
+              47.290069580078125
+            ],
+            "regular_x": 47.05012512207031,
+            "block_indices": [
+              31
+            ],
+            "reasons": [
+              "x0=47.3 vs regular_x=47.1"
+            ]
+          }
+        },
+        {
+          "sentences": [
+            "First, we studied whether this antiserum induced the permeability in guinea pigs.",
+            "The variation of permeability after intradermal injection is shown in Fig.",
+            "1.",
+            "The permeability reached the maximum within 5 minutes.",
+            "This activity for enhancing the permeability almost disappeared within 30 minutes after the injection.",
+            "This permeability enhancing phenomenon was classified as a short lasting reaction.",
+            "We next investigated the dose response of this antiserum.",
+            "As shown in Fig.",
+            "2, the activity of"
+          ],
+          "text": "First, we studied whether this antiserum induced the permeability in guinea pigs. The variation of permeability after intradermal injection is shown in Fig. 1. The permeability reached the maximum within 5 minutes. This activity for enhancing the permeability almost disappeared within 30 minutes after the injection. This permeability enhancing phenomenon was classified as a short lasting reaction. We next investigated the dose response of this antiserum. As shown in Fig. 2, the activity of",
+          "is_first_in_section": false,
+          "debug_info": {
+            "x_positions": [
+              47.290069580078125,
+              48.00992965698242,
+              47.769981384277344,
+              47.05012512207031,
+              47.05012512207031,
+              47.769981384277344,
+              47.53003692626953,
+              47.53004455566406
+            ],
+            "regular_x": 47.05012512207031,
+            "block_indices": [
+              31,
+              31,
+              31,
+              31,
+              31,
+              31,
+              31,
+              31
+            ],
+            "reasons": [
+              "follows header",
+              "x0=48.0 vs regular_x=47.1",
+              "x0=47.8 vs regular_x=47.1",
+              "x0=47.1 vs regular_x=47.1",
+              "x0=47.1 vs regular_x=47.1",
+              "x0=47.8 vs regular_x=47.1",
+              "x0=47.5 vs regular_x=47.1",
+              "x0=47.5 vs regular_x=47.1"
+            ]
+          }
+        }
+      ],
+      "is_numbered": false,
+      "font_size": 9.599040031433105
+    },
+    {
+      "header": "Vol. 71, No. 2 PERMEABILITY INHIBITION BY FXIII 143",
+      "content": "Time course of permeability enhancement induced by anti -endothelial cell antiserum. Antiserum was injected into a guinea pig at varying times before intravenous dye injection. Time 0 means an intradermal injection immediately after intravenous dye injection. (A) : antiserum, 60 min, (B) : antiserum, 30 min, (C) : antiserum, 0 min, (D) : saline, 30 min, (E) : rabbit serum, 60 min, (F): rabbit serum, 30 min, (G): rabbit serum, 0 min, (H): saline, 0 min",
+      "page_number": 5,
+      "paragraphs": [
+        {
+          "sentences": [
+            "Time course of permeability enhancement induced by anti -endothelial cell antiserum.",
+            "Antiserum was injected into a guinea pig at varying times before intravenous dye injection.",
+            "Time 0 means an intradermal injection immediately after intravenous dye injection.",
+            "(A) : antiserum, 60 min, (B) : antiserum, 30 min, (C) : antiserum, 0 min, (D) : saline, 30 min, (E) : rabbit serum, 60 min, (F): rabbit serum, 30 min, (G): rabbit serum, 0 min, (H): saline, 0 min"
+          ],
+          "text": "Time course of permeability enhancement induced by anti -endothelial cell antiserum. Antiserum was injected into a guinea pig at varying times before intravenous dye injection. Time 0 means an intradermal injection immediately after intravenous dye injection. (A) : antiserum, 60 min, (B) : antiserum, 30 min, (C) : antiserum, 0 min, (D) : saline, 30 min, (E) : rabbit serum, 60 min, (F): rabbit serum, 30 min, (G): rabbit serum, 0 min, (H): saline, 0 min",
+          "is_first_in_section": true,
+          "debug_info": {
+            "x_positions": [
+              84.0,
+              84.23995971679688,
+              84.23995971679688,
+              83.76005554199219,
+              84.0,
+              83.76000213623047,
+              83.76000213623047,
+              84.00967407226562,
+              84.00790405273438
+            ],
+            "regular_x": 83.76000213623047,
+            "block_indices": [
+              25,
+              25,
+              25,
+              25,
+              25,
+              25,
+              25,
+              25,
+              25
+            ],
+            "reasons": [
+              "follows header",
+              "x0=84.2 vs regular_x=83.8",
+              "x0=84.2 vs regular_x=83.8",
+              "x0=83.8 vs regular_x=83.8",
+              "x0=84.0 vs regular_x=83.8",
+              "x0=83.8 vs regular_x=83.8",
+              "x0=83.8 vs regular_x=83.8",
+              "x0=84.0 vs regular_x=83.8",
+              "x0=84.0 vs regular_x=83.8",
+              "x0=233.8 vs regular_x=83.8 (indented)"
+            ]
+          }
+        }
+      ],
+      "is_numbered": false,
+      "font_size": 8.604503631591797
+    },
+    {
+      "header": "FIG. 1.",
+      "content": "enhancing the permeability is recognized by 400-fold dilution of antiserum. The effect of FXIII was examined on the vascular permeability induced by the antiserum. In this experiment, the mixture of antiserum was injected with various concentration of FXIII. As shown in Fig. 3, FXIII shows the suppressive effect on the dye leakage in a dose dependent fashion. We obtained a result that both 200-fold and 400-fold diluted antiserum exhibit the same tendency. Thus the effect of FXIII was examined in 10 guinea pigs and the dye leakage was measured in extravascular space. As shown in Fig. 4, FXIII exhibited the suppressive effect in a dose dependent manner. Suppressive effect of FXIII on the swelling When the antiserum was subcutaneously injected into a dorsal skin of guinea pig, edema, in addition to hemorrhage was observed at injection site(20). Thus we examined the suppressive effect of FXIII on the swelling. On injecting the mixture of FXIII and antiserum, the edema was significantly suppressed by FXIII on day 1 and 2(Fig. 5). This result indicates that FXIII suppresses the permeability in the acute and the subacute phase as well.",
+      "page_number": 5,
+      "paragraphs": [
+        {
+          "sentences": [
+            "enhancing the permeability is recognized by 400-fold dilution of antiserum.",
+            "The effect of FXIII was examined on the vascular permeability induced by the antiserum.",
+            "In this experiment, the mixture of antiserum was injected with various concentration of FXIII.",
+            "As shown in Fig.",
+            "3, FXIII shows the suppressive effect on the dye leakage in a dose dependent fashion.",
+            "We obtained a result that both 200-fold and 400-fold diluted antiserum exhibit the same tendency.",
+            "Thus the effect of FXIII was examined in 10 guinea pigs and the dye leakage was measured in extravascular space.",
+            "As shown in Fig.",
+            "4, FXIII exhibited the suppressive effect in a dose dependent manner.",
+            "Suppressive effect of FXIII on the swelling"
+          ],
+          "text": "enhancing the permeability is recognized by 400-fold dilution of antiserum. The effect of FXIII was examined on the vascular permeability induced by the antiserum. In this experiment, the mixture of antiserum was injected with various concentration of FXIII. As shown in Fig. 3, FXIII shows the suppressive effect on the dye leakage in a dose dependent fashion. We obtained a result that both 200-fold and 400-fold diluted antiserum exhibit the same tendency. Thus the effect of FXIII was examined in 10 guinea pigs and the dye leakage was measured in extravascular space. As shown in Fig. 4, FXIII exhibited the suppressive effect in a dose dependent manner. Suppressive effect of FXIII on the swelling",
+          "is_first_in_section": false,
+          "debug_info": {
+            "x_positions": [
+              53.768959045410156
+            ],
+            "regular_x": 52.3282470703125,
+            "block_indices": [
+              28
+            ],
+            "reasons": [
+              "x0=53.8 vs regular_x=52.3"
+            ]
+          }
+        },
+        {
+          "sentences": [
+            "When the antiserum was subcutaneously injected into a dorsal skin of guinea pig, edema, in addition to hemorrhage was observed at injection site(20).",
+            "Thus we examined the suppressive effect of FXIII on the swelling.",
+            "On injecting the mixture of FXIII and antiserum, the edema was significantly suppressed by FXIII on day 1 and 2(Fig.",
+            "5).",
+            "This result indicates that FXIII suppresses the permeability in the acute and the subacute phase as well."
+          ],
+          "text": "When the antiserum was subcutaneously injected into a dorsal skin of guinea pig, edema, in addition to hemorrhage was observed at injection site(20). Thus we examined the suppressive effect of FXIII on the swelling. On injecting the mixture of FXIII and antiserum, the edema was significantly suppressed by FXIII on day 1 and 2(Fig. 5). This result indicates that FXIII suppresses the permeability in the acute and the subacute phase as well.",
+          "is_first_in_section": false,
+          "debug_info": {
+            "x_positions": [
+              53.049102783203125,
+              53.52900695800781,
+              53.52900695800781,
+              52.80915832519531,
+              53.049102783203125,
+              53.529014587402344,
+              52.3282470703125
+            ],
+            "regular_x": 52.3282470703125,
+            "block_indices": [
+              28,
+              28,
+              28,
+              28,
+              28,
+              28,
+              28
+            ],
+            "reasons": [
+              "follows header",
+              "x0=53.5 vs regular_x=52.3",
+              "x0=53.5 vs regular_x=52.3",
+              "x0=52.8 vs regular_x=52.3",
+              "x0=53.0 vs regular_x=52.3",
+              "x0=53.5 vs regular_x=52.3",
+              "x0=52.3 vs regular_x=52.3"
+            ]
+          }
+        }
+      ],
+      "is_numbered": false,
+      "font_size": 9.599040031433105
+    },
+    {
+      "header": "144 PERMEABILITY INHIBITION BY FXIII Vol. 71, No. 2",
+      "content": "",
+      "page_number": 6,
+      "paragraphs": [],
+      "is_numbered": false,
+      "font_size": 8.718698501586914
+    },
+    {
+      "header": "FIG. 2.",
+      "content": "l/800 l/1600 NRS l/50",
+      "page_number": 6,
+      "paragraphs": [
+        {
+          "sentences": [
+            "l/800 l/1600 NRS l/50 buffer cont."
+          ],
+          "text": "l/800 l/1600 NRS l/50 buffer cont.",
+          "is_first_in_section": true,
+          "debug_info": {
+            "x_positions": [],
+            "regular_x": null,
+            "block_indices": [
+              -1
+            ],
+            "reasons": [
+              "pending from previous block"
+            ]
+          }
+        }
+      ],
+      "is_numbered": false,
+      "font_size": 9.599040031433105
+    },
+    {
+      "header": "buffer cont.",
+      "content": "Dose response of anti-endothelial cell antiserum in a guinea pig. Each sample was injected immediately after a intravenous dye leakage. NRS: Normal rabbit serum",
+      "page_number": 6,
+      "paragraphs": [
+        {
+          "sentences": [
+            "Dose response of anti-endothelial cell antiserum in a guinea pig.",
+            "Each sample was injected immediately after a intravenous dye leakage.",
+            "NRS: Normal rabbit serum"
+          ],
+          "text": "Dose response of anti-endothelial cell antiserum in a guinea pig. Each sample was injected immediately after a intravenous dye leakage. NRS: Normal rabbit serum",
+          "is_first_in_section": true,
+          "debug_info": {
+            "x_positions": [
+              75.5999984741211,
+              75.5999984741211,
+              76.07990264892578
+            ],
+            "regular_x": 75.5999984741211,
+            "block_indices": [
+              31,
+              31,
+              31
+            ],
+            "reasons": [
+              "follows header",
+              "x0=75.6 vs regular_x=75.6",
+              "x0=76.1 vs regular_x=75.6",
+              "x0=217.4 vs regular_x=75.6 (indented)"
+            ]
+          }
+        }
+      ],
+      "is_numbered": false,
+      "font_size": 9.709298133850098
+    },
+    {
+      "header": "DISCUSSION",
+      "content": "For more than 20 years after its detection of FXIII, many authors have reported that a clotting factor, FXIII, influenced a lot of other systems and thus it was often termed a connective tissue factors (21). The fibrin stabilizing effect is an example of general properties of this factor which crosslinks proteins with suitably configurated E - lysyl- and y - glutamyl - residues. Many kinds of proteins are listed as substrates for FXIII, e.g. fibrin(l), collagen(221, fibronectin(51, actin(23) and factor V(24). In this context, the binding of biogenic amines to proteins by FXIII may also participate in the elimination of toxic substances like histamine. FXIII concentrate has been recently used not only for the promotion of the wound healing but also for the treatment of Shijnlein Henoch Purpura(SHP) (6,101. The clinical effects of FXIII on SHP are probably due to the stabilization of microvasculature leading to a reduction of the leakage at inflammatory sites. Pilger et al(25) has reported that FXIII shows the suppressive/sealing effect in a screlodermia patient. However none of these reports showed the sealing/suppressive effect on the permeability by FXIII in animal studies. This vasculitis of SHP is regarded as the immunovascular disease that",
+      "page_number": 6,
+      "paragraphs": [
+        {
+          "sentences": [
+            "For more than 20 years after its detection of FXIII, many authors have reported that a clotting factor, FXIII, influenced a lot of other systems and thus it was often termed a connective tissue factors (21).",
+            "The fibrin stabilizing effect is an example of general properties of this factor which crosslinks proteins with suitably configurated E - lysyl- and y - glutamyl - residues.",
+            "Many kinds of proteins are listed as substrates for FXIII, e.g.",
+            "fibrin(l), collagen(221, fibronectin(51, actin(23) and factor V(24).",
+            "In this context, the binding of biogenic amines to proteins by FXIII may also participate in the elimination of toxic substances like histamine.",
+            "FXIII concentrate has been recently used not only for the promotion of the wound healing but also for the treatment of Shijnlein Henoch Purpura(SHP) (6,101.",
+            "The clinical effects of FXIII on SHP are probably due to the stabilization of microvasculature leading to a reduction of the leakage at inflammatory sites.",
+            "Pilger et al(25) has reported that FXIII shows the suppressive/sealing effect in a screlodermia patient.",
+            "However none of these reports showed the sealing/suppressive effect on the permeability by FXIII in animal studies.",
+            "This vasculitis of SHP is regarded as the immunovascular disease that"
+          ],
+          "text": "For more than 20 years after its detection of FXIII, many authors have reported that a clotting factor, FXIII, influenced a lot of other systems and thus it was often termed a connective tissue factors (21). The fibrin stabilizing effect is an example of general properties of this factor which crosslinks proteins with suitably configurated E - lysyl- and y - glutamyl - residues. Many kinds of proteins are listed as substrates for FXIII, e.g. fibrin(l), collagen(221, fibronectin(51, actin(23) and factor V(24). In this context, the binding of biogenic amines to proteins by FXIII may also participate in the elimination of toxic substances like histamine. FXIII concentrate has been recently used not only for the promotion of the wound healing but also for the treatment of Shijnlein Henoch Purpura(SHP) (6,101. The clinical effects of FXIII on SHP are probably due to the stabilization of microvasculature leading to a reduction of the leakage at inflammatory sites. Pilger et al(25) has reported that FXIII shows the suppressive/sealing effect in a screlodermia patient. However none of these reports showed the sealing/suppressive effect on the permeability by FXIII in animal studies. This vasculitis of SHP is regarded as the immunovascular disease that",
+          "is_first_in_section": true,
+          "debug_info": {
+            "x_positions": [
+              48.00152587890625,
+              47.76396942138672,
+              48.243873596191406,
+              48.243873596191406,
+              47.76396942138672,
+              48.00392150878906,
+              47.76397705078125,
+              48.003929138183594,
+              47.043121337890625,
+              47.04411315917969,
+              48.00392150878906,
+              47.52403259277344,
+              47.284080505371094,
+              47.524017333984375,
+              47.04411315917969,
+              48.00392150878906,
+              47.76396179199219,
+              47.2840576171875,
+              47.524009704589844,
+              47.284027099609375
+            ],
+            "regular_x": 47.043121337890625,
+            "block_indices": [
+              33,
+              33,
+              33,
+              33,
+              33,
+              33,
+              33,
+              33,
+              33,
+              33,
+              33,
+              33,
+              33,
+              33,
+              33,
+              33,
+              33,
+              33,
+              33,
+              33
+            ],
+            "reasons": [
+              "follows header",
+              "x0=47.8 vs regular_x=47.0",
+              "x0=48.2 vs regular_x=47.0",
+              "x0=48.2 vs regular_x=47.0",
+              "x0=47.8 vs regular_x=47.0",
+              "x0=48.0 vs regular_x=47.0",
+              "x0=47.8 vs regular_x=47.0",
+              "x0=48.0 vs regular_x=47.0",
+              "x0=47.0 vs regular_x=47.0",
+              "x0=47.0 vs regular_x=47.0",
+              "x0=48.0 vs regular_x=47.0",
+              "x0=47.5 vs regular_x=47.0",
+              "x0=47.3 vs regular_x=47.0",
+              "x0=47.5 vs regular_x=47.0",
+              "x0=47.0 vs regular_x=47.0",
+              "x0=48.0 vs regular_x=47.0",
+              "x0=47.8 vs regular_x=47.0",
+              "x0=47.3 vs regular_x=47.0",
+              "x0=47.5 vs regular_x=47.0",
+              "x0=47.3 vs regular_x=47.0"
+            ]
+          }
+        }
+      ],
+      "is_numbered": false,
+      "font_size": 9.599040031433105
+    },
+    {
+      "header": "Vol. 71, No. 2 PERMEABILITY INHIBITION BY FXIII 145",
+      "content": "the vascular permeability is enhanced by the formation of the antigen-antibody complex not with standing ambiguity of trigger which may include drugs, foods, insect bites or bacterial infections(ll,12,13,14). Thus we tried to demonstrate the suppressive effect of FXIII on permeability enhancement induced by anti-endothelial cell antiserum. As shown in Figs. 1 and 2, anti- endothelial cell antiserum induces the enhancement of permeability. This phenomenon can be caused by factors such as complement fragments and histamine etc. which are produced by the activation of complement system after complex formation of antiserum with endothelial cells(ll,l2,13,14) . As this phenomenon shows the dose dependent manner by antiserum, condition of SHP patients may be influenced seriously depending on the extent of the antibody generation. SHP patients show the increase of plasma level of IgA and the imbalance of serum IgG subclass and IgM(13,14,26) . As shown in Figs. 3, 4 and 5, FXIII suppresses the vascular permeability in acute phase and the edema in subacute phase. These results are supported by some clinical studies. Kamitsuji et al.(lO) and Fukui et al.(ll) have reported that FXIII shows the suppressive effect on the swelling of joints of SHP patients.",
+      "page_number": 7,
+      "paragraphs": [
+        {
+          "sentences": [
+            "the vascular permeability is enhanced by the formation of the antigen-antibody complex not with standing ambiguity of trigger which may include drugs, foods, insect bites or bacterial infections(ll,12,13,14).",
+            "Thus we tried to demonstrate the suppressive effect of FXIII on permeability enhancement induced by anti-endothelial cell antiserum.",
+            "As shown in Figs.",
+            "1 and 2, anti- endothelial cell antiserum induces the enhancement of permeability.",
+            "This phenomenon can be caused by factors such as complement fragments and histamine etc.",
+            "which are produced by the activation of complement system after complex formation of antiserum with endothelial cells(ll,l2,13,14) .",
+            "As this phenomenon shows the dose dependent manner by antiserum, condition of SHP patients may be influenced seriously depending on the extent of the antibody generation.",
+            "SHP patients show the increase of plasma level of IgA and the imbalance of serum IgG subclass and IgM(13,14,26) .",
+            "As shown in Figs.",
+            "3, 4 and 5, FXIII suppresses the vascular permeability in acute phase and the edema in subacute phase.",
+            "These results are supported by some clinical studies.",
+            "Kamitsuji et al.",
+            "(lO) and Fukui et al.",
+            "(ll) have reported that FXIII shows the suppressive effect on the swelling of joints of SHP patients."
+          ],
+          "text": "the vascular permeability is enhanced by the formation of the antigen-antibody complex not with standing ambiguity of trigger which may include drugs, foods, insect bites or bacterial infections(ll,12,13,14). Thus we tried to demonstrate the suppressive effect of FXIII on permeability enhancement induced by anti-endothelial cell antiserum. As shown in Figs. 1 and 2, anti- endothelial cell antiserum induces the enhancement of permeability. This phenomenon can be caused by factors such as complement fragments and histamine etc. which are produced by the activation of complement system after complex formation of antiserum with endothelial cells(ll,l2,13,14) . As this phenomenon shows the dose dependent manner by antiserum, condition of SHP patients may be influenced seriously depending on the extent of the antibody generation. SHP patients show the increase of plasma level of IgA and the imbalance of serum IgG subclass and IgM(13,14,26) . As shown in Figs. 3, 4 and 5, FXIII suppresses the vascular permeability in acute phase and the edema in subacute phase. These results are supported by some clinical studies. Kamitsuji et al.(lO) and Fukui et al.(ll) have reported that FXIII shows the suppressive effect on the swelling of joints of SHP patients.",
+          "is_first_in_section": true,
+          "debug_info": {
+            "x_positions": [
+              54.0,
+              54.47990417480469,
+              54.0,
+              54.7198486328125,
+              54.7198486328125,
+              54.479896545410156,
+              54.479896545410156,
+              53.999969482421875,
+              54.47987365722656,
+              54.47987365722656,
+              54.47987365722656,
+              54.729156494140625,
+              54.009300231933594,
+              54.009300231933594,
+              54.96910095214844,
+              54.9691162109375,
+              54.247314453125,
+              53.76741027832031,
+              54.007362365722656,
+              54.72721862792969,
+              53.76741027832031
+            ],
+            "regular_x": 53.76741027832031,
+            "block_indices": [
+              26,
+              26,
+              26,
+              26,
+              26,
+              26,
+              26,
+              26,
+              26,
+              26,
+              26,
+              26,
+              26,
+              26,
+              26,
+              26,
+              26,
+              26,
+              26,
+              26,
+              26
+            ],
+            "reasons": [
+              "follows header",
+              "x0=54.5 vs regular_x=53.8",
+              "x0=54.0 vs regular_x=53.8",
+              "x0=54.7 vs regular_x=53.8",
+              "x0=54.7 vs regular_x=53.8",
+              "x0=54.5 vs regular_x=53.8",
+              "x0=54.5 vs regular_x=53.8",
+              "x0=54.0 vs regular_x=53.8",
+              "x0=54.5 vs regular_x=53.8",
+              "x0=54.5 vs regular_x=53.8",
+              "x0=54.5 vs regular_x=53.8",
+              "x0=54.7 vs regular_x=53.8",
+              "x0=54.0 vs regular_x=53.8",
+              "x0=54.0 vs regular_x=53.8",
+              "x0=55.0 vs regular_x=53.8",
+              "x0=55.0 vs regular_x=53.8",
+              "x0=54.2 vs regular_x=53.8",
+              "x0=53.8 vs regular_x=53.8",
+              "x0=54.0 vs regular_x=53.8",
+              "x0=54.7 vs regular_x=53.8",
+              "x0=53.8 vs regular_x=53.8",
+              "x0=139.9 vs regular_x=53.8 (indented)"
+            ]
+          }
+        }
+      ],
+      "is_numbered": false,
+      "font_size": 8.604503631591797
+    },
+    {
+      "header": "l/ZOO diluted / ted Ab",
+      "content": "",
+      "page_number": 7,
+      "paragraphs": [],
+      "is_numbered": false,
+      "font_size": 8.604503631591797
+    },
+    {
+      "header": "FIG. 3.",
+      "content": "Suppressive effect of FXIII on the permeability enhancement induced by anti-endothelial cell antiserum. FXIII was used with the final concentration at a injection site of (A), 3.0 U; (B), 1.5 U; (C), 0.75 U; (D), 0.38 U; (E), medium control. The mixture of FXIII and either 200- or 400- fold diluted antiserum was injected immediately after the intravenous injection of dye.",
+      "page_number": 7,
+      "paragraphs": [
+        {
+          "sentences": [
+            "Suppressive effect of FXIII on the permeability enhancement induced by anti-endothelial cell antiserum.",
+            "FXIII was used with the final concentration at a injection site of (A), 3.0 U; (B), 1.5 U; (C), 0.75 U; (D), 0.38 U; (E), medium control.",
+            "The mixture of FXIII and either 200- or 400- fold diluted antiserum was injected immediately after the intravenous injection of dye."
+          ],
+          "text": "Suppressive effect of FXIII on the permeability enhancement induced by anti-endothelial cell antiserum. FXIII was used with the final concentration at a injection site of (A), 3.0 U; (B), 1.5 U; (C), 0.75 U; (D), 0.38 U; (E), medium control. The mixture of FXIII and either 200- or 400- fold diluted antiserum was injected immediately after the intravenous injection of dye.",
+          "is_first_in_section": true,
+          "debug_info": {
+            "x_positions": [
+              80.64448547363281,
+              80.40354919433594,
+              79.92364501953125,
+              80.40354919433594,
+              82.32316589355469,
+              80.16259002685547,
+              80.16542053222656,
+              79.92546844482422
+            ],
+            "regular_x": 79.92364501953125,
+            "block_indices": [
+              29,
+              29,
+              29,
+              29,
+              29,
+              29,
+              29,
+              29
+            ],
+            "reasons": [
+              "follows header",
+              "x0=80.4 vs regular_x=79.9",
+              "x0=79.9 vs regular_x=79.9",
+              "x0=80.4 vs regular_x=79.9",
+              "x0=82.3 vs regular_x=79.9",
+              "x0=80.2 vs regular_x=79.9",
+              "x0=80.2 vs regular_x=79.9",
+              "x0=79.9 vs regular_x=79.9"
+            ]
+          }
+        }
+      ],
+      "is_numbered": false,
+      "font_size": 9.599040031433105
+    },
+    {
+      "header": "146 PERMEABILITY INHIBITION BY FXIII Vol. 71, No. 2",
+      "content": "100 - 80 -",
+      "page_number": 8,
+      "paragraphs": [
+        {
+          "sentences": [
+            "100 - 80 - % 6o"
+          ],
+          "text": "100 - 80 - % 6o",
+          "is_first_in_section": true,
+          "debug_info": {
+            "x_positions": [],
+            "regular_x": null,
+            "block_indices": [
+              -1
+            ],
+            "reasons": [
+              "pending from previous block"
+            ]
+          }
+        }
+      ],
+      "is_numbered": false,
+      "font_size": 8.604503631591797
+    },
+    {
+      "header": "% 6o",
+      "content": "40 - 20 - 0' a-GPEC +1.5U nFXlll +3.OU nFXlll Sample",
+      "page_number": 8,
+      "paragraphs": [
+        {
+          "sentences": [
+            "40 - 20 - 0'"
+          ],
+          "text": "40 - 20 - 0'",
+          "is_first_in_section": false,
+          "debug_info": {
+            "x_positions": [
+              159.60047912597656
+            ],
+            "regular_x": 159.60047912597656,
+            "block_indices": [
+              31
+            ],
+            "reasons": [
+              "x0=159.6 vs regular_x=159.6"
+            ]
+          }
+        },
+        {
+          "sentences": [
+            "a-GPEC +1.5U nFXlll +3.OU nFXlll"
+          ],
+          "text": "a-GPEC +1.5U nFXlll +3.OU nFXlll",
+          "is_first_in_section": false,
+          "debug_info": {
+            "x_positions": [
+              187.1999969482422
+            ],
+            "regular_x": 159.60047912597656,
+            "block_indices": [
+              31
+            ],
+            "reasons": [
+              "follows header"
+            ]
+          }
+        },
+        {
+          "sentences": [
+            "Sample"
+          ],
+          "text": "Sample",
+          "is_first_in_section": false,
+          "debug_info": {
+            "x_positions": [
+              230.8800048828125
+            ],
+            "regular_x": 159.60047912597656,
+            "block_indices": [
+              31
+            ],
+            "reasons": [
+              "x0=230.9 vs regular_x=159.6 (indented)",
+              "x0=231.1 vs regular_x=159.6 (indented)"
+            ]
+          }
+        }
+      ],
+      "is_numbered": false,
+      "font_size": 8.037141799926758
+    },
+    {
+      "header": "FIG. 4",
+      "content": "Suppressive effect of FXIII on the permeability induced by anti-guinea pig endothelial cell antiserum. Extraction of Evans blue at the injection site was according to the materials and methods. n=lO, *: p<o.os, **: p<O.Ol In this experiment, we used the 300-fold diluted anti-endothelial cell antiserum as a permeability inducer. FXIII was mixed with antiserum, then the mixture was injected intradermally. 2.0 -l 1.8- 0.8 1 0.6 -I ?? T/f 0.0 I I I I I 0 1 2 3 4 day",
+      "page_number": 8,
+      "paragraphs": [
+        {
+          "sentences": [
+            "Suppressive effect of FXIII on the permeability induced by anti-guinea pig endothelial cell antiserum.",
+            "Extraction of Evans blue at the injection site was according to the materials and methods.",
+            "n=lO, *: p<o.os, **: p<O.Ol In this experiment, we used the 300-fold diluted anti-endothelial cell antiserum as a permeability inducer.",
+            "FXIII was mixed with antiserum, then the mixture was injected intradermally."
+          ],
+          "text": "Suppressive effect of FXIII on the permeability induced by anti-guinea pig endothelial cell antiserum. Extraction of Evans blue at the injection site was according to the materials and methods. n=lO, *: p<o.os, **: p<O.Ol In this experiment, we used the 300-fold diluted anti-endothelial cell antiserum as a permeability inducer. FXIII was mixed with antiserum, then the mixture was injected intradermally.",
+          "is_first_in_section": true,
+          "debug_info": {
+            "x_positions": [
+              80.16519165039062,
+              79.20538330078125,
+              79.20639038085938,
+              79.9262466430664,
+              80.16619873046875,
+              79.68629455566406,
+              80.16619873046875,
+              79.20639038085938
+            ],
+            "regular_x": 79.20538330078125,
+            "block_indices": [
+              33,
+              33,
+              33,
+              33,
+              33,
+              33,
+              33,
+              33
+            ],
+            "reasons": [
+              "follows header",
+              "x0=79.2 vs regular_x=79.2",
+              "x0=79.2 vs regular_x=79.2",
+              "x0=79.9 vs regular_x=79.2",
+              "x0=80.2 vs regular_x=79.2",
+              "x0=79.7 vs regular_x=79.2",
+              "x0=80.2 vs regular_x=79.2",
+              "x0=79.2 vs regular_x=79.2",
+              "x0=151.7 vs regular_x=79.2 (indented)"
+            ]
+          }
+        },
+        {
+          "sentences": [
+            "2.0 -l 1.8- 0.8 1"
+          ],
+          "text": "2.0 -l 1.8- 0.8 1",
+          "is_first_in_section": false,
+          "debug_info": {
+            "x_positions": [
+              151.67999267578125
+            ],
+            "regular_x": 151.67999267578125,
+            "block_indices": [
+              35
+            ],
+            "reasons": [
+              "x0=151.7 vs regular_x=151.7"
+            ]
+          }
+        },
+        {
+          "sentences": [
+            "0.6 -I ?",
+            "?",
+            "T/f 0.0 I I I I I"
+          ],
+          "text": "0.6 -I ?? T/f 0.0 I I I I I",
+          "is_first_in_section": false,
+          "debug_info": {
+            "x_positions": [
+              151.67999267578125
+            ],
+            "regular_x": 151.67999267578125,
+            "block_indices": [
+              36
+            ],
+            "reasons": [
+              "x0=151.7 vs regular_x=151.7"
+            ]
+          }
+        },
+        {
+          "sentences": [
+            "0 1 2 3 4"
+          ],
+          "text": "0 1 2 3 4",
+          "is_first_in_section": false,
+          "debug_info": {
+            "x_positions": [
+              166.32000732421875
+            ],
+            "regular_x": 151.67999267578125,
+            "block_indices": [
+              36
+            ],
+            "reasons": [
+              "follows header",
+              "x0=255.1 vs regular_x=151.7 (indented)"
+            ]
+          }
+        },
+        {
+          "sentences": [
+            "day FIG.",
+            "5."
+          ],
+          "text": "day FIG. 5.",
+          "is_first_in_section": false,
+          "debug_info": {
+            "x_positions": [],
+            "regular_x": null,
+            "block_indices": [
+              -1
+            ],
+            "reasons": [
+              "pending from previous block"
+            ]
+          }
+        }
+      ],
+      "is_numbered": false,
+      "font_size": 9.599040031433105
+    },
+    {
+      "header": "FIG. 5.",
+      "content": "a-GPEC",
+      "page_number": 8,
+      "paragraphs": [
+        {
+          "sentences": [
+            "a-GPEC +FXIII"
+          ],
+          "text": "a-GPEC +FXIII",
+          "is_first_in_section": true,
+          "debug_info": {
+            "x_positions": [],
+            "regular_x": null,
+            "block_indices": [
+              -1
+            ],
+            "reasons": [
+              "pending from previous block"
+            ]
+          }
+        }
+      ],
+      "is_numbered": false,
+      "font_size": 9.599040031433105
+    },
+    {
+      "header": "+FXIII",
+      "content": "Effect of FXIII on the swelling induced by anti-guinea pig endothelial cell antiserum. Open circle (0) denotes the antiserum alone. Closed circle (0) denotes the FXIII plus antiserum. n=5, *: pco.05, **: p,O.Ol",
+      "page_number": 8,
+      "paragraphs": [
+        {
+          "sentences": [
+            "Effect of FXIII on the swelling induced by anti-guinea pig endothelial cell antiserum.",
+            "Open circle (0) denotes the antiserum alone.",
+            "Closed circle (0) denotes the FXIII plus antiserum.",
+            "n=5, *: pco.05, **: p,O.Ol"
+          ],
+          "text": "Effect of FXIII on the swelling induced by anti-guinea pig endothelial cell antiserum. Open circle (0) denotes the antiserum alone. Closed circle (0) denotes the FXIII plus antiserum. n=5, *: pco.05, **: p,O.Ol",
+          "is_first_in_section": true,
+          "debug_info": {
+            "x_positions": [
+              78.96530151367188,
+              78.72534942626953,
+              78.96627807617188,
+              79.20722961425781
+            ],
+            "regular_x": 78.72534942626953,
+            "block_indices": [
+              41,
+              41,
+              41,
+              41
+            ],
+            "reasons": [
+              "follows header",
+              "x0=78.7 vs regular_x=78.7",
+              "x0=79.0 vs regular_x=78.7",
+              "x0=79.2 vs regular_x=78.7"
+            ]
+          }
+        }
+      ],
+      "is_numbered": false,
+      "font_size": 9.599040031433105
+    },
+    {
+      "header": "Vol. 71, No. 2 PERMEABILITY INHIBITION BY FXIII 147",
+      "content": "Pilger et a1.(25) reported that FXIII also shows the suppressive effect on vascular permeability in sclerodermia patients. These results suggest that FXIII may crosslink cellular matrices to prevent the opening of the space between cells(27) and that it may crosslink the enhancing factors for the permeability(21). We have succeeded in demonstrating the suppressive effect of FXIII on vascular permeability in an animal study. This study indicates that FXIII may play a crucial role in an inflammatory site. Consequently it seems that FXIII therapies are necessary for the treatment of some inflammatory diseases (28,29).",
+      "page_number": 9,
+      "paragraphs": [
+        {
+          "sentences": [
+            "Pilger et a1.",
+            "(25) reported that FXIII also shows the suppressive effect on vascular permeability in sclerodermia patients.",
+            "These results suggest that FXIII may crosslink cellular matrices to prevent the opening of the space between cells(27) and that it may crosslink the enhancing factors for the permeability(21).",
+            "We have succeeded in demonstrating the suppressive effect of FXIII on vascular permeability in an animal study.",
+            "This study indicates that FXIII may play a crucial role in an inflammatory site.",
+            "Consequently it seems that FXIII therapies are necessary for the treatment of some inflammatory diseases (28,29)."
+          ],
+          "text": "Pilger et a1.(25) reported that FXIII also shows the suppressive effect on vascular permeability in sclerodermia patients. These results suggest that FXIII may crosslink cellular matrices to prevent the opening of the space between cells(27) and that it may crosslink the enhancing factors for the permeability(21). We have succeeded in demonstrating the suppressive effect of FXIII on vascular permeability in an animal study. This study indicates that FXIII may play a crucial role in an inflammatory site. Consequently it seems that FXIII therapies are necessary for the treatment of some inflammatory diseases (28,29).",
+          "is_first_in_section": true,
+          "debug_info": {
+            "x_positions": [
+              53.52000045776367,
+              53.52000045776367,
+              53.759952545166016,
+              53.28004837036133,
+              53.759952545166016,
+              53.99990463256836,
+              53.28004837036133,
+              53.280059814453125,
+              53.52001190185547,
+              53.52001190185547
+            ],
+            "regular_x": 53.28004837036133,
+            "block_indices": [
+              25,
+              25,
+              25,
+              25,
+              25,
+              25,
+              25,
+              25,
+              25,
+              25
+            ],
+            "reasons": [
+              "follows header",
+              "x0=53.5 vs regular_x=53.3",
+              "x0=53.8 vs regular_x=53.3",
+              "x0=53.3 vs regular_x=53.3",
+              "x0=53.8 vs regular_x=53.3",
+              "x0=54.0 vs regular_x=53.3",
+              "x0=53.3 vs regular_x=53.3",
+              "x0=53.3 vs regular_x=53.3",
+              "x0=53.5 vs regular_x=53.3",
+              "x0=53.5 vs regular_x=53.3",
+              "x0=221.3 vs regular_x=53.3 (indented)"
+            ]
+          }
+        }
+      ],
+      "is_numbered": false,
+      "font_size": 8.582786560058594
+    },
+    {
+      "header": "REFERENCES",
+      "content": "1. ROBBINS, K.C. A study of the comparison of fibrinogen to fibrin. AM. J. Physiol., 142, 581-588, 1944 2. KESKI-OJA, J., MOSHER, D.F. and VAHERI, A. Crosslinking of a major surface-associated glycoprotein (fibronectin) catalyzed by blood coagulation factor XIII. Cell, 9, 29-35, 1976 3. ICHINOSE, A., TAMAKI, T. and AOKI, N. FXIII mediated cross- linking of NH2-terminal peptide of alpha-2 plasmin inhibitor to fibrin. FEBS-letter, 153, 369-371, 1983 4. SHEN, L. and LORAND, L. Contribution of fibrin stabilization to clot strength. J. Clin. Invest., 71, 1336-1341,1983 5. OKADA, M., BLOMBACK, B., DER CHANG, M. and HOROBITZ, B. Fibronectin and fibrinogen structure. J. Biol. Chem., 260, 1811- 1820, 1985 6. MISHIMA, Y., NAGAO, F., ISHIBIKI, K., MATSUDA, M. and NAKAMURA, N. Faktor XIII in der Behandlung postoperatfver therapierefraktarer Wundheilungsstorungen. Chirurg, 55, 803-808, 1984 7. FYE, K.H. and SACK, K.E. Basic and Clinical Immunology, In: Rheumatic disease, STITES, D.P., STOBO, J.D., FUDENBERG, H.H. and WELLS, J.V. (eds.), p449, Lange Medical Publications, California, (1982) 8. HENRIKSSON, P., HENDERNER, U. and NILSSON, I.M. Factor XIII (fibrin stabilizing factor) in Henoch-Schonlein's purpura. Acta. Pediatr. Stand., 66, 273-277, 1977 9. HENRIKSSON, P., NILSSON, I.M., OKLSSON, K. and STENBERG, P. Granulocyte elastase activation and degradation of factor XIII. Thromb. Res., 18, 343-351, 1980 10. KAMITSUJI, H., TANI, K., YASUI, M., TANIGUCHI, A., TAIRA, K., TSUKADA, S., IIDA, Y., KANNKI, H. and FUKUI, H. Activity of blood coagulation Factor XIII on a prognostic indicator in patients with Henoch-Schonlein purpura. Eur. J. Pediatr., 146, 519-523, 1987 11. FUKUI, H., KAMITSUJI, H., NAGAO, T., YAMADA, K., AKATSUKA, J., INAGAKI, M., SHIKE, S., KOBAYASHI, Y., YOSHIOKA, K., MAKI, S., SHIRAHATA, A., MIYAZAKI, S., NAKASHIMA, M. and TANAKA, S. Clinical evaluation of a pasteurized factor XIII concentrate administration in Henoch-Schonlein Purpura. Thromb. Res. 56, 667-675, 1989 12. MATSUOKA, M., Hemorrhagic factors and Thrombosis, In: Purpura Schdnlein-Henoch, ~245-246, Kinbara Shuppan, Tokyo (1981) 13. BOWIE, W.E.J. and OWEN, C.A.Jr Hemostasis and Thrombosis, In: Non thrombocytopenic vascular disorders, COLMAN, R.W., HIRSH, J, MARDER, U.J. and SALZMAN, E.W. (eds.), ~816-824, Lippincott, Philadelphia, 1987",
+      "page_number": 9,
+      "paragraphs": [
+        {
+          "sentences": [
+            "1.",
+            "ROBBINS, K.C.",
+            "A study of the comparison of fibrinogen to fibrin.",
+            "AM.",
+            "J.",
+            "Physiol., 142, 581-588, 1944 2.",
+            "KESKI-OJA, J., MOSHER, D.F.",
+            "and VAHERI, A. Crosslinking of a major surface-associated glycoprotein (fibronectin) catalyzed by blood coagulation factor XIII.",
+            "Cell, 9, 29-35, 1976 3.",
+            "ICHINOSE, A., TAMAKI, T. and AOKI, N. FXIII mediated cross- linking of NH2-terminal peptide of alpha-2 plasmin inhibitor to fibrin.",
+            "FEBS-letter, 153, 369-371, 1983 4.",
+            "SHEN, L. and LORAND, L. Contribution of fibrin stabilization to clot strength.",
+            "J. Clin.",
+            "Invest., 71, 1336-1341,1983 5.",
+            "OKADA, M., BLOMBACK, B., DER CHANG, M. and HOROBITZ, B. Fibronectin and fibrinogen structure.",
+            "J. Biol.",
+            "Chem., 260, 1811- 1820, 1985 6.",
+            "MISHIMA, Y., NAGAO, F., ISHIBIKI, K., MATSUDA, M. and NAKAMURA, N. Faktor XIII in der Behandlung postoperatfver therapierefraktarer Wundheilungsstorungen.",
+            "Chirurg, 55, 803-808, 1984 7.",
+            "FYE, K.H.",
+            "and SACK, K.E.",
+            "Basic and Clinical Immunology, In: Rheumatic disease, STITES, D.P., STOBO, J.D., FUDENBERG, H.H.",
+            "and"
+          ],
+          "text": "1. ROBBINS, K.C. A study of the comparison of fibrinogen to fibrin. AM. J. Physiol., 142, 581-588, 1944 2. KESKI-OJA, J., MOSHER, D.F. and VAHERI, A. Crosslinking of a major surface-associated glycoprotein (fibronectin) catalyzed by blood coagulation factor XIII. Cell, 9, 29-35, 1976 3. ICHINOSE, A., TAMAKI, T. and AOKI, N. FXIII mediated cross- linking of NH2-terminal peptide of alpha-2 plasmin inhibitor to fibrin. FEBS-letter, 153, 369-371, 1983 4. SHEN, L. and LORAND, L. Contribution of fibrin stabilization to clot strength. J. Clin. Invest., 71, 1336-1341,1983 5. OKADA, M., BLOMBACK, B., DER CHANG, M. and HOROBITZ, B. Fibronectin and fibrinogen structure. J. Biol. Chem., 260, 1811- 1820, 1985 6. MISHIMA, Y., NAGAO, F., ISHIBIKI, K., MATSUDA, M. and NAKAMURA, N. Faktor XIII in der Behandlung postoperatfver therapierefraktarer Wundheilungsstorungen. Chirurg, 55, 803-808, 1984 7. FYE, K.H. and SACK, K.E. Basic and Clinical Immunology, In: Rheumatic disease, STITES, D.P., STOBO, J.D., FUDENBERG, H.H. and",
+          "is_first_in_section": true,
+          "debug_info": {
+            "x_positions": [
+              53.999908447265625,
+              53.760948181152344,
+              53.281951904296875,
+              52.80305480957031,
+              52.80305480957031,
+              53.522911071777344,
+              53.522911071777344,
+              53.282958984375,
+              53.282958984375,
+              52.80305480957031,
+              53.043006896972656,
+              52.80305480957031,
+              53.522911071777344,
+              53.522911071777344,
+              52.323150634765625,
+              52.56310272216797,
+              53.282958984375,
+              53.043006896972656,
+              52.56310272216797
+            ],
+            "regular_x": 50.644500732421875,
+            "block_indices": [
+              27,
+              27,
+              27,
+              27,
+              27,
+              27,
+              27,
+              27,
+              27,
+              27,
+              27,
+              27,
+              27,
+              27,
+              27,
+              27,
+              27,
+              27,
+              27
+            ],
+            "reasons": [
+              "follows header",
+              "x0=53.8 vs regular_x=50.6",
+              "x0=53.3 vs regular_x=50.6",
+              "x0=52.8 vs regular_x=50.6",
+              "x0=52.8 vs regular_x=50.6",
+              "x0=53.5 vs regular_x=50.6",
+              "x0=53.5 vs regular_x=50.6",
+              "x0=53.3 vs regular_x=50.6",
+              "x0=53.3 vs regular_x=50.6",
+              "x0=52.8 vs regular_x=50.6",
+              "x0=53.0 vs regular_x=50.6",
+              "x0=52.8 vs regular_x=50.6",
+              "x0=53.5 vs regular_x=50.6",
+              "x0=53.5 vs regular_x=50.6",
+              "x0=52.3 vs regular_x=50.6",
+              "x0=52.6 vs regular_x=50.6",
+              "x0=53.3 vs regular_x=50.6",
+              "x0=53.0 vs regular_x=50.6",
+              "x0=52.6 vs regular_x=50.6"
+            ]
+          }
+        },
+        {
+          "sentences": [
+            "WELLS, J.V.",
+            "(eds.",
+            "), p449, Lange Medical Publications, California, (1982) 8.",
+            "HENRIKSSON, P., HENDERNER, U. and NILSSON, I.M.",
+            "Factor XIII (fibrin stabilizing factor) in Henoch-Schonlein's purpura.",
+            "Acta.",
+            "Pediatr.",
+            "Stand., 66, 273-277, 1977 9.",
+            "HENRIKSSON, P., NILSSON, I.M., OKLSSON, K. and STENBERG, P. Granulocyte elastase activation and degradation of factor XIII.",
+            "Thromb.",
+            "Res., 18, 343-351, 1980 10.",
+            "KAMITSUJI, H., TANI, K., YASUI, M., TANIGUCHI, A., TAIRA, K.,"
+          ],
+          "text": "WELLS, J.V. (eds.), p449, Lange Medical Publications, California, (1982) 8. HENRIKSSON, P., HENDERNER, U. and NILSSON, I.M. Factor XIII (fibrin stabilizing factor) in Henoch-Schonlein's purpura. Acta. Pediatr. Stand., 66, 273-277, 1977 9. HENRIKSSON, P., NILSSON, I.M., OKLSSON, K. and STENBERG, P. Granulocyte elastase activation and degradation of factor XIII. Thromb. Res., 18, 343-351, 1980 10. KAMITSUJI, H., TANI, K., YASUI, M., TANIGUCHI, A., TAIRA, K.,",
+          "is_first_in_section": false,
+          "debug_info": {
+            "x_positions": [
+              52.08421325683594,
+              54.964630126953125,
+              53.045013427734375,
+              54.72467803955078,
+              52.085205078125,
+              53.28496551513672,
+              52.085205078125,
+              52.325157165527344,
+              52.80506134033203
+            ],
+            "regular_x": 50.644500732421875,
+            "block_indices": [
+              27,
+              27,
+              27,
+              27,
+              27,
+              27,
+              27,
+              27,
+              27
+            ],
+            "reasons": [
+              "follows header",
+              "x0=55.0 vs regular_x=50.6",
+              "x0=53.0 vs regular_x=50.6",
+              "x0=54.7 vs regular_x=50.6",
+              "x0=52.1 vs regular_x=50.6",
+              "x0=53.3 vs regular_x=50.6",
+              "x0=52.1 vs regular_x=50.6",
+              "x0=52.3 vs regular_x=50.6",
+              "x0=52.8 vs regular_x=50.6"
+            ]
+          }
+        },
+        {
+          "sentences": [
+            "TSUKADA, S., IIDA, Y., KANNKI, H. and FUKUI, H. Activity of blood coagulation Factor XIII on a prognostic indicator in patients with Henoch-Schonlein purpura.",
+            "Eur.",
+            "J.",
+            "Pediatr., 146, 519-523, 1987 11.",
+            "FUKUI, H., KAMITSUJI, H., NAGAO, T., YAMADA, K., AKATSUKA, J., INAGAKI, M., SHIKE, S., KOBAYASHI, Y., YOSHIOKA, K., MAKI, S.,"
+          ],
+          "text": "TSUKADA, S., IIDA, Y., KANNKI, H. and FUKUI, H. Activity of blood coagulation Factor XIII on a prognostic indicator in patients with Henoch-Schonlein purpura. Eur. J. Pediatr., 146, 519-523, 1987 11. FUKUI, H., KAMITSUJI, H., NAGAO, T., YAMADA, K., AKATSUKA, J., INAGAKI, M., SHIKE, S., KOBAYASHI, Y., YOSHIOKA, K., MAKI, S.,",
+          "is_first_in_section": false,
+          "debug_info": {
+            "x_positions": [
+              52.325157165527344,
+              52.325157165527344,
+              51.845252990722656,
+              52.325157165527344,
+              52.325157165527344
+            ],
+            "regular_x": 50.644500732421875,
+            "block_indices": [
+              27,
+              27,
+              27,
+              27,
+              27
+            ],
+            "reasons": [
+              "follows header",
+              "x0=52.3 vs regular_x=50.6",
+              "x0=51.8 vs regular_x=50.6",
+              "x0=52.3 vs regular_x=50.6",
+              "x0=52.3 vs regular_x=50.6"
+            ]
+          }
+        },
+        {
+          "sentences": [
+            "SHIRAHATA, A., MIYAZAKI, S., NAKASHIMA, M. and TANAKA, S. Clinical evaluation of a pasteurized factor XIII concentrate administration in Henoch-Schonlein Purpura.",
+            "Thromb.",
+            "Res.",
+            "56, 667-675, 1989 12.",
+            "MATSUOKA, M., Hemorrhagic factors and Thrombosis, In: Purpura Schdnlein-Henoch, ~245-246, Kinbara Shuppan, Tokyo (1981)"
+          ],
+          "text": "SHIRAHATA, A., MIYAZAKI, S., NAKASHIMA, M. and TANAKA, S. Clinical evaluation of a pasteurized factor XIII concentrate administration in Henoch-Schonlein Purpura. Thromb. Res. 56, 667-675, 1989 12. MATSUOKA, M., Hemorrhagic factors and Thrombosis, In: Purpura Schdnlein-Henoch, ~245-246, Kinbara Shuppan, Tokyo (1981)",
+          "is_first_in_section": false,
+          "debug_info": {
+            "x_positions": [
+              52.085205078125,
+              51.60530090332031,
+              52.085205078125,
+              51.845252990722656,
+              51.605316162109375
+            ],
+            "regular_x": 50.644500732421875,
+            "block_indices": [
+              27,
+              27,
+              27,
+              27,
+              27
+            ],
+            "reasons": [
+              "follows header",
+              "x0=51.6 vs regular_x=50.6",
+              "x0=52.1 vs regular_x=50.6",
+              "x0=51.8 vs regular_x=50.6",
+              "x0=51.6 vs regular_x=50.6"
+            ]
+          }
+        },
+        {
+          "sentences": [
+            "13.",
+            "BOWIE, W.E.J.",
+            "and OWEN, C.A.Jr Hemostasis and Thrombosis, In: Non thrombocytopenic vascular disorders, COLMAN, R.W., HIRSH, J,"
+          ],
+          "text": "13. BOWIE, W.E.J. and OWEN, C.A.Jr Hemostasis and Thrombosis, In: Non thrombocytopenic vascular disorders, COLMAN, R.W., HIRSH, J,",
+          "is_first_in_section": false,
+          "debug_info": {
+            "x_positions": [
+              51.84526062011719,
+              51.125404357910156
+            ],
+            "regular_x": 50.644500732421875,
+            "block_indices": [
+              27,
+              27
+            ],
+            "reasons": [
+              "follows header",
+              "x0=51.1 vs regular_x=50.6"
+            ]
+          }
+        },
+        {
+          "sentences": [
+            "MARDER, U.J.",
+            "and SALZMAN, E.W.",
+            "(eds.",
+            "), ~816-824, Lippincott, Philadelphia, 1987"
+          ],
+          "text": "MARDER, U.J. and SALZMAN, E.W. (eds.), ~816-824, Lippincott, Philadelphia, 1987",
+          "is_first_in_section": false,
+          "debug_info": {
+            "x_positions": [
+              50.644500732421875,
+              50.883453369140625
+            ],
+            "regular_x": 50.644500732421875,
+            "block_indices": [
+              27,
+              27
+            ],
+            "reasons": [
+              "follows header",
+              "x0=50.9 vs regular_x=50.6"
+            ]
+          }
+        }
+      ],
+      "is_numbered": false,
+      "font_size": 9.599040031433105
+    },
+    {
+      "header": "148 PERMEABILITY INHIBITION BY FXIII Vol. 71, No. 2",
+      "content": "14. ITO, T. and FUJIMAKI, M. Intergated handbook of internal medicine, In: SchBnlein-Henoch purpura, IMURA, H., OGATA, E., TAKAKU, S. and TARUI, S. (eds.), p296-300, Nakayama Shupann, Tokyo 15. WILSON, C.B., COLE, E.H., ZANETTI, M. and MAMPASO, F.M. Basic and Clinical Immunology, In: Renal disease, STITES, D.P., STOBO, J-D., FUDENBERG, H.H. and WELLS, J.V. (eds.), p557-575, Lange Medical Publication, California (1978) 16. MITSUI, Y. and IMAMURA, J. Isolation and Culture for Functional Cells, In: Endothelial cells., MITSUI, J., TAKAGI, R., ICHIHARA, A., SEKIGUTI, M. and MURAMATSU, T.(eds.) p227-229, Maruzen, Tokyo (1987) 17. WICK, G., BAUNDNER, S. and HERZOG, F. Immunofluorescence, p47- 51, Die Medizinishe Verlagsgesellschaft, Marburg (1987) 18. Yamamoto, T., Chemical Mediators of Inflammation and Immunity, In; Role of Hageman factor in enhancing vascular permeability., CHOEN, S., HAYASHI, H., SAITO, K. and TAKADA, A. (eds.), p129-143, Academic Press, New York (1986) 19. KATAYAMA, S., SHIONOYA, H. and OHTAKE, S. A new method for extraction of extravasated dye in the skin and influence of fasting stress on passive cutaneous anaphylaxis in guinea pigs and rats. Microbial. Immunol. Biol., 22, 89-101, 1987 20. SHINBO, K., HIRAHARA, K., TAKAHASHI, M. and MATSUISHI, T. Suppressive effect of factor XIII on the hemorrhage induced by anti-endothelial cell antiserum. Int. J. Hematol., 54(SUPPl 1), 276, 1991 21. KARGES, H.E. and CLEMENS, R. Factor XIII: Enzymatic and clinical aspects. Behring Inst. Mitt. 82, 43-58, 1988 22. SORIA, A., SORIA, C. and BOULARD, C. Fibrin stabilizing factor (FXIII) and collagen polymerization. Experientia, 31, 1355-1357, 1975 23. CHOEN, J., BLANKENBERG, T.A., BORDEN, B., KAHN, D.R. and VEIS, A. Factor XIIIa-catalyzed crosslinking of platelet and muscle. Regulation by nucleotides. Biochem. Biophys. Acta., 628, 365-375, 1980 24. FRANCIS, R.T., MACDONAGH, J. and MANN, K.G. Factor V is a substrate for the transamidase factor XIIIa. J. Biol. Chem., 261, 9787-9797, 1986 25. PILGER, E., BERTUCH, H., ULREICH, A. and RAINER, F. Capillary permeability in connective tissue disease.: Influence of Fibrogammin P-therapy, Thromb. Haemostas. 58, 81, 1987 26, TRYGSTAD, C.W. and STIEHM, E.R. Elevated serum IgA globulin in anaphylactoid purpura. Pediatrics, 47, 1023-1029, 1971 27. TAKAHASHI, M., SHINBO, K., HIRAHARA, K. and MATSUISHI, T. Effect of activated factor XIII on increase in permeability of human umbilical vein endothelial cell layer. The XXIV Congress of International Society of Hematology in London (abstract), 1992 28. GALOWAY, M.J., MAKIE, M.J. and MACVERRY, B.A. Reduced levels of factor XIII in patients with chronic inflammatory bowel disease. Clin. Lab. Haemat., 5, 427-428, 1983 29. KURATSUJI, T., OKIMA, T., FUKUMOTO, T., SHIMIZU, S., IWASAKI, Y ., TOMITA, Y., MEGURO, T. and YAMADA, K. Factor XIII deficiency in antibiotic-associated pseudomembranous colitis and its treatment with Factor XIII concentrate. Haemostas., 11, 229-234, 1982",
+      "page_number": 10,
+      "paragraphs": [
+        {
+          "sentences": [
+            "14.",
+            "ITO, T. and FUJIMAKI, M. Intergated handbook of internal medicine, In: SchBnlein-Henoch purpura, IMURA, H., OGATA, E., TAKAKU, S. and TARUI, S.",
+            "(eds.",
+            "), p296-300, Nakayama Shupann, Tokyo 15.",
+            "WILSON, C.B., COLE, E.H., ZANETTI, M. and MAMPASO, F.M.",
+            "Basic and Clinical Immunology, In: Renal disease, STITES, D.P., STOBO, J-D., FUDENBERG, H.H.",
+            "and WELLS, J.V.",
+            "(eds.",
+            "), p557-575, Lange Medical Publication, California (1978) 16.",
+            "MITSUI, Y. and IMAMURA, J.",
+            "Isolation and Culture for Functional Cells, In: Endothelial cells., MITSUI, J., TAKAGI, R., ICHIHARA, A., SEKIGUTI, M. and MURAMATSU, T.(eds.)",
+            "p227-229, Maruzen, Tokyo (1987) 17.",
+            "WICK, G., BAUNDNER, S. and HERZOG, F. Immunofluorescence, p47- 51, Die Medizinishe Verlagsgesellschaft, Marburg (1987) 18.",
+            "Yamamoto, T., Chemical Mediators of Inflammation and Immunity, In; Role of Hageman factor in enhancing vascular permeability., CHOEN, S., HAYASHI, H., SAITO, K. and TAKADA, A.",
+            "(eds.",
+            "), p129-143, Academic Press, New York (1986) 19.",
+            "KATAYAMA, S., SHIONOYA, H. and OHTAKE, S. A new method for extraction of extravasated dye in the skin and influence of fasting stress on passive cutaneous anaphylaxis in guinea pigs and rats.",
+            "Microbial.",
+            "Immunol.",
+            "Biol., 22, 89-101, 1987 20.",
+            "SHINBO, K., HIRAHARA, K., TAKAHASHI, M. and MATSUISHI, T. Suppressive effect of factor XIII on the hemorrhage induced by anti-endothelial cell antiserum.",
+            "Int.",
+            "J.",
+            "Hematol., 54(SUPPl 1), 276, 1991 21.",
+            "KARGES, H.E.",
+            "and CLEMENS, R. Factor XIII: Enzymatic and clinical aspects.",
+            "Behring Inst.",
+            "Mitt.",
+            "82, 43-58, 1988 22.",
+            "SORIA, A., SORIA, C. and BOULARD, C. Fibrin stabilizing factor (FXIII) and collagen polymerization.",
+            "Experientia, 31, 1355-1357, 1975 23.",
+            "CHOEN, J., BLANKENBERG, T.A., BORDEN, B., KAHN, D.R.",
+            "and VEIS, A.",
+            "Factor XIIIa-catalyzed crosslinking of platelet and muscle.",
+            "Regulation by nucleotides.",
+            "Biochem.",
+            "Biophys.",
+            "Acta., 628, 365-375, 1980 24.",
+            "FRANCIS, R.T., MACDONAGH, J. and MANN, K.G.",
+            "Factor V is a substrate for the transamidase factor XIIIa.",
+            "J. Biol.",
+            "Chem., 261, 9787-9797, 1986 25.",
+            "PILGER, E., BERTUCH, H., ULREICH, A. and RAINER, F. Capillary permeability in connective tissue disease.",
+            ": Influence of Fibrogammin P-therapy, Thromb.",
+            "Haemostas.",
+            "58, 81, 1987 26, TRYGSTAD, C.W.",
+            "and STIEHM, E.R.",
+            "Elevated serum IgA globulin in anaphylactoid purpura.",
+            "Pediatrics, 47, 1023-1029, 1971 27.",
+            "TAKAHASHI, M., SHINBO, K., HIRAHARA, K. and MATSUISHI, T. Effect of activated factor XIII on increase in permeability of human umbilical vein endothelial cell layer.",
+            "The XXIV Congress of International Society of Hematology in London (abstract), 1992 28.",
+            "GALOWAY, M.J., MAKIE, M.J. and MACVERRY, B.A.",
+            "Reduced levels of factor XIII in patients with chronic inflammatory bowel disease.",
+            "Clin.",
+            "Lab.",
+            "Haemat., 5, 427-428, 1983 29.",
+            "KURATSUJI, T., OKIMA, T., FUKUMOTO, T., SHIMIZU, S., IWASAKI,"
+          ],
+          "text": "14. ITO, T. and FUJIMAKI, M. Intergated handbook of internal medicine, In: SchBnlein-Henoch purpura, IMURA, H., OGATA, E., TAKAKU, S. and TARUI, S. (eds.), p296-300, Nakayama Shupann, Tokyo 15. WILSON, C.B., COLE, E.H., ZANETTI, M. and MAMPASO, F.M. Basic and Clinical Immunology, In: Renal disease, STITES, D.P., STOBO, J-D., FUDENBERG, H.H. and WELLS, J.V. (eds.), p557-575, Lange Medical Publication, California (1978) 16. MITSUI, Y. and IMAMURA, J. Isolation and Culture for Functional Cells, In: Endothelial cells., MITSUI, J., TAKAGI, R., ICHIHARA, A., SEKIGUTI, M. and MURAMATSU, T.(eds.) p227-229, Maruzen, Tokyo (1987) 17. WICK, G., BAUNDNER, S. and HERZOG, F. Immunofluorescence, p47- 51, Die Medizinishe Verlagsgesellschaft, Marburg (1987) 18. Yamamoto, T., Chemical Mediators of Inflammation and Immunity, In; Role of Hageman factor in enhancing vascular permeability., CHOEN, S., HAYASHI, H., SAITO, K. and TAKADA, A. (eds.), p129-143, Academic Press, New York (1986) 19. KATAYAMA, S., SHIONOYA, H. and OHTAKE, S. A new method for extraction of extravasated dye in the skin and influence of fasting stress on passive cutaneous anaphylaxis in guinea pigs and rats. Microbial. Immunol. Biol., 22, 89-101, 1987 20. SHINBO, K., HIRAHARA, K., TAKAHASHI, M. and MATSUISHI, T. Suppressive effect of factor XIII on the hemorrhage induced by anti-endothelial cell antiserum. Int. J. Hematol., 54(SUPPl 1), 276, 1991 21. KARGES, H.E. and CLEMENS, R. Factor XIII: Enzymatic and clinical aspects. Behring Inst. Mitt. 82, 43-58, 1988 22. SORIA, A., SORIA, C. and BOULARD, C. Fibrin stabilizing factor (FXIII) and collagen polymerization. Experientia, 31, 1355-1357, 1975 23. CHOEN, J., BLANKENBERG, T.A., BORDEN, B., KAHN, D.R. and VEIS, A. Factor XIIIa-catalyzed crosslinking of platelet and muscle. Regulation by nucleotides. Biochem. Biophys. Acta., 628, 365-375, 1980 24. FRANCIS, R.T., MACDONAGH, J. and MANN, K.G. Factor V is a substrate for the transamidase factor XIIIa. J. Biol. Chem., 261, 9787-9797, 1986 25. PILGER, E., BERTUCH, H., ULREICH, A. and RAINER, F. Capillary permeability in connective tissue disease.: Influence of Fibrogammin P-therapy, Thromb. Haemostas. 58, 81, 1987 26, TRYGSTAD, C.W. and STIEHM, E.R. Elevated serum IgA globulin in anaphylactoid purpura. Pediatrics, 47, 1023-1029, 1971 27. TAKAHASHI, M., SHINBO, K., HIRAHARA, K. and MATSUISHI, T. Effect of activated factor XIII on increase in permeability of human umbilical vein endothelial cell layer. The XXIV Congress of International Society of Hematology in London (abstract), 1992 28. GALOWAY, M.J., MAKIE, M.J. and MACVERRY, B.A. Reduced levels of factor XIII in patients with chronic inflammatory bowel disease. Clin. Lab. Haemat., 5, 427-428, 1983 29. KURATSUJI, T., OKIMA, T., FUKUMOTO, T., SHIMIZU, S., IWASAKI,",
+          "is_first_in_section": true,
+          "debug_info": {
+            "x_positions": [
+              52.79999923706055,
+              51.840187072753906,
+              52.321075439453125,
+              52.80491638183594,
+              52.32499694824219,
+              52.32501220703125,
+              51.604156494140625,
+              52.56396484375,
+              51.84410858154297,
+              52.56495666503906,
+              51.60614013671875,
+              52.565948486328125,
+              52.086036682128906,
+              52.565940856933594,
+              52.565940856933594,
+              51.60613250732422,
+              51.12622833251953,
+              52.32598876953125,
+              51.60613250732422,
+              52.086036682128906,
+              51.84608459472656,
+              51.606136322021484,
+              51.84608840942383,
+              51.606136322021484,
+              51.60614013671875,
+              51.60614013671875,
+              51.60614013671875,
+              51.846092224121094,
+              53.765708923339844,
+              51.846092224121094,
+              51.60614013671875,
+              50.64634704589844,
+              51.126251220703125,
+              51.846107482910156,
+              51.36620330810547,
+              51.60615539550781,
+              51.84000015258789,
+              51.12014389038086,
+              50.6402587890625,
+              50.880218505859375,
+              51.12017059326172,
+              51.12017059326172,
+              51.12017059326172,
+              50.64026641845703,
+              50.64026641845703,
+              51.36012268066406,
+              50.880218505859375,
+              50.880210876464844,
+              50.880210876464844,
+              50.880210876464844
+            ],
+            "regular_x": 50.40106201171875,
+            "block_indices": [
+              26,
+              26,
+              26,
+              26,
+              26,
+              26,
+              26,
+              26,
+              26,
+              26,
+              26,
+              26,
+              26,
+              26,
+              26,
+              26,
+              26,
+              26,
+              26,
+              26,
+              26,
+              26,
+              26,
+              26,
+              26,
+              26,
+              26,
+              26,
+              26,
+              26,
+              26,
+              26,
+              26,
+              26,
+              26,
+              26,
+              26,
+              26,
+              26,
+              26,
+              26,
+              26,
+              26,
+              26,
+              26,
+              26,
+              26,
+              26,
+              26,
+              26
+            ],
+            "reasons": [
+              "follows header",
+              "x0=51.8 vs regular_x=50.4",
+              "x0=52.3 vs regular_x=50.4",
+              "x0=52.8 vs regular_x=50.4",
+              "x0=52.3 vs regular_x=50.4",
+              "x0=52.3 vs regular_x=50.4",
+              "x0=51.6 vs regular_x=50.4",
+              "x0=52.6 vs regular_x=50.4",
+              "x0=51.8 vs regular_x=50.4",
+              "x0=52.6 vs regular_x=50.4",
+              "x0=51.6 vs regular_x=50.4",
+              "x0=52.6 vs regular_x=50.4",
+              "x0=52.1 vs regular_x=50.4",
+              "x0=52.6 vs regular_x=50.4",
+              "x0=52.6 vs regular_x=50.4",
+              "x0=51.6 vs regular_x=50.4",
+              "x0=51.1 vs regular_x=50.4",
+              "x0=52.3 vs regular_x=50.4",
+              "x0=51.6 vs regular_x=50.4",
+              "x0=52.1 vs regular_x=50.4",
+              "x0=51.8 vs regular_x=50.4",
+              "x0=51.6 vs regular_x=50.4",
+              "x0=51.8 vs regular_x=50.4",
+              "x0=51.6 vs regular_x=50.4",
+              "x0=51.6 vs regular_x=50.4",
+              "x0=51.6 vs regular_x=50.4",
+              "x0=51.6 vs regular_x=50.4",
+              "x0=51.8 vs regular_x=50.4",
+              "x0=53.8 vs regular_x=50.4",
+              "x0=51.8 vs regular_x=50.4",
+              "x0=51.6 vs regular_x=50.4",
+              "x0=50.6 vs regular_x=50.4",
+              "x0=51.1 vs regular_x=50.4",
+              "x0=51.8 vs regular_x=50.4",
+              "x0=51.4 vs regular_x=50.4",
+              "x0=51.6 vs regular_x=50.4",
+              "x0=51.8 vs regular_x=50.4",
+              "x0=51.1 vs regular_x=50.4",
+              "x0=50.6 vs regular_x=50.4",
+              "x0=50.9 vs regular_x=50.4",
+              "x0=51.1 vs regular_x=50.4",
+              "x0=51.1 vs regular_x=50.4",
+              "x0=51.1 vs regular_x=50.4",
+              "x0=50.6 vs regular_x=50.4",
+              "x0=50.6 vs regular_x=50.4",
+              "x0=51.4 vs regular_x=50.4",
+              "x0=50.9 vs regular_x=50.4",
+              "x0=50.9 vs regular_x=50.4",
+              "x0=50.9 vs regular_x=50.4",
+              "x0=50.9 vs regular_x=50.4"
+            ]
+          }
+        },
+        {
+          "sentences": [
+            "Y ., TOMITA, Y., MEGURO, T. and YAMADA, K. Factor XIII deficiency in antibiotic-associated pseudomembranous colitis and its treatment with Factor XIII concentrate.",
+            "Haemostas., 11, 229-234, 1982"
+          ],
+          "text": "Y ., TOMITA, Y., MEGURO, T. and YAMADA, K. Factor XIII deficiency in antibiotic-associated pseudomembranous colitis and its treatment with Factor XIII concentrate. Haemostas., 11, 229-234, 1982",
+          "is_first_in_section": false,
+          "debug_info": {
+            "x_positions": [
+              50.6402587890625,
+              51.36083984375,
+              50.40106201171875,
+              51.12091827392578
+            ],
+            "regular_x": 50.40106201171875,
+            "block_indices": [
+              26,
+              26,
+              26,
+              26
+            ],
+            "reasons": [
+              "follows header",
+              "x0=51.4 vs regular_x=50.4",
+              "x0=50.4 vs regular_x=50.4",
+              "x0=51.1 vs regular_x=50.4"
+            ]
+          }
+        }
+      ],
+      "is_numbered": false,
+      "font_size": 8.582786560058594
+    }
+  ],
+  "has_structure": true,
+  "metadata": {
+    "page_count": 10,
+    "filename": "hirahara1993.pdf",
+    "has_structure": true
+  }
+}

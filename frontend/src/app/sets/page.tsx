@@ -145,7 +145,7 @@ export default function SetsPage() {
               >
                 <CardContent className="p-6">
                   <div className="flex justify-between items-start">
-                    <h2 className="text-xl font-semibold text-gray-900">{set.title}</h2>
+                    <h2 className="text-xl font-semibold text-gray-900 truncate max-w-[80%]">{set.title}</h2>
                     <Button
                       variant="ghost"
                       size="icon"

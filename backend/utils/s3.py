@@ -187,4 +187,21 @@ def get_html_content(raw_key: str, processed_key: str) -> Tuple[str, str]:
     except ClientError as e:
         if e.response['Error']['Code'] == 'NoSuchKey':
             raise HTTPException(status_code=404, detail="HTML content not found")
-        raise HTTPException(status_code=500, detail=f"Error retrieving HTML content from S3: {str(e)}") 
+        raise HTTPException(status_code=500, detail=f"Error retrieving HTML content from S3: {str(e)}")
+
+def get_s3_body(s3_key: str) -> Optional[str]:
+    """Get content directly from S3 using a complete key.
+    
+    Args:
+        s3_key: Complete S3 key to the object
+        
+    Returns:
+        Content as string if exists, None otherwise
+    """
+    try:
+        response = s3_client.get_object(Bucket=BUCKET_NAME, Key=s3_key)
+        return response['Body'].read().decode('utf-8')
+    except ClientError as e:
+        if e.response['Error']['Code'] == 'NoSuchKey':
+            return None
+        raise HTTPException(status_code=500, detail=f"Error reading from S3: {str(e)}") 

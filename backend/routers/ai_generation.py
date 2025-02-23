@@ -8,8 +8,7 @@ from datetime import datetime, UTC
 from pydantic import BaseModel, HttpUrl
 
 from database import get_db
-from services.content_upload import ContentUploadService
-from services.content_processing import ContentProcessingService
+from services.content_manager import ContentManager
 from services.ai_flashcard import AIFlashcardService
 from api.models.requests.ai_generation import (
     FlashcardGenerationRequest,
@@ -30,28 +29,18 @@ async def upload_youtube_video(
     request: YouTubeUploadRequest,
     db: Session = Depends(get_db)
 ):
-    """Upload a YouTube video transcript and create a database record.
-    
-    Args:
-        request: YouTubeUploadRequest containing video_id, title, and optional description
-        db: Database session
-        
-    Returns:
-        SourceFileUploadResponse with source file ID and filename
-    """
+    """Upload a YouTube video transcript and create a database record."""
     logger.info(f"Received YouTube upload request for video: {request.video_id}")
     
     try:
-        service = ContentUploadService(db)
-        result = await service.upload_youtube_video(
+        content_manager = ContentManager(db)
+        source_file = await content_manager.upload_and_process(
             video_id=request.video_id,
-            video_title=request.title,
-            description=request.description or "",
             user_id=request.user_id
         )
         
         logger.info(f"Successfully processed YouTube video {request.video_id}")
-        return result
+        return {"id": source_file.id, "filename": source_file.filename}
         
     except Exception as e:
         logger.error(f"Error processing YouTube video {request.video_id}: {str(e)}", exc_info=True)
@@ -67,8 +56,9 @@ async def upload_source_file(
     db: Session = Depends(get_db)
 ):
     """Upload a source file to S3 and create a database record."""
-    service = ContentUploadService(db)
-    return service.upload_source_file(file, user_id)
+    content_manager = ContentManager(db)
+    source_file = await content_manager.upload_and_process(file=file, user_id=user_id)
+    return {"id": source_file.id, "filename": source_file.filename}
 
 @router.post("/upload/url", response_model=SourceFileUploadResponse)
 async def upload_url(
@@ -76,8 +66,9 @@ async def upload_url(
     db: Session = Depends(get_db)
 ):
     """Upload content from a URL and create a database record."""
-    service = ContentUploadService(db)
-    return await service.upload_url(str(request.url), request.user_id)
+    content_manager = ContentManager(db)
+    source_file = await content_manager.upload_and_process(url=str(request.url), user_id=request.user_id)
+    return {"id": source_file.id, "filename": source_file.filename}
 
 @router.post("/generate/{source_file_id}", response_model=FlashcardGenerationResponse)
 async def generate_flashcards(
@@ -112,7 +103,7 @@ async def generate_flashcards(
     )
     
     # Initialize services
-    content_processor = ContentProcessingService(db)
-    ai_flashcard_service = AIFlashcardService(db, content_processor)
+    content_manager = ContentManager(db)
+    ai_flashcard_service = AIFlashcardService(db, content_manager)
     
     return await ai_flashcard_service.generate_flashcards(source_file_id, generation_request) 

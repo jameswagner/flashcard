@@ -8,8 +8,8 @@ from models.enums import AIModel
 from models.prompt import PromptTemplate as DBPromptTemplate
 from sqlalchemy.orm import Session
 from utils.text_processing import add_line_markers
-from utils.sentence_processing import add_sentence_markers
 from utils.text_chunking import chunk_text, merge_flashcard_results, count_tokens, chunk_html_content, chunk_youtube_transcript
+from config.env import settings
 import traceback
 import re
 import asyncio
@@ -21,6 +21,7 @@ from utils.html_processing import HTMLContent
 from models.enums import FileType
 import json
 from .citation_processing.citation_sorting import sort_flashcards_by_earliest_citation
+from utils.plaintext_processing.processor import process_text
 
 # Get logger for this module
 logger = logging.getLogger(__name__)
@@ -130,7 +131,7 @@ async def create_flashcards_from_text(
         logger.info("\n=== PROCESSING TEXT ===")
         if use_sentences:
             logger.info("Using sentence-based processing")
-            marked_text = add_sentence_markers(text)
+            marked_text = process_text(text)
         else:
             logger.info("Using line-based processing")
             marked_text = add_line_markers(text)
@@ -139,6 +140,7 @@ async def create_flashcards_from_text(
     
     # Determine content type and chunking strategy
     logger.info("\n=== DETERMINING CONTENT TYPE ===")
+    logger.info(f"File type: {file_type}")
     is_html_content = False
     
     if file_type == FileType.HTML:
@@ -154,24 +156,30 @@ async def create_flashcards_from_text(
     
     # Chunk the text appropriately
     logger.info("\n=== CHUNKING TEXT ===")
+    logger.info(f"Using max_tokens_per_chunk={max_tokens_per_chunk or settings.text_processing.max_tokens_per_chunk}")
+    logger.info(f"Using overlap_tokens={overlap_tokens or settings.text_processing.overlap_tokens}")
+    
     if is_html_content:
         logger.info("Using HTML-aware chunking")
         try:
             html_content = HTMLContent.from_json(marked_text)
+            logger.info(f"Parsed HTML content with {len(html_content.sections)} sections")
             chunks = chunk_html_content(
                 html_content,
                 max_tokens=max_tokens_per_chunk,
                 overlap_tokens=overlap_tokens,
                 model=model
             )
+            logger.info(f"Successfully chunked HTML content into {len(chunks)} chunks")
         except Exception as e:
-            logger.info(f"Failed to parse HTML content: {e}, falling back to regular chunking")
+            logger.warning(f"Failed to parse HTML content: {e}, falling back to regular chunking")
             chunks = chunk_text(
                 marked_text,
                 max_tokens=max_tokens_per_chunk,
                 overlap_tokens=overlap_tokens,
                 model=model
             )
+            logger.info(f"Fallback chunking created {len(chunks)} chunks")
     elif file_type == FileType.YOUTUBE_TRANSCRIPT:
         logger.info("Using YouTube transcript chunking")
         chunks = chunk_youtube_transcript(
@@ -180,6 +188,7 @@ async def create_flashcards_from_text(
             overlap_tokens=overlap_tokens,
             model=model
         )
+        logger.info(f"Created {len(chunks)} chunks from YouTube transcript")
     else:
         logger.info("Using standard text chunking")
         chunks = chunk_text(
@@ -188,6 +197,12 @@ async def create_flashcards_from_text(
             overlap_tokens=overlap_tokens,
             model=model
         )
+        logger.info(f"Created {len(chunks)} chunks from standard text")
+    
+    # Log chunk sizes
+    for i, chunk in enumerate(chunks):
+        chunk_tokens = count_tokens(chunk, model)
+        logger.info(f"Chunk {i+1}: {chunk_tokens} tokens")
     
     logger.info(f"Split text into {len(chunks)} chunks")
     logger.info("\nChunk previews:")
@@ -395,12 +410,49 @@ def parse_ai_response(content: str) -> List[Dict[str, Any]]:
                         continue
                         
         # Validate key terms and concepts
-        key_terms = card.get('key_terms', [])
+        key_terms = card.get('answer_key_terms', [])
         if key_terms and not isinstance(key_terms, list):
-            logger.warning(f"Card {i+1} has invalid key_terms type: {type(key_terms)}, setting to empty list")
-            card['key_terms'] = []
+            logger.warning(f"Card {i+1} has invalid answer_key_terms type: {type(key_terms)}, setting to empty list")
+            card['answer_key_terms'] = []
         elif key_terms:
-            card['key_terms'] = [str(term) for term in key_terms if term]
+            # Validate each key term structure
+            valid_terms = []
+            for term in key_terms:
+                if not isinstance(term, dict):
+                    logger.warning(f"Invalid term format in card {i+1}, skipping: {term}")
+                    continue
+                    
+                if not isinstance(term.get('terms', []), list):
+                    logger.warning(f"Invalid terms list in card {i+1}, skipping: {term}")
+                    continue
+                    
+                if not all(isinstance(t, str) for t in term.get('terms', [])):
+                    logger.warning(f"Non-string terms in card {i+1}, skipping: {term}")
+                    continue
+                    
+                if not isinstance(term.get('weight'), (int, float)):
+                    logger.warning(f"Invalid weight in card {i+1}, defaulting to 1.0: {term}")
+                    term['weight'] = 1.0
+                    
+                if not isinstance(term.get('exact_match'), bool):
+                    logger.warning(f"Invalid exact_match in card {i+1}, defaulting to True: {term}")
+                    term['exact_match'] = True
+                    
+                if not isinstance(term.get('explanation'), str):
+                    logger.warning(f"Invalid explanation in card {i+1}, defaulting to empty string: {term}")
+                    term['explanation'] = ""
+                    
+                valid_terms.append({
+                    'terms': term['terms'],
+                    'weight': float(term['weight']),
+                    'exact_match': bool(term['exact_match']),
+                    'explanation': str(term['explanation'])
+                })
+            card['answer_key_terms'] = valid_terms
+            
+        # Remove old key_terms field
+        if 'key_terms' in card:
+            del card['key_terms']
             
         key_concepts = card.get('key_concepts', [])
         if key_concepts and not isinstance(key_concepts, list):

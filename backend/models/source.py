@@ -28,7 +28,7 @@ class SourceFile(Base):
     s3_key = Column(String(512), nullable=False, unique=True)
     url = Column(String(2048), nullable=True)  # Store URL for HTML sources
     file_type = Column(String, Enum(FileType, name='filetype', create_type=False, native_enum=False), nullable=False)
-    processed_text = Column(Text, nullable=True)  # Stores text with sentence/line markers
+    processed_text_s3_key = Column(String(512), nullable=True)  # S3 key for processed text file
     processed_text_type = Column(String(50), nullable=True)  # 'sentences', 'line_numbers', or 'html_structure'
     created_at = Column(DateTime, default=lambda: datetime.now(UTC))
     updated_at = Column(DateTime, default=lambda: datetime.now(UTC), onupdate=lambda: datetime.now(UTC))
@@ -56,10 +56,10 @@ class Citation(Base):
     The citation_type field indicates how to interpret these numbers:
     - sentence_range: Numbers refer to sentence markers [SENTENCE X]
     - line_numbers: Numbers refer to line numbers
-    - html_paragraph: Numbers refer to paragraph IDs
-    - html_section: Numbers refer to section IDs
-    - html_table: Numbers refer to table IDs
-    - html_list: Numbers refer to list IDs
+    - paragraph: Numbers refer to paragraph IDs
+    - section: Numbers refer to section IDs
+    - table: Numbers refer to table IDs
+    - list: Numbers refer to list IDs
     - video_timestamp: Numbers refer to video timestamps in seconds
     """
     __tablename__ = "citations"

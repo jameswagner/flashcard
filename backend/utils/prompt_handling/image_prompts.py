@@ -9,9 +9,6 @@ import asyncio
 # Configure logging
 logger = logging.getLogger(__name__)
 
-# List of supported image formats
-SUPPORTED_FORMATS = ['png', 'jpeg', 'jpg', 'gif', 'webp']
-
 async def analyze_image(image_url: str) -> str | None:
     """Analyze an image using GPT-4 Vision.
     
@@ -24,11 +21,6 @@ async def analyze_image(image_url: str) -> str | None:
     logger.info(f"Analyzing image: {image_url}")
     
     try:
-        # Check image format from URL
-        format_match = re.search(r'\.(\w+)(?:\?.*)?$', image_url.lower())
-        if not format_match or format_match.group(1) not in SUPPORTED_FORMATS:
-            return None
-
         # Initialize the model
         model = ChatOpenAI(model="gpt-4o-mini")
         
@@ -54,7 +46,11 @@ async def analyze_image(image_url: str) -> str | None:
                 content = response.content
                 
                 # Check for the "unable to process" message
-                if content.lower().startswith("i'm unable") or content.lower().startswith("i am unable"):
+                if (content.lower().startswith("i'm unable") 
+                    or content.lower().startswith("i am unable") 
+                    or content.lower().startswith("i am sorry")
+                    or content.lower().startswith("i apologize")
+                    or content.lower().startswith("i'm sorry")):
                     if attempt == 0:
                         logger.warning(f"Got 'unable to process' message, retrying...")
                         await asyncio.sleep(1)  # Brief pause before retry

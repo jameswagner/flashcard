@@ -1,0 +1,2752 @@
+{
+  "title": "philipose1990.pdf",
+  "sections": [
+    {
+      "header": "Lily Philipose a",
+      "content": "a Department of English , University of Cincinnati Published online: 16 Jan 2012. To cite this article: Lily Philipose (1990) The Twa Sisters: A Santal Folktale Variant of the Ballad, Folklore, 101:2, 169-177, DOI: 10.1080/0015587X.1990.9715791",
+      "page_number": 1,
+      "paragraphs": [
+        {
+          "sentences": [
+            "a Department of English , University of Cincinnati Published online: 16 Jan 2012.",
+            "To cite this article: Lily Philipose (1990) The Twa Sisters: A Santal Folktale Variant of"
+          ],
+          "text": "a Department of English , University of Cincinnati Published online: 16 Jan 2012. To cite this article: Lily Philipose (1990) The Twa Sisters: A Santal Folktale Variant of",
+          "is_first_in_section": false,
+          "debug_info": {
+            "x_positions": [
+              21.600000381469727
+            ],
+            "regular_x": 21.600000381469727,
+            "block_indices": [
+              6
+            ],
+            "reasons": [
+              "x0=21.6 vs regular_x=21.6"
+            ]
+          }
+        },
+        {
+          "sentences": [
+            "the Ballad, Folklore, 101:2, 169-177, DOI: 10.1080/0015587X.1990.9715791 To link to this article: http://dx.doi.org/10.1080/0015587X.1990.9715791"
+          ],
+          "text": "the Ballad, Folklore, 101:2, 169-177, DOI: 10.1080/0015587X.1990.9715791 To link to this article: http://dx.doi.org/10.1080/0015587X.1990.9715791",
+          "is_first_in_section": false,
+          "debug_info": {
+            "x_positions": [],
+            "regular_x": null,
+            "block_indices": [
+              -1
+            ],
+            "reasons": [
+              "pending from previous block"
+            ]
+          }
+        }
+      ],
+      "is_numbered": false,
+      "font_size": 10.0
+    },
+    {
+      "header": "To link to this article: http://dx.doi.org/10.1080/0015587X.1990.9715791",
+      "content": "",
+      "page_number": 1,
+      "paragraphs": [],
+      "is_numbered": false,
+      "font_size": 10.0
+    },
+    {
+      "header": "PLEASE SCROLL DOWN FOR ARTICLE",
+      "content": "Taylor & Francis makes every effort to ensure the accuracy of all the information (the “Content”) contained in the publications on our platform. However, Taylor & Francis, our agents, and our licensors make no representations or warranties whatsoever as to the accuracy, completeness, or suitability for any purpose of the Content. Any opinions and views expressed in this publication are the opinions and views of the authors, and are not the views of or endorsed by Taylor & Francis. The accuracy of the Content should not be relied upon and should be independently verified with primary sources of information. Taylor and Francis shall not be liable for any losses, actions, claims, proceedings, demands, costs, expenses, damages, and other liabilities whatsoever or howsoever caused arising directly or indirectly in connection with, in relation to or arising out of the use of the Content. This article may be used for research, teaching, and private study purposes. Any substantial or systematic reproduction, redistribution, reselling, loan, sub-licensing, systematic supply, or distribution in any form to anyone is expressly forbidden. Terms & Conditions of access and use can be found at http://www.tandfonline.com/page/terms-and-conditions Downloaded by [New York University] at 16:20 08 May 2015",
+      "page_number": 1,
+      "paragraphs": [
+        {
+          "sentences": [
+            "Taylor & Francis makes every effort to ensure the accuracy of all the information (the “Content”) contained in the publications on our platform.",
+            "However, Taylor & Francis, our agents, and our licensors make no representations or warranties whatsoever as to the accuracy, completeness, or suitability for any purpose of the Content.",
+            "Any opinions and views expressed in this publication are the opinions and views of the authors, and are not the views of or endorsed by Taylor & Francis.",
+            "The accuracy of the Content should not be relied upon and should be independently verified with primary sources of information.",
+            "Taylor and Francis shall not be liable for any losses, actions, claims, proceedings, demands, costs, expenses, damages, and other liabilities whatsoever or howsoever caused arising directly or indirectly in connection with, in relation to or arising out of the use of the Content.",
+            "This article may be used for research, teaching, and private study purposes.",
+            "Any substantial or systematic reproduction, redistribution, reselling, loan, sub-licensing, systematic supply, or distribution in any form to anyone is"
+          ],
+          "text": "Taylor & Francis makes every effort to ensure the accuracy of all the information (the “Content”) contained in the publications on our platform. However, Taylor & Francis, our agents, and our licensors make no representations or warranties whatsoever as to the accuracy, completeness, or suitability for any purpose of the Content. Any opinions and views expressed in this publication are the opinions and views of the authors, and are not the views of or endorsed by Taylor & Francis. The accuracy of the Content should not be relied upon and should be independently verified with primary sources of information. Taylor and Francis shall not be liable for any losses, actions, claims, proceedings, demands, costs, expenses, damages, and other liabilities whatsoever or howsoever caused arising directly or indirectly in connection with, in relation to or arising out of the use of the Content. This article may be used for research, teaching, and private study purposes. Any substantial or systematic reproduction, redistribution, reselling, loan, sub-licensing, systematic supply, or distribution in any form to anyone is",
+          "is_first_in_section": false,
+          "debug_info": {
+            "x_positions": [
+              21.600000381469727,
+              21.600000381469727,
+              21.600000381469727
+            ],
+            "regular_x": 21.600000381469727,
+            "block_indices": [
+              10,
+              10,
+              10
+            ],
+            "reasons": [
+              "x0=21.6 vs regular_x=21.6",
+              "x0=21.6 vs regular_x=21.6",
+              "x0=21.6 vs regular_x=21.6"
+            ]
+          }
+        },
+        {
+          "sentences": [
+            "expressly forbidden.",
+            "Terms & Conditions of access and use can be found at"
+          ],
+          "text": "expressly forbidden. Terms & Conditions of access and use can be found at",
+          "is_first_in_section": true,
+          "debug_info": {
+            "x_positions": [
+              21.600000381469727
+            ],
+            "regular_x": 21.600000381469727,
+            "block_indices": [
+              0
+            ],
+            "reasons": [
+              "x0=21.6 vs regular_x=21.6"
+            ]
+          }
+        },
+        {
+          "sentences": [
+            "http://www.tandfonline.com/page/terms-and-conditions Downloaded by [New York University] at 16:20 08 May 2015"
+          ],
+          "text": "http://www.tandfonline.com/page/terms-and-conditions Downloaded by [New York University] at 16:20 08 May 2015",
+          "is_first_in_section": false,
+          "debug_info": {
+            "x_positions": [
+              -0.5299997329711914
+            ],
+            "regular_x": -0.5299997329711914,
+            "block_indices": [
+              1
+            ],
+            "reasons": [
+              "x0=-0.5 vs regular_x=-0.5"
+            ]
+          }
+        }
+      ],
+      "is_numbered": false,
+      "font_size": 10.0
+    },
+    {
+      "header": "Folklore vol. 101:ii, 1990 169",
+      "content": "The Twa Sisters: A Santal Folktale Variant of the Ballad",
+      "page_number": 3,
+      "paragraphs": [
+        {
+          "sentences": [
+            "The Twa Sisters:"
+          ],
+          "text": "The Twa Sisters:",
+          "is_first_in_section": true,
+          "debug_info": {
+            "x_positions": [
+              39.599998474121094
+            ],
+            "regular_x": 39.36000061035156,
+            "block_indices": [
+              2
+            ],
+            "reasons": [
+              "follows header"
+            ]
+          }
+        },
+        {
+          "sentences": [
+            "A Santal Folktale Variant of the Ballad"
+          ],
+          "text": "A Santal Folktale Variant of the Ballad",
+          "is_first_in_section": false,
+          "debug_info": {
+            "x_positions": [
+              39.36000061035156
+            ],
+            "regular_x": 39.36000061035156,
+            "block_indices": [
+              2
+            ],
+            "reasons": [
+              "follows header",
+              "follows header"
+            ]
+          }
+        }
+      ],
+      "is_numbered": false,
+      "font_size": 7.4833149909973145
+    },
+    {
+      "header": "LILY PHILIPOSE",
+      "content": "T H E Twa Sisters' had, by the time Child published his English and Scottish Popular Ballads (1882-1898),' been found in England, Scotland, Wales and Ireland. Equally popular with the Scandinavians, the ballad had also appeared in Danish, Icelandic, Norwegian, Faroe, Swedish, and Finnish versions. In the first half of this century, ballad scholars were giving considerable critical attention to this ballad, especially to the relationship between the variants. Lutz Mackensen summarised these variants, and those of the closely related folktale known as T h e Singing Bone' (AT 780), in his study, Der singende Knochen, published in 1923. 2 Archer Taylor discussed the English version of the ballad and its relationship to its American counterpart in T h e English, Scottish, and American Versions of \"The Twa Sisters,\"' 3 and came to the conclusion that the American versions were derived exclusively from the English. Harbison Parker's study, \" T h e Twa Sisters'—Going Which Way?' (1951), 4 proved important in providing alternatives to previously established belief (in Knut Leistel's 'Dei tvo systar' in 1909)' that the ballad originated in Britain, and travelled from there to Scandinavia in two separate traditions. For the most part, these scholars concentrated on variants of the ballad in verse form. But in their common search for an Ur-form; they looked ultimately to the tale that appeared to be the source of the ballad. Paul Brewster, in 1953, produced a complete survey of both the song and the tale. 6 In 1977, Tristram Potter (^ffin, in his The British Traditional Ballad in North America, 1 brought to our attention the large number of American story variations of this song. More recently, Roger de V. Renwick, in his struoural/semiological study, English Folk Poetry: Structure and Meaning (1980), 8 considered the ballad in terms of its signifiers: the setting of the river, the plot element of the victim floating down the stream, etc., and showed how these 'codes' brought 'The Twa Sisters' within the ballad cluster surrounding the popular English ballad, 'The Bold Fisherman.' These studies show that 'The Twa Sisters,' either in verse or in tale form, continues to be an ongoing tradition. The popularity of the story of the two sisters, and its adaptabuity to a range of cultures, is attested to by the appearance of a variant among the storytellers of the Santals, a tribal group in West Bengal, India. The story, a variant of Aarne and Thompson type 780, was collected in 1891 by A. Campbell' in the district of Manbhum, from Santal storytellers. 'The Story of Two Princesses,' the Santal tale version of Child B, incorporates the traditional features of the ballad: the attraction of the older sister's lover to the beautiful younger sister, the death of the younger sister, the transformation of her body into a musical instrument, and the mysterious song that issues from the instrument, revealing the secret of her death. The Santal story, however, encodes these in a way that is different from either the European or the American versions, so that they become particularly meaningful within the structure of Santal tribal society. The import of the song's message shifts away Downloaded by [New York University] at 16:20 08 May 2015",
+      "page_number": 3,
+      "paragraphs": [
+        {
+          "sentences": [
+            "T H E Twa Sisters' had, by the time Child published his English and Scottish Popular Ballads (1882-1898),' been found in England, Scotland, Wales and Ireland.",
+            "Equally"
+          ],
+          "text": "T H E Twa Sisters' had, by the time Child published his English and Scottish Popular Ballads (1882-1898),' been found in England, Scotland, Wales and Ireland. Equally",
+          "is_first_in_section": true,
+          "debug_info": {
+            "x_positions": [
+              39.599998474121094,
+              39.36000061035156
+            ],
+            "regular_x": 39.36000061035156,
+            "block_indices": [
+              4,
+              4
+            ],
+            "reasons": [
+              "follows header",
+              "x0=39.4 vs regular_x=39.4"
+            ]
+          }
+        },
+        {
+          "sentences": [
+            "popular with the Scandinavians, the ballad had also appeared in Danish, Icelandic, Norwegian, Faroe, Swedish, and Finnish versions.",
+            "In the first half of this century, ballad scholars were giving considerable critical attention to this ballad, especially to the relationship between the variants.",
+            "Lutz Mackensen summarised these variants, and those of the closely related folktale known as T h e Singing Bone' (AT 780), in his study, Der singende Knochen, published in 1923.",
+            "2 Archer Taylor discussed the English version of"
+          ],
+          "text": "popular with the Scandinavians, the ballad had also appeared in Danish, Icelandic, Norwegian, Faroe, Swedish, and Finnish versions. In the first half of this century, ballad scholars were giving considerable critical attention to this ballad, especially to the relationship between the variants. Lutz Mackensen summarised these variants, and those of the closely related folktale known as T h e Singing Bone' (AT 780), in his study, Der singende Knochen, published in 1923. 2 Archer Taylor discussed the English version of",
+          "is_first_in_section": false,
+          "debug_info": {
+            "x_positions": [
+              39.599998474121094,
+              39.36000061035156,
+              39.599998474121094,
+              39.599998474121094,
+              39.599998474121094,
+              39.36000061035156
+            ],
+            "regular_x": 39.36000061035156,
+            "block_indices": [
+              4,
+              4,
+              4,
+              4,
+              4,
+              4
+            ],
+            "reasons": [
+              "follows header",
+              "x0=39.4 vs regular_x=39.4",
+              "x0=39.6 vs regular_x=39.4",
+              "x0=39.6 vs regular_x=39.4",
+              "x0=39.6 vs regular_x=39.4",
+              "x0=39.4 vs regular_x=39.4"
+            ]
+          }
+        },
+        {
+          "sentences": [
+            "the ballad and its relationship to its American counterpart in T h e English, Scottish, and American Versions of \"The Twa Sisters,\"' 3 and came to the conclusion that the American versions were derived exclusively from the English.",
+            "Harbison Parker's study, \" T h e Twa Sisters'—Going Which Way?'",
+            "(1951), 4 proved important in providing alternatives to previously established belief (in Knut Leistel's 'Dei tvo systar' in 1909)' that the ballad originated in Britain, and travelled from there to Scandinavia in two separate traditions.",
+            "For the most part, these scholars concentrated on variants of the ballad in verse form.",
+            "But in their common search for an Ur-form; they looked ultimately to the tale that appeared to be the source of the ballad.",
+            "Paul Brewster, in 1953, produced a complete survey of both the song and the tale.",
+            "6 In 1977, Tristram Potter (^ffin, in his The British Traditional Ballad in North America, 1 brought to our attention the large"
+          ],
+          "text": "the ballad and its relationship to its American counterpart in T h e English, Scottish, and American Versions of \"The Twa Sisters,\"' 3 and came to the conclusion that the American versions were derived exclusively from the English. Harbison Parker's study, \" T h e Twa Sisters'—Going Which Way?' (1951), 4 proved important in providing alternatives to previously established belief (in Knut Leistel's 'Dei tvo systar' in 1909)' that the ballad originated in Britain, and travelled from there to Scandinavia in two separate traditions. For the most part, these scholars concentrated on variants of the ballad in verse form. But in their common search for an Ur-form; they looked ultimately to the tale that appeared to be the source of the ballad. Paul Brewster, in 1953, produced a complete survey of both the song and the tale. 6 In 1977, Tristram Potter (^ffin, in his The British Traditional Ballad in North America, 1 brought to our attention the large",
+          "is_first_in_section": false,
+          "debug_info": {
+            "x_positions": [
+              39.36000061035156,
+              39.599998474121094,
+              39.36000061035156,
+              39.84000015258789,
+              39.36000061035156,
+              39.36000061035156,
+              39.36000061035156,
+              39.599998474121094,
+              39.599998474121094,
+              39.599998474121094,
+              40.79999923706055
+            ],
+            "regular_x": 39.36000061035156,
+            "block_indices": [
+              4,
+              4,
+              4,
+              4,
+              4,
+              4,
+              4,
+              4,
+              4,
+              4,
+              4
+            ],
+            "reasons": [
+              "follows header",
+              "x0=39.6 vs regular_x=39.4",
+              "x0=39.4 vs regular_x=39.4",
+              "x0=39.8 vs regular_x=39.4",
+              "x0=39.4 vs regular_x=39.4",
+              "x0=39.4 vs regular_x=39.4",
+              "x0=39.4 vs regular_x=39.4",
+              "x0=39.6 vs regular_x=39.4",
+              "x0=39.6 vs regular_x=39.4",
+              "x0=39.6 vs regular_x=39.4",
+              "x0=40.8 vs regular_x=39.4"
+            ]
+          }
+        },
+        {
+          "sentences": [
+            "number of American story variations of this song.",
+            "More recently, Roger de V. Renwick, in his struoural/semiological study, English Folk Poetry: Structure and Meaning (1980), 8 considered the ballad in terms of its signifiers: the setting of the river, the plot element of the victim floating down the stream, etc., and showed how these 'codes' brought 'The Twa Sisters' within the ballad cluster surrounding the popular English ballad, 'The Bold Fisherman.'",
+            "These studies show that 'The Twa Sisters,' either in verse or in tale form, continues to be an ongoing tradition."
+          ],
+          "text": "number of American story variations of this song. More recently, Roger de V. Renwick, in his struoural/semiological study, English Folk Poetry: Structure and Meaning (1980), 8 considered the ballad in terms of its signifiers: the setting of the river, the plot element of the victim floating down the stream, etc., and showed how these 'codes' brought 'The Twa Sisters' within the ballad cluster surrounding the popular English ballad, 'The Bold Fisherman.' These studies show that 'The Twa Sisters,' either in verse or in tale form, continues to be an ongoing tradition.",
+          "is_first_in_section": false,
+          "debug_info": {
+            "x_positions": [
+              39.599998474121094,
+              39.599998474121094,
+              39.84000015258789,
+              39.84000015258789,
+              39.599998474121094
+            ],
+            "regular_x": 39.599998474121094,
+            "block_indices": [
+              5,
+              5,
+              5,
+              5,
+              5
+            ],
+            "reasons": [
+              "x0=39.6 vs regular_x=39.6",
+              "x0=39.6 vs regular_x=39.6",
+              "x0=39.8 vs regular_x=39.6",
+              "x0=39.8 vs regular_x=39.6",
+              "x0=39.6 vs regular_x=39.6",
+              "x0=48.0 vs regular_x=39.6 (indented)"
+            ]
+          }
+        },
+        {
+          "sentences": [
+            "The popularity of the story of the two sisters, and its adaptabuity to a range of cultures, is attested to by the appearance of a variant among the storytellers of the Santals, a tribal group in West Bengal, India.",
+            "The story, a variant of Aarne and Thompson type 780, was collected in 1891 by A. Campbell' in the district of Manbhum, from Santal storytellers."
+          ],
+          "text": "The popularity of the story of the two sisters, and its adaptabuity to a range of cultures, is attested to by the appearance of a variant among the storytellers of the Santals, a tribal group in West Bengal, India. The story, a variant of Aarne and Thompson type 780, was collected in 1891 by A. Campbell' in the district of Manbhum, from Santal storytellers.",
+          "is_first_in_section": true,
+          "debug_info": {
+            "x_positions": [
+              48.0,
+              39.84000015258789,
+              39.84000015258789,
+              39.84000015258789,
+              39.84000015258789
+            ],
+            "regular_x": 39.84000015258789,
+            "block_indices": [
+              6,
+              6,
+              6,
+              6,
+              6
+            ],
+            "reasons": [
+              "x0=48.0 vs regular_x=39.8 (indented)",
+              "x0=39.8 vs regular_x=39.8",
+              "x0=39.8 vs regular_x=39.8",
+              "x0=39.8 vs regular_x=39.8",
+              "x0=39.8 vs regular_x=39.8",
+              "x0=48.5 vs regular_x=39.8 (indented)"
+            ]
+          }
+        },
+        {
+          "sentences": [
+            "'The Story of Two Princesses,' the Santal tale version of Child B, incorporates the traditional features of the ballad: the attraction of the older sister's lover to the beautiful younger sister, the death of the younger sister, the transformation of her body into a musical instrument, and the mysterious song that issues from the instrument, revealing the secret of her death.",
+            "The Santal story, however, encodes these in a way that is different from either the European or the American versions, so that they become particularly meaningful within the structure of Santal tribal society.",
+            "The import of the song's message shifts away Downloaded by [New York University] at 16:20 08 May 2015"
+          ],
+          "text": "'The Story of Two Princesses,' the Santal tale version of Child B, incorporates the traditional features of the ballad: the attraction of the older sister's lover to the beautiful younger sister, the death of the younger sister, the transformation of her body into a musical instrument, and the mysterious song that issues from the instrument, revealing the secret of her death. The Santal story, however, encodes these in a way that is different from either the European or the American versions, so that they become particularly meaningful within the structure of Santal tribal society. The import of the song's message shifts away Downloaded by [New York University] at 16:20 08 May 2015",
+          "is_first_in_section": false,
+          "debug_info": {
+            "x_positions": [
+              -0.5299997329711914
+            ],
+            "regular_x": -0.5299997329711914,
+            "block_indices": [
+              8
+            ],
+            "reasons": [
+              "x0=-0.5 vs regular_x=-0.5"
+            ]
+          }
+        }
+      ],
+      "is_numbered": false,
+      "font_size": 8.954887390136719
+    },
+    {
+      "header": "170 LILY PHILIPOSE",
+      "content": "from the guilt of the elder sister (who, in the European and American versions, murders her sister by pushing her into the river), to the repressed feelings of sexual desire and guilt in the younger sister. The chief interest in the Santal story is not so much the avenging of the elder sister's crime as the exploration of the predicament of a younger sister who is attracted to her own brother-in-law. This predicament is one that reflects very real tensions within the domestic situation created by Santal marriage rules. Among the Santals, sexual relations between a woman's husband and her younger sister are quite legitimate. A full account of Santal marriage rules is provided in C. H. Craven's 'Traces of Fraternal Polyandry among the Santals' (1904). According to Craven: The relations between husbands and their wives' younger sisters (erwel kuriko) are perhaps even less restricted, and it is quite legitimate for a man to carry on an intrigue with his wife's younger sister, provided the damsel is agreeable, the only stipulation being that if she became 'enceinte' her brother-in-law (tenay) must take her to wife permanently. Santal wives are usually frantically jealous, but they seldom fail to tolerate, and have been known to encourage, improper relations between their consorts and their younger sisters. It is often urged as an excuse for the practice that the latter are thus kept from going wrong with younger men. 1 0 Craven's account is a particularly telling one because Craven describes not only the social rule itself, but also how it is interpreted by the individual. In spite of the social sanction of sexual relations between a younger sister and her brother-in-law, the elder sister is, quite naturally, very jealous when this actually occurs. In turn (one might imagine), the younger sister would feel considerably guilty in bringing about this 'frantic jealousy,' particularly if she were emotionally attached to her sister. In other words, both sisters would be likely to respond initially to their own deepest instincts, although this would seem to contradict the terms of the social sanction. The tale is ultimately concerned, I think, not so much with social structures—with marriage rules and sanctions or taboos— but with very human responses to social situations: responses that are independent of the social rules peculiar to a single cultural goup. The story that Campbell collected is given in full in the Appendix, below; in summarised form, it is this: Two daughters of a Raja went out in search of the fruit of the Terel tree—a particularly luscious fruit. They had to walk a long way from the palace walls before they found the fruit they were looking for. After having feasted on this, they felt thirsty. So the elder sister went off to fetch some water, while the younger sister waited under the fruit tree. The elder sister was delayed by a water-spirit who repeatedly flew through the water she had collected in a leaf-cup, making a hole in the bottom of the cup. A young raja who happened to be passing by saw the girl's repeated efforts to fill a leaf-cup with water, and he was so charmed by her that he carried her away to be his wife. The younger sister, meanwhile, was waiting by the fruit tree when she saw a horde of Hanuman monkeys coming towards the tree in search of fruit. She crept into the hollow of the tree in order to hide, but she was discovered by the oldest monkey who was too frail to climb the tree like the others. The old monkey went into the hollow and ate up the younger sister. Soon afterwards, the monkey died, and from its decaying body a gourd sprang up which soon began to bear fruit. A 'jugi' (i.e. a yogi, an ascetic or devotee) plucked the fruit, and from its shell he made a banjo (Campbell's translation). Whenever the yogi played it, the instrument would produce sweet tones, but the song that it played always related the story of the younger sister's death. The yogi travelled around the country playing his banjo till, one day, the raja's wife chanced to hear his music. She recognised her sister's voice at once, so she contrived to get possession of the instrument. She played a trick on the yogi so that she could have the instrument for herself. She kept it secretly in her room. The raja was unaware of the secret of Downloaded by [New York University] at 16:20 08 May 2015",
+      "page_number": 4,
+      "paragraphs": [
+        {
+          "sentences": [
+            "from the guilt of the elder sister (who, in the European and American versions, murders her sister by pushing her into the river), to the repressed feelings of sexual desire and guilt in the younger sister.",
+            "The chief interest in the Santal story is not so much the avenging of the elder sister's crime as the exploration of the predicament of a younger sister who is attracted to her own brother-in-law.",
+            "This predicament is one that reflects very real tensions within the domestic situation created by Santal marriage rules.",
+            "Among the Santals, sexual relations between a woman's husband and her younger sister are quite legitimate.",
+            "A full account of Santal marriage rules is provided in C. H. Craven's 'Traces of Fraternal Polyandry among the Santals' (1904).",
+            "According to Craven: The relations between husbands and their wives' younger sisters (erwel kuriko) are perhaps even less restricted, and it is quite legitimate for a man to carry on an intrigue with his wife's younger sister, provided the damsel is agreeable, the only stipulation being that if she became 'enceinte' her brother-in-law (tenay) must take her to wife permanently.",
+            "Santal wives are usually frantically jealous, but they seldom fail to tolerate, and have been known to encourage, improper relations between their consorts and their younger sisters.",
+            "It is often urged as an excuse for the practice that the latter are thus kept from going wrong with younger men.",
+            "1 0"
+          ],
+          "text": "from the guilt of the elder sister (who, in the European and American versions, murders her sister by pushing her into the river), to the repressed feelings of sexual desire and guilt in the younger sister. The chief interest in the Santal story is not so much the avenging of the elder sister's crime as the exploration of the predicament of a younger sister who is attracted to her own brother-in-law. This predicament is one that reflects very real tensions within the domestic situation created by Santal marriage rules. Among the Santals, sexual relations between a woman's husband and her younger sister are quite legitimate. A full account of Santal marriage rules is provided in C. H. Craven's 'Traces of Fraternal Polyandry among the Santals' (1904). According to Craven: The relations between husbands and their wives' younger sisters (erwel kuriko) are perhaps even less restricted, and it is quite legitimate for a man to carry on an intrigue with his wife's younger sister, provided the damsel is agreeable, the only stipulation being that if she became 'enceinte' her brother-in-law (tenay) must take her to wife permanently. Santal wives are usually frantically jealous, but they seldom fail to tolerate, and have been known to encourage, improper relations between their consorts and their younger sisters. It is often urged as an excuse for the practice that the latter are thus kept from going wrong with younger men. 1 0",
+          "is_first_in_section": false,
+          "debug_info": {
+            "x_positions": [
+              39.84000015258789,
+              40.08000183105469,
+              39.84000015258789,
+              39.84000015258789,
+              40.08000183105469,
+              39.84000015258789,
+              39.84000015258789
+            ],
+            "regular_x": 39.84000015258789,
+            "block_indices": [
+              3,
+              3,
+              3,
+              3,
+              3,
+              3,
+              3
+            ],
+            "reasons": [
+              "x0=39.8 vs regular_x=39.8",
+              "x0=40.1 vs regular_x=39.8",
+              "x0=39.8 vs regular_x=39.8",
+              "x0=39.8 vs regular_x=39.8",
+              "x0=40.1 vs regular_x=39.8",
+              "x0=39.8 vs regular_x=39.8",
+              "x0=39.8 vs regular_x=39.8",
+              "x0=48.2 vs regular_x=39.8 (indented)"
+            ]
+          }
+        },
+        {
+          "sentences": [
+            "Craven's account is a particularly telling one because Craven describes not only the social rule itself, but also how it is interpreted by the individual.",
+            "In spite of the social sanction of sexual relations between a younger sister and her brother-in-law, the elder sister is, quite naturally, very jealous when this actually occurs.",
+            "In turn (one might imagine), the younger sister would feel considerably guilty in bringing about this 'frantic jealousy,' particularly if she were emotionally attached to her sister.",
+            "In other words, both sisters would be likely to respond initially to their own deepest instincts, although this would seem to contradict the terms of the social sanction.",
+            "The tale is ultimately concerned, I think, not so much with social structures—with marriage rules and sanctions or taboos— but with very human responses to social situations: responses that are independent of the social rules peculiar to a single cultural goup."
+          ],
+          "text": "Craven's account is a particularly telling one because Craven describes not only the social rule itself, but also how it is interpreted by the individual. In spite of the social sanction of sexual relations between a younger sister and her brother-in-law, the elder sister is, quite naturally, very jealous when this actually occurs. In turn (one might imagine), the younger sister would feel considerably guilty in bringing about this 'frantic jealousy,' particularly if she were emotionally attached to her sister. In other words, both sisters would be likely to respond initially to their own deepest instincts, although this would seem to contradict the terms of the social sanction. The tale is ultimately concerned, I think, not so much with social structures—with marriage rules and sanctions or taboos— but with very human responses to social situations: responses that are independent of the social rules peculiar to a single cultural goup.",
+          "is_first_in_section": true,
+          "debug_info": {
+            "x_positions": [
+              48.2400016784668,
+              39.84000015258789,
+              39.84000015258789,
+              39.84000015258789,
+              40.08000183105469,
+              40.08000183105469,
+              39.84000015258789,
+              39.599998474121094,
+              39.84000015258789,
+              39.599998474121094,
+              39.599998474121094
+            ],
+            "regular_x": 39.599998474121094,
+            "block_indices": [
+              4,
+              4,
+              4,
+              4,
+              4,
+              4,
+              4,
+              4,
+              4,
+              4,
+              4
+            ],
+            "reasons": [
+              "x0=48.2 vs regular_x=39.6 (indented)",
+              "x0=39.8 vs regular_x=39.6",
+              "x0=39.8 vs regular_x=39.6",
+              "x0=39.8 vs regular_x=39.6",
+              "x0=40.1 vs regular_x=39.6",
+              "x0=40.1 vs regular_x=39.6",
+              "x0=39.8 vs regular_x=39.6",
+              "x0=39.6 vs regular_x=39.6",
+              "x0=39.8 vs regular_x=39.6",
+              "x0=39.6 vs regular_x=39.6",
+              "x0=39.6 vs regular_x=39.6",
+              "x0=48.0 vs regular_x=39.6 (indented)"
+            ]
+          }
+        },
+        {
+          "sentences": [
+            "The story that Campbell collected is given in full in the Appendix, below; in summarised form, it is this: Two daughters of a Raja went out in search of the fruit of the Terel tree—a particularly luscious fruit.",
+            "They had to walk a long way from the palace walls before they found the fruit they were looking for.",
+            "After having feasted on this, they felt thirsty.",
+            "So the elder sister went off to fetch some water, while the younger sister waited under the fruit tree.",
+            "The elder sister was delayed by a water-spirit who repeatedly flew through the water she had collected in a leaf-cup, making a hole in the bottom of the cup.",
+            "A young raja who happened to be passing by saw the girl's repeated efforts to fill a leaf-cup with water, and he was so charmed by her that he carried her away to be his wife.",
+            "The younger sister, meanwhile, was waiting by the fruit tree when she saw a horde of Hanuman monkeys coming towards the tree in search of fruit.",
+            "She crept into the hollow of the tree in order to hide, but she was discovered by the oldest monkey who was too frail to climb the tree like the others.",
+            "The old monkey went into the hollow and ate up the younger sister.",
+            "Soon afterwards, the monkey died, and from its decaying body a gourd sprang up which soon began to bear fruit.",
+            "A 'jugi' (i.e.",
+            "a yogi, an ascetic or devotee) plucked the fruit, and from its shell he made a banjo (Campbell's translation).",
+            "Whenever the yogi played it, the instrument would produce sweet tones, but the song that it played always related the story of the younger sister's death.",
+            "The yogi travelled around the country playing his banjo till, one day, the raja's wife chanced to hear his music.",
+            "She recognised her sister's voice at once, so she contrived to get possession of the instrument.",
+            "She played a trick on the yogi so that she could have the instrument for herself.",
+            "She kept it secretly in her room.",
+            "The raja was unaware of the secret of Downloaded by [New York University] at 16:20 08 May 2015"
+          ],
+          "text": "The story that Campbell collected is given in full in the Appendix, below; in summarised form, it is this: Two daughters of a Raja went out in search of the fruit of the Terel tree—a particularly luscious fruit. They had to walk a long way from the palace walls before they found the fruit they were looking for. After having feasted on this, they felt thirsty. So the elder sister went off to fetch some water, while the younger sister waited under the fruit tree. The elder sister was delayed by a water-spirit who repeatedly flew through the water she had collected in a leaf-cup, making a hole in the bottom of the cup. A young raja who happened to be passing by saw the girl's repeated efforts to fill a leaf-cup with water, and he was so charmed by her that he carried her away to be his wife. The younger sister, meanwhile, was waiting by the fruit tree when she saw a horde of Hanuman monkeys coming towards the tree in search of fruit. She crept into the hollow of the tree in order to hide, but she was discovered by the oldest monkey who was too frail to climb the tree like the others. The old monkey went into the hollow and ate up the younger sister. Soon afterwards, the monkey died, and from its decaying body a gourd sprang up which soon began to bear fruit. A 'jugi' (i.e. a yogi, an ascetic or devotee) plucked the fruit, and from its shell he made a banjo (Campbell's translation). Whenever the yogi played it, the instrument would produce sweet tones, but the song that it played always related the story of the younger sister's death. The yogi travelled around the country playing his banjo till, one day, the raja's wife chanced to hear his music. She recognised her sister's voice at once, so she contrived to get possession of the instrument. She played a trick on the yogi so that she could have the instrument for herself. She kept it secretly in her room. The raja was unaware of the secret of Downloaded by [New York University] at 16:20 08 May 2015",
+          "is_first_in_section": false,
+          "debug_info": {
+            "x_positions": [
+              -0.5299997329711914
+            ],
+            "regular_x": -0.5299997329711914,
+            "block_indices": [
+              7
+            ],
+            "reasons": [
+              "x0=-0.5 vs regular_x=-0.5"
+            ]
+          }
+        }
+      ],
+      "is_numbered": false,
+      "font_size": 8.954887390136719
+    },
+    {
+      "header": "T H E TWA SISTERS: A SANTAL FOLKTALE VARIANT 171",
+      "content": "the instrument, but every time he and his wife were out walking, the younger sister would emerge from the banjo and cook the family meal. Often, the raja returned to find that the meal had been cooked while nobody was home. Intrigued by this mysterious visitor, he decided one day to lie in wait to discover the identity of the secret provider. As usual, the younger sister emerged from the banjo, then she dressed her hair, anointed herself, and began to cook the rice. The raja revealed himself, caught hold of the girl, and said, 'You and I are one,' meaning, of course, that he was now her husband. In the light of Santal marriage rules, the textual variants in this version of 'The Twa Sisters' show an internal logic. First of all, there is no evidence of previous evil intent on the part of the elder sister. In Child B, the elder sister takes the younger to the seashore under the pretence of watching their father's ship come ashore, and there she violently pushes her sister into the water. Here, however, the elder sister is guilty of nothing more serious than neglecting to return for her sister after she has been found by the raja. There is no suggestion that she wishes to do away with her sister; indeed, there is little motivation for her to do so. The European and American versions make clear that the motive for the elder sister's cruelty is her jealousy of her sister's great beauty. Child B, Stanza 15 has: Your cherry cheeks an' yallow hair Gars me gae maiden for evermair.\" The Scandinavian versions place particular emphasis on the younger sister's beauty. Not only is she more attractive than her elder sister but, as in Norwegian A, she taunts the older girl with her own superior beauty: Although thou wilt wash thyself never so white, So shalt thou become never to thy sister like. 12 Norwegian C has also: Thou mayest wash thee as white as thou canst, Never wilt thou get a bridegroom. 13 In the Santal version, on the other hand, the elder sister is obviously beautiful because the raja is attracted to her at the moment that he first sees her. Thus, the younger sister is not a threat because of her greater beauty, and she is not dangerous before the marriage between the raja and the elder sister. It is only after the marriage that the evil intentions of the elder sister are made clear. It is only then that she becomes manipulative and deceiving. Given the Santal marriage rules, we are able to see that the threat posed by the younger sister is not that of her beauty (as in the Western versions), but of her position within the family structure. And this becomes threatening to the elder sister only after her own marriage. The danger inherent in the situation stems not only from the younger sister's youth but also, this tale seems to suggest, from her sexual potency, her ability to bear a child— the single most dangerous eventuality ibr her elder sister, who will then have to accept her husband's taking a second wife. The conglomeration of images of water, tree, fruit and monkey, surrounding the younger sister in the first part of the story, are richly suggestive W. G. Archer, in his fine study, The Hill of Flutes, 1 * describes how the Santals have created a complex network of symbols to provide them with a language of sex, so Downloaded by [New York University] at 16:20 08 May 2015",
+      "page_number": 5,
+      "paragraphs": [
+        {
+          "sentences": [
+            "the instrument, but every time he and his wife were out walking, the younger sister would emerge from the banjo and cook the family meal.",
+            "Often, the raja returned to find that the meal had been cooked while nobody was home.",
+            "Intrigued by this mysterious visitor, he decided one day to lie in wait to discover the identity of the secret provider.",
+            "As usual, the younger sister emerged from the banjo, then she dressed her hair, anointed herself, and began to cook the rice.",
+            "The raja revealed himself, caught hold of the girl, and said, 'You and I are one,' meaning, of course, that he was now her husband."
+          ],
+          "text": "the instrument, but every time he and his wife were out walking, the younger sister would emerge from the banjo and cook the family meal. Often, the raja returned to find that the meal had been cooked while nobody was home. Intrigued by this mysterious visitor, he decided one day to lie in wait to discover the identity of the secret provider. As usual, the younger sister emerged from the banjo, then she dressed her hair, anointed herself, and began to cook the rice. The raja revealed himself, caught hold of the girl, and said, 'You and I are one,' meaning, of course, that he was now her husband.",
+          "is_first_in_section": true,
+          "debug_info": {
+            "x_positions": [
+              41.52000045776367,
+              41.52000045776367,
+              41.040000915527344,
+              41.279998779296875,
+              41.040000915527344,
+              41.040000915527344,
+              41.040000915527344
+            ],
+            "regular_x": 41.040000915527344,
+            "block_indices": [
+              2,
+              2,
+              2,
+              2,
+              2,
+              2,
+              2
+            ],
+            "reasons": [
+              "follows header",
+              "x0=41.5 vs regular_x=41.0",
+              "x0=41.0 vs regular_x=41.0",
+              "x0=41.3 vs regular_x=41.0",
+              "x0=41.0 vs regular_x=41.0",
+              "x0=41.0 vs regular_x=41.0",
+              "x0=41.0 vs regular_x=41.0",
+              "x0=49.2 vs regular_x=41.0 (indented)"
+            ]
+          }
+        },
+        {
+          "sentences": [
+            "In the light of Santal marriage rules, the textual variants in this version of 'The Twa Sisters' show an internal logic.",
+            "First of all, there is no evidence of previous evil intent on the part of the elder sister.",
+            "In Child B, the elder sister takes the younger to the seashore under the pretence of watching their father's ship come ashore, and there she violently pushes her sister into the water.",
+            "Here, however, the elder sister is guilty of nothing more serious than neglecting to return for her sister after she has been found by the raja.",
+            "There is no suggestion that she wishes to do away with her sister; indeed, there is little motivation for her to do so.",
+            "The European and American versions make clear that the motive for the elder sister's cruelty is her jealousy of her sister's great beauty.",
+            "Child B, Stanza 15 has:"
+          ],
+          "text": "In the light of Santal marriage rules, the textual variants in this version of 'The Twa Sisters' show an internal logic. First of all, there is no evidence of previous evil intent on the part of the elder sister. In Child B, the elder sister takes the younger to the seashore under the pretence of watching their father's ship come ashore, and there she violently pushes her sister into the water. Here, however, the elder sister is guilty of nothing more serious than neglecting to return for her sister after she has been found by the raja. There is no suggestion that she wishes to do away with her sister; indeed, there is little motivation for her to do so. The European and American versions make clear that the motive for the elder sister's cruelty is her jealousy of her sister's great beauty. Child B, Stanza 15 has:",
+          "is_first_in_section": true,
+          "debug_info": {
+            "x_positions": [
+              49.20000076293945,
+              40.79999923706055,
+              40.79999923706055,
+              40.560001373291016,
+              40.79999923706055,
+              40.560001373291016,
+              40.79999923706055,
+              40.560001373291016,
+              40.560001373291016
+            ],
+            "regular_x": 40.560001373291016,
+            "block_indices": [
+              3,
+              3,
+              3,
+              3,
+              3,
+              3,
+              3,
+              3,
+              3
+            ],
+            "reasons": [
+              "x0=49.2 vs regular_x=40.6 (indented)",
+              "x0=40.8 vs regular_x=40.6",
+              "x0=40.8 vs regular_x=40.6",
+              "x0=40.6 vs regular_x=40.6",
+              "x0=40.8 vs regular_x=40.6",
+              "x0=40.6 vs regular_x=40.6",
+              "x0=40.8 vs regular_x=40.6",
+              "x0=40.6 vs regular_x=40.6",
+              "x0=40.6 vs regular_x=40.6",
+              "x0=145.7 vs regular_x=40.6 (indented)"
+            ]
+          }
+        },
+        {
+          "sentences": [
+            "Your cherry cheeks an' yallow hair Gars me gae maiden for evermair.\""
+          ],
+          "text": "Your cherry cheeks an' yallow hair Gars me gae maiden for evermair.\"",
+          "is_first_in_section": false,
+          "debug_info": {
+            "x_positions": [],
+            "regular_x": 39.84000015258789,
+            "block_indices": [],
+            "reasons": []
+          }
+        },
+        {
+          "sentences": [
+            "The Scandinavian versions place particular emphasis on the younger sister's beauty.",
+            "Not only is she more attractive than her elder sister but, as in Norwegian A, she taunts the older girl with her own superior beauty:"
+          ],
+          "text": "The Scandinavian versions place particular emphasis on the younger sister's beauty. Not only is she more attractive than her elder sister but, as in Norwegian A, she taunts the older girl with her own superior beauty:",
+          "is_first_in_section": false,
+          "debug_info": {
+            "x_positions": [
+              48.47999954223633,
+              40.08000183105469,
+              39.84000015258789
+            ],
+            "regular_x": 39.84000015258789,
+            "block_indices": [
+              5,
+              5,
+              5
+            ],
+            "reasons": [
+              "x0=48.5 vs regular_x=39.8 (indented)",
+              "x0=40.1 vs regular_x=39.8",
+              "x0=39.8 vs regular_x=39.8",
+              "x0=117.4 vs regular_x=39.8 (indented)"
+            ]
+          }
+        },
+        {
+          "sentences": [
+            "Although thou wilt wash thyself never so white, So shalt thou become never to thy sister like.",
+            "12 Norwegian C has also:"
+          ],
+          "text": "Although thou wilt wash thyself never so white, So shalt thou become never to thy sister like. 12 Norwegian C has also:",
+          "is_first_in_section": false,
+          "debug_info": {
+            "x_positions": [
+              39.84000015258789
+            ],
+            "regular_x": 39.84000015258789,
+            "block_indices": [
+              7
+            ],
+            "reasons": [
+              "x0=39.8 vs regular_x=39.8",
+              "x0=125.0 vs regular_x=39.8 (indented)"
+            ]
+          }
+        },
+        {
+          "sentences": [
+            "Thou mayest wash thee as white as thou canst, Never wilt thou get a bridegroom.",
+            "13"
+          ],
+          "text": "Thou mayest wash thee as white as thou canst, Never wilt thou get a bridegroom. 13",
+          "is_first_in_section": false,
+          "debug_info": {
+            "x_positions": [],
+            "regular_x": 39.119998931884766,
+            "block_indices": [],
+            "reasons": []
+          }
+        },
+        {
+          "sentences": [
+            "In the Santal version, on the other hand, the elder sister is obviously beautiful because the raja is attracted to her at the moment that he first sees her.",
+            "Thus, the younger sister is not a threat because of her greater beauty, and she is not dangerous before the marriage between the raja and the elder sister.",
+            "It is only after the marriage that the evil intentions of the elder sister are made clear.",
+            "It is only then that she becomes manipulative and deceiving.",
+            "Given the Santal marriage rules, we are able to see that the threat posed by the younger sister is not that of her beauty (as in the Western versions), but of her position within the family structure.",
+            "And this becomes threatening to the elder sister only after her own marriage."
+          ],
+          "text": "In the Santal version, on the other hand, the elder sister is obviously beautiful because the raja is attracted to her at the moment that he first sees her. Thus, the younger sister is not a threat because of her greater beauty, and she is not dangerous before the marriage between the raja and the elder sister. It is only after the marriage that the evil intentions of the elder sister are made clear. It is only then that she becomes manipulative and deceiving. Given the Santal marriage rules, we are able to see that the threat posed by the younger sister is not that of her beauty (as in the Western versions), but of her position within the family structure. And this becomes threatening to the elder sister only after her own marriage.",
+          "is_first_in_section": false,
+          "debug_info": {
+            "x_positions": [
+              48.2400016784668,
+              39.599998474121094,
+              39.84000015258789,
+              39.599998474121094,
+              39.599998474121094,
+              39.599998474121094,
+              39.119998931884766,
+              39.36000061035156,
+              39.36000061035156
+            ],
+            "regular_x": 39.119998931884766,
+            "block_indices": [
+              9,
+              9,
+              9,
+              9,
+              9,
+              9,
+              9,
+              9,
+              9
+            ],
+            "reasons": [
+              "x0=48.2 vs regular_x=39.1 (indented)",
+              "x0=39.6 vs regular_x=39.1",
+              "x0=39.8 vs regular_x=39.1",
+              "x0=39.6 vs regular_x=39.1",
+              "x0=39.6 vs regular_x=39.1",
+              "x0=39.6 vs regular_x=39.1",
+              "x0=39.1 vs regular_x=39.1",
+              "x0=39.4 vs regular_x=39.1",
+              "x0=39.4 vs regular_x=39.1",
+              "x0=47.8 vs regular_x=39.1 (indented)"
+            ]
+          }
+        },
+        {
+          "sentences": [
+            "The danger inherent in the situation stems not only from the younger sister's youth but also, this tale seems to suggest, from her sexual potency, her ability to bear a child— the single most dangerous eventuality ibr her elder sister, who will then have to accept her husband's taking a second wife.",
+            "The conglomeration of images of water, tree, fruit and monkey, surrounding the younger sister in the first part of the story, are richly suggestive W. G. Archer, in his fine study, The Hill of Flutes, 1 * describes how the Santals have created a complex network of symbols to provide them with a language of sex, so Downloaded by [New York University] at 16:20 08 May 2015"
+          ],
+          "text": "The danger inherent in the situation stems not only from the younger sister's youth but also, this tale seems to suggest, from her sexual potency, her ability to bear a child— the single most dangerous eventuality ibr her elder sister, who will then have to accept her husband's taking a second wife. The conglomeration of images of water, tree, fruit and monkey, surrounding the younger sister in the first part of the story, are richly suggestive W. G. Archer, in his fine study, The Hill of Flutes, 1 * describes how the Santals have created a complex network of symbols to provide them with a language of sex, so Downloaded by [New York University] at 16:20 08 May 2015",
+          "is_first_in_section": false,
+          "debug_info": {
+            "x_positions": [
+              -0.5299997329711914
+            ],
+            "regular_x": -0.5299997329711914,
+            "block_indices": [
+              11
+            ],
+            "reasons": [
+              "x0=-0.5 vs regular_x=-0.5"
+            ]
+          }
+        }
+      ],
+      "is_numbered": false,
+      "font_size": 8.954887390136719
+    },
+    {
+      "header": "172 LILY PHILIPOSE",
+      "content": "that they never have to allude directly to sexual activity. In this language of sex, monkeys represent boys, climbing a tree represents seduction, and crying for water or clrinking from a river represents thirst for sexual pleasure.\" In the light of this, the detail of the two sisters being thirsty for water suggests that the two women are ripe for sexual fulfilment. A Santal song makes this explicit: At the big river The stony river How I thirst for water I am a grown girl I am not a youngster O my love Do not shake my body. 16 Trees and fruit are, in Santal belief, frequently linked with female sexuality. The Jiwer 'Karam', an important fertility rite, centers around a tree. The entire village gathers around a Karam tree where a priest recites the Karam sermon, and where there is a ritual singing of Karam songs. The rite ends with two young girls exchanging Karam leaves. 17 A Santal saying about infertility underscores the association of ideas about women and trees: 'A girl does not get a child if her root is wrong* (my emphasis). 18 The same associations are made in a Santal superstition where, significantly, specific mention is made of the Terel tree: Two fruits of the Terel tree (Diospyros tomentosa) or of the Tarop tree (Baucham'a latifolia) if found growing in one accrescent calyx are not eaten by women under dread of giving birth to twins.\" In songs, an unwanted pregnancy is referred to as 'making the citron fruit fall.' 20 The hordes of monkeys who rush toward the younger sister provide a comment on her sexual potency. A Santal song provides an almost direct parallel: Monkey, from branch to branch you sprang You strolled from path to path Take care, monkey, Or the citron fruit will fall. 21 It is interesting that it is the old, frail monkey, rather than the younger, more active monkeys, who discovers and enjoys the girl. Her seduction, the implication seems to be, is initiated not by the young boys in the village (the ones she could 'go wrong' with), but by an older man whose days of actively pursuing women are over. The woman's being eaten by the monkey is, interestingly enough, the reversal of a Santal taboo: 'Youths and maidens will not eat the entrails of an animal. If they do, it is said, they will become lustful.' 22 Here, the woman herself becomes the entrails of an animal. Perhaps this is the way the Santal storyteller presents his audience with a woman consumed by her own sexual desire. The manner of the younger sister's death provides what is possibly the most interesting variation in the text, as compared with western versions. The scene has shifted from the seashore to the forest (in Santal culture, a trysting place where secret romantic and sexual encounters take place), and instead of death by drowning, there is death by ingestion. Downloaded by [New York University] at 16:20 08 May 2015",
+      "page_number": 6,
+      "paragraphs": [
+        {
+          "sentences": [
+            "that they never have to allude directly to sexual activity.",
+            "In this language of sex, monkeys represent boys, climbing a tree represents seduction, and crying for water or clrinking from a river represents thirst for sexual pleasure.\"",
+            "In the light of this, the detail of the two sisters being thirsty for water suggests that the two women are ripe for sexual fulfilment.",
+            "A Santal song makes this explicit:"
+          ],
+          "text": "that they never have to allude directly to sexual activity. In this language of sex, monkeys represent boys, climbing a tree represents seduction, and crying for water or clrinking from a river represents thirst for sexual pleasure.\" In the light of this, the detail of the two sisters being thirsty for water suggests that the two women are ripe for sexual fulfilment. A Santal song makes this explicit:",
+          "is_first_in_section": true,
+          "debug_info": {
+            "x_positions": [
+              40.08000183105469,
+              40.31999969482422,
+              40.31999969482422,
+              40.08000183105469,
+              40.08000183105469
+            ],
+            "regular_x": 40.08000183105469,
+            "block_indices": [
+              2,
+              2,
+              2,
+              2,
+              2
+            ],
+            "reasons": [
+              "follows header",
+              "x0=40.3 vs regular_x=40.1",
+              "x0=40.3 vs regular_x=40.1",
+              "x0=40.1 vs regular_x=40.1",
+              "x0=40.1 vs regular_x=40.1",
+              "x0=167.8 vs regular_x=40.1 (indented)"
+            ]
+          }
+        },
+        {
+          "sentences": [
+            "At the big river The stony river How I thirst for water I am a grown girl I am not a youngster O my love Do not shake my body.",
+            "16"
+          ],
+          "text": "At the big river The stony river How I thirst for water I am a grown girl I am not a youngster O my love Do not shake my body. 16",
+          "is_first_in_section": false,
+          "debug_info": {
+            "x_positions": [],
+            "regular_x": 40.08000183105469,
+            "block_indices": [],
+            "reasons": []
+          }
+        },
+        {
+          "sentences": [
+            "Trees and fruit are, in Santal belief, frequently linked with female sexuality.",
+            "The Jiwer 'Karam', an important fertility rite, centers around a tree.",
+            "The entire village gathers around a Karam tree where a priest recites the Karam sermon, and where there is a ritual singing of Karam songs.",
+            "The rite ends with two young girls exchanging Karam leaves.",
+            "17 A Santal saying about infertility underscores the association of ideas about women and trees: 'A girl does not get a child if her root is wrong* (my emphasis).",
+            "18 The same associations are made in a Santal superstition where, significantly, specific mention is made of the Terel tree: Two fruits of the Terel tree (Diospyros tomentosa) or of the Tarop tree (Baucham'a latifolia) if found growing in one accrescent calyx are not eaten by women under dread of giving birth to twins.\""
+          ],
+          "text": "Trees and fruit are, in Santal belief, frequently linked with female sexuality. The Jiwer 'Karam', an important fertility rite, centers around a tree. The entire village gathers around a Karam tree where a priest recites the Karam sermon, and where there is a ritual singing of Karam songs. The rite ends with two young girls exchanging Karam leaves. 17 A Santal saying about infertility underscores the association of ideas about women and trees: 'A girl does not get a child if her root is wrong* (my emphasis). 18 The same associations are made in a Santal superstition where, significantly, specific mention is made of the Terel tree: Two fruits of the Terel tree (Diospyros tomentosa) or of the Tarop tree (Baucham'a latifolia) if found growing in one accrescent calyx are not eaten by women under dread of giving birth to twins.\"",
+          "is_first_in_section": false,
+          "debug_info": {
+            "x_positions": [
+              40.08000183105469,
+              40.08000183105469
+            ],
+            "regular_x": 40.08000183105469,
+            "block_indices": [
+              5,
+              5
+            ],
+            "reasons": [
+              "x0=40.1 vs regular_x=40.1",
+              "x0=40.1 vs regular_x=40.1",
+              "x0=48.7 vs regular_x=40.1 (indented)"
+            ]
+          }
+        },
+        {
+          "sentences": [
+            "In songs, an unwanted pregnancy is referred to as 'making the citron fruit fall.'",
+            "20 The hordes of monkeys who rush toward the younger sister provide a comment on her sexual potency.",
+            "A Santal song provides an almost direct parallel:"
+          ],
+          "text": "In songs, an unwanted pregnancy is referred to as 'making the citron fruit fall.' 20 The hordes of monkeys who rush toward the younger sister provide a comment on her sexual potency. A Santal song provides an almost direct parallel:",
+          "is_first_in_section": true,
+          "debug_info": {
+            "x_positions": [
+              48.720001220703125,
+              40.08000183105469,
+              40.31999969482422
+            ],
+            "regular_x": 40.08000183105469,
+            "block_indices": [
+              6,
+              6,
+              6
+            ],
+            "reasons": [
+              "x0=48.7 vs regular_x=40.1 (indented)",
+              "x0=40.1 vs regular_x=40.1",
+              "x0=40.3 vs regular_x=40.1",
+              "x0=133.4 vs regular_x=40.1 (indented)"
+            ]
+          }
+        },
+        {
+          "sentences": [
+            "Monkey, from branch to branch you sprang You strolled from path to path Take care, monkey, Or the citron fruit will fall.",
+            "21"
+          ],
+          "text": "Monkey, from branch to branch you sprang You strolled from path to path Take care, monkey, Or the citron fruit will fall. 21",
+          "is_first_in_section": false,
+          "debug_info": {
+            "x_positions": [],
+            "regular_x": 40.31999969482422,
+            "block_indices": [],
+            "reasons": []
+          }
+        },
+        {
+          "sentences": [
+            "It is interesting that it is the old, frail monkey, rather than the younger, more active monkeys, who discovers and enjoys the girl.",
+            "Her seduction, the implication seems to be, is initiated not by the young boys in the village (the ones she could 'go wrong' with), but by an older man whose days of actively pursuing women are over.",
+            "The woman's being eaten by the monkey is, interestingly enough, the reversal of a Santal taboo: 'Youths and maidens will not eat the entrails of an animal.",
+            "If they do, it is said, they will become lustful.'",
+            "22 Here, the woman herself becomes the entrails of an animal.",
+            "Perhaps this is the way the Santal storyteller presents his audience with a woman consumed by her own sexual desire."
+          ],
+          "text": "It is interesting that it is the old, frail monkey, rather than the younger, more active monkeys, who discovers and enjoys the girl. Her seduction, the implication seems to be, is initiated not by the young boys in the village (the ones she could 'go wrong' with), but by an older man whose days of actively pursuing women are over. The woman's being eaten by the monkey is, interestingly enough, the reversal of a Santal taboo: 'Youths and maidens will not eat the entrails of an animal. If they do, it is said, they will become lustful.' 22 Here, the woman herself becomes the entrails of an animal. Perhaps this is the way the Santal storyteller presents his audience with a woman consumed by her own sexual desire.",
+          "is_first_in_section": false,
+          "debug_info": {
+            "x_positions": [
+              48.959999084472656,
+              40.31999969482422,
+              40.31999969482422,
+              40.31999969482422,
+              40.31999969482422,
+              40.31999969482422,
+              40.560001373291016,
+              40.31999969482422,
+              40.560001373291016
+            ],
+            "regular_x": 40.31999969482422,
+            "block_indices": [
+              8,
+              8,
+              8,
+              8,
+              8,
+              8,
+              8,
+              8,
+              8
+            ],
+            "reasons": [
+              "x0=49.0 vs regular_x=40.3 (indented)",
+              "x0=40.3 vs regular_x=40.3",
+              "x0=40.3 vs regular_x=40.3",
+              "x0=40.3 vs regular_x=40.3",
+              "x0=40.3 vs regular_x=40.3",
+              "x0=40.3 vs regular_x=40.3",
+              "x0=40.6 vs regular_x=40.3",
+              "x0=40.3 vs regular_x=40.3",
+              "x0=40.6 vs regular_x=40.3",
+              "x0=49.0 vs regular_x=40.3 (indented)"
+            ]
+          }
+        },
+        {
+          "sentences": [
+            "The manner of the younger sister's death provides what is possibly the most interesting variation in the text, as compared with western versions.",
+            "The scene has shifted from the seashore to the forest (in Santal culture, a trysting place where secret romantic and sexual encounters take place), and instead of death by drowning, there is death by ingestion.",
+            "Downloaded by [New York University] at 16:20 08 May 2015"
+          ],
+          "text": "The manner of the younger sister's death provides what is possibly the most interesting variation in the text, as compared with western versions. The scene has shifted from the seashore to the forest (in Santal culture, a trysting place where secret romantic and sexual encounters take place), and instead of death by drowning, there is death by ingestion. Downloaded by [New York University] at 16:20 08 May 2015",
+          "is_first_in_section": false,
+          "debug_info": {
+            "x_positions": [
+              -0.5299997329711914
+            ],
+            "regular_x": -0.5299997329711914,
+            "block_indices": [
+              10
+            ],
+            "reasons": [
+              "x0=-0.5 vs regular_x=-0.5"
+            ]
+          }
+        }
+      ],
+      "is_numbered": false,
+      "font_size": 8.954887390136719
+    },
+    {
+      "header": "THE TWA SISTERS: A SANTAL FOLKTALE VARIANT 173",
+      "content": "The death itself is not an end, but rather a link in the chain of progressive events. After being eaten by the monkey, the girl is returned to the soil, as it were, in the decaying body of the animal. The soil, in turn, nourishes a gourd, which then bears fruit. The fruit is fashioned into a musical instrument, and from this the girl is able to regain her human shape. The point seems to be not simply that she dies, but that she undergoes a series of transformations: from human to animal to plant life (down the Chain of Being), thence to an object that is both animate and inanimate, and finally, back to human again. The musical instrument is in an anomalous position in this chain because, although inanimate, it has the human power of speech. Graphically, the course of the younger sister's transformations would look like the figure below: human • r human • r \\",
+      "page_number": 7,
+      "paragraphs": [
+        {
+          "sentences": [
+            "The death itself is not an end, but rather a link in the chain of progressive events.",
+            "After being eaten by the monkey, the girl is returned to the soil, as it were, in the decaying body of the animal.",
+            "The soil, in turn, nourishes a gourd, which then bears fruit.",
+            "The fruit is fashioned into a musical instrument, and from this the girl is able to regain her human shape.",
+            "The point seems to be not simply that she dies, but that she undergoes a series of transformations: from human to animal to plant life (down the Chain of Being), thence to an object that is both animate and inanimate, and finally, back to human again.",
+            "The musical instrument is in an anomalous position in this chain because, although inanimate, it has the human power of speech.",
+            "Graphically, the course of the younger sister's transformations would look like the figure below:"
+          ],
+          "text": "The death itself is not an end, but rather a link in the chain of progressive events. After being eaten by the monkey, the girl is returned to the soil, as it were, in the decaying body of the animal. The soil, in turn, nourishes a gourd, which then bears fruit. The fruit is fashioned into a musical instrument, and from this the girl is able to regain her human shape. The point seems to be not simply that she dies, but that she undergoes a series of transformations: from human to animal to plant life (down the Chain of Being), thence to an object that is both animate and inanimate, and finally, back to human again. The musical instrument is in an anomalous position in this chain because, although inanimate, it has the human power of speech. Graphically, the course of the younger sister's transformations would look like the figure below:",
+          "is_first_in_section": true,
+          "debug_info": {
+            "x_positions": [
+              41.279998779296875,
+              41.040000915527344,
+              41.040000915527344,
+              41.279998779296875,
+              41.279998779296875,
+              41.279998779296875,
+              41.040000915527344,
+              41.040000915527344,
+              41.279998779296875,
+              41.040000915527344
+            ],
+            "regular_x": 41.040000915527344,
+            "block_indices": [
+              2,
+              2,
+              2,
+              2,
+              2,
+              2,
+              2,
+              2,
+              2,
+              2
+            ],
+            "reasons": [
+              "follows header",
+              "x0=41.0 vs regular_x=41.0",
+              "x0=41.0 vs regular_x=41.0",
+              "x0=41.3 vs regular_x=41.0",
+              "x0=41.3 vs regular_x=41.0",
+              "x0=41.3 vs regular_x=41.0",
+              "x0=41.0 vs regular_x=41.0",
+              "x0=41.0 vs regular_x=41.0",
+              "x0=41.3 vs regular_x=41.0",
+              "x0=41.0 vs regular_x=41.0",
+              "x0=64.6 vs regular_x=41.0 (indented)"
+            ]
+          }
+        },
+        {
+          "sentences": [
+            "human • r human • r"
+          ],
+          "text": "human • r human • r",
+          "is_first_in_section": false,
+          "debug_info": {
+            "x_positions": [
+              64.55999755859375
+            ],
+            "regular_x": 64.55999755859375,
+            "block_indices": [
+              4
+            ],
+            "reasons": [
+              "x0=64.6 vs regular_x=64.6"
+            ]
+          }
+        },
+        {
+          "sentences": [
+            "\\"
+          ],
+          "text": "\\",
+          "is_first_in_section": false,
+          "debug_info": {
+            "x_positions": [
+              102.72000122070312
+            ],
+            "regular_x": 64.55999755859375,
+            "block_indices": [
+              4
+            ],
+            "reasons": [
+              "follows header",
+              "x0=71.5 vs regular_x=64.6 (indented)"
+            ]
+          }
+        }
+      ],
+      "is_numbered": false,
+      "font_size": 9.008541107177734
+    },
+    {
+      "header": "animal",
+      "content": "^ musical plant ^ instrument",
+      "page_number": 7,
+      "paragraphs": [
+        {
+          "sentences": [
+            "^ musical"
+          ],
+          "text": "^ musical",
+          "is_first_in_section": true,
+          "debug_info": {
+            "x_positions": [
+              160.32000732421875
+            ],
+            "regular_x": 160.32000732421875,
+            "block_indices": [
+              6
+            ],
+            "reasons": [
+              "follows header"
+            ]
+          }
+        },
+        {
+          "sentences": [
+            "plant ^ instrument Figure A"
+          ],
+          "text": "plant ^ instrument Figure A",
+          "is_first_in_section": false,
+          "debug_info": {
+            "x_positions": [],
+            "regular_x": null,
+            "block_indices": [
+              -1
+            ],
+            "reasons": [
+              "pending from previous block"
+            ]
+          }
+        }
+      ],
+      "is_numbered": false,
+      "font_size": 9.318907737731934
+    },
+    {
+      "header": "Figure A",
+      "content": "Simultaneously, there is a linear movement of shifting locales, which marks off the various stages of the younger sister's transformations. The setting moves from the castle of the girls' father, to the forest, to the garden, and finally to the castle of the elder sister's husband. castle forest garden V \\",
+      "page_number": 7,
+      "paragraphs": [
+        {
+          "sentences": [
+            "Simultaneously, there is a linear movement of shifting locales, which marks off the various stages of the younger sister's transformations.",
+            "The setting moves from the castle of the girls' father, to the forest, to the garden, and finally to the castle of the elder sister's husband."
+          ],
+          "text": "Simultaneously, there is a linear movement of shifting locales, which marks off the various stages of the younger sister's transformations. The setting moves from the castle of the girls' father, to the forest, to the garden, and finally to the castle of the elder sister's husband.",
+          "is_first_in_section": true,
+          "debug_info": {
+            "x_positions": [
+              47.7599983215332,
+              39.119998931884766,
+              39.119998931884766,
+              39.36000061035156
+            ],
+            "regular_x": 39.119998931884766,
+            "block_indices": [
+              8,
+              8,
+              8,
+              8
+            ],
+            "reasons": [
+              "follows header",
+              "x0=39.1 vs regular_x=39.1",
+              "x0=39.1 vs regular_x=39.1",
+              "x0=39.4 vs regular_x=39.1",
+              "x0=61.4 vs regular_x=39.1 (indented)"
+            ]
+          }
+        },
+        {
+          "sentences": [
+            "castle forest garden"
+          ],
+          "text": "castle forest garden",
+          "is_first_in_section": true,
+          "debug_info": {
+            "x_positions": [
+              61.439998626708984
+            ],
+            "regular_x": 61.439998626708984,
+            "block_indices": [
+              9
+            ],
+            "reasons": [
+              "x0=61.4 vs regular_x=61.4"
+            ]
+          }
+        },
+        {
+          "sentences": [
+            "V \\"
+          ],
+          "text": "V \\",
+          "is_first_in_section": false,
+          "debug_info": {
+            "x_positions": [
+              216.9600067138672
+            ],
+            "regular_x": 61.439998626708984,
+            "block_indices": [
+              9
+            ],
+            "reasons": [
+              "x0=217.0 vs regular_x=61.4 (indented)",
+              "follows header"
+            ]
+          }
+        }
+      ],
+      "is_numbered": false,
+      "font_size": 10.889445304870605
+    },
+    {
+      "header": "1 castle",
+      "content": "* 1 innocence",
+      "page_number": 7,
+      "paragraphs": [
+        {
+          "sentences": [
+            "* 1"
+          ],
+          "text": "* 1",
+          "is_first_in_section": true,
+          "debug_info": {
+            "x_positions": [
+              134.39999389648438
+            ],
+            "regular_x": 61.91999816894531,
+            "block_indices": [
+              11
+            ],
+            "reasons": [
+              "follows header"
+            ]
+          }
+        },
+        {
+          "sentences": [
+            "innocence"
+          ],
+          "text": "innocence",
+          "is_first_in_section": false,
+          "debug_info": {
+            "x_positions": [
+              61.91999816894531
+            ],
+            "regular_x": 61.91999816894531,
+            "block_indices": [
+              11
+            ],
+            "reasons": [
+              "follows header",
+              "x0=143.8 vs regular_x=61.9 (indented)"
+            ]
+          }
+        }
+      ],
+      "is_numbered": false,
+      "font_size": 45.58594512939453
+    },
+    {
+      "header": "sexual",
+      "content": "",
+      "page_number": 7,
+      "paragraphs": [],
+      "is_numbered": false,
+      "font_size": 9.008541107177734
+    },
+    {
+      "header": "1 1 '",
+      "content": "1 encounter inclusion new in domestic identity sphere",
+      "page_number": 7,
+      "paragraphs": [
+        {
+          "sentences": [
+            "1 encounter inclusion"
+          ],
+          "text": "1 encounter inclusion",
+          "is_first_in_section": true,
+          "debug_info": {
+            "x_positions": [
+              332.1600036621094,
+              178.8000030517578
+            ],
+            "regular_x": 178.8000030517578,
+            "block_indices": [
+              14,
+              14
+            ],
+            "reasons": [
+              "follows header",
+              "x0=178.8 vs regular_x=178.8",
+              "x0=335.5 vs regular_x=178.8 (indented)"
+            ]
+          }
+        },
+        {
+          "sentences": [
+            "new in domestic identity sphere Figure B"
+          ],
+          "text": "new in domestic identity sphere Figure B",
+          "is_first_in_section": false,
+          "debug_info": {
+            "x_positions": [],
+            "regular_x": null,
+            "block_indices": [
+              -1
+            ],
+            "reasons": [
+              "pending from previous block"
+            ]
+          }
+        }
+      ],
+      "is_numbered": false,
+      "font_size": 12.12391185760498
+    },
+    {
+      "header": "Figure B",
+      "content": "In the castle of their father, the girls,, still under the guardianship of the Raja, are in a state of innocence. The tale makes clear that they must travel a long way in order to reach the forest, a place of sexual initiation. From there, the setting moves to the garden of the palace, where the palace gardener throws the body of the monkey on a dunghill. The garden, a tome version of the forest, objectifies the social practices which allow a Downloaded by [New York University] at 16:20 08 May 2015",
+      "page_number": 7,
+      "paragraphs": [
+        {
+          "sentences": [
+            "In the castle of their father, the girls,, still under the guardianship of the Raja, are in a state of innocence.",
+            "The tale makes clear that they must travel a long way in order to reach the forest, a place of sexual initiation.",
+            "From there, the setting moves to the garden of the palace, where the palace gardener throws the body of the monkey on a dunghill.",
+            "The garden, a tome version of the forest, objectifies the social practices which allow a Downloaded by [New York University] at 16:20 08 May 2015"
+          ],
+          "text": "In the castle of their father, the girls,, still under the guardianship of the Raja, are in a state of innocence. The tale makes clear that they must travel a long way in order to reach the forest, a place of sexual initiation. From there, the setting moves to the garden of the palace, where the palace gardener throws the body of the monkey on a dunghill. The garden, a tome version of the forest, objectifies the social practices which allow a Downloaded by [New York University] at 16:20 08 May 2015",
+          "is_first_in_section": false,
+          "debug_info": {
+            "x_positions": [
+              -0.5299997329711914
+            ],
+            "regular_x": -0.5299997329711914,
+            "block_indices": [
+              18
+            ],
+            "reasons": [
+              "x0=-0.5 vs regular_x=-0.5"
+            ]
+          }
+        }
+      ],
+      "is_numbered": false,
+      "font_size": 10.889445304870605
+    },
+    {
+      "header": "174 LILY PHILIPOSE",
+      "content": "'civilized' expression of the younger sister's sexual freedom. From there, it is a single step to the castle of the young Raja, where she can achieve a complete reintegration into society as her brother-in-law's young second wife. In the European and American versions, the musical instrument is crucial to our understanding of the ballad form because the song becomes, in the end, a ballad about ballads. The fiddle (or harp, or flute) reveals the guilt of the elder sister, and so also the singing of ballads releases repressed emotions. Thus, on one level, ballads serve a deep, psychological need, and it is this functional aspect of the ballad form that is reflected in the conclusion of the song, where the problems set up at the beginning find a resolution. Poetic justice is achieved—the evil sister's crime is exposed, and the wronged sister is avenged. Child B ends with the revelation of the secret, but several Scandinavian versions insist on the punishment of the wicked sister in order to complete the process whereby poetic justice is achieved. In some versions, she is burned to death: On Wednesday she sat on the bride-bench On Thursday she lay on the pyre and was burnt. 2 3",
+      "page_number": 8,
+      "paragraphs": [
+        {
+          "sentences": [
+            "'civilized' expression of the younger sister's sexual freedom.",
+            "From there, it is a single step to the castle of the young Raja, where she can achieve a complete reintegration into society as her brother-in-law's young second wife."
+          ],
+          "text": "'civilized' expression of the younger sister's sexual freedom. From there, it is a single step to the castle of the young Raja, where she can achieve a complete reintegration into society as her brother-in-law's young second wife.",
+          "is_first_in_section": true,
+          "debug_info": {
+            "x_positions": [
+              40.79999923706055,
+              40.560001373291016,
+              40.31999969482422
+            ],
+            "regular_x": 40.31999969482422,
+            "block_indices": [
+              2,
+              2,
+              2
+            ],
+            "reasons": [
+              "follows header",
+              "x0=40.6 vs regular_x=40.3",
+              "x0=40.3 vs regular_x=40.3",
+              "x0=49.0 vs regular_x=40.3 (indented)"
+            ]
+          }
+        },
+        {
+          "sentences": [
+            "In the European and American versions, the musical instrument is crucial to our understanding of the ballad form because the song becomes, in the end, a ballad about ballads.",
+            "The fiddle (or harp, or flute) reveals the guilt of the elder sister, and so also the singing of ballads releases repressed emotions.",
+            "Thus, on one level, ballads serve a"
+          ],
+          "text": "In the European and American versions, the musical instrument is crucial to our understanding of the ballad form because the song becomes, in the end, a ballad about ballads. The fiddle (or harp, or flute) reveals the guilt of the elder sister, and so also the singing of ballads releases repressed emotions. Thus, on one level, ballads serve a",
+          "is_first_in_section": true,
+          "debug_info": {
+            "x_positions": [
+              48.959999084472656,
+              40.08000183105469,
+              40.31999969482422,
+              40.31999969482422
+            ],
+            "regular_x": 40.08000183105469,
+            "block_indices": [
+              3,
+              3,
+              3,
+              3
+            ],
+            "reasons": [
+              "x0=49.0 vs regular_x=40.1 (indented)",
+              "x0=40.1 vs regular_x=40.1",
+              "x0=40.3 vs regular_x=40.1",
+              "x0=40.3 vs regular_x=40.1"
+            ]
+          }
+        },
+        {
+          "sentences": [
+            "deep, psychological need, and it is this functional aspect of the ballad form that is reflected in the conclusion of the song, where the problems set up at the beginning find a resolution.",
+            "Poetic justice is achieved—the evil sister's crime is exposed, and the wronged sister is avenged.",
+            "Child B ends with the revelation of the secret, but several Scandinavian versions insist on the punishment of the wicked sister in order to complete the process whereby poetic justice is achieved.",
+            "In some versions, she is burned to death:"
+          ],
+          "text": "deep, psychological need, and it is this functional aspect of the ballad form that is reflected in the conclusion of the song, where the problems set up at the beginning find a resolution. Poetic justice is achieved—the evil sister's crime is exposed, and the wronged sister is avenged. Child B ends with the revelation of the secret, but several Scandinavian versions insist on the punishment of the wicked sister in order to complete the process whereby poetic justice is achieved. In some versions, she is burned to death:",
+          "is_first_in_section": false,
+          "debug_info": {
+            "x_positions": [
+              40.31999969482422,
+              40.560001373291016,
+              40.560001373291016,
+              40.560001373291016,
+              40.79999923706055,
+              40.560001373291016
+            ],
+            "regular_x": 40.08000183105469,
+            "block_indices": [
+              3,
+              3,
+              3,
+              3,
+              3,
+              3
+            ],
+            "reasons": [
+              "follows header",
+              "x0=40.6 vs regular_x=40.1",
+              "x0=40.6 vs regular_x=40.1",
+              "x0=40.6 vs regular_x=40.1",
+              "x0=40.8 vs regular_x=40.1",
+              "x0=40.6 vs regular_x=40.1",
+              "x0=117.1 vs regular_x=40.1 (indented)"
+            ]
+          }
+        },
+        {
+          "sentences": [
+            "On Wednesday she sat on the bride-bench On Thursday she lay on the pyre and was burnt.",
+            "2 3 In another version she is buried alive:"
+          ],
+          "text": "On Wednesday she sat on the bride-bench On Thursday she lay on the pyre and was burnt. 2 3 In another version she is buried alive:",
+          "is_first_in_section": false,
+          "debug_info": {
+            "x_positions": [],
+            "regular_x": null,
+            "block_indices": [
+              -1
+            ],
+            "reasons": [
+              "pending from previous block"
+            ]
+          }
+        }
+      ],
+      "is_numbered": false,
+      "font_size": 9.949873924255371
+    },
+    {
+      "header": "In another version she is buried alive:",
+      "content": "They worked so great a violence on the bride They buried her alive under the ground. 24",
+      "page_number": 8,
+      "paragraphs": [
+        {
+          "sentences": [
+            "They worked so great a violence on the bride They buried her alive under the ground.",
+            "24 In yet another version, she is sent out of the country:"
+          ],
+          "text": "They worked so great a violence on the bride They buried her alive under the ground. 24 In yet another version, she is sent out of the country:",
+          "is_first_in_section": true,
+          "debug_info": {
+            "x_positions": [],
+            "regular_x": null,
+            "block_indices": [
+              -1
+            ],
+            "reasons": [
+              "pending from previous block"
+            ]
+          }
+        }
+      ],
+      "is_numbered": false,
+      "font_size": 9.949873924255371
+    },
+    {
+      "header": "In yet another version, she is sent out of the country:",
+      "content": "They sent her so far from the country, So far that no one can trace her. 2 5 The importance of the motif of the musical instrument in the Santal tale, seems to be related to its function within the structure of the tale, Le. its function within the scheme of transformations (Figure A). The idea of transformation is an important one because the Santal culture insists that the younger sister \"transform' herself after her elder sister's betrothal and marriage. She must look to forming her own set of new relationships through marriage. But before then, and while still within the family structure where her elder sister is new bride and wife, she plays several roles: sister, sister-in-law, rival, mistress, potential second wife. In this context, her appearance in the tale as the mysterious housekeeper (Motif 831.1 in Aarne and Thompson Type 780A, 'The Cannibal Brothers') 26 reveals that she is ready for the last of these roles. Preparing the family meal is an essentially wifely duty. It is, in fact, in performing this duty that the elder sister had earlier established herself as the new rani of the castle, soon after her wedding. Now, the musical instrument becomes the means by which the younger sister's claim to become a second wife is recognised by her brother-in-law. within the scheme of transformations, then, the musical instrument marks the transition from younger sister (potential rival) to younger sister (actual rival). Structurally, the musical instrument occupies an important position in the tale because it seems to act as a bridge between two diametrically opposed worlds. It mediates between forest and home because it is fashioned out of a forest fruit, but is eventually placed within the palace walls. It mediates between plant and animal life, on the one hand, and human form on the other: while the girl enters it in the form of a decaying animal body under the soil, she emerges from it in human shape. It mediates Downloaded by [New York University] at 16:20 08 May 2015",
+      "page_number": 8,
+      "paragraphs": [
+        {
+          "sentences": [
+            "They sent her so far from the country, So far that no one can trace her.",
+            "2 5"
+          ],
+          "text": "They sent her so far from the country, So far that no one can trace her. 2 5",
+          "is_first_in_section": false,
+          "debug_info": {
+            "x_positions": [],
+            "regular_x": 40.08000183105469,
+            "block_indices": [],
+            "reasons": []
+          }
+        },
+        {
+          "sentences": [
+            "The importance of the motif of the musical instrument in the Santal tale, seems to be related to its function within the structure of the tale, Le.",
+            "its function within the scheme of transformations (Figure A).",
+            "The idea of transformation is an important one because the Santal culture insists that the younger sister \"transform' herself after her elder sister's betrothal and marriage.",
+            "She must look to forming her own set of new relationships through marriage.",
+            "But before then, and while still within the family structure where her elder sister is new bride and wife, she plays several roles: sister, sister-in-law, rival, mistress, potential second wife.",
+            "In this context, her appearance in the tale as the mysterious housekeeper (Motif 831.1 in Aarne and Thompson Type 780A, 'The Cannibal Brothers') 26 reveals that she is ready for the last of these roles.",
+            "Preparing the family meal is an essentially wifely duty.",
+            "It is, in fact, in performing this duty that the elder sister had earlier established herself as the new rani of the castle, soon after her wedding.",
+            "Now, the musical instrument becomes the means by which the younger sister's claim to become a second wife is recognised by her brother-in-law.",
+            "within the scheme of transformations,"
+          ],
+          "text": "The importance of the motif of the musical instrument in the Santal tale, seems to be related to its function within the structure of the tale, Le. its function within the scheme of transformations (Figure A). The idea of transformation is an important one because the Santal culture insists that the younger sister \"transform' herself after her elder sister's betrothal and marriage. She must look to forming her own set of new relationships through marriage. But before then, and while still within the family structure where her elder sister is new bride and wife, she plays several roles: sister, sister-in-law, rival, mistress, potential second wife. In this context, her appearance in the tale as the mysterious housekeeper (Motif 831.1 in Aarne and Thompson Type 780A, 'The Cannibal Brothers') 26 reveals that she is ready for the last of these roles. Preparing the family meal is an essentially wifely duty. It is, in fact, in performing this duty that the elder sister had earlier established herself as the new rani of the castle, soon after her wedding. Now, the musical instrument becomes the means by which the younger sister's claim to become a second wife is recognised by her brother-in-law. within the scheme of transformations,",
+          "is_first_in_section": false,
+          "debug_info": {
+            "x_positions": [
+              48.720001220703125,
+              40.08000183105469,
+              40.31999969482422,
+              40.31999969482422,
+              40.08000183105469,
+              40.08000183105469,
+              40.08000183105469,
+              40.31999969482422,
+              40.31999969482422,
+              40.31999969482422,
+              40.31999969482422,
+              40.08000183105469,
+              40.08000183105469,
+              40.31999969482422
+            ],
+            "regular_x": 40.08000183105469,
+            "block_indices": [
+              9,
+              9,
+              9,
+              9,
+              9,
+              9,
+              9,
+              9,
+              9,
+              9,
+              9,
+              9,
+              9,
+              9
+            ],
+            "reasons": [
+              "x0=48.7 vs regular_x=40.1 (indented)",
+              "x0=40.1 vs regular_x=40.1",
+              "x0=40.3 vs regular_x=40.1",
+              "x0=40.3 vs regular_x=40.1",
+              "x0=40.1 vs regular_x=40.1",
+              "x0=40.1 vs regular_x=40.1",
+              "x0=40.1 vs regular_x=40.1",
+              "x0=40.3 vs regular_x=40.1",
+              "x0=40.3 vs regular_x=40.1",
+              "x0=40.3 vs regular_x=40.1",
+              "x0=40.3 vs regular_x=40.1",
+              "x0=40.1 vs regular_x=40.1",
+              "x0=40.1 vs regular_x=40.1",
+              "x0=40.3 vs regular_x=40.1"
+            ]
+          }
+        },
+        {
+          "sentences": [
+            "then, the musical instrument marks the transition from younger sister (potential rival) to younger sister (actual rival).",
+            "Structurally, the musical instrument occupies an important position in the tale because it seems to act as a bridge between two diametrically opposed worlds.",
+            "It mediates between forest and home because it is fashioned out of a forest fruit, but is eventually placed within the palace walls.",
+            "It mediates between plant and animal"
+          ],
+          "text": "then, the musical instrument marks the transition from younger sister (potential rival) to younger sister (actual rival). Structurally, the musical instrument occupies an important position in the tale because it seems to act as a bridge between two diametrically opposed worlds. It mediates between forest and home because it is fashioned out of a forest fruit, but is eventually placed within the palace walls. It mediates between plant and animal",
+          "is_first_in_section": false,
+          "debug_info": {
+            "x_positions": [
+              40.08000183105469,
+              40.08000183105469,
+              40.31999969482422,
+              40.08000183105469,
+              40.08000183105469
+            ],
+            "regular_x": 40.08000183105469,
+            "block_indices": [
+              9,
+              9,
+              9,
+              9,
+              9
+            ],
+            "reasons": [
+              "follows header",
+              "x0=40.1 vs regular_x=40.1",
+              "x0=40.3 vs regular_x=40.1",
+              "x0=40.1 vs regular_x=40.1",
+              "x0=40.1 vs regular_x=40.1"
+            ]
+          }
+        },
+        {
+          "sentences": [
+            "life, on the one hand, and human form on the other: while the girl enters it in the form of a decaying animal body under the soil, she emerges from it in human shape.",
+            "It mediates Downloaded by [New York University] at 16:20 08 May 2015"
+          ],
+          "text": "life, on the one hand, and human form on the other: while the girl enters it in the form of a decaying animal body under the soil, she emerges from it in human shape. It mediates Downloaded by [New York University] at 16:20 08 May 2015",
+          "is_first_in_section": false,
+          "debug_info": {
+            "x_positions": [
+              -0.5299997329711914
+            ],
+            "regular_x": -0.5299997329711914,
+            "block_indices": [
+              10
+            ],
+            "reasons": [
+              "x0=-0.5 vs regular_x=-0.5"
+            ]
+          }
+        }
+      ],
+      "is_numbered": false,
+      "font_size": 9.949873924255371
+    },
+    {
+      "header": "T H E TWA SISTERS: A SANTAL FOLKTALE VARIANT 175",
+      "content": "also between the sexual and the asexual. It absorbs the sexual connotations surrounding fruit and trees in Santal culture, but it is also associated with the yogi (ascetic), who here replaces the miller in the European and American versions. Finally, it mediates between the young girl and the mature woman, because the girl who emerges from it is no longer looking for sex or innocent 'fun', but for a husband on whom she already has some claims. In the final analysis, the tale operates in a similar way to 'The Twa Sisters' The song is a ballad about ballads, and 'The Story of Two Princesses' is a story about storytelling. The musical instrument clearly conveys something important to the raja, which is why the elder sister is careful to conceal it from him. Apparently, it conveys something more than the elder sister's guilt, because the effect the revelation has on the raja is to make him claim the younger sister as his wife. The suggestion is that the musical instrument reveals the younger sister's sexual desire for her brother-in-law, or the fact that she is already impregnated by him (which would explain the elder sister's fear of the secret). At any rate, it is something that the younger sister herself cannot express, in spite of the'social sanction of her relationship with her sister's husband. Like 'The Twa Sisters,' this is ultimately a story about how storytelling and using poetic and symbolic language—a vital aspect of Santal culture—provide the means of releasing tension in social relationships. Department of English, University of Cincinnati APPENDIX The Story of Two Princesses. From the collection of A. Campbell. Santal Folktales. Pokhuria, 1891. A certain Raja had two daughters, who were in the habit of amusing themselves outside of the palace walls. One day they saw a crow flying towards them with a ripe Terel fruit in his beak. They then said to each other, 'What fruit is it? It looks nice and sweet.' The crow let the fruit fall in front of them. They ran and picked it up, and ate it. It tasted deliciously sweet. Then they said, 'From whence did the crow bring such a good fruit?' Then they remembered the direction from which they had seen it coming, and said, 'If we go this way we shall find it.' So they went, but it was only after they had travelled a great distance from home that they found the Terel tree with the ripe luscious fruit. The elder of the two girls climbed up into the tree, and shook down a large quantity of the fruit. They then feasted to their heart's content. Presently they began to feel thirsty, and the elder said to the younger, 'You remain here while I go to drink, and I will also bring you water in a leaf cup.'Having said this she went away to the tank, and her sister remained under the Terel tree. The day was extremely hot, and they were very thirsty. The elder having quenched her thirst was returning carrying water for her sister in a cup made of the leaves of a Terel tree, when a bhut came flying along, and fell into the cup of water. Presently she became aware that there was a hole in the bottom of her cup through which all the water had run out. What could she do now? There was no help for it but to return to the tank, make another leaf cup, and filling it with water return with it to her sister. As she was returning with the cup of water the bhut again came flying up, and entering the water passed through the leaf, making a hole by which all the water escaped. Again she made a leaf cup, and having filled it with water was returning when the bhut again came, and destroyed her cup, and caused her to lose the water. In this way she was detained till very late. A raja who happened to be in the vicinity saw a beautiful girl carrying water in a leaf cup, and a bhut come and make a hole in the cup, so that it soon became empty. Having seen this several times repeated, he drew near, and feasted his eyes on her beauty. Then he carried her away to his palace, where they were joined in wedlock, and the princess, now the rani, cooked the food for herself and her husband. Downloaded by [New York University] at 16:20 08 May 2015",
+      "page_number": 9,
+      "paragraphs": [
+        {
+          "sentences": [
+            "also between the sexual and the asexual.",
+            "It absorbs the sexual connotations surrounding fruit and trees in Santal culture, but it is also associated with the yogi (ascetic), who here replaces the miller in the European and American versions.",
+            "Finally, it mediates between the young girl and the mature woman, because the girl who emerges from it is no longer looking for sex or innocent 'fun', but for a husband on whom she already has some claims."
+          ],
+          "text": "also between the sexual and the asexual. It absorbs the sexual connotations surrounding fruit and trees in Santal culture, but it is also associated with the yogi (ascetic), who here replaces the miller in the European and American versions. Finally, it mediates between the young girl and the mature woman, because the girl who emerges from it is no longer looking for sex or innocent 'fun', but for a husband on whom she already has some claims.",
+          "is_first_in_section": true,
+          "debug_info": {
+            "x_positions": [
+              39.84000015258789,
+              39.84000015258789,
+              39.84000015258789,
+              39.599998474121094,
+              39.84000015258789
+            ],
+            "regular_x": 39.599998474121094,
+            "block_indices": [
+              2,
+              2,
+              2,
+              2,
+              2
+            ],
+            "reasons": [
+              "follows header",
+              "x0=39.8 vs regular_x=39.6",
+              "x0=39.8 vs regular_x=39.6",
+              "x0=39.6 vs regular_x=39.6",
+              "x0=39.8 vs regular_x=39.6",
+              "x0=48.2 vs regular_x=39.6 (indented)"
+            ]
+          }
+        },
+        {
+          "sentences": [
+            "In the final analysis, the tale operates in a similar way to 'The Twa Sisters' The song is a ballad about ballads, and 'The Story of Two Princesses' is a story about storytelling.",
+            "The musical instrument clearly conveys something important to the raja, which is why the elder sister is careful to conceal it from him.",
+            "Apparently, it conveys something more than the elder sister's guilt, because the effect the revelation has on the raja is to make him claim the younger sister as his wife.",
+            "The suggestion is that the musical instrument reveals the younger sister's sexual desire for her brother-in-law, or the fact that she is already impregnated by him (which would explain the elder sister's fear of the secret).",
+            "At any rate, it is something that the younger sister herself cannot express, in spite of the'social sanction of her relationship with her sister's husband.",
+            "Like 'The Twa Sisters,' this is ultimately a story about how storytelling and using poetic and symbolic language—a vital aspect of Santal culture—provide the means of releasing tension in social relationships.",
+            "Department of English, University of Cincinnati"
+          ],
+          "text": "In the final analysis, the tale operates in a similar way to 'The Twa Sisters' The song is a ballad about ballads, and 'The Story of Two Princesses' is a story about storytelling. The musical instrument clearly conveys something important to the raja, which is why the elder sister is careful to conceal it from him. Apparently, it conveys something more than the elder sister's guilt, because the effect the revelation has on the raja is to make him claim the younger sister as his wife. The suggestion is that the musical instrument reveals the younger sister's sexual desire for her brother-in-law, or the fact that she is already impregnated by him (which would explain the elder sister's fear of the secret). At any rate, it is something that the younger sister herself cannot express, in spite of the'social sanction of her relationship with her sister's husband. Like 'The Twa Sisters,' this is ultimately a story about how storytelling and using poetic and symbolic language—a vital aspect of Santal culture—provide the means of releasing tension in social relationships. Department of English, University of Cincinnati",
+          "is_first_in_section": false,
+          "debug_info": {
+            "x_positions": [
+              39.599998474121094,
+              40.79999923706055
+            ],
+            "regular_x": 39.599998474121094,
+            "block_indices": [
+              4,
+              4
+            ],
+            "reasons": [
+              "x0=39.6 vs regular_x=39.6",
+              "x0=40.8 vs regular_x=39.6",
+              "x0=190.8 vs regular_x=39.6 (indented)"
+            ]
+          }
+        },
+        {
+          "sentences": [
+            "APPENDIX"
+          ],
+          "text": "APPENDIX",
+          "is_first_in_section": true,
+          "debug_info": {
+            "x_positions": [
+              190.8000030517578
+            ],
+            "regular_x": 40.560001373291016,
+            "block_indices": [
+              5
+            ],
+            "reasons": [
+              "x0=190.8 vs regular_x=40.6 (indented)"
+            ]
+          }
+        },
+        {
+          "sentences": [
+            "The Story of Two Princesses.",
+            "From the collection of A. Campbell.",
+            "Santal Folktales.",
+            "Pokhuria, 1891."
+          ],
+          "text": "The Story of Two Princesses. From the collection of A. Campbell. Santal Folktales. Pokhuria, 1891.",
+          "is_first_in_section": false,
+          "debug_info": {
+            "x_positions": [
+              47.279998779296875,
+              40.560001373291016
+            ],
+            "regular_x": 40.560001373291016,
+            "block_indices": [
+              5,
+              5
+            ],
+            "reasons": [
+              "follows header",
+              "x0=40.6 vs regular_x=40.6",
+              "x0=47.0 vs regular_x=40.6 (indented)"
+            ]
+          }
+        },
+        {
+          "sentences": [
+            "A certain Raja had two daughters, who were in the habit of amusing themselves outside of the palace walls.",
+            "One day they saw a crow flying towards them with a ripe Terel fruit in his beak.",
+            "They then said to each other, 'What fruit is it?",
+            "It looks nice and sweet.'",
+            "The crow let the fruit fall in front of them.",
+            "They ran and picked it up, and ate it.",
+            "It tasted deliciously sweet.",
+            "Then they said, 'From whence did the crow bring such a good fruit?'",
+            "Then they remembered the direction from which they had seen it coming, and said, 'If we go this way we shall find it.'",
+            "So they went, but it was only after they had travelled a great distance from home that they found the Terel tree with the ripe luscious fruit."
+          ],
+          "text": "A certain Raja had two daughters, who were in the habit of amusing themselves outside of the palace walls. One day they saw a crow flying towards them with a ripe Terel fruit in his beak. They then said to each other, 'What fruit is it? It looks nice and sweet.' The crow let the fruit fall in front of them. They ran and picked it up, and ate it. It tasted deliciously sweet. Then they said, 'From whence did the crow bring such a good fruit?' Then they remembered the direction from which they had seen it coming, and said, 'If we go this way we shall find it.' So they went, but it was only after they had travelled a great distance from home that they found the Terel tree with the ripe luscious fruit.",
+          "is_first_in_section": true,
+          "debug_info": {
+            "x_positions": [
+              47.040000915527344,
+              39.599998474121094,
+              39.36000061035156,
+              39.599998474121094,
+              39.36000061035156,
+              39.599998474121094,
+              39.599998474121094,
+              39.599998474121094
+            ],
+            "regular_x": 39.36000061035156,
+            "block_indices": [
+              6,
+              6,
+              6,
+              6,
+              6,
+              6,
+              6,
+              6
+            ],
+            "reasons": [
+              "x0=47.0 vs regular_x=39.4 (indented)",
+              "x0=39.6 vs regular_x=39.4",
+              "x0=39.4 vs regular_x=39.4",
+              "x0=39.6 vs regular_x=39.4",
+              "x0=39.4 vs regular_x=39.4",
+              "x0=39.6 vs regular_x=39.4",
+              "x0=39.6 vs regular_x=39.4",
+              "x0=39.6 vs regular_x=39.4",
+              "x0=47.0 vs regular_x=39.4 (indented)"
+            ]
+          }
+        },
+        {
+          "sentences": [
+            "The elder of the two girls climbed up into the tree, and shook down a large quantity of the fruit.",
+            "They then feasted to their heart's content.",
+            "Presently they began to feel thirsty, and the elder said to the younger, 'You remain here while I go to drink, and I will also bring you water in a leaf cup.",
+            "'Having said this she went away to the tank, and her sister remained under the Terel tree.",
+            "The day was extremely hot, and they were very thirsty."
+          ],
+          "text": "The elder of the two girls climbed up into the tree, and shook down a large quantity of the fruit. They then feasted to their heart's content. Presently they began to feel thirsty, and the elder said to the younger, 'You remain here while I go to drink, and I will also bring you water in a leaf cup.'Having said this she went away to the tank, and her sister remained under the Terel tree. The day was extremely hot, and they were very thirsty.",
+          "is_first_in_section": true,
+          "debug_info": {
+            "x_positions": [
+              47.040000915527344,
+              39.84000015258789,
+              39.599998474121094,
+              39.599998474121094,
+              39.599998474121094
+            ],
+            "regular_x": 39.599998474121094,
+            "block_indices": [
+              7,
+              7,
+              7,
+              7,
+              7
+            ],
+            "reasons": [
+              "x0=47.0 vs regular_x=39.6 (indented)",
+              "x0=39.8 vs regular_x=39.6",
+              "x0=39.6 vs regular_x=39.6",
+              "x0=39.6 vs regular_x=39.6",
+              "x0=39.6 vs regular_x=39.6",
+              "x0=47.0 vs regular_x=39.6 (indented)"
+            ]
+          }
+        },
+        {
+          "sentences": [
+            "The elder having quenched her thirst was returning carrying water for her sister in a cup made of the leaves of a Terel tree, when a bhut came flying along, and fell into the cup of water.",
+            "Presently she became aware that there was a hole in the bottom of her cup through which all the water had run out.",
+            "What could she do now?",
+            "There was no help for it but to return to the tank, make another leaf cup, and filling it with water return with it to her sister.",
+            "As she was returning with the cup of water the bhut again came flying up, and entering the water passed through the leaf, making a hole by which all the water escaped."
+          ],
+          "text": "The elder having quenched her thirst was returning carrying water for her sister in a cup made of the leaves of a Terel tree, when a bhut came flying along, and fell into the cup of water. Presently she became aware that there was a hole in the bottom of her cup through which all the water had run out. What could she do now? There was no help for it but to return to the tank, make another leaf cup, and filling it with water return with it to her sister. As she was returning with the cup of water the bhut again came flying up, and entering the water passed through the leaf, making a hole by which all the water escaped.",
+          "is_first_in_section": true,
+          "debug_info": {
+            "x_positions": [
+              47.040000915527344,
+              39.36000061035156,
+              39.36000061035156,
+              39.36000061035156,
+              39.36000061035156,
+              39.36000061035156,
+              39.36000061035156
+            ],
+            "regular_x": 39.36000061035156,
+            "block_indices": [
+              8,
+              8,
+              8,
+              8,
+              8,
+              8,
+              8
+            ],
+            "reasons": [
+              "x0=47.0 vs regular_x=39.4 (indented)",
+              "x0=39.4 vs regular_x=39.4",
+              "x0=39.4 vs regular_x=39.4",
+              "x0=39.4 vs regular_x=39.4",
+              "x0=39.4 vs regular_x=39.4",
+              "x0=39.4 vs regular_x=39.4",
+              "x0=39.4 vs regular_x=39.4",
+              "x0=46.8 vs regular_x=39.4 (indented)"
+            ]
+          }
+        },
+        {
+          "sentences": [
+            "Again she made a leaf cup, and having filled it with water was returning when the bhut again came, and destroyed her cup, and caused her to lose the water.",
+            "In this way she was detained till very late."
+          ],
+          "text": "Again she made a leaf cup, and having filled it with water was returning when the bhut again came, and destroyed her cup, and caused her to lose the water. In this way she was detained till very late.",
+          "is_first_in_section": true,
+          "debug_info": {
+            "x_positions": [
+              46.79999923706055,
+              39.36000061035156,
+              39.36000061035156
+            ],
+            "regular_x": 39.36000061035156,
+            "block_indices": [
+              9,
+              9,
+              9
+            ],
+            "reasons": [
+              "x0=46.8 vs regular_x=39.4 (indented)",
+              "x0=39.4 vs regular_x=39.4",
+              "x0=39.4 vs regular_x=39.4",
+              "x0=46.8 vs regular_x=39.4 (indented)"
+            ]
+          }
+        },
+        {
+          "sentences": [
+            "A raja who happened to be in the vicinity saw a beautiful girl carrying water in a leaf cup, and a bhut come and make a hole in the cup, so that it soon became empty.",
+            "Having seen this several times repeated, he drew near, and feasted his eyes on her beauty.",
+            "Then he carried her away to his palace, where they were joined in wedlock, and the princess, now the rani, cooked the food for herself and her husband.",
+            "Downloaded by [New York University] at 16:20 08 May 2015"
+          ],
+          "text": "A raja who happened to be in the vicinity saw a beautiful girl carrying water in a leaf cup, and a bhut come and make a hole in the cup, so that it soon became empty. Having seen this several times repeated, he drew near, and feasted his eyes on her beauty. Then he carried her away to his palace, where they were joined in wedlock, and the princess, now the rani, cooked the food for herself and her husband. Downloaded by [New York University] at 16:20 08 May 2015",
+          "is_first_in_section": false,
+          "debug_info": {
+            "x_positions": [
+              -0.5299997329711914
+            ],
+            "regular_x": -0.5299997329711914,
+            "block_indices": [
+              11
+            ],
+            "reasons": [
+              "x0=-0.5 vs regular_x=-0.5"
+            ]
+          }
+        }
+      ],
+      "is_numbered": false,
+      "font_size": 8.954887390136719
+    },
+    {
+      "header": "'176 LILY PHILIPOSE",
+      "content": "The young princess remained near the Terel tree, and although she had given up hope of again meeting her sister, still she continued to wait. At length a herd of Hanuman monkeys came to feed upon the Terel fruit. When the girl saw them coming she was terrified and crept into the hollow of the tree. The monkeys, with the exception of an old frail one, climbed into the tree and began to eat the fruit. The old monkey remained below and picked up the fruit shells which the others threw down. The old monkey having noticed the girl hiding in the hollow of the tree called to the others, 'Throw me down some. If you do not I shall not share the Setke chopot I have found.' The monkeys in the tree said, 'Do not give him any. He is deceiving us. When his hunger is satisfied he will run and leave us.' So no fruit was thrown down to him, and he was forced to be content with the shells. The monkeys in the tree, having fared sumptuously, left. The old monkey waited till they were out of sight, and then entered the hollow of the tree, where the girl was, and ate her up. He then went to the tank to drink, and afterwards went in the direction of the raja's garden, on reaching which he lay down and died. One of the gardeners finding him dead threw him on the dunghill. From the place where the monkey decayed a gourd sprang and grew, and bore a fruit which ripened. One day a jugi, when on his rounds begging, saw this fruit and plucking it took it away with him. Out of the shell he made a banjo, which when played upon emitted wonderful music. The words which seemed to proceed from the banjo were as follows: Ripe terels, ripe terels. Oh! Sister mine. Went in search of water, Oh! Sister mine. Raja and Rani they became. Seven hundred monkeys old, Ate me up, ate me up. Oh! Sister mine. The jugi was greatly pleased with the music of his new banjo, and determined to take it with him when he went a-begging. So one day he set out with his banjo the music of which so pleased the people that they gave him large gifts of money and clothes. In course of time he arrived at the palace where the elder sister was now rani, and, being admitted, began to play on his banjo. The instrument again produced most wonderful music. It seemed to wail as follows: Ripe terels, ripe terels, Oh! Sister mine. Went in search of water, Oh! Sister mine. Raja and Rani they became. Seven hundred monkeys old, Ate me up, ate me up. Oh! Sister mine. Having listened to the music the rani said, 'It is wonderfully sweet,' and she fancied she heard her sister's voice in every note. She thought it possible that it was she who sang in the banjo, and she desired to obtain possession of it. So she invited the jugi to pass the night in the palace, saying, 'I would hear more of this entrancing music' The jugi listened to the words of the rani and agreed to remain till morning. So the rani made much of him with the intention of at length obtaining possession of his banjo. She caused a goat to be killed, and she cooked a splendid supper for the jugi, who finding the food so toothsome ate heartily. Wine was not withheld, and the jugi being in a festive frame of mind drank deeply, so that he soon lay as one dead. The rani took the banjo, and placed another in its stead. She then threw filth over the unconscious jugi and retired to her own apartment. The jugi on awaking before sunrise found himself in a pitiable plight. He felt so thoroughly disgusted with himself that, hastily picking up his staff, doth, and banjo, he fled with the utmost possible speed from the palace. When dawn broke he saw that the banjo he had was not his own, and although he felt keenly its loss he was too much ashamed of the condition he had been in to go back to seek it. The rani hid the jugi's banjo in her own room, because she knew her sister to be in it. Whenever the raja and rani went out to walk, the girl left the banjo and having bathed and dressed her hair, cooked the family meal, and then returned to the banjo. This happened so often that at last it came to the knowledge of the raja that a fairy lived in the banjo, and when Downloaded by [New York University] at 16:20 08 May 2015",
+      "page_number": 10,
+      "paragraphs": [
+        {
+          "sentences": [
+            "The young princess remained near the Terel tree, and although she had given up hope of again meeting her sister, still she continued to wait.",
+            "At length a herd of Hanuman monkeys came to feed upon the Terel fruit.",
+            "When the girl saw them coming she was terrified and crept into the hollow of the tree.",
+            "The monkeys, with the exception of an old frail one, climbed into the tree and began to eat the fruit.",
+            "The old monkey remained below and picked up the fruit shells which the others threw down."
+          ],
+          "text": "The young princess remained near the Terel tree, and although she had given up hope of again meeting her sister, still she continued to wait. At length a herd of Hanuman monkeys came to feed upon the Terel fruit. When the girl saw them coming she was terrified and crept into the hollow of the tree. The monkeys, with the exception of an old frail one, climbed into the tree and began to eat the fruit. The old monkey remained below and picked up the fruit shells which the others threw down.",
+          "is_first_in_section": true,
+          "debug_info": {
+            "x_positions": [
+              47.279998779296875,
+              39.84000015258789,
+              40.08000183105469,
+              40.08000183105469,
+              40.08000183105469,
+              40.08000183105469
+            ],
+            "regular_x": 39.84000015258789,
+            "block_indices": [
+              2,
+              2,
+              2,
+              2,
+              2,
+              2
+            ],
+            "reasons": [
+              "follows header",
+              "x0=39.8 vs regular_x=39.8",
+              "x0=40.1 vs regular_x=39.8",
+              "x0=40.1 vs regular_x=39.8",
+              "x0=40.1 vs regular_x=39.8",
+              "x0=40.1 vs regular_x=39.8",
+              "x0=47.5 vs regular_x=39.8 (indented)"
+            ]
+          }
+        },
+        {
+          "sentences": [
+            "The old monkey having noticed the girl hiding in the hollow of the tree called to the others, 'Throw me down some.",
+            "If you do not I shall not share the Setke chopot I have found.'",
+            "The monkeys in the tree said, 'Do not give him any.",
+            "He is deceiving us.",
+            "When his hunger is satisfied he will run and leave us.'",
+            "So no fruit was thrown down to him, and he was forced to be content with the shells.",
+            "The monkeys in the tree, having fared sumptuously, left.",
+            "The old monkey waited till they were out of sight, and then entered the hollow of the tree, where the girl was, and ate her up.",
+            "He then went to the tank to drink, and afterwards went in the direction of the raja's garden, on reaching which he lay down and died.",
+            "One of the gardeners finding him dead threw him on the dunghill."
+          ],
+          "text": "The old monkey having noticed the girl hiding in the hollow of the tree called to the others, 'Throw me down some. If you do not I shall not share the Setke chopot I have found.' The monkeys in the tree said, 'Do not give him any. He is deceiving us. When his hunger is satisfied he will run and leave us.' So no fruit was thrown down to him, and he was forced to be content with the shells. The monkeys in the tree, having fared sumptuously, left. The old monkey waited till they were out of sight, and then entered the hollow of the tree, where the girl was, and ate her up. He then went to the tank to drink, and afterwards went in the direction of the raja's garden, on reaching which he lay down and died. One of the gardeners finding him dead threw him on the dunghill.",
+          "is_first_in_section": true,
+          "debug_info": {
+            "x_positions": [
+              47.52000045776367,
+              39.599998474121094,
+              40.08000183105469,
+              40.31999969482422,
+              40.31999969482422,
+              40.31999969482422,
+              40.31999969482422,
+              40.31999969482422,
+              40.31999969482422
+            ],
+            "regular_x": 39.599998474121094,
+            "block_indices": [
+              3,
+              3,
+              3,
+              3,
+              3,
+              3,
+              3,
+              3,
+              3
+            ],
+            "reasons": [
+              "x0=47.5 vs regular_x=39.6 (indented)",
+              "x0=39.6 vs regular_x=39.6",
+              "x0=40.1 vs regular_x=39.6",
+              "x0=40.3 vs regular_x=39.6",
+              "x0=40.3 vs regular_x=39.6",
+              "x0=40.3 vs regular_x=39.6",
+              "x0=40.3 vs regular_x=39.6",
+              "x0=40.3 vs regular_x=39.6",
+              "x0=40.3 vs regular_x=39.6",
+              "x0=48.2 vs regular_x=39.6 (indented)"
+            ]
+          }
+        },
+        {
+          "sentences": [
+            "From the place where the monkey decayed a gourd sprang and grew, and bore a fruit which ripened.",
+            "One day a jugi, when on his rounds begging, saw this fruit and plucking it took it away with him.",
+            "Out of the shell he made a banjo, which when played upon emitted wonderful music.",
+            "The words which seemed to proceed from the banjo were as follows:"
+          ],
+          "text": "From the place where the monkey decayed a gourd sprang and grew, and bore a fruit which ripened. One day a jugi, when on his rounds begging, saw this fruit and plucking it took it away with him. Out of the shell he made a banjo, which when played upon emitted wonderful music. The words which seemed to proceed from the banjo were as follows:",
+          "is_first_in_section": true,
+          "debug_info": {
+            "x_positions": [
+              48.2400016784668,
+              40.560001373291016,
+              40.560001373291016,
+              40.560001373291016
+            ],
+            "regular_x": 40.560001373291016,
+            "block_indices": [
+              4,
+              4,
+              4,
+              4
+            ],
+            "reasons": [
+              "x0=48.2 vs regular_x=40.6 (indented)",
+              "x0=40.6 vs regular_x=40.6",
+              "x0=40.6 vs regular_x=40.6",
+              "x0=40.6 vs regular_x=40.6",
+              "x0=136.3 vs regular_x=40.6 (indented)"
+            ]
+          }
+        },
+        {
+          "sentences": [
+            "Ripe terels, ripe terels.",
+            "Oh!",
+            "Sister mine.",
+            "Went in search of water, Oh!",
+            "Sister mine.",
+            "Raja and Rani they became.",
+            "Seven hundred monkeys old, Ate me up, ate me up.",
+            "Oh!",
+            "Sister mine."
+          ],
+          "text": "Ripe terels, ripe terels. Oh! Sister mine. Went in search of water, Oh! Sister mine. Raja and Rani they became. Seven hundred monkeys old, Ate me up, ate me up. Oh! Sister mine.",
+          "is_first_in_section": false,
+          "debug_info": {
+            "x_positions": [],
+            "regular_x": 41.040000915527344,
+            "block_indices": [],
+            "reasons": []
+          }
+        },
+        {
+          "sentences": [
+            "The jugi was greatly pleased with the music of his new banjo, and determined to take it with him when he went a-begging.",
+            "So one day he set out with his banjo the music of which so pleased the people that they gave him large gifts of money and clothes.",
+            "In course of time he arrived at the palace where the elder sister was now rani, and, being admitted, began to play on his banjo.",
+            "The instrument again produced most wonderful music.",
+            "It seemed to wail as follows:"
+          ],
+          "text": "The jugi was greatly pleased with the music of his new banjo, and determined to take it with him when he went a-begging. So one day he set out with his banjo the music of which so pleased the people that they gave him large gifts of money and clothes. In course of time he arrived at the palace where the elder sister was now rani, and, being admitted, began to play on his banjo. The instrument again produced most wonderful music. It seemed to wail as follows:",
+          "is_first_in_section": false,
+          "debug_info": {
+            "x_positions": [
+              48.47999954223633,
+              41.279998779296875,
+              41.279998779296875,
+              41.279998779296875,
+              41.040000915527344
+            ],
+            "regular_x": 41.040000915527344,
+            "block_indices": [
+              6,
+              6,
+              6,
+              6,
+              6
+            ],
+            "reasons": [
+              "x0=48.5 vs regular_x=41.0 (indented)",
+              "x0=41.3 vs regular_x=41.0",
+              "x0=41.3 vs regular_x=41.0",
+              "x0=41.3 vs regular_x=41.0",
+              "x0=41.0 vs regular_x=41.0",
+              "x0=137.3 vs regular_x=41.0 (indented)"
+            ]
+          }
+        },
+        {
+          "sentences": [
+            "Ripe terels, ripe terels, Oh!",
+            "Sister mine.",
+            "Went in search of water, Oh!",
+            "Sister mine.",
+            "Raja and Rani they became.",
+            "Seven hundred monkeys old, Ate me up, ate me up.",
+            "Oh!",
+            "Sister mine."
+          ],
+          "text": "Ripe terels, ripe terels, Oh! Sister mine. Went in search of water, Oh! Sister mine. Raja and Rani they became. Seven hundred monkeys old, Ate me up, ate me up. Oh! Sister mine.",
+          "is_first_in_section": false,
+          "debug_info": {
+            "x_positions": [],
+            "regular_x": 41.52000045776367,
+            "block_indices": [],
+            "reasons": []
+          }
+        },
+        {
+          "sentences": [
+            "Having listened to the music the rani said, 'It is wonderfully sweet,' and she fancied she heard her sister's voice in every note.",
+            "She thought it possible that it was she who sang in the banjo, and she desired to obtain possession of it.",
+            "So she invited the jugi to pass the night in the palace, saying, 'I would hear more of this entrancing music' The jugi listened to the words of the rani and agreed to remain till morning.",
+            "So the rani made much of him with the intention of at length obtaining possession of his banjo.",
+            "She caused a goat to be killed, and she cooked a splendid supper for the jugi, who finding the food so toothsome ate heartily.",
+            "Wine was not withheld, and the jugi being in a festive frame of mind drank deeply, so that he soon lay as one dead.",
+            "The rani took the banjo, and placed another in its stead.",
+            "She then threw filth over the unconscious jugi and retired to her own apartment."
+          ],
+          "text": "Having listened to the music the rani said, 'It is wonderfully sweet,' and she fancied she heard her sister's voice in every note. She thought it possible that it was she who sang in the banjo, and she desired to obtain possession of it. So she invited the jugi to pass the night in the palace, saying, 'I would hear more of this entrancing music' The jugi listened to the words of the rani and agreed to remain till morning. So the rani made much of him with the intention of at length obtaining possession of his banjo. She caused a goat to be killed, and she cooked a splendid supper for the jugi, who finding the food so toothsome ate heartily. Wine was not withheld, and the jugi being in a festive frame of mind drank deeply, so that he soon lay as one dead. The rani took the banjo, and placed another in its stead. She then threw filth over the unconscious jugi and retired to her own apartment.",
+          "is_first_in_section": false,
+          "debug_info": {
+            "x_positions": [
+              49.20000076293945,
+              41.52000045776367,
+              41.52000045776367,
+              41.52000045776367,
+              41.7599983215332,
+              41.52000045776367,
+              41.7599983215332,
+              42.2400016784668,
+              42.0,
+              42.0
+            ],
+            "regular_x": 41.52000045776367,
+            "block_indices": [
+              8,
+              8,
+              8,
+              8,
+              8,
+              8,
+              8,
+              8,
+              8,
+              8
+            ],
+            "reasons": [
+              "x0=49.2 vs regular_x=41.5 (indented)",
+              "x0=41.5 vs regular_x=41.5",
+              "x0=41.5 vs regular_x=41.5",
+              "x0=41.5 vs regular_x=41.5",
+              "x0=41.8 vs regular_x=41.5",
+              "x0=41.5 vs regular_x=41.5",
+              "x0=41.8 vs regular_x=41.5",
+              "x0=42.2 vs regular_x=41.5",
+              "x0=42.0 vs regular_x=41.5",
+              "x0=42.0 vs regular_x=41.5",
+              "x0=49.7 vs regular_x=41.5 (indented)"
+            ]
+          }
+        },
+        {
+          "sentences": [
+            "The jugi on awaking before sunrise found himself in a pitiable plight.",
+            "He felt so thoroughly disgusted with himself that, hastily picking up his staff, doth, and banjo, he fled with the utmost possible speed from the palace.",
+            "When dawn broke he saw that the banjo he had was not his own, and although he felt keenly its loss he was too much ashamed of the condition he had been in to go back to seek it.",
+            "The rani hid the jugi's banjo in her own room, because she knew her sister to be in it.",
+            "Whenever the raja and rani went out to walk, the girl left the banjo and having bathed and dressed her hair, cooked the family meal, and then returned to the banjo.",
+            "This happened so often that at last it came to the knowledge of the raja that a fairy lived in the banjo, and when Downloaded by [New York University] at 16:20 08 May 2015"
+          ],
+          "text": "The jugi on awaking before sunrise found himself in a pitiable plight. He felt so thoroughly disgusted with himself that, hastily picking up his staff, doth, and banjo, he fled with the utmost possible speed from the palace. When dawn broke he saw that the banjo he had was not his own, and although he felt keenly its loss he was too much ashamed of the condition he had been in to go back to seek it. The rani hid the jugi's banjo in her own room, because she knew her sister to be in it. Whenever the raja and rani went out to walk, the girl left the banjo and having bathed and dressed her hair, cooked the family meal, and then returned to the banjo. This happened so often that at last it came to the knowledge of the raja that a fairy lived in the banjo, and when Downloaded by [New York University] at 16:20 08 May 2015",
+          "is_first_in_section": false,
+          "debug_info": {
+            "x_positions": [
+              -0.5299997329711914
+            ],
+            "regular_x": -0.5299997329711914,
+            "block_indices": [
+              10
+            ],
+            "reasons": [
+              "x0=-0.5 vs regular_x=-0.5"
+            ]
+          }
+        }
+      ],
+      "is_numbered": false,
+      "font_size": 8.954887390136719
+    },
+    {
+      "header": "T H E TWA SISTERS: A SANTAL FOLKTALE VARIANT 177",
+      "content": "the way was clear used to come out and prepare food for the rani and himself. So he determined to lie in wait for the fairy cook. He then sent the rani somewhere on an errand, and hid himself in a corner of the room from whence he could see the banjo. In a short time the princess emerged from the banjo and began to dress her hair, and anoint herself with oil, after which she cooked rice. She divided the food into three portions, one of which she ate. As she was about to re-enter the banjo, the raja sprang out and caught hold of her. She exclaimed, 'Chi! Chi! you may be a Hadi, or you may be a Dom.' The raja replied, 'Chi! Chi! whether I be a Dom, or a Hadi, from today you and I are one.'",
+      "page_number": 11,
+      "paragraphs": [
+        {
+          "sentences": [
+            "the way was clear used to come out and prepare food for the rani and himself.",
+            "So he determined to lie in wait for the fairy cook.",
+            "He then sent the rani somewhere on an errand, and hid himself in a corner of the room from whence he could see the banjo.",
+            "In a short time the princess emerged from the banjo and began to dress her hair, and anoint herself with oil, after which she cooked rice.",
+            "She divided the food into three portions, one of which she ate.",
+            "As she was about to re-enter the banjo, the raja sprang out and caught hold of her.",
+            "She exclaimed, 'Chi!",
+            "Chi!",
+            "you may be a Hadi, or you may be a Dom.'",
+            "The raja replied, 'Chi!",
+            "Chi!",
+            "whether I be a Dom, or a Hadi, from today you and I are one.'"
+          ],
+          "text": "the way was clear used to come out and prepare food for the rani and himself. So he determined to lie in wait for the fairy cook. He then sent the rani somewhere on an errand, and hid himself in a corner of the room from whence he could see the banjo. In a short time the princess emerged from the banjo and began to dress her hair, and anoint herself with oil, after which she cooked rice. She divided the food into three portions, one of which she ate. As she was about to re-enter the banjo, the raja sprang out and caught hold of her. She exclaimed, 'Chi! Chi! you may be a Hadi, or you may be a Dom.' The raja replied, 'Chi! Chi! whether I be a Dom, or a Hadi, from today you and I are one.'",
+          "is_first_in_section": true,
+          "debug_info": {
+            "x_positions": [
+              40.560001373291016,
+              40.560001373291016,
+              40.31999969482422,
+              40.560001373291016,
+              40.31999969482422,
+              40.31999969482422,
+              40.31999969482422,
+              40.560001373291016
+            ],
+            "regular_x": 40.31999969482422,
+            "block_indices": [
+              2,
+              2,
+              2,
+              2,
+              2,
+              2,
+              2,
+              2
+            ],
+            "reasons": [
+              "follows header",
+              "x0=40.6 vs regular_x=40.3",
+              "x0=40.3 vs regular_x=40.3",
+              "x0=40.6 vs regular_x=40.3",
+              "x0=40.3 vs regular_x=40.3",
+              "x0=40.3 vs regular_x=40.3",
+              "x0=40.3 vs regular_x=40.3",
+              "x0=40.6 vs regular_x=40.3",
+              "x0=199.4 vs regular_x=40.3 (indented)"
+            ]
+          }
+        }
+      ],
+      "is_numbered": false,
+      "font_size": 8.954887390136719
+    },
+    {
+      "header": "NOTES",
+      "content": "1. F. J. Child, English and Scottish Popular Ballads, 5 vols. (New York, Dover Publications, 1965). 2. L. Mackensen, Der Singende Knochen, Folklore Fellows Communication 49 (Helsinki, Suomalainen Tiedeakatemia, 1961) 3. A. Taylor. 'The English, Scottish and American Versions of \"The Twa Sisters,\" Journal of American Folklore 42 (1929), 238-46. 4. H. Parker, '\"The Twa Sisters — Going Which Way?.' Journal of American Folkore 64 (1951), 347-60. 5. K. Leistol, 'Dei tvo systar,' Maal og Minne (Oslo, 1909). 6. P. Brewster, The Two Sisters (Helsinki, Suomalainen Tiedeakatemia, 1953). 7. T. P. Coffin, The British Traditional Ballad in North America (Austin, Texas, University of Texas Press, 1977). 8. R. de V. Renwick, English Folk Poetry: Structure and Meaning (Pennsylvania, University of Pennsylvania Press, 1980). 9. A. Aarne, The Types of the Folktale: A Classification and Bibliography (Helsinki, Suomalainen Tiedeakatemia, 1961), p. 269; A Campbell, Santal Folktales (Pokhuria, Santal Mission Press, 1891) pp. 102-105. 10. C. H. Craven, 'Traces of Fraternal Polyandry among the Santal.' Journal of the Asiatic Society of Bengal 72, iii (1904), 89. 11. Child, p. 127. 12. Parker, p. 351 13. Ibid., p. 351. 14. W. G. Archer, The Hill of Flutes (Pittsburgh, University of Pittsburgh Press, 1974). 15. Ibid., p. 66. 16. Ibid., p. 223. 17. A full account of the ritual is provided in Archer, pp. 256-71. 18. Ibid., p. 273. 19. A. Campbell, 'Superstitions of the Santals,' Journal of the Bihar and Orissa Research Society I (1915), 214. 20. Archer, p. 66 21. Ibid., p. 67. 22. Campbell, 'Superstitions,' 213. 23. Danish C. In Parker, p. 353. 24. Norwegian L. Ibid., p. 353. 25. Norwegian K. Ibid., p. 353. 26. A. Aarne, p. 270. Downloaded by [New York University] at 16:20 08 May 2015",
+      "page_number": 11,
+      "paragraphs": [
+        {
+          "sentences": [
+            "1.",
+            "F. J.",
+            "Child, English and Scottish Popular Ballads, 5 vols.",
+            "(New York, Dover Publications, 1965)."
+          ],
+          "text": "1. F. J. Child, English and Scottish Popular Ballads, 5 vols. (New York, Dover Publications, 1965).",
+          "is_first_in_section": true,
+          "debug_info": {
+            "x_positions": [
+              48.2400016784668
+            ],
+            "regular_x": 40.31999969482422,
+            "block_indices": [
+              4
+            ],
+            "reasons": [
+              "follows header"
+            ]
+          }
+        },
+        {
+          "sentences": [
+            "2.",
+            "L. Mackensen, Der Singende Knochen, Folklore Fellows Communication 49 (Helsinki, Suomalainen Tiedeakatemia, 1961)"
+          ],
+          "text": "2. L. Mackensen, Der Singende Knochen, Folklore Fellows Communication 49 (Helsinki, Suomalainen Tiedeakatemia, 1961)",
+          "is_first_in_section": false,
+          "debug_info": {
+            "x_positions": [
+              47.7599983215332,
+              40.31999969482422
+            ],
+            "regular_x": 40.31999969482422,
+            "block_indices": [
+              4,
+              4
+            ],
+            "reasons": [
+              "x0=47.8 vs regular_x=40.3 (indented)",
+              "x0=40.3 vs regular_x=40.3",
+              "x0=48.0 vs regular_x=40.3 (indented)"
+            ]
+          }
+        },
+        {
+          "sentences": [
+            "3.",
+            "A. Taylor.",
+            "'The English, Scottish and American Versions of \"The Twa Sisters,\" Journal of American Folklore 42 (1929), 238-46."
+          ],
+          "text": "3. A. Taylor. 'The English, Scottish and American Versions of \"The Twa Sisters,\" Journal of American Folklore 42 (1929), 238-46.",
+          "is_first_in_section": true,
+          "debug_info": {
+            "x_positions": [
+              48.0,
+              40.08000183105469
+            ],
+            "regular_x": 40.08000183105469,
+            "block_indices": [
+              5,
+              5
+            ],
+            "reasons": [
+              "x0=48.0 vs regular_x=40.1 (indented)",
+              "x0=40.1 vs regular_x=40.1"
+            ]
+          }
+        },
+        {
+          "sentences": [
+            "4.",
+            "H. Parker, '\"The Twa Sisters — Going Which Way?.'",
+            "Journal of American Folkore 64 (1951), 347-60."
+          ],
+          "text": "4. H. Parker, '\"The Twa Sisters — Going Which Way?.' Journal of American Folkore 64 (1951), 347-60.",
+          "is_first_in_section": false,
+          "debug_info": {
+            "x_positions": [
+              47.52000045776367,
+              40.31999969482422
+            ],
+            "regular_x": 40.08000183105469,
+            "block_indices": [
+              5,
+              5
+            ],
+            "reasons": [
+              "follows header",
+              "x0=40.3 vs regular_x=40.1",
+              "x0=48.0 vs regular_x=40.1 (indented)"
+            ]
+          }
+        },
+        {
+          "sentences": [
+            "5.",
+            "K. Leistol, 'Dei tvo systar,' Maal og Minne (Oslo, 1909)."
+          ],
+          "text": "5. K. Leistol, 'Dei tvo systar,' Maal og Minne (Oslo, 1909).",
+          "is_first_in_section": true,
+          "debug_info": {
+            "x_positions": [
+              48.0
+            ],
+            "regular_x": 39.84000015258789,
+            "block_indices": [
+              6
+            ],
+            "reasons": [
+              "x0=48.0 vs regular_x=39.8 (indented)"
+            ]
+          }
+        },
+        {
+          "sentences": [
+            "6.",
+            "P. Brewster, The Two Sisters (Helsinki, Suomalainen Tiedeakatemia, 1953)."
+          ],
+          "text": "6. P. Brewster, The Two Sisters (Helsinki, Suomalainen Tiedeakatemia, 1953).",
+          "is_first_in_section": false,
+          "debug_info": {
+            "x_positions": [
+              47.52000045776367
+            ],
+            "regular_x": 39.84000015258789,
+            "block_indices": [
+              6
+            ],
+            "reasons": [
+              "x0=47.5 vs regular_x=39.8 (indented)"
+            ]
+          }
+        },
+        {
+          "sentences": [
+            "7.",
+            "T. P. Coffin, The British Traditional Ballad in North America (Austin, Texas, University of Texas Press, 1977)."
+          ],
+          "text": "7. T. P. Coffin, The British Traditional Ballad in North America (Austin, Texas, University of Texas Press, 1977).",
+          "is_first_in_section": false,
+          "debug_info": {
+            "x_positions": [
+              47.7599983215332,
+              39.84000015258789
+            ],
+            "regular_x": 39.84000015258789,
+            "block_indices": [
+              6,
+              6
+            ],
+            "reasons": [
+              "x0=47.8 vs regular_x=39.8 (indented)",
+              "x0=39.8 vs regular_x=39.8",
+              "x0=47.5 vs regular_x=39.8 (indented)"
+            ]
+          }
+        },
+        {
+          "sentences": [
+            "8.",
+            "R. de V. Renwick, English Folk Poetry: Structure and Meaning (Pennsylvania, University of Pennsylvania Press, 1980)."
+          ],
+          "text": "8. R. de V. Renwick, English Folk Poetry: Structure and Meaning (Pennsylvania, University of Pennsylvania Press, 1980).",
+          "is_first_in_section": true,
+          "debug_info": {
+            "x_positions": [
+              47.52000045776367,
+              39.84000015258789
+            ],
+            "regular_x": 39.84000015258789,
+            "block_indices": [
+              7,
+              7
+            ],
+            "reasons": [
+              "x0=47.5 vs regular_x=39.8 (indented)",
+              "x0=39.8 vs regular_x=39.8",
+              "x0=47.5 vs regular_x=39.8 (indented)"
+            ]
+          }
+        },
+        {
+          "sentences": [
+            "9.",
+            "A. Aarne, The Types of the Folktale: A Classification and Bibliography (Helsinki, Suomalainen Tiedeakatemia, 1961), p. 269; A Campbell, Santal Folktales (Pokhuria, Santal Mission Press, 1891) pp.",
+            "102-105."
+          ],
+          "text": "9. A. Aarne, The Types of the Folktale: A Classification and Bibliography (Helsinki, Suomalainen Tiedeakatemia, 1961), p. 269; A Campbell, Santal Folktales (Pokhuria, Santal Mission Press, 1891) pp. 102-105.",
+          "is_first_in_section": true,
+          "debug_info": {
+            "x_positions": [
+              47.52000045776367,
+              39.84000015258789,
+              40.08000183105469
+            ],
+            "regular_x": 39.84000015258789,
+            "block_indices": [
+              8,
+              8,
+              8
+            ],
+            "reasons": [
+              "x0=47.5 vs regular_x=39.8 (indented)",
+              "x0=39.8 vs regular_x=39.8",
+              "x0=40.1 vs regular_x=39.8",
+              "x0=48.0 vs regular_x=39.8 (indented)"
+            ]
+          }
+        },
+        {
+          "sentences": [
+            "10.",
+            "C. H. Craven, 'Traces of Fraternal Polyandry among the Santal.'",
+            "Journal of the Asiatic Society of Bengal 72, iii (1904), 89."
+          ],
+          "text": "10. C. H. Craven, 'Traces of Fraternal Polyandry among the Santal.' Journal of the Asiatic Society of Bengal 72, iii (1904), 89.",
+          "is_first_in_section": true,
+          "debug_info": {
+            "x_positions": [
+              48.0,
+              39.84000015258789
+            ],
+            "regular_x": 39.84000015258789,
+            "block_indices": [
+              9,
+              9
+            ],
+            "reasons": [
+              "x0=48.0 vs regular_x=39.8 (indented)",
+              "x0=39.8 vs regular_x=39.8",
+              "x0=48.0 vs regular_x=39.8 (indented)"
+            ]
+          }
+        },
+        {
+          "sentences": [
+            "11.",
+            "Child, p. 127."
+          ],
+          "text": "11. Child, p. 127.",
+          "is_first_in_section": true,
+          "debug_info": {
+            "x_positions": [
+              48.0
+            ],
+            "regular_x": 39.84000015258789,
+            "block_indices": [
+              10
+            ],
+            "reasons": [
+              "x0=48.0 vs regular_x=39.8 (indented)"
+            ]
+          }
+        },
+        {
+          "sentences": [
+            "12.",
+            "Parker, p. 351"
+          ],
+          "text": "12. Parker, p. 351",
+          "is_first_in_section": false,
+          "debug_info": {
+            "x_positions": [
+              48.2400016784668
+            ],
+            "regular_x": 39.84000015258789,
+            "block_indices": [
+              10
+            ],
+            "reasons": [
+              "x0=48.2 vs regular_x=39.8 (indented)"
+            ]
+          }
+        },
+        {
+          "sentences": [
+            "13.",
+            "Ibid., p. 351."
+          ],
+          "text": "13. Ibid., p. 351.",
+          "is_first_in_section": false,
+          "debug_info": {
+            "x_positions": [
+              48.0
+            ],
+            "regular_x": 39.84000015258789,
+            "block_indices": [
+              10
+            ],
+            "reasons": [
+              "x0=48.0 vs regular_x=39.8 (indented)"
+            ]
+          }
+        },
+        {
+          "sentences": [
+            "14.",
+            "W. G. Archer, The Hill of Flutes (Pittsburgh, University of Pittsburgh Press, 1974)."
+          ],
+          "text": "14. W. G. Archer, The Hill of Flutes (Pittsburgh, University of Pittsburgh Press, 1974).",
+          "is_first_in_section": false,
+          "debug_info": {
+            "x_positions": [
+              47.7599983215332
+            ],
+            "regular_x": 39.84000015258789,
+            "block_indices": [
+              10
+            ],
+            "reasons": [
+              "x0=47.8 vs regular_x=39.8 (indented)"
+            ]
+          }
+        },
+        {
+          "sentences": [
+            "15.",
+            "Ibid., p. 66."
+          ],
+          "text": "15. Ibid., p. 66.",
+          "is_first_in_section": false,
+          "debug_info": {
+            "x_positions": [
+              48.0
+            ],
+            "regular_x": 39.84000015258789,
+            "block_indices": [
+              10
+            ],
+            "reasons": [
+              "x0=48.0 vs regular_x=39.8 (indented)"
+            ]
+          }
+        },
+        {
+          "sentences": [
+            "16.",
+            "Ibid., p. 223."
+          ],
+          "text": "16. Ibid., p. 223.",
+          "is_first_in_section": false,
+          "debug_info": {
+            "x_positions": [
+              48.0
+            ],
+            "regular_x": 39.84000015258789,
+            "block_indices": [
+              10
+            ],
+            "reasons": [
+              "x0=48.0 vs regular_x=39.8 (indented)"
+            ]
+          }
+        },
+        {
+          "sentences": [
+            "17.",
+            "A full account of the ritual is provided in Archer, pp.",
+            "256-71."
+          ],
+          "text": "17. A full account of the ritual is provided in Archer, pp. 256-71.",
+          "is_first_in_section": false,
+          "debug_info": {
+            "x_positions": [
+              48.0
+            ],
+            "regular_x": 39.84000015258789,
+            "block_indices": [
+              10
+            ],
+            "reasons": [
+              "x0=48.0 vs regular_x=39.8 (indented)"
+            ]
+          }
+        },
+        {
+          "sentences": [
+            "18.",
+            "Ibid., p. 273."
+          ],
+          "text": "18. Ibid., p. 273.",
+          "is_first_in_section": false,
+          "debug_info": {
+            "x_positions": [
+              48.0
+            ],
+            "regular_x": 39.84000015258789,
+            "block_indices": [
+              10
+            ],
+            "reasons": [
+              "x0=48.0 vs regular_x=39.8 (indented)"
+            ]
+          }
+        },
+        {
+          "sentences": [
+            "19.",
+            "A. Campbell, 'Superstitions of the Santals,' Journal of the Bihar and Orissa Research Society I (1915), 214."
+          ],
+          "text": "19. A. Campbell, 'Superstitions of the Santals,' Journal of the Bihar and Orissa Research Society I (1915), 214.",
+          "is_first_in_section": false,
+          "debug_info": {
+            "x_positions": [
+              47.7599983215332,
+              39.84000015258789
+            ],
+            "regular_x": 39.84000015258789,
+            "block_indices": [
+              10,
+              10
+            ],
+            "reasons": [
+              "x0=47.8 vs regular_x=39.8 (indented)",
+              "x0=39.8 vs regular_x=39.8",
+              "x0=47.5 vs regular_x=39.8 (indented)"
+            ]
+          }
+        },
+        {
+          "sentences": [
+            "20.",
+            "Archer, p. 66 21.",
+            "Ibid., p. 67.",
+            "22.",
+            "Campbell, 'Superstitions,' 213.",
+            "23.",
+            "Danish C. In Parker, p. 353.",
+            "24.",
+            "Norwegian L.",
+            "Ibid., p. 353.",
+            "25.",
+            "Norwegian K.",
+            "Ibid., p. 353.",
+            "26.",
+            "A. Aarne, p. 270.",
+            "Downloaded by [New York University] at 16:20 08 May 2015"
+          ],
+          "text": "20. Archer, p. 66 21. Ibid., p. 67. 22. Campbell, 'Superstitions,' 213. 23. Danish C. In Parker, p. 353. 24. Norwegian L. Ibid., p. 353. 25. Norwegian K. Ibid., p. 353. 26. A. Aarne, p. 270. Downloaded by [New York University] at 16:20 08 May 2015",
+          "is_first_in_section": false,
+          "debug_info": {
+            "x_positions": [
+              -0.5299997329711914
+            ],
+            "regular_x": -0.5299997329711914,
+            "block_indices": [
+              12
+            ],
+            "reasons": [
+              "x0=-0.5 vs regular_x=-0.5"
+            ]
+          }
+        }
+      ],
+      "is_numbered": false,
+      "font_size": 8.954887390136719
+    }
+  ],
+  "has_structure": true,
+  "metadata": {
+    "page_count": 11,
+    "filename": "philipose1990.pdf",
+    "has_structure": true
+  }
+}

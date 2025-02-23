@@ -4,7 +4,11 @@ from typing import List
 from database import get_db
 from services.flashcard_set import FlashcardSetService
 from api.models.requests.flashcard_set import FlashcardSetCreate, FlashcardSetUpdate
-from api.models.responses.flashcard_set import FlashcardSetResponse, FlashcardSetDetailResponse
+from api.models.responses.flashcard_set import (
+    FlashcardSetResponse,
+    FlashcardSetDetailResponse,
+    FlashcardSetSourceResponse
+)
 
 router = APIRouter()
 
@@ -37,4 +41,13 @@ async def update_flashcard_set(
 ):
     """Update a flashcard set's metadata."""
     service = FlashcardSetService(db)
-    return service.update_set(set_id, set_update) 
+    return service.update_set(set_id, set_update)
+
+@router.get("/{set_id}/source-text", response_model=FlashcardSetSourceResponse)
+async def get_set_source_text(
+    set_id: int,
+    db: Session = Depends(get_db)
+) -> FlashcardSetSourceResponse:
+    """Get source text with citation highlights for a flashcard set."""
+    service = FlashcardSetService(db)
+    return service.get_set_source_text(set_id) 

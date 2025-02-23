@@ -2,6 +2,7 @@ from pydantic import BaseModel, ConfigDict
 from typing import List, Optional
 from datetime import datetime
 from models.enums import FeedbackType, FeedbackCategory, EditType, EditContext, CardStatus
+from api.models.requests.flashcard import AnswerKeyTerm
 
 class FlashcardResponse(BaseModel):
     id: int
@@ -9,8 +10,8 @@ class FlashcardResponse(BaseModel):
     back: str
     is_ai_generated: bool
     citations: List[dict]
-    card_index: int
-    key_terms: Optional[List[str]] = None
+    card_index: Optional[int] = None
+    answer_key_terms: Optional[List[AnswerKeyTerm]] = None
     key_concepts: Optional[List[str]] = None
     abbreviations: Optional[List[List[str]]] = None
     

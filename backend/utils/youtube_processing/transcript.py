@@ -132,6 +132,11 @@ def fetch_transcript(video_id: str, video_title: str, description: str = "") -> 
         transcript_segments = YouTubeTranscriptApi.get_transcript(video_id)
         logger.info(f"Retrieved {len(transcript_segments)} transcript segments")
         
+        # Debug log a brief sample of the first segment
+        if transcript_segments:
+            first_seg = transcript_segments[0]
+            logger.debug(f"First segment - Start: {first_seg['start']:.2f}s, Text: {first_seg['text']}")
+        
         # Extract chapters if description is provided
         chapters = parse_chapters(description) if description else []
         logger.debug(f"Found {len(chapters)} chapters")
@@ -143,11 +148,13 @@ def fetch_transcript(video_id: str, video_title: str, description: str = "") -> 
         # Add first chapter marker if exists
         if chapters:
             full_text += f"\n## {chapters[0]['title']}\n\n"
+            logger.debug(f"Starting with chapter: {chapters[0]['title']}")
         
         # Group segments into SEGMENT_SIZE_SECONDS chunks
         current_chunk = []
         chunk_start_time = 0
         chunk_text = ""
+        chunk_count = 0
         
         for segment in transcript_segments:
             # Check if we've entered a new chapter
@@ -170,15 +177,27 @@ def fetch_transcript(video_id: str, video_title: str, description: str = "") -> 
             
             # If we've reached SEGMENT_SIZE_SECONDS from chunk start, or this is the last segment
             if (segment['start'] - chunk_start_time >= SEGMENT_SIZE_SECONDS) or (segment == transcript_segments[-1]):
+                # For the end time, use the start of the next segment (or current segment's start + 2s if last)
+                chunk_end_time = (
+                    transcript_segments[transcript_segments.index(segment) + 1]['start']
+                    if segment != transcript_segments[-1]
+                    else segment['start'] + 2.0
+                )
+                
                 # Format timestamp as raw seconds and add text
-                timestamp = f"[{chunk_start_time:.2f}s-{segment['start'] + segment['duration']:.2f}s]"
+                timestamp = f"[{chunk_start_time:.2f}s-{chunk_end_time:.2f}s]"
                 full_text += f"{timestamp} {chunk_text.strip()}\n"
                 
-                # Reset chunk
+                chunk_count += 1
+                logger.debug(f"Created chunk {chunk_count}: {timestamp}")
+                
+                # Reset chunk and set next chunk start time
                 current_chunk = []
                 chunk_text = ""
+                if segment != transcript_segments[-1]:
+                    chunk_start_time = chunk_end_time
         
-        logger.info(f"Successfully processed transcript into {len(full_text)} chars with {len(chapters)} chapters")
+        logger.info(f"Processed transcript into {chunk_count} chunks, total length {len(full_text)} chars")
         return YouTubeContent(
             video_id=video_id,
             title=video_title,

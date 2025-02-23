@@ -18,7 +18,8 @@ import {
   AIGenerateRequest,
   Citation,
   URLUploadRequest,
-  YouTubeUploadRequest
+  YouTubeUploadRequest,
+  FlashcardSetSourceResponse
 } from '@/types';
 
 // Get all flashcard sets
@@ -35,6 +36,15 @@ export const getFlashcardSet = async (id: number): Promise<FlashcardSetDetailRes
   const response = await fetch(`${config.apiUrl}/api/flashcard-sets/${id}`);
   if (!response.ok) {
     throw new Error('Failed to fetch flashcard set');
+  }
+  return response.json();
+};
+
+// Get source text with citations for a flashcard set
+export const getSetSourceText = async (id: number): Promise<FlashcardSetSourceResponse> => {
+  const response = await fetch(`${config.apiUrl}/api/flashcard-sets/${id}/source-text`);
+  if (!response.ok) {
+    throw new Error('Failed to fetch source text');
   }
   return response.json();
 };

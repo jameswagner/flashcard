@@ -3,6 +3,7 @@
 from typing import Dict, Tuple, Optional
 import re
 import logging
+import json
 from .citation_processor import CitationProcessor
 from models.enums import CitationType
 
@@ -127,7 +128,7 @@ class HTMLCitationProcessor(CitationProcessor):
         """Extract preview text from HTML content based on citation type.
         
         Args:
-            text_content: Raw HTML content with markers
+            text_content: JSON string containing HTML structure
             start_num: Starting element number
             end_num: Ending element number
             citation_type: Type of citation (section, paragraph, list, table)
@@ -135,55 +136,74 @@ class HTMLCitationProcessor(CitationProcessor):
         Returns:
             Preview text for the citation
         """
-        lines = text_content.split('\n')
+        logger.info(f"Getting preview text for citation: type={citation_type}, start={start_num}, end={end_num}")
         
-        # For element-based citations (tables, lists)
-        if citation_type in [CitationType.html_table.value, CitationType.html_list.value]:
-            marker = f"[{citation_type.split('_')[1].upper()} {start_num}]"
-            for i, line in enumerate(lines):
-                if marker in line:
-                    # Extract until the next element or section
-                    end_i = i + 1
-                    while end_i < len(lines) and not any(
-                        marker in lines[end_i] 
-                        for marker in ['[SECTION:', '[TABLE', '[LIST', '[PARAGRAPH']
-                    ):
-                        end_i += 1
-                    return "\n".join(lines[i:end_i])
-        
-        # For paragraph citations
-        elif citation_type == CitationType.html_paragraph.value:
-            paragraphs = []
-            current_paragraph = 0
-            
-            for line in lines:
-                if line.strip().startswith('[Paragraph '):
-                    current_paragraph += 1
-                    if start_num <= current_paragraph <= end_num:
-                        paragraphs.append(line.strip())
-            
-            return "\n".join(paragraphs)
-        
+        try:
+            # Parse the JSON content
+            content = json.loads(text_content)
+            logger.info("Successfully parsed JSON content")
+        except json.JSONDecodeError as e:
+            logger.error(f"Failed to parse JSON content: {e}")
+            return ""
+
+        def find_section_by_number(sections, target_num):
+            """Recursively find a section by its number."""
+            for section in sections:
+                if 'heading' in section:
+                    match = re.search(r'\[Section (\d+(?:\.\d+)*)\]', section['heading'])
+                    if match and match.group(1).split('.')[0] == str(target_num):
+                        return section
+                # Check nested sections
+                if 'sections' in section:
+                    result = find_section_by_number(section['sections'], target_num)
+                    if result:
+                        return result
+            return None
+
         # For section citations
-        elif citation_type == CitationType.html_section.value:
-            section_content = []
-            in_target_section = False
-            current_section = 0
+        if citation_type == CitationType.section.value:
+            section = find_section_by_number(content.get('sections', []), start_num)
+            if section:
+                # Include heading and all paragraphs
+                preview = [section['heading']]
+                preview.extend(section.get('paragraphs', []))
+                return "\n".join(preview)
+
+        # For paragraph citations
+        elif citation_type == CitationType.paragraph.value:
+            paragraphs = []
+            # Search through all sections and their nested sections
+            def gather_paragraphs(sections):
+                for section in sections:
+                    for para in section.get('paragraphs', []):
+                        match = re.search(r'\[Paragraph (\d+)\]', para)
+                        if match and start_num <= int(match.group(1)) <= end_num:
+                            paragraphs.append(para)
+                    # Check nested sections
+                    if 'sections' in section:
+                        gather_paragraphs(section['sections'])
             
-            for line in lines:
-                if line.strip().startswith('[Section '):
-                    current_section += 1
-                    if current_section == start_num:
-                        in_target_section = True
-                        section_content.append(line.strip())
-                    elif current_section > end_num:
-                        break
-                elif in_target_section:
-                    if line.strip().startswith('[Section '):
-                        break
-                    section_content.append(line.strip())
+            gather_paragraphs(content.get('sections', []))
+            return "\n".join(paragraphs)
+
+        # For list and table citations
+        elif citation_type in [CitationType.list.value, CitationType.table.value]:
+            element_type = citation_type.split('_')[1].upper()
+            # Search through all sections and their nested sections
+            def find_element(sections):
+                for section in sections:
+                    for para in section.get('paragraphs', []):
+                        if para.startswith(f"[{element_type} {start_num}]"):
+                            return para
+                    # Check nested sections
+                    if 'sections' in section:
+                        result = find_element(section['sections'])
+                        if result:
+                            return result
+                return None
             
-            return "\n".join(section_content)
-        
-        # Fallback for other citation types
-        return super().get_preview_text(text_content, start_num, end_num) 
+            element = find_element(content.get('sections', []))
+            return element if element else ""
+
+        logger.warning(f"Unsupported citation type: {citation_type}")
+        return "" 

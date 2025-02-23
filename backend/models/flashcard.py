@@ -3,6 +3,7 @@ from sqlalchemy import Column, Integer, String, ForeignKey, DateTime, Text, JSON
 from sqlalchemy.orm import relationship
 import sqlalchemy as sa
 import traceback
+from sqlalchemy.sql import func
 
 from .base import Base
 from .enums import AIModel, CardStatus, EditType, EditContext
@@ -90,7 +91,7 @@ class Flashcard(Base):
     model_parameters = Column(JSON, nullable=True)  # Model-specific parameters (temperature, etc.)
     
     # Learning metadata
-    key_terms = Column(sa.ARRAY(String), nullable=True)  # List of key terms from the answer
+    answer_key_terms = Column(JSON, nullable=True)  # List of {"terms": ["term1", "term2"], "weight": float, "exact_match": bool, "explanation": str}
     key_concepts = Column(sa.ARRAY(String), nullable=True)  # List of underlying concepts/principles
     abbreviations = Column(sa.ARRAY(String, dimensions=2), nullable=True)  # List of [full_term, abbreviation] pairs
     
