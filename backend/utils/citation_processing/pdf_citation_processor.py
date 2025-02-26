@@ -31,16 +31,11 @@ class PDFCitationProcessor(CitationProcessor):
         """
         if not citation_type:
             citation_type = CitationType.sentence_range.value
-            
-        logger.info(f"Getting preview text for citation type: {citation_type}")
-        logger.info(f"Text content type: {type(text_content)}")
-        logger.info(f"Text content preview (first 100 chars): {text_content[:100]}")
+    
             
         try:
             # Parse the JSON content
             content = json.loads(text_content)
-            logger.info("Successfully parsed JSON content")
-            logger.info(f"Parsed content keys: {list(content.keys())}")
         except json.JSONDecodeError as e:
             logger.error(f"Failed to parse JSON content: {e}")
             return ""
@@ -49,12 +44,17 @@ class PDFCitationProcessor(CitationProcessor):
             """Extract text from a content item (paragraph or list item)."""
             if isinstance(content_item, dict):
                 if 'sentences' in content_item:  # Paragraph
-                    return ' '.join(content_item['sentences'])
+                    text = ' '.join(content_item['sentences'])
+                    # Sanitize text - remove NUL characters and normalize whitespace
+                    text = text.replace('\x00', '').strip()
+                    return ' '.join(text.split())
                 elif 'text' in content_item:  # List item
                     text = content_item['text']
                     if 'continuation_texts' in content_item:
                         text += ' ' + ' '.join(content_item['continuation_texts'])
-                    return text
+                    # Sanitize text
+                    text = text.replace('\x00', '').strip()
+                    return ' '.join(text.split())
             return ""
 
         if citation_type == CitationType.section.value:

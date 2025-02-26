@@ -19,7 +19,8 @@ import {
   Citation,
   URLUploadRequest,
   YouTubeUploadRequest,
-  FlashcardSetSourceResponse
+  FlashcardSetSourceResponse,
+  SourceFileUploadResponse
 } from '@/types';
 
 // Get all flashcard sets
@@ -127,10 +128,34 @@ export const deleteCard = async (cardId: number): Promise<void> => {
   }
 };
 
-// Upload a source file for AI generation
-export const uploadSourceFile = async (file: File): Promise<UploadResponse> => {
+export interface UnifiedUploadRequest {
+  sources: Array<{
+    source_type: "file" | "url" | "youtube";
+    url?: string;
+    video_id?: string;
+    title?: string;
+    description?: string;
+    user_id?: string;
+  }>;
+  user_id?: string;
+}
+
+// Replace the three separate upload functions with one unified function
+export const uploadSource = async (
+  request: UnifiedUploadRequest,
+  files?: File[]
+): Promise<SourceFileUploadResponse[]> => {
   const formData = new FormData();
-  formData.append('file', file);
+  
+  // Add request data as a JSON string
+  formData.append('request', JSON.stringify(request));
+  
+  // Add files if present
+  if (files) {
+    files.forEach(file => {
+      formData.append('files', file);
+    });
+  }
   
   const response = await fetch(`${config.apiUrl}/api/ai/upload`, {
     method: 'POST',
@@ -138,44 +163,47 @@ export const uploadSourceFile = async (file: File): Promise<UploadResponse> => {
   });
   
   if (!response.ok) {
-    throw new Error('Failed to upload file');
+    const error = await response.text();
+    throw new Error(`Failed to upload source: ${error}`);
   }
   
   return response.json();
 };
 
-// Upload a URL for AI generation
-export const uploadSourceUrl = async (data: URLUploadRequest): Promise<UploadResponse> => {
-  const response = await fetch(`${config.apiUrl}/api/ai/upload/url`, {
-    method: 'POST',
-    headers: {
-      'Content-Type': 'application/json',
-    },
-    body: JSON.stringify(data),
-  });
-  
-  if (!response.ok) {
-    throw new Error('Failed to upload URL');
-  }
-  
-  return response.json();
+// Keep these as convenience wrappers for backward compatibility
+export const uploadSourceFile = async (file: File, title?: string, description?: string): Promise<SourceFileUploadResponse> => {
+  const response = await uploadSource({
+    sources: [{
+      source_type: "file",
+      title,
+      description
+    }]
+  }, [file]);
+  return response[0];
 };
 
-// Upload a YouTube video for AI generation
-export const uploadYouTubeVideo = async (data: YouTubeUploadRequest): Promise<UploadResponse> => {
-  const response = await fetch(`${config.apiUrl}/api/ai/upload/youtube`, {
-    method: 'POST',
-    headers: {
-      'Content-Type': 'application/json',
-    },
-    body: JSON.stringify(data),
+export const uploadSourceUrl = async (data: URLUploadRequest): Promise<SourceFileUploadResponse> => {
+  const response = await uploadSource({
+    sources: [{
+      source_type: "url",
+      url: data.url,
+      user_id: data.user_id
+    }]
   });
-  
-  if (!response.ok) {
-    throw new Error('Failed to upload YouTube video');
-  }
-  
-  return response.json();
+  return response[0];
+};
+
+export const uploadYouTubeVideo = async (data: YouTubeUploadRequest): Promise<SourceFileUploadResponse> => {
+  const response = await uploadSource({
+    sources: [{
+      source_type: "youtube",
+      video_id: data.video_id,
+      title: data.title,
+      description: data.description,
+      user_id: data.user_id
+    }]
+  });
+  return response[0];
 };
 
 // Generate flashcards from a source file using AI
@@ -263,4 +291,4 @@ export const getCardFeedback = async (cardId: number): Promise<FlashcardFeedback
     throw new Error('Failed to fetch card feedback');
   }
   return response.json();
-}; 
+};

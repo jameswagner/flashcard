@@ -123,7 +123,7 @@ def _get_earliest_html_position(citations: List[Dict[str, Any]], html_content: D
                 
             if element_num is not None:
                 # Convert citation type to element key format
-                element_type = citation_type.split('html_')[1]  # e.g. 'html_paragraph' -> 'paragraph'
+                element_type = citation_type  # e.g. 'paragraph'
                 element_key = f'{element_type}_{element_num}'
                 
                 # Get position from index

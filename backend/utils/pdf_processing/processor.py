@@ -13,6 +13,7 @@ import re
 import os
 import glob
 import sys
+from utils.content_processing.base import ContentProcessor
 
 # Ensure NLTK data is downloaded
 try:
@@ -21,6 +22,12 @@ except LookupError:
     nltk.download('punkt')
 
 logger = logging.getLogger(__name__)
+
+def sanitize_text(text: str) -> str:
+    """Sanitize text by removing NUL characters and normalizing whitespace."""
+    if not isinstance(text, str):
+        text = str(text)
+    return ' '.join(text.replace('\x00', '').split())
 
 @dataclass
 class Line:
@@ -45,6 +52,10 @@ class Line:
     
     # Debug info
     classification_reason: str = ""
+
+    def __post_init__(self):
+        # Sanitize text during initialization
+        self.text = sanitize_text(self.text)
 
 @dataclass
 class Block:
@@ -89,30 +100,34 @@ class ProcessedDocument:
     sections: typing.List[Section]
     metadata: Dict
 
+    def __post_init__(self):
+        # Sanitize title during initialization
+        self.title = sanitize_text(self.title)
+
     def to_json(self) -> Dict:
         """Convert the document to a JSON-serializable dictionary"""
         return {
-            'title': self.title,
+            'title': sanitize_text(self.title),
             'sections': [
                 {
-                    'header': section.header,
+                    'header': sanitize_text(section.header),
                     'content': [
                         {
-                            'sentences': item.sentences,
+                            'sentences': [sanitize_text(s) for s in item.sentences],
                             'is_first_in_section': item.is_first_in_section
                         } if isinstance(item, Paragraph) else (
                             {
                                 'items': [
                                     {
-                                        'text': li.text,
-                                        'continuation_texts': li.continuation_texts,
+                                        'text': sanitize_text(li.text),
+                                        'continuation_texts': [sanitize_text(t) for t in li.continuation_texts],
                                         'marker_type': li.marker_type
                                     } for li in item.items
                                 ],
                                 'marker_type': item.marker_type
                             } if isinstance(item, DocumentList) else {
-                                'text': item.text,
-                                'continuation_texts': item.continuation_texts,
+                                'text': sanitize_text(item.text),
+                                'continuation_texts': [sanitize_text(t) for t in item.continuation_texts],
                                 'marker_type': item.marker_type
                             }
                         ) for item in section.content
@@ -207,7 +222,7 @@ def extract_line_properties(span: Dict) -> Dict:
     """Extract relevant properties from a text span"""
     font = span.get('font', 'unknown')
     return {
-        'text': span.get('text', '').strip(),
+        'text': sanitize_text(span.get('text', '').strip()),
         'x_min': span['bbox'][0],
         'size': float(span.get('size', 0)),
         'color': span.get('color', 0),
@@ -470,7 +485,8 @@ def find_continuation_indent(lines: typing.List[Line]) -> Optional[float]:
         next_line = lines[i+1]
         if line.x_min < next_line.x_min:
             return next_line.x_min
-        return None
+    # Return None only after checking all pairs of lines
+    return None
         
 def process_list_buffer(pattern_buffer: typing.List[tuple], indent_level: Optional[float]) -> None:
     """Process a buffer of list items"""
@@ -624,7 +640,6 @@ def build_sections(blocks: typing.List[Block], doc_title: str = "Introduction") 
                 # Continue current paragraph
                 if current_paragraph_lines:  # Only add if we have a paragraph started
                     current_paragraph_lines.append(line)
-                    logger.info(f"Added line to current paragraph [Block {block.block_num}]: {line.text[:100]}")
                 else:
                     logger.info(f"Skipped line - no paragraph started [Block {block.block_num}]: {line.text[:100]}")
     
@@ -650,7 +665,7 @@ def process_pdf(file_path: str, filename: str) -> ProcessedDocument:
     # Step 2: Detect structure
     detect_headers(blocks)
     detect_paragraphs(blocks)
-    #detect_lists(blocks)
+    detect_lists(blocks)
     
     # Step 3: Build sections
     sections = build_sections(blocks, title)
@@ -710,4 +725,34 @@ def main():
             continue 
 
 if __name__ == "__main__":
-    main() 
+    main()
+
+class PDFProcessor(ContentProcessor):
+    """Processor for PDF files that implements the ContentProcessor interface."""
+    
+    def to_structured_json(self, raw_content: str) -> Dict:
+        """Convert raw PDF content to structured JSON format.
+        
+        Args:
+            raw_content: Raw PDF content (file path)
+            
+        Returns:
+            Dict containing structured representation of the PDF
+        """
+        # Process the PDF
+        processed_doc = process_pdf(raw_content, os.path.basename(raw_content))
+        # Convert to JSON structure
+        return processed_doc.to_json()
+    
+    def to_prompt_text(self, structured_json: Dict) -> str:
+        """Convert structured JSON to prompt text with appropriate markers.
+        
+        Args:
+            structured_json: Structured content from to_structured_json()
+            
+        Returns:
+            String containing content with section, paragraph, and sentence markers
+        """
+        # Create ProcessedDocument from JSON
+        doc = ProcessedDocument.from_json(structured_json)
+        return doc.to_prompt_text() 

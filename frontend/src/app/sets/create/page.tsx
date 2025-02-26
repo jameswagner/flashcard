@@ -18,7 +18,7 @@ import {
 
 // YouTube URL patterns
 const YOUTUBE_PATTERNS = [
-  /(?:https?:\/\/)?(?:www\.)?youtube\.com\/watch\?v=([^&]+)/,  // Standard watch URL
+  /(?:https?:\/\/)?(?:www\.)?youtube\.com\/watch\?(?:[^&]*&)*v=([^&]+)/,  // Standard watch URL with any params
   /(?:https?:\/\/)?(?:www\.)?youtu\.be\/([^?]+)/,             // Shortened URL
   /(?:https?:\/\/)?(?:www\.)?youtube\.com\/embed\/([^?]+)/    // Embed URL
 ];
@@ -27,7 +27,8 @@ function extractYouTubeId(url: string): string | null {
   for (const pattern of YOUTUBE_PATTERNS) {
     const match = url.match(pattern);
     if (match && match[1]) {
-      return match[1];
+      // Clean up any remaining URL parameters
+      return match[1].split('&')[0];
     }
   }
   return null;
@@ -53,7 +54,7 @@ export default function CreateSet() {
 
       if (file) {
         // Handle file upload
-        const uploadResponse = await uploadSourceFile(file);
+        const uploadResponse = await uploadSourceFile(file, title, description);
         sourceFileId = uploadResponse.id;
       } else if (url) {
         // Check if it's a YouTube URL
@@ -68,13 +69,17 @@ export default function CreateSet() {
           sourceFileId = uploadResponse.id;
         } else {
           // Handle regular URL upload
-          const uploadResponse = await uploadSourceUrl({ url });
+          const uploadResponse = await uploadSourceUrl({ 
+            url,
+            title,
+            description
+          });
           sourceFileId = uploadResponse.id;
         }
       } else if (directText.trim()) {
         // Handle direct text input by creating a Blob/File
         const textFile = new File([directText], 'input.txt', { type: 'text/plain' });
-        const uploadResponse = await uploadSourceFile(textFile);
+        const uploadResponse = await uploadSourceFile(textFile, title, description);
         sourceFileId = uploadResponse.id;
       } else {
         // Handle manual creation
@@ -102,8 +107,9 @@ export default function CreateSet() {
     if (e.target.files && e.target.files[0]) {
       const selectedFile = e.target.files[0];
       const fileType = selectedFile.type;
-      if (fileType !== 'text/plain' && fileType !== 'application/pdf') {
-        setError('Please upload a .txt or .pdf file');
+      const validTypes = ['text/plain', 'application/pdf', 'image/jpeg', 'image/png', 'image/gif', 'image/webp'];
+      if (!validTypes.includes(fileType)) {
+        setError('Please upload a .txt, .pdf, or image file (JPEG, PNG, GIF, WEBP)');
         return;
       }
       setFile(selectedFile);
@@ -207,12 +213,12 @@ export default function CreateSet() {
                   <Input
                     id="file"
                     type="file"
-                    accept=".txt,.pdf"
+                    accept=".txt,.pdf,.jpg,.jpeg,.png,.gif,.webp"
                     onChange={handleFileChange}
                     className="mt-1"
                   />
                   <p className="text-xs text-gray-500 mt-1">
-                    Supported file types: .txt, .pdf
+                    Supported file types: .txt, .pdf, images (JPEG, PNG, GIF, WEBP)
                   </p>
                 </div>
               </TabsContent>

@@ -335,12 +335,6 @@ async def remove_unwanted_elements(soup: BeautifulSoup) -> None:
             element.decompose()
         logger.debug(f"Length after removing {tag} elements: {len(str(soup))}")
         logger.debug(f"Paragraphs after removing {tag} elements: {len(soup.find_all('p'))}")
-        
-    target_div = soup.find(id="author-meta-23")
-    if target_div:
-        logger.info(f"Found div. Style attribute: '{target_div.get('style')}'")
-    else:
-        logger.info("Div not found!")
     
     # Remove elements with inline CSS that hides them
     hidden_elements = soup.find_all(

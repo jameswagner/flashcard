@@ -12,10 +12,10 @@ from models.prompt import PromptTemplate
 from models.enums import FileType, AIModel, CitationType
 
 from utils.ai_flashcard_creation import create_flashcards_from_text, get_latest_prompt_template
-from services.content_processing import ContentProcessingService
 from utils.citation_processing import HTMLCitationProcessor, TextCitationProcessor, CitationProcessor
 from utils.citation_processing.youtube_citation_processor import YouTubeCitationProcessor
 from utils.citation_processing.pdf_citation_processor import PDFCitationProcessor
+from utils.citation_processing.image_citation_processor import ImageCitationProcessor
 from services.content_manager import ContentManager
 from utils.s3 import get_processed_text as s3_get_processed_text
 from utils.html_processing import HTMLContent
@@ -66,22 +66,26 @@ class AIFlashcardService:
             raise HTTPException(status_code=400, detail=f"Unsupported model: {model_name}")
 
     async def _validate_and_get_source(self, source_file_id: int) -> SourceFile:
-        """Validate and retrieve source file."""
-        source_file = self.db.get(SourceFile, source_file_id)
+        """Validate and retrieve a source file."""
+        source_file = self.db.query(SourceFile).filter(SourceFile.id == source_file_id).first()
         if not source_file:
-            raise HTTPException(status_code=404, detail="Source file not found")
-        
-        if source_file.file_type not in [
+            raise HTTPException(status_code=404, detail=f"Source file {source_file_id} not found")
+
+        # Validate file type
+        supported_types = {
             FileType.TXT.value,
             FileType.HTML.value,
+            FileType.PDF.value,
             FileType.YOUTUBE_TRANSCRIPT.value,
-            FileType.PDF.value
-        ]:
+            FileType.IMAGE.value  # Add support for images
+        }
+        
+        if source_file.file_type not in supported_types:
             raise HTTPException(
                 status_code=400,
-                detail="Only .txt, HTML, PDF, and YouTube transcripts are currently supported"
+                detail="Only .txt, HTML, PDF, images, and YouTube transcripts are currently supported"
             )
-        
+
         return source_file
 
     async def _generate_and_save_flashcards(
@@ -95,27 +99,42 @@ class AIFlashcardService:
         """Generate and save flashcards from text content."""
         logger.info("Preparing for flashcard generation")
         
-        # For PDFs, convert to prompt text for LLM but keep JSON for citations
-        if source_file.file_type == FileType.PDF.value:
+        # For structured content types, use prompt text for LLM but keep JSON for citations
+        if source_file.file_type in [FileType.PDF.value, FileType.TXT.value, FileType.HTML.value, FileType.YOUTUBE_TRANSCRIPT.value, FileType.IMAGE.value]:
             try:
-                # Convert to prompt text for LLM processing
-                pdf_content = ProcessedDocument.from_json(json.loads(text_content))
-                prompt_text = pdf_content.to_prompt_text()
-                logger.info("Successfully converted PDF content to prompt text format")
-                # Store original JSON for citation processing
+                # Get the appropriate processor and generate prompt text
+                processor = self.content_manager._processor._get_processor(source_file.file_type)
+                
+                # Check if text_content is already JSON or needs to be parsed
+                if isinstance(text_content, dict):
+                    structured_json = text_content
+                else:
+                    # Try to parse as JSON
+                    try:
+                        structured_json = json.loads(text_content)
+                        logger.info(f"Successfully parsed JSON content for {source_file.file_type}")
+                    except json.JSONDecodeError:
+                        logger.error(f"Failed to parse JSON content for {source_file.file_type}")
+                        raise HTTPException(status_code=500, detail="Failed to process content: invalid JSON")
+                
+                # Generate prompt text from structured JSON
+                prompt_text = processor.to_prompt_text(structured_json)
+                logger.info(f"Successfully generated prompt text from {source_file.file_type} JSON")
+                
+                # Store both formats in params
                 params = {
                     'source_text': prompt_text,  # LLM gets prompt text
                     'content_structure': content_structure,
-                    'original_json': text_content  # Store JSON for citation processing
+                    'original_json': json.dumps(structured_json) if isinstance(structured_json, dict) else text_content  # Store JSON for citation processing
                 }
             except json.JSONDecodeError as e:
-                logger.error(f"Failed to parse PDF JSON content: {e}")
-                raise HTTPException(status_code=500, detail="Failed to process PDF content")
+                logger.error(f"Failed to parse content JSON: {e}")
+                raise HTTPException(status_code=500, detail="Failed to process content")
             except Exception as e:
-                logger.error(f"Error processing PDF content: {str(e)}")
-                raise HTTPException(status_code=500, detail="Failed to process PDF content")
+                logger.error(f"Error processing content: {str(e)}")
+                raise HTTPException(status_code=500, detail="Failed to process content")
         else:
-            # Non-PDF content uses regular parameters
+            # Non-structured content uses regular parameters
             params = {
                 'source_text': text_content,
                 'content_structure': content_structure
@@ -133,7 +152,8 @@ class AIFlashcardService:
                 'txt': FileType.TXT,
                 'html': FileType.HTML,
                 'youtube_transcript': FileType.YOUTUBE_TRANSCRIPT,
-                'pdf': FileType.PDF
+                'pdf': FileType.PDF,
+                'image': FileType.IMAGE
             }
             file_type = file_type_map.get(source_file.file_type.lower()) if source_file.file_type else None
             logger.info(f"Converted file type from {source_file.file_type} to {file_type}")
@@ -255,6 +275,30 @@ class AIFlashcardService:
                 except Exception as e:
                     logger.error(f"Error processing PDF content: {str(e)}")
                     logger.error(f"Raw JSON preview: {processed_json[:200]}")
+        elif source_file.file_type == FileType.IMAGE.value:
+            citation_processor = ImageCitationProcessor()
+            # The text_content should already be the structured JSON from process_content
+            # No need to retrieve it again from S3
+            logger.info(f"Using image JSON for citation processing")
+            try:
+                # Ensure we have valid JSON for citation processing
+                if isinstance(text_content, str):
+                    try:
+                        structured_json = json.loads(text_content)
+                        # Keep text_content as the JSON string
+                    except json.JSONDecodeError:
+                        logger.error("Failed to parse image JSON content")
+                        raise HTTPException(status_code=500, detail="Failed to process image citations: invalid JSON")
+                else:
+                    # If it's already a dict, convert to JSON string for citation processor
+                    structured_json = text_content
+                    text_content = json.dumps(structured_json)
+                
+                logger.info("Successfully prepared image JSON content for citations")
+                logger.info(f"JSON content preview (first 100 chars): {text_content[:100]}")
+            except Exception as e:
+                logger.error(f"Error processing image content: {str(e)}")
+                raise HTTPException(status_code=500, detail=f"Failed to process image citations: {str(e)}")
         else:
             citation_processor = CitationProcessor()
         

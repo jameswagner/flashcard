@@ -110,7 +110,7 @@ class HTMLCitationProcessor(CitationProcessor):
             element_num = citation['id']
             
         if element_num is not None:
-            element_key = f"{citation_type.split('html_')[1]}_{element_num}"
+            element_key = f"{citation_type}_{element_num}"
             indexed_position = element_index.get(element_key)
             if indexed_position:
                 position_tuple, element_type = indexed_position
@@ -149,13 +149,13 @@ class HTMLCitationProcessor(CitationProcessor):
         def find_section_by_number(sections, target_num):
             """Recursively find a section by its number."""
             for section in sections:
-                if 'heading' in section:
-                    match = re.search(r'\[Section (\d+(?:\.\d+)*)\]', section['heading'])
-                    if match and match.group(1).split('.')[0] == str(target_num):
+                if 'section_number' in section:
+                    section_num = section['section_number'][0]  # Get first number for top-level comparison
+                    if section_num == target_num:
                         return section
                 # Check nested sections
-                if 'sections' in section:
-                    result = find_section_by_number(section['sections'], target_num)
+                if 'subsections' in section:
+                    result = find_section_by_number(section['subsections'], target_num)
                     if result:
                         return result
             return None
@@ -164,40 +164,51 @@ class HTMLCitationProcessor(CitationProcessor):
         if citation_type == CitationType.section.value:
             section = find_section_by_number(content.get('sections', []), start_num)
             if section:
-                # Include heading and all paragraphs
-                preview = [section['heading']]
-                preview.extend(section.get('paragraphs', []))
+                # Include header and all content
+                preview = []
+                if section.get('header'):
+                    preview.append(section['header'])
+                for item in section.get('content', []):
+                    if isinstance(item, dict):
+                        if item.get('type') == 'paragraph':
+                            preview.append(item['text'])
+                        elif item.get('type') == 'table':
+                            preview.extend(item['content'])
+                        elif item.get('type') == 'list':
+                            preview.extend(item['items'])
                 return "\n".join(preview)
 
         # For paragraph citations
         elif citation_type == CitationType.paragraph.value:
             paragraphs = []
-            # Search through all sections and their nested sections
+            # Search through all sections
             def gather_paragraphs(sections):
                 for section in sections:
-                    for para in section.get('paragraphs', []):
-                        match = re.search(r'\[Paragraph (\d+)\]', para)
-                        if match and start_num <= int(match.group(1)) <= end_num:
-                            paragraphs.append(para)
+                    for item in section.get('content', []):
+                        if isinstance(item, dict) and item.get('type') == 'paragraph':
+                            paragraph_num = item.get('paragraph_number')
+                            if paragraph_num and start_num <= paragraph_num <= end_num:
+                                paragraphs.append(item['text'])
                     # Check nested sections
-                    if 'sections' in section:
-                        gather_paragraphs(section['sections'])
+                    if 'subsections' in section:
+                        gather_paragraphs(section['subsections'])
             
             gather_paragraphs(content.get('sections', []))
             return "\n".join(paragraphs)
 
         # For list and table citations
         elif citation_type in [CitationType.list.value, CitationType.table.value]:
-            element_type = citation_type.split('_')[1].upper()
-            # Search through all sections and their nested sections
+            element_type = 'list' if citation_type == CitationType.list.value else 'table'
+            # Search through all sections
             def find_element(sections):
                 for section in sections:
-                    for para in section.get('paragraphs', []):
-                        if para.startswith(f"[{element_type} {start_num}]"):
-                            return para
+                    for item in section.get('content', []):
+                        if isinstance(item, dict) and item.get('type') == element_type:
+                            if item.get(f'{element_type}_id') == start_num:
+                                return "\n".join(item['items'] if element_type == 'list' else item['content'])
                     # Check nested sections
-                    if 'sections' in section:
-                        result = find_element(section['sections'])
+                    if 'subsections' in section:
+                        result = find_element(section['subsections'])
                         if result:
                             return result
                 return None

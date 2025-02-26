@@ -2,14 +2,14 @@
 
 from typing import Optional
 import logging
-import re
+import json
 from .citation_processor import CitationProcessor
 from models.enums import CitationType
 
 logger = logging.getLogger(__name__)
 
 class TextCitationProcessor(CitationProcessor):
-    """Processor for plain text citations with sentence and paragraph markers."""
+    """Processor for plain text citations using structured JSON format."""
     
     def get_preview_text(
         self, 
@@ -18,53 +18,45 @@ class TextCitationProcessor(CitationProcessor):
         end_num: int, 
         citation_type: Optional[str] = None
     ) -> str:
-        """Get preview text for a citation, preserving sentence and paragraph markers.
+        """Get preview text for a citation from structured JSON.
         
         Args:
-            text_content: The source text content with [SENTENCE X] and [PARAGRAPH X] markers
+            text_content: JSON string containing structured content from PlainTextProcessor.to_structured_json()
             start_num: Starting number
             end_num: Ending number
             citation_type: Type of citation (sentence_range or paragraph)
             
         Returns:
-            Preview text for the citation with markers preserved
+            Preview text for the citation
         """
         if not citation_type:
             citation_type = CitationType.sentence_range.value
+
+        try:
+            # Parse the JSON content
+            content = json.loads(text_content)
+        except json.JSONDecodeError as e:
+            logger.error(f"Failed to parse JSON content: {e}")
+            return ""
             
         if citation_type == CitationType.sentence_range.value:
-            # Split on sentence markers, keeping the markers
-            sentences = re.split(r'(?=\[SENTENCE \d+\])', text_content)
-            # Remove empty strings and leading/trailing whitespace
-            sentences = [s.strip() for s in sentences if s.strip()]
-            
-            # Filter sentences by their numbers
+            # Find sentences by their numbers across all paragraphs
             selected_sentences = []
-            for sentence in sentences:
-                # Extract sentence number from marker
-                match = re.match(r'\[SENTENCE (\d+)\]', sentence)
-                if match:
-                    sentence_num = int(match.group(1))
+            for paragraph in content.get("paragraphs", []):
+                for sentence, sentence_num in zip(paragraph["sentences"], paragraph["sentence_numbers"]):
                     if start_num <= sentence_num <= end_num:
                         selected_sentences.append(sentence)
             
-            return "\n".join(selected_sentences)
+            return " ".join(selected_sentences)
             
         elif citation_type == CitationType.paragraph.value:
-            # Split on paragraph markers, keeping the markers
-            paragraphs = re.split(r'(?=\[PARAGRAPH \d+\])', text_content)
-            # Remove empty strings and leading/trailing whitespace
-            paragraphs = [p.strip() for p in paragraphs if p.strip()]
-            
-            # Filter paragraphs by their numbers
+            # Find paragraphs by their numbers
             selected_paragraphs = []
-            for paragraph in paragraphs:
-                # Extract paragraph number from marker
-                match = re.match(r'\[PARAGRAPH (\d+)\]', paragraph)
-                if match:
-                    paragraph_num = int(match.group(1))
-                    if start_num <= paragraph_num <= end_num:
-                        selected_paragraphs.append(paragraph)
+            for paragraph in content.get("paragraphs", []):
+                if start_num <= paragraph["number"] <= end_num:
+                    # Join sentences in this paragraph
+                    paragraph_text = " ".join(paragraph["sentences"])
+                    selected_paragraphs.append(paragraph_text)
             
             return "\n\n".join(selected_paragraphs)
             

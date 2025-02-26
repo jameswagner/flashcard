@@ -67,9 +67,7 @@ def chunk_text(
             continue
             
         # Count tokens in this sentence
-        sentence_tokens = len(encoding.encode(sentence))
-        logger.info(f"Sentence {i+1}: {sentence_tokens} tokens")
-        
+        sentence_tokens = len(encoding.encode(sentence))        
         # If this single sentence is too long, we have to split it
         # (this should be rare since we're using sentence markers)
         if sentence_tokens > max_tokens:

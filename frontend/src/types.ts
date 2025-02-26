@@ -65,6 +65,8 @@ export interface FlashcardFeedbackRequest {
 export interface URLUploadRequest {
   url: string;
   user_id?: string;
+  title?: string;
+  description?: string;
 }
 
 export interface YouTubeUploadRequest {
@@ -104,7 +106,7 @@ export interface Citation {
   source_file_id: number;
   citation_type: 'character_range' | 'line_numbers' | 'pdf_bbox' | 'semantic_chunk' | 
                  'sentence_range' | 'html_paragraph' | 'html_section' | 'html_table' | 
-                 'html_list' | 'video_timestamp' | 'video_chapter';
+                 'html_list' | 'video_timestamp' | 'video_chapter' | 'block' | 'paragraph';
   citation_data: [number, number][];  // Array of [start, end] tuples
   preview_text: string | null;
 }
@@ -329,4 +331,10 @@ export interface CompleteStudySessionResponse {
   status: string;
   message: string;
   statistics: StudySessionStatistics;
+}
+
+export interface SourceFileUploadResponse {
+  id: number;
+  filename: string;
+  source_type: "file" | "url" | "youtube";
 } 

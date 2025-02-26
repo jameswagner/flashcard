@@ -7,7 +7,6 @@ from langchain_google_genai import ChatGoogleGenerativeAI
 from models.enums import AIModel
 from models.prompt import PromptTemplate as DBPromptTemplate
 from sqlalchemy.orm import Session
-from utils.text_processing import add_line_markers
 from utils.text_chunking import chunk_text, merge_flashcard_results, count_tokens, chunk_html_content, chunk_youtube_transcript
 from config.env import settings
 import traceback
@@ -17,11 +16,14 @@ import time
 import sys
 import logging
 from concurrent.futures import ThreadPoolExecutor
-from utils.html_processing import HTMLContent
+from utils.html_processing import HTMLContent, HTMLProcessor
+from utils.plaintext_processing.processor import PlainTextProcessor
+from utils.pdf_processing.processor import ProcessedDocument, PDFProcessor
+from utils.image_processing.processor import ImageProcessor
+from utils.youtube_processing import YouTubeProcessor
 from models.enums import FileType
 import json
 from .citation_processing.citation_sorting import sort_flashcards_by_earliest_citation
-from utils.plaintext_processing.processor import process_text
 
 # Get logger for this module
 logger = logging.getLogger(__name__)
@@ -129,12 +131,24 @@ async def create_flashcards_from_text(
     # Process text if needed
     if processed_text is None:
         logger.info("\n=== PROCESSING TEXT ===")
-        if use_sentences:
-            logger.info("Using sentence-based processing")
-            marked_text = process_text(text)
+        
+        # Select appropriate processor based on file type
+        if file_type == FileType.HTML:
+            processor = HTMLProcessor()
+        elif file_type == FileType.PDF:
+            processor = PDFProcessor()
+        elif file_type == FileType.IMAGE:
+            processor = ImageProcessor()
+        elif file_type == FileType.YOUTUBE_TRANSCRIPT:
+            processor = YouTubeProcessor()
         else:
-            logger.info("Using line-based processing")
-            marked_text = add_line_markers(text)
+            # Default to PlainTextProcessor for TXT and unknown types
+            processor = PlainTextProcessor()
+        
+        # Process content using the standard pattern
+        structured_json = processor.to_structured_json(text)
+        marked_text = processor.to_prompt_text(structured_json)
+        logger.info(f"Processed text using {processor.__class__.__name__}")
     else:
         marked_text = processed_text
     
