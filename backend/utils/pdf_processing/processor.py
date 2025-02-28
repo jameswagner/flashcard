@@ -730,6 +730,10 @@ if __name__ == "__main__":
 class PDFProcessor(ContentProcessor):
     """Processor for PDF files that implements the ContentProcessor interface."""
     
+    def __init__(self):
+        """Initialize the PDF processor."""
+        super().__init__()
+    
     def to_structured_json(self, raw_content: str) -> Dict:
         """Convert raw PDF content to structured JSON format.
         
@@ -741,6 +745,7 @@ class PDFProcessor(ContentProcessor):
         """
         # Process the PDF
         processed_doc = process_pdf(raw_content, os.path.basename(raw_content))
+        
         # Convert to JSON structure
         return processed_doc.to_json()
     

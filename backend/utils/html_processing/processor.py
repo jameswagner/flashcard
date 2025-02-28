@@ -54,7 +54,7 @@ def is_text_container(tag) -> bool:
 
 def process_table(table: Tag) -> List[str]:
     """Convert a table into a list of text strings."""
-    logger.info(f"Processing table: {table.prettify()[:200]}...")  # Log first 200 chars
+    logger.debug(f"Processing table: {table.prettify()[:200]}...")  # Log first 200 chars
     rows = []
     
     # Get headers if they exist
@@ -62,7 +62,7 @@ def process_table(table: Tag) -> List[str]:
     header_row = table.find('thead')
     if header_row:
         headers = [th.get_text().strip() for th in header_row.find_all('th')]
-        logger.info(f"Found table headers: {headers}")
+        logger.debug(f"Found table headers: {headers}")
     
     # Process each row
     for row in table.find_all('tr'):
@@ -77,14 +77,14 @@ def process_table(table: Tag) -> List[str]:
                 row_text = " | ".join(cells)
             if row_text.strip():
                 rows.append(row_text)
-                logger.info(f"Processed row: {row_text}")
+                logger.debug(f"Processed row: {row_text}")
     
-    logger.info(f"Table processing complete. Generated {len(rows)} rows")
+    logger.debug(f"Table processing complete. Generated {len(rows)} rows")
     return rows
 
 def process_list(list_tag: Tag) -> List[str]:
     """Convert a list into a sequence of text strings with appropriate markers."""
-    logger.info(f"Processing list: {list_tag.prettify()[:200]}...")
+    logger.debug(f"Processing list: {list_tag.prettify()[:200]}...")
     items = []
     is_ordered = list_tag.name == 'ol'
     
@@ -93,9 +93,9 @@ def process_list(list_tag: Tag) -> List[str]:
         if text:
             marker = f"{i+1}." if is_ordered else "•"
             items.append(f"{marker} {text}")
-            logger.info(f"Processed list item: {items[-1]}")
+            logger.debug(f"Processed list item: {items[-1]}")
     
-    logger.info(f"List processing complete. Generated {len(items)} items")
+    logger.debug(f"List processing complete. Generated {len(items)} items")
     return items
 
 class HTMLProcessor(ContentProcessor):
@@ -103,8 +103,8 @@ class HTMLProcessor(ContentProcessor):
     
     def to_structured_json(self, raw_content: str, title: Optional[str] = None) -> Dict:
         """Convert raw HTML to structured JSON format."""
-        logger.info(f"Starting HTML processing. Content length: {len(raw_content)}")
-        logger.info(f"Raw content preview: {raw_content[:500]}...")
+        logger.debug(f"Starting HTML processing. Content length: {len(raw_content)}")
+        logger.debug(f"Raw content preview: {raw_content[:500]}...")
         
         if not raw_content.strip():
             logger.error("Received empty or whitespace-only content!")
@@ -116,22 +116,22 @@ class HTMLProcessor(ContentProcessor):
         
         try:
             soup = BeautifulSoup(raw_content, 'html.parser')
-            logger.info(f"BeautifulSoup parsed content. Found {len(soup.find_all())} tags")
+            logger.debug(f"BeautifulSoup parsed content. Found {len(soup.find_all())} tags")
         except Exception as e:
             logger.error(f"Failed to parse HTML with BeautifulSoup: {str(e)}")
             raise
         
         # Extract title
         doc_title = title or self._extract_title(soup)
-        logger.info(f"Extracted title: {doc_title}")
+        logger.debug(f"Extracted title: {doc_title}")
         
         # Process content into sections
         try:
             sections = self._process_sections(soup)
-            logger.info(f"Processed {len(sections)} sections")
+            logger.debug(f"Processed {len(sections)} sections")
             for i, section in enumerate(sections):
-                logger.info(f"Section {i+1}: {len(section.get('content', []))} content items")
-                logger.info(f"Section {i+1} header: {section.get('header', 'No header')}")
+                logger.debug(f"Section {i+1}: {len(section.get('content', []))} content items")
+                logger.debug(f"Section {i+1} header: {section.get('header', 'No header')}")
         except Exception as e:
             logger.error(f"Error processing sections: {str(e)}", exc_info=True)
             raise
@@ -143,7 +143,7 @@ class HTMLProcessor(ContentProcessor):
             'has_tables': any('table' in str(item) for section in sections for item in section.get('content', [])),
             'has_lists': any('list' in str(item) for section in sections for item in section.get('content', []))
         }
-        logger.info(f"Generated metadata: {metadata}")
+        logger.debug(f"Generated metadata: {metadata}")
         
         result = {
             'title': doc_title,
@@ -151,11 +151,11 @@ class HTMLProcessor(ContentProcessor):
             'metadata': metadata
         }
         
-        logger.info("Final JSON structure:")
-        logger.info(f"Title: {result['title']}")
-        logger.info(f"Number of sections: {len(result['sections'])}")
+        logger.debug("Final JSON structure:")
+        logger.debug(f"Title: {result['title']}")
+        logger.debug(f"Number of sections: {len(result['sections'])}")
         for i, section in enumerate(result['sections']):
-            logger.info(f"Section {i+1} content count: {len(section.get('content', []))}")
+            logger.debug(f"Section {i+1} content count: {len(section.get('content', []))}")
         
         return result
     
@@ -253,7 +253,7 @@ class HTMLProcessor(ContentProcessor):
     
     def _process_sections(self, soup: BeautifulSoup) -> List[Dict]:
         """Process HTML content into sections with proper nesting based on header levels."""
-        logger.info("Starting section processing")
+        logger.debug("Starting section processing")
         sections = []
         section_stack = []  # Stack to track current section hierarchy
         global_paragraph_counter = 0  # Global counter for paragraphs
@@ -270,7 +270,7 @@ class HTMLProcessor(ContentProcessor):
             if element.name in ['script', 'style', 'meta', 'link', 'noscript']:
                 return
                 
-            logger.info(f"Processing element: <{element.name}> with {len(element.get_text().strip())} chars of text")
+            logger.debug(f"Processing element: <{element.name}> with {len(element.get_text().strip())} chars of text")
             
             # Handle header tags (h1 through h6)
             if element.name and element.name.startswith('h') and element.name[1:].isdigit():
@@ -297,7 +297,7 @@ class HTMLProcessor(ContentProcessor):
                 
                 # Push new section onto stack
                 section_stack.append(new_section)
-                logger.info(f"Created new section level {current_level}: {header_text}")
+                logger.debug(f"Created new section level {current_level}: {header_text}")
                 
             elif not section_stack:
                 # Create default section if none exists
@@ -309,7 +309,7 @@ class HTMLProcessor(ContentProcessor):
                 }
                 sections.append(default_section)
                 section_stack.append(default_section)
-                logger.info("Created default section")
+                logger.debug("Created default section")
             
             # Process content based on type
             try:
@@ -324,7 +324,7 @@ class HTMLProcessor(ContentProcessor):
                             'text': text,
                             'paragraph_number': global_paragraph_counter
                         })
-                        logger.info(f"Added paragraph {global_paragraph_counter} to section level {current_section['level']}: {text[:100]}...")
+                        logger.debug(f"Added paragraph {global_paragraph_counter} to section level {current_section['level']}: {text[:100]}...")
                 elif element.name == 'table':
                     table_content = process_table(element)
                     if table_content:  # Only add non-empty tables
@@ -334,7 +334,7 @@ class HTMLProcessor(ContentProcessor):
                             'table_id': table_id,
                             'content': table_content
                         })
-                        logger.info(f"Added table {table_id} to section level {current_section['level']}")
+                        logger.debug(f"Added table {table_id} to section level {current_section['level']}")
                 elif element.name in ['ul', 'ol']:
                     list_content = process_list(element)
                     if list_content:  # Only add non-empty lists
@@ -345,7 +345,7 @@ class HTMLProcessor(ContentProcessor):
                             'items': list_content,
                             'list_type': 'ordered' if element.name == 'ol' else 'unordered'
                         })
-                        logger.info(f"Added {element.name} list {list_id} to section level {current_section['level']}")
+                        logger.debug(f"Added {element.name} list {list_id} to section level {current_section['level']}")
                 elif element.name in ['div', 'article', 'section', 'main']:
                     # For container elements, process their children
                     for child in element.children:
@@ -362,13 +362,13 @@ class HTMLProcessor(ContentProcessor):
                             'text': text,
                             'paragraph_number': global_paragraph_counter
                         })
-                        logger.info(f"Added paragraph {global_paragraph_counter} from <{element.name}> to section level {current_section['level']}: {text[:100]}...")
+                        logger.debug(f"Added paragraph {global_paragraph_counter} from <{element.name}> to section level {current_section['level']}: {text[:100]}...")
             except Exception as e:
                 logger.error(f"Error processing element <{element.name}>: {str(e)}", exc_info=True)
         
         # Get the main content area (body or main content div)
         content_area = soup.body or soup
-        logger.info(f"Content area contains {len(content_area.find_all())} total tags")
+        logger.debug(f"Content area contains {len(content_area.find_all())} total tags")
         
         # Process all elements
         for element in content_area.children:
@@ -416,7 +416,7 @@ class HTMLProcessor(ContentProcessor):
         
         # Convert nested structure to flat list with proper numbering
         flat_sections = flatten_sections(sections)
-        logger.info(f"Section processing complete. Generated {len(flat_sections)} total sections")
+        logger.debug(f"Section processing complete. Generated {len(flat_sections)} total sections")
         return flat_sections
 
 # For backward compatibility

@@ -585,22 +585,23 @@ function formatHTMLContent(content: string, citations: SourceTextWithCitations['
                     }
                     
                     const paragraphContent = (
-                      <div className={`text-slate-700 ${
-                        paragraphCardIds.length > 0 ? getCitationColor(paragraphCardIds[0]) + ' p-3 rounded-lg' : ''
-                      }`}>
+                      <p 
+                        key={`p-${pIndex}`} 
+                        className={`text-slate-700 ${
+                          paragraphCardIds.length > 0 ? getCitationColor(paragraphCardIds[0]) + ' p-3 rounded-lg' : ''
+                        }`}
+                      >
                         {parts.map((part, i) => (
                           <React.Fragment key={i}>{part}</React.Fragment>
                         ))}
-                      </div>
+                      </p>
                     );
 
-                    const result = paragraphCardIds.length > 0 ? (
-                      <CitationTooltip key={`para-${pIndex}`} citations={citations} cardIds={paragraphCardIds}>
+                    return paragraphCardIds.length > 0 ? (
+                      <CitationTooltip key={`p-${pIndex}`} citations={citations} cardIds={paragraphCardIds}>
                         {paragraphContent}
                       </CitationTooltip>
                     ) : paragraphContent;
-                    
-                    return result;
                   }
                   
                   return null;
@@ -893,11 +894,11 @@ function formatPDFContent(content: string, citations: SourceTextWithCitations['c
       currentSentenceNum += item.sentences.length;
       
       const paragraphContent = (
-        <div className={`text-slate-700 ${
+        <p className={`text-slate-700 ${
           paragraphCardIds.length > 0 ? getCitationColor(paragraphCardIds[0]) + ' p-3 rounded-lg' : ''
         }`}>
           {elements}
-        </div>
+        </p>
       );
       
       const result = paragraphCardIds.length > 0 ? (
@@ -1056,7 +1057,7 @@ function formatImageContent(jsonContent: string, citations: SourceTextWithCitati
           const cardIds = [...new Set([...blockCardIds, ...paragraphCardIds])];
           
           paragraphs.push(
-            <div key={`p-${globalParagraphNumber}`} className="mb-2">
+            <p key={`p-${globalParagraphNumber}`} className="mb-2">
               {cardIds.length > 0 ? (
                 <CitationTooltip citations={citations} cardIds={cardIds}>
                   <span className={`${getCitationColor(cardIds[0])} px-1 rounded border cursor-help`}>
@@ -1066,7 +1067,7 @@ function formatImageContent(jsonContent: string, citations: SourceTextWithCitati
               ) : (
                 <span>{text}</span>
               )}
-            </div>
+            </p>
           );
           globalParagraphNumber++;
         }
@@ -1107,9 +1108,9 @@ function formatImageContent(jsonContent: string, citations: SourceTextWithCitati
             
             // Add the paragraph with all its sentences
             paragraphs.push(
-              <div key={`p-${globalParagraphNumber}`} className="mb-2">
+              <p key={`p-${globalParagraphNumber}`} className="mb-2">
                 {sentences}
-              </div>
+              </p>
             );
             
             globalParagraphNumber++;

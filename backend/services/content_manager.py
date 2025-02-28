@@ -24,11 +24,6 @@ from utils.youtube_processing import fetch_transcript, YouTubeContent, YouTubePr
 from utils.pdf_processing.processor import PDFProcessor
 from utils.plaintext_processing.processor import PlainTextProcessor
 from utils.image_processing.processor import ImageProcessor
-from utils.citation_processing.image_citation_processor import ImageCitationProcessor
-from utils.citation_processing.text_citation_processor import TextCitationProcessor
-from utils.citation_processing.html_citation_processor import HTMLCitationProcessor
-from utils.citation_processing.pdf_citation_processor import PDFCitationProcessor
-from utils.citation_processing.youtube_citation_processor import YouTubeCitationProcessor
 
 logger = logging.getLogger(__name__)
 
@@ -51,14 +46,6 @@ class ContentProcessor:
             FileType.PDF.value: PDFProcessor(),
             FileType.IMAGE.value: ImageProcessor(),
             FileType.YOUTUBE_TRANSCRIPT.value: YouTubeProcessor(),
-        }
-        
-        self._citation_processors = {
-            FileType.TXT.value: TextCitationProcessor(),
-            FileType.HTML.value: HTMLCitationProcessor(),
-            FileType.PDF.value: PDFCitationProcessor(),
-            FileType.IMAGE.value: ImageCitationProcessor(),
-            FileType.YOUTUBE_TRANSCRIPT.value: YouTubeCitationProcessor(),
         }
     
     def _get_processor(self, file_type: str):
