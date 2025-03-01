@@ -93,15 +93,47 @@ class FlashcardSetService:
         
         return response.model_dump()
 
+    def _create_flashcard_set_entity(
+        self,
+        title: str,
+        description: str,
+        user_id: int = None,
+        is_ai_generated: bool = False,
+        ai_metadata: dict = None
+    ) -> FlashcardSet:
+        """Internal helper to create a FlashcardSet entity with common logic."""
+        flashcard_set = FlashcardSet(
+            title=title,
+            description=description,
+            user_id=user_id
+        )
+        
+        # Add AI-specific metadata if applicable
+        if is_ai_generated and ai_metadata:
+            flashcard_set.total_card_count = ai_metadata.get('total_card_count', 0)
+            flashcard_set.ai_card_count = ai_metadata.get('ai_card_count', 0)
+            flashcard_set.initial_generation_model = ai_metadata.get('model', '').lower()
+            flashcard_set.prompt_template_id = ai_metadata.get('prompt_template_id')
+            flashcard_set.prompt_parameters = ai_metadata.get('prompt_parameters', {})
+            flashcard_set.model_parameters = ai_metadata.get('model_parameters', {})
+            
+            # Add source file if provided
+            source_file = ai_metadata.get('source_file')
+            if source_file:
+                flashcard_set.source_files.append(source_file)
+        
+        self.db.add(flashcard_set)
+        self.db.flush()
+        return flashcard_set
+
     def create_set(self, set_data: FlashcardSetCreate) -> FlashcardSetResponse:
         """Create a new flashcard set with optional initial cards."""
         try:
-            db_set = FlashcardSet(
+            # Use the common helper
+            db_set = self._create_flashcard_set_entity(
                 title=set_data.title,
                 description=set_data.description
             )
-            self.db.add(db_set)
-            self.db.flush()
 
             if set_data.flashcards:
                 for idx, card_data in enumerate(set_data.flashcards, 1):
@@ -239,4 +271,48 @@ class FlashcardSetService:
             set_id=db_set.id,
             title=db_set.title,
             sources=sources
-        ) 
+        )
+
+    async def create_ai_flashcard_set(
+        self,
+        generated_cards: list,
+        source_file,
+        model,
+        db_template,
+        generation_request
+    ):
+        """Create flashcard set with AI-generated cards."""
+        ai_info = f"\n\nGenerated using {model.value} AI model"
+        
+        # Prepare AI metadata
+        ai_metadata = {
+            'total_card_count': len(generated_cards),
+            'ai_card_count': len(generated_cards),
+            'model': model.value,
+            'prompt_template_id': db_template.id,
+            'prompt_parameters': {"num_cards": len(generated_cards)},
+            'model_parameters': generation_request.model_params,
+            'source_file': source_file
+        }
+        
+        # Use the common helper
+        flashcard_set = self._create_flashcard_set_entity(
+            title=generation_request.title or f"Generated from {source_file.filename}",
+            description=(generation_request.description + ai_info if generation_request.description 
+                      else f"AI-generated flashcards using {model.value}"),
+            user_id=generation_request.user_id,
+            is_ai_generated=True,
+            ai_metadata=ai_metadata
+        )
+        
+        return flashcard_set
+
+    def create_flashcard_set_association(self, flashcard_id, set_id, card_index):
+        """Create association between flashcard and set with explicit card index."""
+        stmt = flashcard_set_association.insert().values(
+            flashcard_id=flashcard_id,
+            set_id=set_id,
+            card_index=card_index,
+            created_at=datetime.now(UTC)
+        )
+        self.db.execute(stmt) 

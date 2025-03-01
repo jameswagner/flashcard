@@ -103,42 +103,57 @@ class YouTubeCitationProcessor(CitationProcessor):
             # Parse the transcript JSON
             transcript_data = json.loads(text_content) if isinstance(text_content, str) else text_content
             
-            if not isinstance(transcript_data, dict) or "transcript" not in transcript_data:
+            # Check for format with sections structure
+            if not isinstance(transcript_data, dict) or "sections" not in transcript_data:
                 logger.warning("Invalid transcript data format")
                 return ""
                 
-            transcript = transcript_data.get("transcript", [])
-            if not transcript:
-                return ""
-                
-            # Find segments that overlap with the target range
-            overlapping_segments = []
+            logger.debug("Processing YouTube transcript with sections format")
             
-            for segment in transcript:
-                seg_start = segment.get("start", 0)
-                seg_end = seg_start + segment.get("duration", 0)
+            # Find segments that overlap with the target range across all sections
+            overlapping_segments = []
+            current_section = None
+            
+            for section in transcript_data.get("sections", []):
+                section_header = section.get("header", "")
                 
-                # Check if segment overlaps with citation range
-                if seg_end >= start_num and seg_start <= end_num:
-                    overlapping_segments.append(segment)
+                for segment in section.get("content", []):
+                    if segment.get("type") != "transcript_segment":
+                        continue
+                        
+                    seg_start = segment.get("start_time", 0)
+                    seg_end = segment.get("end_time", 0)
+                    
+                    # Check if segment overlaps with citation range
+                    if seg_end >= start_num and seg_start <= end_num:
+                        # Add section header if different from current
+                        if section_header != current_section:
+                            current_section = section_header
+                            overlapping_segments.append({"is_header": True, "header": current_section})
+                        
+                        # Add the segment
+                        overlapping_segments.append(segment)
             
             relevant_text = []
-            current_section = None
             actual_start = None
             actual_end = None
             
             # Process each segment
-            for segment in overlapping_segments:
-                # Track current section header for context
-                current_section = segment.get('header')
+            for item in overlapping_segments:
+                if item.get("is_header", False):
+                    # Add section context if not already added
+                    if not any(text.startswith(f"[Chapter: {item['header']}]") for text in relevant_text):
+                        relevant_text.append(f"[Chapter: {item['header']}]")
+                    continue
                 
-                # Add section context if not already added
-                if current_section and not any(text.startswith(f"[Chapter: {current_section}]") for text in relevant_text):
-                    relevant_text.append(f"[Chapter: {current_section}] ")
+                # Extract segment data
+                seg_start = item.get("start_time", 0)
+                seg_end = item.get("end_time", 0)
+                seg_text = item.get("text", "")
                 
                 # Add the segment text
-                if segment['text']:
-                    relevant_text.append(segment['text'])
+                if seg_text:
+                    relevant_text.append(seg_text)
                 
                 # Update actual start/end times
                 if actual_start is None or seg_start < actual_start:
@@ -146,7 +161,7 @@ class YouTubeCitationProcessor(CitationProcessor):
                 if actual_end is None or seg_end > actual_end:
                     actual_end = seg_end
             
-            segment_count = len(relevant_text) - (1 if current_section else 0)
+            segment_count = len([t for t in relevant_text if not t.startswith("[Chapter:")])
             logger.debug(f"Found {segment_count} transcript segments in range {actual_start}-{actual_end}")
             
             if not relevant_text or actual_start is None or actual_end is None:
@@ -158,8 +173,9 @@ class YouTubeCitationProcessor(CitationProcessor):
             timestamp_display = f"[{self.format_timestamp(actual_start)}-{self.format_timestamp(actual_end)}]"
             logger.debug(f"Created YouTube preview with timestamp display: {timestamp_display}")
             return f"{timestamp_display} {result}"
+            
         except Exception as e:
-            logger.error(f"Error in get_preview_text: {e}")
+            logger.error(f"Error generating preview text: {str(e)}", exc_info=True)
             return ""
 
     def format_citation_data(self, start_value, end_value):

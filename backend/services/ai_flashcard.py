@@ -1,14 +1,12 @@
 from sqlalchemy.orm import Session
 from fastapi import HTTPException
 import logging
-from typing import Optional, List, Dict, Any
-from datetime import datetime, UTC
+from typing import Optional
 import json
-import math
 
 from models.source import SourceFile, Citation
 from models.set import FlashcardSet
-from models.flashcard import Flashcard, flashcard_set_association
+from models.flashcard import Flashcard
 from models.prompt import PromptTemplate
 from models.enums import FileType, AIModel, CitationType
 
@@ -18,9 +16,9 @@ from utils.citation_processing.youtube_citation_processor import YouTubeCitation
 from utils.citation_processing.pdf_citation_processor import PDFCitationProcessor
 from utils.citation_processing.image_citation_processor import ImageCitationProcessor
 from services.content_manager import ContentManager
-from utils.s3 import get_processed_text as s3_get_processed_text
-from utils.html_processing import HTMLContent
-from utils.pdf_processing.processor import ProcessedDocument
+from services.flashcard import FlashcardService
+from services.flashcard_set import FlashcardSetService
+from services.citation_service import CitationService
 
 logger = logging.getLogger(__name__)
 
@@ -28,6 +26,9 @@ class AIFlashcardService:
     def __init__(self, db: Session, content_manager: 'ContentManager'):
         self.db = db
         self.content_manager = content_manager
+        self.flashcard_service = FlashcardService(db)
+        self.flashcard_set_service = FlashcardSetService(db)
+        self.citation_service = CitationService(db)
 
     async def generate_flashcards(
         self,
@@ -186,7 +187,7 @@ class AIFlashcardService:
             citations = card.get("citations", [])
         
         # Create and populate flashcard set
-        flashcard_set = await self._create_flashcard_set(
+        flashcard_set = await self.flashcard_set_service.create_ai_flashcard_set(
             generated_cards=generated_cards,
             source_file=source_file,
             model=model,
@@ -212,31 +213,6 @@ class AIFlashcardService:
         logger.info(f"Successfully saved all flashcards and citations for set {flashcard_set.id}")
         return {"set_id": flashcard_set.id, "num_cards": len(generated_cards)}
 
-    async def _create_flashcard_set(
-        self,
-        generated_cards: list,
-        source_file: SourceFile,
-        model: AIModel,
-        db_template: PromptTemplate,
-        generation_request: 'FlashcardGenerationRequest'
-    ) -> FlashcardSet:
-        """Create flashcard set with generated cards."""
-        ai_info = f"\n\nGenerated using {model.value} AI model"
-        flashcard_set = FlashcardSet(
-            title=generation_request.title or f"Generated from {source_file.filename}",
-            description=(generation_request.description + ai_info if generation_request.description 
-                        else f"AI-generated flashcards using {model.value}"),
-            user_id=generation_request.user_id,
-            total_card_count=len(generated_cards),
-            ai_card_count=len(generated_cards),
-            initial_generation_model=model.value.lower(),
-            prompt_template_id=db_template.id,
-            prompt_parameters={"num_cards": len(generated_cards)},
-            model_parameters=generation_request.model_params
-        )
-        flashcard_set.source_files.append(source_file)
-        return flashcard_set
-
     async def _create_flashcards_and_citations(
         self,
         generated_cards: list,
@@ -250,35 +226,33 @@ class AIFlashcardService:
     ) -> None:
         """Create flashcards and their citations."""
         # Get the appropriate citation processor based on file type
-        citation_processor = self._get_citation_processor(source_file)
+        citation_processor = self.citation_service.get_citation_processor(source_file)
         
         # Process each generated card
         for i, card in enumerate(generated_cards):
-            # Create the flashcard and add it to the set
-            flashcard = self._create_flashcard(
-                card, 
-                model, 
-                db_template, 
-                generation_request, 
-                len(generated_cards)
+            # Create the flashcard using FlashcardService
+            flashcard = self.flashcard_service.create_ai_flashcard(
+                card_data=card, 
+                model=model, 
+                db_template=db_template, 
+                generation_request=generation_request, 
+                total_cards=len(generated_cards)
             )
-            self.db.add(flashcard)
-            self.db.flush()
             
             # Create association with explicit card_index
-            self._create_flashcard_set_association(flashcard.id, flashcard_set.id, i + 1)
+            self.flashcard_set_service.create_flashcard_set_association(flashcard.id, flashcard_set.id, i + 1)
             
             # Process and create citations for this flashcard
             citations = card.get("citations", [])
-            citation_count = self._process_flashcard_citations(
+            citation_count = self.citation_service.process_flashcard_citations(
                 citations=citations, 
                 flashcard_id=flashcard.id,
                 source_file=source_file,
-                citation_processor=citation_processor,
                 document_json=document_json,
                 use_sentences=use_sentences,
                 card_index=i+1,
-                total_cards=len(generated_cards)
+                total_cards=len(generated_cards),
+                citation_processor=citation_processor
             )
             
             logger.debug(f"Created {citation_count} citations for flashcard {flashcard.id}")
@@ -287,199 +261,4 @@ class AIFlashcardService:
         total_citations_created = self.db.query(Citation).join(Flashcard).filter(
             Flashcard.id.in_([f.id for f in flashcard_set.flashcards])
         ).count()
-        logger.debug(f"Total citations created for set {flashcard_set.id}: {total_citations_created}")
-
-    def _get_citation_processor(self, source_file):
-        """Get the appropriate citation processor based on file type."""
-        if source_file.file_type == FileType.HTML.value:
-            processor = HTMLCitationProcessor()
-            logger.debug(f"Using HTML citation processor for file {source_file.id} ({source_file.filename})")
-        elif source_file.file_type == FileType.YOUTUBE_TRANSCRIPT.value:
-            processor = YouTubeCitationProcessor()
-            logger.debug(f"Using YouTube citation processor for file {source_file.id} ({source_file.filename})")
-        elif source_file.file_type == FileType.TXT.value:
-            processor = TextCitationProcessor()
-            logger.debug(f"Using Text citation processor for file {source_file.id} ({source_file.filename})")
-        elif source_file.file_type == FileType.PDF.value:
-            processor = PDFCitationProcessor()
-            logger.debug(f"Using PDF citation processor for file {source_file.id} ({source_file.filename})")
-        elif source_file.file_type == FileType.IMAGE.value:
-            processor = ImageCitationProcessor()
-            logger.debug(f"Using Image citation processor for file {source_file.id} ({source_file.filename})")
-        else:
-            processor = CitationProcessor()
-            logger.debug(f"Using base citation processor for file {source_file.id} ({source_file.filename}) with type {source_file.file_type}")
-        
-        return processor
-
-    def _create_flashcard(self, card, model, db_template, generation_request, total_cards):
-        """Create a flashcard object from a generated card."""
-        return Flashcard(
-            front=card["front"],
-            back=card["back"],
-            is_ai_generated=True,
-            generation_model=model.value.lower(),
-            prompt_template_id=db_template.id,
-            prompt_parameters={"num_cards": total_cards},
-            model_parameters=generation_request.model_params,
-            answer_key_terms=card.get("answer_key_terms", []),
-            key_concepts=card.get("key_concepts", []),
-            abbreviations=card.get("abbreviations", [])
-        )
-
-    def _create_flashcard_set_association(self, flashcard_id, set_id, card_index):
-        """Create association between flashcard and set with explicit card index."""
-        stmt = flashcard_set_association.insert().values(
-            flashcard_id=flashcard_id,
-            set_id=set_id,
-            card_index=card_index,
-            created_at=datetime.now(UTC)
-        )
-        self.db.execute(stmt)
-
-    def _process_flashcard_citations(self, citations, flashcard_id, source_file, citation_processor, document_json, use_sentences, card_index, total_cards):
-        """Process all citations for a single flashcard."""
-        logger.debug(f"Processing {len(citations)} citations for flashcard {flashcard_id} (card {card_index} of {total_cards})")
-        citation_count = 0
-        
-        for citation_idx, citation in enumerate(citations):
-            logger.debug(f"Processing citation #{citation_idx+1}: {citation}")
-            
-            # Parse citation with the appropriate processor
-            parsed_citation = self._parse_citation_data(
-                citation=citation, 
-                citation_processor=citation_processor,
-                file_type=source_file.file_type
-            )
-            
-            if not parsed_citation:
-                logger.warning(f"Failed to parse citation: {citation}")
-                continue
-            
-            # Create citation record
-            db_citation = self._create_citation_record(
-                parsed_citation=parsed_citation,
-                flashcard_id=flashcard_id,
-                source_file=source_file,
-                citation_processor=citation_processor,
-                document_json=document_json,
-                use_sentences=use_sentences
-            )
-            
-            if db_citation:
-                self.db.add(db_citation)
-                self.db.flush()
-                citation_count += 1
-                logger.debug(f"Created citation record: id={db_citation.id}, type={db_citation.citation_type}")
-        
-        return citation_count
-
-    def _create_citation_record(self, parsed_citation, flashcard_id, source_file, citation_processor, document_json, use_sentences):
-        """Create a citation record from parsed citation data."""
-        # Unpack the standardized citation data
-        start_value, end_value, citation_type, context = parsed_citation
-        logger.debug(f"Parsed citation: start={start_value}, end={end_value}, type={citation_type}")
-        
-        # Get preview text using parameter names compatible with all processors
-        preview_text = citation_processor.get_preview_text(
-            text_content=document_json,
-            start_num=start_value,
-            end_num=end_value,
-            citation_type=citation_type
-        )
-        
-        # Log a sample of the preview text
-        preview_sample = preview_text[:100] + "..." if len(preview_text) > 100 else preview_text
-        logger.debug(f"Generated preview text: '{preview_sample}'")
-        
-        # Format citation data
-        citation_data_value = [[start_value, end_value]]
-        
-        # Determine default citation type based on file type and settings
-        if source_file.file_type == FileType.YOUTUBE_TRANSCRIPT.value:
-            default_type = CitationType.video_timestamp.value
-        else:
-            default_type = CitationType.sentence_range.value if use_sentences else CitationType.line_numbers.value
-            
-        logger.debug(f"Using citation data value: {citation_data_value}, type: {citation_type or default_type}")
-        
-        # Create citation record with appropriate values
-        return Citation(
-            flashcard_id=flashcard_id,
-            source_file_id=source_file.id,
-            citation_type=citation_type or default_type,
-            citation_data=citation_data_value,
-            preview_text=preview_text
-        )
-
-    def _parse_citation_data(self, citation, citation_processor, file_type):
-        """Parse citation data into standardized components for all content types."""
-        try:
-            # Simple, unified code path for all processors
-            logger.debug(f"Parsing citation for {file_type}: {citation}")
-            
-            # All processors return the same tuple structure: (start, end, type, context)
-            result = citation_processor.parse_citation(citation)
-            
-            if not result:
-                logger.warning(f"Failed to parse citation: {citation}")
-                return None
-            
-            logger.debug(f"Citation processor returned: {result}")
-            return result
-            
-        except Exception as e:
-            logger.error(f"Error parsing citation: {str(e)}", exc_info=True)
-            return None
-
-    def _parse_citation(self, citation) -> Optional[tuple[Optional[int], Optional[int], Optional[str], Optional[str]]]:
-        """Parse citation data into components."""
-        try:
-            if isinstance(citation, dict):
-                citation_type = citation.get('citation_type')
-                if not citation_type:
-                    logger.warning("Missing citation_type in citation dict")
-                    return None
-                    
-                context = citation.get('context')
-                
-                # Handle range-based citations
-                if 'range' in citation:
-                    range_data = citation['range']
-                    if not isinstance(range_data, (list, tuple)) or len(range_data) != 2:
-                        logger.warning(f"Invalid range format: {range_data}")
-                        return None
-                    start_int, end_int = range_data
-                    logger.debug(f"Parsed range citation: {start_int}-{end_int}")
-                    
-                # Handle element-based citations
-                elif 'id' in citation:
-                    element_id = citation['id']
-                    if not isinstance(element_id, int):
-                        logger.warning(f"Invalid element ID: {element_id}")
-                        return None
-                    start_int = end_int = element_id
-                    logger.debug(f"Parsed element citation with ID {element_id} (converted to range {start_int}-{end_int})")
-                    
-                else:
-                    logger.warning("Citation dict missing both range and id")
-                    return None
-                    
-            elif isinstance(citation, (list, tuple)):
-                if len(citation) != 2:
-                    logger.warning(f"Invalid citation list length: {len(citation)}")
-                    return None
-                start_int, end_int = citation
-                citation_type = None
-                context = None
-                logger.debug(f"Parsed legacy citation format: {start_int}-{end_int}")
-                
-            else:
-                logger.warning(f"Unexpected citation format: {type(citation)}")
-                return None
-                
-            return start_int, end_int, citation_type, context
-            
-        except Exception as e:
-            logger.error(f"Error parsing citation: {str(e)}", exc_info=True)
-            return None 
+        logger.debug(f"Total citations created for set {flashcard_set.id}: {total_citations_created}") 

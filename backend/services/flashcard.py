@@ -3,10 +3,11 @@ from sqlalchemy import func
 from models.flashcard import Flashcard, CardVersion, CardEditHistory, flashcard_set_association
 from models.feedback import CardFeedback
 from models.set import FlashcardSet
-from models.enums import CardStatus, FeedbackType, FeedbackCategory, EditType
+from models.enums import CardStatus, FeedbackType, FeedbackCategory, EditType, AIModel
+from models.prompt import PromptTemplate
 from api.models.requests.flashcard import FlashcardCreate, FlashcardUpdate, CardFeedbackCreate
 from fastapi import HTTPException
-from typing import List, Optional
+from typing import List, Optional, Dict, Any
 from datetime import datetime, UTC
 import traceback
 
@@ -265,4 +266,45 @@ class FlashcardService:
             raise HTTPException(
                 status_code=500,
                 detail=f"Failed to update card: {str(e)}"
-            ) 
+            )
+
+    def create_ai_flashcard(
+        self, 
+        card_data: Dict[str, Any], 
+        model: 'AIModel', 
+        db_template: 'PromptTemplate', 
+        generation_request: Any,
+        total_cards: int,
+        transaction=None
+    ) -> Flashcard:
+        """Create a flashcard object from AI-generated card data.
+        
+        Args:
+            card_data: Dictionary containing the generated card data
+            model: The AI model used for generation
+            db_template: The prompt template used for generation
+            generation_request: The original generation request
+            total_cards: Total number of cards being generated
+            transaction: Optional transaction to use
+            
+        Returns:
+            The created Flashcard object
+        """
+        flashcard = Flashcard(
+            front=card_data["front"],
+            back=card_data["back"],
+            is_ai_generated=True,
+            generation_model=model.value.lower(),
+            prompt_template_id=db_template.id,
+            prompt_parameters={"num_cards": total_cards},
+            model_parameters=generation_request.model_params,
+            answer_key_terms=card_data.get("answer_key_terms", []),
+            key_concepts=card_data.get("key_concepts", []),
+            abbreviations=card_data.get("abbreviations", [])
+        )
+        
+        session = transaction or self.db
+        session.add(flashcard)
+        session.flush()
+        
+        return flashcard 
