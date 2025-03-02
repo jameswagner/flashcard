@@ -76,6 +76,11 @@ export interface YouTubeUploadRequest {
   user_id?: string;
 }
 
+export interface ContentSelection {
+  citation_type: 'paragraph' | 'sentence_range';
+  range: [number, number]; // [start, end] inclusive
+}
+
 export interface AIGenerateRequest {
   model?: string;
   user_id?: string;
@@ -83,6 +88,7 @@ export interface AIGenerateRequest {
   title?: string;
   description?: string;
   use_sentences?: boolean;  // Default: true
+  selected_content?: ContentSelection[];  // Optional content selection for partial generation
 }
 
 // Citation Types

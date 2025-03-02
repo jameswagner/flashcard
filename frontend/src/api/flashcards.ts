@@ -230,6 +230,9 @@ export const generateFlashcards = async (
   if (options.use_sentences !== undefined) {
     params.append('use_sentences', options.use_sentences.toString());
   }
+  if (options.selected_content) {
+    params.append('selected_content', JSON.stringify(options.selected_content));
+  }
   
   const response = await fetch(`${config.apiUrl}/api/ai/generate/${sourceFileId}`, {
     method: 'POST',

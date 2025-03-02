@@ -113,20 +113,73 @@ class PlainTextProcessor(ContentProcessor):
         result["metadata"]["total_sentences"] = current_sentence - 1
         return result
     
-    def to_prompt_text(self, structured_json: Dict) -> str:
+    def _get_selected_content(self, selected_content: List[Dict]) -> Tuple[set, set]:
+        """Helper function to extract selected paragraphs and sentences from content selection.
+        
+        Args:
+            selected_content: List of content selection criteria
+            
+        Returns:
+            Tuple of (selected_paragraphs, selected_sentences) as sets
+        """
+        selected_paragraphs, selected_sentences = set(), set()
+        
+        if not selected_content:
+            return selected_paragraphs, selected_sentences
+            
+        for selection in selected_content:
+            citation_type = selection.get("citation_type")
+            start, end = selection.get("range", [None, None])
+            
+            if citation_type and start is not None and end is not None:
+                if citation_type == "paragraph":
+                    selected_paragraphs.update(range(int(start), int(end) + 1))
+                elif citation_type == "sentence_range":
+                    selected_sentences.update(range(int(start), int(end) + 1))
+                    
+        return selected_paragraphs, selected_sentences
+    
+    def to_prompt_text(self, structured_json: Dict, selected_content: List[Dict] = None) -> str:
         """Convert structured JSON to prompt text with paragraph and sentence markers.
         
         Args:
             structured_json: Output from to_structured_json()
+            selected_content: Optional list of selected content to filter by. Format:
+                [
+                    {
+                        "citation_type": "paragraph" or "sentence_range", 
+                        "range": [start, end]
+                    }
+                ]
             
         Returns:
             Text with [PARAGRAPH X] and [SENTENCE Y] markers
         """
+        # Extract selected paragraphs and sentences if selection is provided
+        selected_paragraphs, selected_sentences = self._get_selected_content(selected_content)
+        
+        # Build the prompt text based on selection criteria
         result = []
         for paragraph in structured_json["paragraphs"]:
-            result.append(f"[PARAGRAPH {paragraph['number']}]")
+            para_num = paragraph['number']
+            para_selected = para_num in selected_paragraphs
+            
+            # Skip paragraph if nothing selected or this paragraph not selected
+            if selected_content and not para_selected and not any(s in selected_sentences for s in paragraph["sentence_numbers"]):
+                continue
+                
+            # Add paragraph marker
+            result.append(f"[PARAGRAPH {para_num}]")
+            
+            # Add selected sentences or all sentences if paragraph is selected
             for sentence_num, sentence in zip(paragraph["sentence_numbers"], paragraph["sentences"]):
-                result.append(f"[SENTENCE {sentence_num}] {sentence}")
+                # Add sentence if: 
+                # 1. No selection criteria (selected_content is None), OR
+                # 2. The whole paragraph is selected, OR
+                # 3. This specific sentence is selected
+                if not selected_content or para_selected or sentence_num in selected_sentences:
+                    result.append(f"[SENTENCE {sentence_num}] {sentence}")
+            
             result.append("")  # Add blank line between paragraphs
         
         return "\n".join(result).strip()

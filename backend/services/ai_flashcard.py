@@ -46,13 +46,21 @@ class AIFlashcardService:
             # Process content based on file type
             text_content, content_structure = await self.content_manager.process_content(source_file)
             
-            # Generate and save flashcards
+            # Check if we have selected content for text files
+            selected_content = None
+            if source_file.file_type == FileType.TXT.value and hasattr(generation_request, 'selected_content'):
+                selected_content = generation_request.selected_content
+                if selected_content:
+                    logger.info(f"Using selected content for file type {source_file.file_type}")
+            
+            # Generate and save flashcards, passing selected content if available
             return await self._generate_and_save_flashcards(
                 text_content=text_content,
                 content_structure=content_structure,
                 source_file=source_file,
                 model=model,
-                generation_request=generation_request
+                generation_request=generation_request,
+                selected_content=selected_content
             )
             
         except Exception as e:
@@ -96,7 +104,8 @@ class AIFlashcardService:
         content_structure: str,
         source_file: SourceFile,
         model: AIModel,
-        generation_request: 'FlashcardGenerationRequest'
+        generation_request: 'FlashcardGenerationRequest',
+        selected_content: list = None
     ) -> dict:
         """Generate flashcards from text content."""
         logger.info("Preparing for flashcard generation")
@@ -119,8 +128,15 @@ class AIFlashcardService:
                         logger.error(f"Failed to parse JSON content for {source_file.file_type}")
                         raise HTTPException(status_code=500, detail="Failed to process content: invalid JSON")
                 
-                # Generate prompt text from structured JSON
-                prompt_text = processor.to_prompt_text(structured_json)
+                # Log if we're using selected content (only supported for TXT files in this proof of concept)
+                if selected_content and source_file.file_type == FileType.TXT.value:
+                    logger.info(f"Generating flashcards from {len(selected_content)} selected sections instead of full document")
+                    # Generate prompt text from structured JSON with selected content
+                    prompt_text = processor.to_prompt_text(structured_json, selected_content)
+                else:
+                    # Generate prompt text from structured JSON (without selected content for other file types)
+                    prompt_text = processor.to_prompt_text(structured_json)
+                
                 logger.debug(f"Successfully generated prompt text from {source_file.file_type} JSON")
                 
                 # Store both formats in params
@@ -128,7 +144,8 @@ class AIFlashcardService:
                 params = {
                     'source_text': prompt_text,  # LLM gets human-readable prompt text
                     'content_structure': content_structure,
-                    'original_json': document_json_str  # Store structured JSON for citation processing
+                    'original_json': document_json_str,  # Store structured JSON for citation processing
+                    'is_partial_content': selected_content is not None  # Flag indicating if this is selected content
                 }
             except json.JSONDecodeError as e:
                 logger.error(f"Failed to parse content JSON: {e}")

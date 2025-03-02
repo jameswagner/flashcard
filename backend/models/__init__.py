@@ -7,7 +7,8 @@ from .enums import (
     FeedbackCategory,
     CardStatus,
     EditType,
-    EditContext
+    EditContext,
+    FlashcardCreationType
 )
 from .flashcard import Flashcard, CardVersion, CardEditHistory
 from .feedback import CardFeedback
@@ -24,6 +25,7 @@ __all__ = [
     'CardStatus',
     'EditType',
     'EditContext',
+    'FlashcardCreationType',
     'Flashcard',
     'CardVersion',
     'CardEditHistory',

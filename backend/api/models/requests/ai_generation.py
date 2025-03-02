@@ -1,5 +1,5 @@
 from pydantic import BaseModel, Field, HttpUrl
-from typing import Optional, Dict, Any, Literal
+from typing import Optional, Dict, Any, Literal, List
 from models.enums import AIModel
 
 class SourceFileUploadRequest(BaseModel):
@@ -17,13 +17,18 @@ class FlashcardGenerationRequest(BaseModel):
     title: Optional[str] = Field(default=None, description="Optional title for the flashcard set")
     description: Optional[str] = Field(default=None, description="Optional description for the flashcard set")
     use_sentences: bool = Field(default=True, description="Whether to use sentence-based citations")
+    selected_content: Optional[List[Dict[str, Any]]] = Field(default=None, description="Optional list of selected content sections. Format: [{'citation_type': 'paragraph'|'sentence_range', 'range': [start, end]}]")
 
     class Config:
         json_schema_extra = {
             "example": {
                 "model": "gpt-4",
                 "title": "My Flashcard Set",
-                "description": "Generated from YouTube video"
+                "description": "Generated from YouTube video",
+                "selected_content": [
+                    {"citation_type": "paragraph", "range": [1, 3]},
+                    {"citation_type": "sentence_range", "range": [5, 10]}
+                ]
             }
         }
 

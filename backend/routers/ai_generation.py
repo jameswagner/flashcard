@@ -114,6 +114,7 @@ async def generate_flashcards(
     title: Optional[str] = Form(None),
     description: Optional[str] = Form(None),
     use_sentences: bool = Form(True),
+    selected_content: Optional[str] = Form(None),
     ai_flashcard_service: AIFlashcardService = Depends(get_ai_flashcard_service)
 ):
     """Generate flashcards from a source file using AI."""
@@ -125,6 +126,14 @@ async def generate_flashcards(
         except json.JSONDecodeError:
             raise HTTPException(status_code=400, detail="Invalid model parameters JSON")
     
+    # Parse selected content if provided
+    parsed_selected_content = None
+    if selected_content:
+        try:
+            parsed_selected_content = json.loads(selected_content)
+        except json.JSONDecodeError:
+            raise HTTPException(status_code=400, detail="Invalid selected content JSON")
+    
     # Create request model
     generation_request = FlashcardGenerationRequest(
         model=model,
@@ -133,7 +142,8 @@ async def generate_flashcards(
         model_params=parsed_model_params,
         title=title,
         description=description,
-        use_sentences=use_sentences
+        use_sentences=use_sentences,
+        selected_content=parsed_selected_content
     )
     
     return await ai_flashcard_service.generate_flashcards(source_file_id, generation_request) 

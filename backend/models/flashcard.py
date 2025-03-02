@@ -6,7 +6,7 @@ import traceback
 from sqlalchemy.sql import func
 
 from .base import Base
-from .enums import AIModel, CardStatus, EditType, EditContext
+from .enums import AIModel, CardStatus, EditType, EditContext, FlashcardCreationType
 
 # Junction table for flashcard-set relationship
 flashcard_set_association = Table(
@@ -82,6 +82,8 @@ class Flashcard(Base):
     front = Column(Text, nullable=False)
     back = Column(Text, nullable=False)
     is_ai_generated = Column(Boolean, default=False)
+    creation_type = Column(String, Enum(FlashcardCreationType, name='flashcardcreationtype', create_type=False, native_enum=False), 
+                          nullable=True)  # Tracks the origin/method of creation
     status = Column(String, Enum(CardStatus, name='cardstatus', create_type=False, native_enum=False), nullable=False, default=CardStatus.ACTIVE.value)
     
     # AI generation metadata

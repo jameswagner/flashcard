@@ -2,7 +2,9 @@
 
 import { Card, CardContent } from '@/components/ui/card';
 import { SourceTextWithCitations } from '@/types';
-import React, { useState, useRef, useEffect, useMemo } from 'react';
+import React, { useState } from 'react';
+import { formatHTMLContent as formatHTMLContentFromFormatter } from './formatters/HTMLFormatter';
+import { CitationTooltip, findCitations } from './CitationTooltip';
 
 interface SourceTextDisplayProps {
   source: SourceTextWithCitations;
@@ -21,157 +23,6 @@ function formatTimestamp(seconds: number): string {
   parts.push(remainingSeconds.toString().padStart(2, '0'));
   
   return parts.join(':');
-}
-
-// Helper to get citation color based on card index
-function getCitationColor(cardIndex: number): string {
-  const colors = [
-    'bg-blue-100/50 border-blue-200',
-    'bg-green-100/50 border-green-200',
-    'bg-purple-100/50 border-purple-200',
-    'bg-amber-100/50 border-amber-200',
-    'bg-pink-100/50 border-pink-200',
-  ];
-  return colors[cardIndex % colors.length];
-}
-
-// Add CitationTooltip component at the top
-interface CitationTooltipProps {
-  citations: Array<{
-    citation_id: number;
-    citation_type: string;
-    citation_data: [number, number][];
-    preview_text: string | null;
-    card_id: number;
-    card_front: string;
-    card_back: string;
-    card_index?: number;  // Make optional again
-  }>;
-  cardIds: number[];
-  children: React.ReactNode;
-}
-
-function CitationTooltip({ citations, cardIds, children }: CitationTooltipProps) {
-  const [isOpen, setIsOpen] = useState(false);
-  const tooltipRef = useRef<HTMLDivElement>(null);
-  const buttonId = useRef(`citation-button-${Math.random().toString(36).substr(2, 9)}`);
-  const tooltipId = useRef(`citation-tooltip-${Math.random().toString(36).substr(2, 9)}`);
-  
-  // Filter citations to only include those that match our cardIds and deduplicate by card_id
-  const relevantCitations = useMemo(() => {
-    return new Set(citations.filter(c => cardIds.includes(c.card_id)));
-  }, [cardIds, citations]);
-  
-  // Sort citations by card_index, with null check
-  const sortedCitations = useMemo(() => {
-    return [...relevantCitations].sort((a, b) => a.citation_id - b.citation_id);
-  }, [relevantCitations]);
-
-  // Add global click handler to close tooltip when clicking outside
-  useEffect(() => {
-    function handleClickOutside(event: MouseEvent) {
-      if (tooltipRef.current && !tooltipRef.current.contains(event.target as Node)) {
-        setIsOpen(false);
-      }
-    }
-
-    if (isOpen) {
-      document.addEventListener('click', handleClickOutside);
-    }
-
-    return () => {
-      document.removeEventListener('click', handleClickOutside);
-    };
-  }, [isOpen]);
-
-  const handleClick = (e: React.MouseEvent<HTMLButtonElement>) => {
-    e.stopPropagation();
-    setIsOpen(!isOpen);
-  };
-
-  const handleKeyDown = (e: React.KeyboardEvent<HTMLButtonElement>) => {
-    if (e.key === 'Enter' || e.key === ' ') {
-      e.preventDefault();
-      setIsOpen(!isOpen);
-    } else if (e.key === 'Escape' && isOpen) {
-      setIsOpen(false);
-    }
-  };
-
-  return (
-    <div className="relative inline-block" ref={tooltipRef}>
-      <button
-        id={buttonId.current}
-        onClick={handleClick}
-        onKeyDown={handleKeyDown}
-        type="button"
-        className="inline-block text-left focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-blue-500 rounded"
-        aria-expanded={isOpen}
-        aria-haspopup="dialog"
-        aria-controls={tooltipId.current}
-        aria-label={`View ${sortedCitations.length} card reference${sortedCitations.length > 1 ? 's' : ''}`}
-      >
-        {children}
-      </button>
-      {isOpen && sortedCitations.length > 0 && (
-        <div 
-          id={tooltipId.current}
-          role="dialog"
-          aria-labelledby={`${tooltipId.current}-title`}
-          className="absolute z-50 mt-2 w-96 rounded-md shadow-lg bg-white ring-1 ring-black ring-opacity-5"
-        >
-          <div className="p-4">
-            <h3 
-              id={`${tooltipId.current}-title`}
-              className="text-sm font-medium text-gray-900 mb-2"
-            >
-              Referenced in {sortedCitations.length} card{sortedCitations.length > 1 ? 's' : ''}:
-            </h3>
-            <div className="space-y-3">
-              {sortedCitations.map((citation) => {
-                return (
-                  <div
-                    key={citation.citation_id}
-                    className={`p-2 rounded border ${getCitationColor((citation.card_index ?? 0) - 1)}`}
-                  >
-                    <p className="text-sm font-medium text-gray-900">
-                      Card {citation.card_index}
-                    </p>
-                    <p className="text-sm text-gray-600 mt-1">
-                      Front: {citation.card_front}
-                    </p>
-                    <p className="text-sm text-gray-600 mt-1">
-                      Back: {citation.card_back}
-                    </p>
-                  </div>
-                );
-              })}
-            </div>
-          </div>
-        </div>
-      )}
-    </div>
-  );
-}
-
-// Update helper functions to return all matching card IDs
-function findCitations(elementType: string, elementNum: number, citations: SourceTextWithCitations['citations']): number[] {
-  console.log('Finding citations for:', elementType, elementNum, citations);
-  const cardIds: number[] = [];
-  for (const citation of citations) {
-    console.log('Checking citation:', citation);
-    // Check if citation type matches any of our expected types
-    if (citation.citation_type === elementType) {
-      for (const [start, end] of citation.citation_data) {
-        if (elementNum >= start && elementNum <= end) {
-          console.log('Found matching citation:', citation.card_id);
-          cardIds.push(citation.card_id);
-          break; // Only add each card once
-        }
-      }
-    }
-  }
-  return [...new Set(cardIds)]; // Deduplicate card IDs
 }
 
 // Update formatPlainText to use CitationTooltip
@@ -217,10 +68,8 @@ function formatPlainText(text: string, citations: SourceTextWithCitations['citat
     const element = (
       <span key={i}>
         {cardIds.length > 0 ? (
-          <CitationTooltip citations={citations} cardIds={cardIds}>
-            <span className={`${getCitationColor(cardIds[0])} px-1 rounded border cursor-help`}>
-              {part.trim()}
-            </span>
+          <CitationTooltip citations={citations} cardIds={cardIds} variant="inline">
+            {part.trim()}
           </CitationTooltip>
         ) : (
           <span>{part.trim()}</span>
@@ -289,12 +138,13 @@ function formatYouTubeTranscript(
           return (
             <div key={index}>
               {cardIds.length > 0 ? (
-                <CitationTooltip citations={citations} cardIds={cardIds}>
-                  <div className={`flex gap-3 text-sm rounded cursor-help ${getCitationColor(cardIds[0])} p-1`}>
-                    <span className="flex-none font-mono text-slate-500">
+                <CitationTooltip key={index} citations={citations} cardIds={cardIds} variant="block">
+                  <div>
+                    <span className="font-mono text-slate-500">
                       {formatTimestamp(startSeconds)} - {formatTimestamp(parseFloat(endTime))}
                     </span>
-                    <span className="flex-1 text-slate-700">{content.trim()}</span>
+                    {" "}
+                    <span className="text-slate-700">{content.trim()}</span>
                   </div>
                 </CitationTooltip>
               ) : (
@@ -432,7 +282,7 @@ function formatHTMLContent(content: string, citations: SourceTextWithCitations['
         const cardIds = findCitations('section', sectionNum, citations);
         
         const sectionContent = (
-          <div key={index} className={`mb-8 ${cardIds.length > 0 ? getCitationColor(cardIds[0]) + ' p-4 rounded-lg' : ''}`}>
+          <div key={index} className="mb-8">
             {React.createElement(
               `h${headingLevel}`,
               {
@@ -463,9 +313,7 @@ function formatHTMLContent(content: string, citations: SourceTextWithCitations['
                     const listContent = (
                       <ul 
                         key={`list-${pIndex}`} 
-                        className={`list-disc pl-6 space-y-2 text-slate-700 ${
-                          listCardIds.length > 0 ? getCitationColor(listCardIds[0]) + ' p-3 rounded-lg' : ''
-                        }`}
+                        className="list-disc pl-6 space-y-2 text-slate-700"
                       >
                         {listItems.map((li: string, liIndex: number) => (
                           <li key={liIndex}>{li.replace('• ', '')}</li>
@@ -474,7 +322,7 @@ function formatHTMLContent(content: string, citations: SourceTextWithCitations['
                     );
 
                     return listCardIds.length > 0 ? (
-                      <CitationTooltip key={`list-${pIndex}`} citations={citations} cardIds={listCardIds}>
+                      <CitationTooltip key={`list-${pIndex}`} citations={citations} cardIds={listCardIds} variant="block">
                         {listContent}
                       </CitationTooltip>
                     ) : listContent;
@@ -494,9 +342,7 @@ function formatHTMLContent(content: string, citations: SourceTextWithCitations['
                     }
 
                     const tableContent = (
-                      <div key={`table-${pIndex}`} className={`overflow-x-auto ${
-                        tableCardIds.length > 0 ? getCitationColor(tableCardIds[0]) + ' p-3 rounded-lg' : ''
-                      }`}>
+                      <div key={`table-${pIndex}`} className="overflow-x-auto">
                         <table className="min-w-full divide-y divide-slate-200">
                           <thead>
                             <tr>
@@ -523,7 +369,7 @@ function formatHTMLContent(content: string, citations: SourceTextWithCitations['
                     );
 
                     return tableCardIds.length > 0 ? (
-                      <CitationTooltip key={`table-${pIndex}`} citations={citations} cardIds={tableCardIds}>
+                      <CitationTooltip key={`table-${pIndex}`} citations={citations} cardIds={tableCardIds} variant="block">
                         {tableContent}
                       </CitationTooltip>
                     ) : tableContent;
@@ -585,12 +431,7 @@ function formatHTMLContent(content: string, citations: SourceTextWithCitations['
                     }
                     
                     const paragraphContent = (
-                      <p 
-                        key={`p-${pIndex}`} 
-                        className={`text-slate-700 ${
-                          paragraphCardIds.length > 0 ? getCitationColor(paragraphCardIds[0]) + ' p-3 rounded-lg' : ''
-                        }`}
-                      >
+                      <p key={`p-${pIndex}`} className="text-slate-700">
                         {parts.map((part, i) => (
                           <React.Fragment key={i}>{part}</React.Fragment>
                         ))}
@@ -598,7 +439,7 @@ function formatHTMLContent(content: string, citations: SourceTextWithCitations['
                     );
 
                     return paragraphCardIds.length > 0 ? (
-                      <CitationTooltip key={`p-${pIndex}`} citations={citations} cardIds={paragraphCardIds}>
+                      <CitationTooltip key={`p-${pIndex}`} citations={citations} cardIds={paragraphCardIds} variant="block">
                         {paragraphContent}
                       </CitationTooltip>
                     ) : paragraphContent;
@@ -618,7 +459,7 @@ function formatHTMLContent(content: string, citations: SourceTextWithCitations['
         );
 
         return cardIds.length > 0 ? (
-          <CitationTooltip key={index} citations={citations} cardIds={cardIds}>
+          <CitationTooltip key={index} citations={citations} cardIds={cardIds} variant="block">
             {sectionContent}
           </CitationTooltip>
         ) : sectionContent;
@@ -661,13 +502,13 @@ function formatHTMLContent(content: string, citations: SourceTextWithCitations['
 
 // Add a simpler HTML renderer for when the structure is not as expected
 function renderSimpleHTML(data: any, citations: SourceTextWithCitations['citations']): React.ReactElement {
-  console.log('Rendering simple HTML with data:', data);
-  
+  console.log('Renderer: Rendering simple HTML with data:', data);
   // Extract content from the data object
   const title = data.title || 'Untitled';
   
   // Process sections
   const renderContent = (contentItem: any, index: number) => {
+    console.log('Renderer: Rendering content item:', contentItem);  
     // Handle different content types
     if (contentItem.type === 'paragraph') {
       const paragraphNum = contentItem.paragraph_number || index + 1;
@@ -707,9 +548,9 @@ function renderSimpleHTML(data: any, citations: SourceTextWithCitations['citatio
       }
       
       return (
-        <div key={`p-${index}`} className={`mb-4 ${paragraphCardIds.length > 0 ? getCitationColor(paragraphCardIds[0]) + ' p-3 rounded-lg' : ''}`}>
+        <div key={`p-${index}`} className="mb-4">
           {paragraphCardIds.length > 0 ? (
-            <CitationTooltip citations={citations} cardIds={paragraphCardIds}>
+            <CitationTooltip citations={citations} cardIds={paragraphCardIds} variant="block">
               <div className="text-slate-700">
                 {parts.length > 0 ? parts.map((part, i) => <React.Fragment key={i}>{part}</React.Fragment>) : paragraphText}
               </div>
@@ -773,10 +614,8 @@ function renderSimpleHTML(data: any, citations: SourceTextWithCitations['citatio
       );
       
       return tableCardIds.length > 0 ? (
-        <CitationTooltip key={`table-${index}`} citations={citations} cardIds={tableCardIds}>
-          <div className={getCitationColor(tableCardIds[0]) + ' p-3 rounded-lg'}>
-            {tableElement}
-          </div>
+        <CitationTooltip key={`table-${index}`} citations={citations} cardIds={tableCardIds} variant="block">
+          {tableElement}
         </CitationTooltip>
       ) : tableElement;
     }
@@ -799,10 +638,8 @@ function renderSimpleHTML(data: any, citations: SourceTextWithCitations['citatio
       );
       
       return listCardIds.length > 0 ? (
-        <CitationTooltip key={`list-${index}`} citations={citations} cardIds={listCardIds}>
-          <div className={getCitationColor(listCardIds[0]) + ' p-3 rounded-lg'}>
-            {listElement}
-          </div>
+        <CitationTooltip key={`list-${index}`} citations={citations} cardIds={listCardIds} variant="block">
+          {listElement}
         </CitationTooltip>
       ) : listElement;
     }
@@ -838,10 +675,8 @@ function renderSimpleHTML(data: any, citations: SourceTextWithCitations['citatio
         );
         
         return sectionCardIds.length > 0 ? (
-          <CitationTooltip key={`section-${sectionIndex}`} citations={citations} cardIds={sectionCardIds}>
-            <div className={getCitationColor(sectionCardIds[0]) + ' p-3 rounded-lg'}>
-              {sectionContent}
-            </div>
+          <CitationTooltip key={`section-${sectionIndex}`} citations={citations} cardIds={sectionCardIds} variant="block">
+            {sectionContent}
           </CitationTooltip>
         ) : sectionContent;
       })}
@@ -871,10 +706,8 @@ function formatPDFContent(content: string, citations: SourceTextWithCitations['c
         
         if (sentenceCardIds.length > 0) {
           elements.push(
-            <CitationTooltip key={`sentence-${currentSentence}`} citations={citations} cardIds={sentenceCardIds}>
-              <span className={`${getCitationColor(sentenceCardIds[0])} px-1 rounded border cursor-help`}>
-                {sentence.trim()}
-              </span>
+            <CitationTooltip key={`sentence-${currentSentence}`} citations={citations} cardIds={sentenceCardIds} variant="inline">
+              {sentence.trim()}
             </CitationTooltip>
           );
         } else {
@@ -894,15 +727,13 @@ function formatPDFContent(content: string, citations: SourceTextWithCitations['c
       currentSentenceNum += item.sentences.length;
       
       const paragraphContent = (
-        <p className={`text-slate-700 ${
-          paragraphCardIds.length > 0 ? getCitationColor(paragraphCardIds[0]) + ' p-3 rounded-lg' : ''
-        }`}>
+        <p className="text-slate-700">
           {elements}
         </p>
       );
       
       const result = paragraphCardIds.length > 0 ? (
-        <CitationTooltip key={`para-${currentParagraphNum}`} citations={citations} cardIds={paragraphCardIds}>
+        <CitationTooltip key={`para-${currentParagraphNum}`} citations={citations} cardIds={paragraphCardIds} variant="block">
           {paragraphContent}
         </CitationTooltip>
       ) : paragraphContent;
@@ -917,9 +748,7 @@ function formatPDFContent(content: string, citations: SourceTextWithCitations['c
       console.log('List card IDs:', listCardIds);
       
       const listContent = (
-        <ul className={`list-disc pl-6 space-y-2 text-slate-700 ${
-          listCardIds.length > 0 ? getCitationColor(listCardIds[0]) + ' p-3 rounded-lg' : ''
-        }`}>
+        <ul className="list-disc pl-6 space-y-2 text-slate-700">
           {items.map((item, idx) => {
             console.log('Rendering list item:', idx, 'Item:', item);
             const itemCardIds = findCitations('list', currentParagraphNum + idx, citations);
@@ -938,10 +767,8 @@ function formatPDFContent(content: string, citations: SourceTextWithCitations['c
             );
             
             return itemCardIds.length > 0 ? (
-              <CitationTooltip key={`list-item-${idx}`} citations={citations} cardIds={itemCardIds}>
-                <span className={`${getCitationColor(itemCardIds[0])} px-1 rounded border cursor-help`}>
-                  {itemContent}
-                </span>
+              <CitationTooltip key={`list-item-${idx}`} citations={citations} cardIds={itemCardIds} variant="inline">
+                {itemContent}
               </CitationTooltip>
             ) : itemContent;
           })}
@@ -949,7 +776,7 @@ function formatPDFContent(content: string, citations: SourceTextWithCitations['c
       );
       
       const result = listCardIds.length > 0 ? (
-        <CitationTooltip key={`list-${currentParagraphNum}`} citations={citations} cardIds={listCardIds}>
+        <CitationTooltip key={`list-${currentParagraphNum}`} citations={citations} cardIds={listCardIds} variant="block">
           {listContent}
         </CitationTooltip>
       ) : listContent;
@@ -1003,10 +830,8 @@ function formatPDFContent(content: string, citations: SourceTextWithCitations['c
       );
 
       return sectionCardIds.length > 0 ? (
-        <CitationTooltip citations={citations} cardIds={sectionCardIds}>
-          <div className={getCitationColor(sectionCardIds[0]) + ' p-3 rounded-lg'}>
-            {sectionContent}
-          </div>
+        <CitationTooltip key={`section-${currentParagraphNum}`} citations={citations} cardIds={sectionCardIds} variant="block">
+          {sectionContent}
         </CitationTooltip>
       ) : sectionContent;
     };
@@ -1059,10 +884,8 @@ function formatImageContent(jsonContent: string, citations: SourceTextWithCitati
           paragraphs.push(
             <p key={`p-${globalParagraphNumber}`} className="mb-2">
               {cardIds.length > 0 ? (
-                <CitationTooltip citations={citations} cardIds={cardIds}>
-                  <span className={`${getCitationColor(cardIds[0])} px-1 rounded border cursor-help`}>
-                    {text}
-                  </span>
+                <CitationTooltip citations={citations} cardIds={cardIds} variant="inline">
+                  {text}
                 </CitationTooltip>
               ) : (
                 <span>{text}</span>
@@ -1091,10 +914,8 @@ function formatImageContent(jsonContent: string, citations: SourceTextWithCitati
               sentences.push(
                 <span key={`s-${sentenceIndex}`} className="mr-1">
                   {cardIds.length > 0 ? (
-                    <CitationTooltip citations={citations} cardIds={cardIds}>
-                      <span className={`${getCitationColor(cardIds[0])} px-1 rounded border cursor-help`}>
-                        {sentence}
-                      </span>
+                    <CitationTooltip citations={citations} cardIds={cardIds} variant="inline">
+                      {sentence}
                     </CitationTooltip>
                   ) : (
                     <span>{sentence}</span>
@@ -1160,10 +981,8 @@ function formatStructuredPlainText(content: string, citations: SourceTextWithCit
         return (
           <span key={`s-${sentenceIndex}`} className="mr-1">
             {cardIds.length > 0 ? (
-              <CitationTooltip citations={citations} cardIds={cardIds}>
-                <span className={`${getCitationColor(cardIds[0])} px-1 rounded border cursor-help`}>
-                  {sentence.trim()}
-                </span>
+              <CitationTooltip citations={citations} cardIds={cardIds} variant="inline">
+                {sentence.trim()}
               </CitationTooltip>
             ) : (
               <span>{sentence.trim()}</span>
@@ -1286,8 +1105,8 @@ export function SourceTextDisplay({ source }: SourceTextDisplayProps) {
             if (overlappingCardIds.length > 0) {
               console.log('Adding cited segment with card IDs:', overlappingCardIds);
               segments.push(
-                <CitationTooltip key={index} citations={source.citations} cardIds={overlappingCardIds}>
-                  <div className={`${getCitationColor(overlappingCardIds[0])} px-2 py-1 rounded my-1`}>
+                <CitationTooltip key={index} citations={source.citations} cardIds={overlappingCardIds} variant="block">
+                  <div>
                     <span className="font-mono text-slate-500">{timeRange}</span>
                     {" "}
                     <span className="text-slate-700">{item.text}</span>
@@ -1378,7 +1197,21 @@ export function SourceTextDisplay({ source }: SourceTextDisplayProps) {
             console.error('Error parsing HTML JSON:', parseError);
           }
           
-          return formatHTMLContent(source.text_content, source.citations);
+          // Use both the new and old formatters - for comparison while testing
+          return (
+            <div>
+              {/* New formatter */}
+              <div className="mb-8 border-b pb-6">
+                {formatHTMLContentFromFormatter(source.text_content, source.citations)}
+              </div>
+              
+              {/* Legacy formatter */}
+              <div className="pt-2">
+                <h3 className="text-lg font-medium text-gray-900 mb-4">Legacy Formatter Output:</h3>
+                {formatHTMLContent(source.text_content, source.citations)}
+              </div>
+            </div>
+          );
         } else {
           // If it's not valid JSON, display an error
           console.error('HTML content is not in valid JSON format');

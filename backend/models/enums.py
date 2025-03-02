@@ -21,6 +21,13 @@ class AIModel(enum.Enum):
     GEMINI_PRO = "gemini-pro"
     GPT4O_MINI = "gpt-4o-mini"  # New affordable model with 128k context
 
+class FlashcardCreationType(enum.Enum):
+    """Types of flashcard creation methods."""
+    AI_GENERATED = "ai_generated"
+    MANUAL = "manual"
+    IMPORTED = "imported"
+    SELECTED_CONTENT = "selected_content"
+
 class CitationType(enum.Enum):
     character_range = "character_range"
     line_numbers = "line_numbers"
