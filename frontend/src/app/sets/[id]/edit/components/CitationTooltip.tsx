@@ -1,18 +1,19 @@
 'use client';
 
 import React, { useState, useRef, useEffect, useMemo } from 'react';
-import { SourceTextWithCitations } from '@/types';
-import { getCitationColor } from '../utils/citations';
+import { SourceTextWithCitations, Citation } from '@/types';
+import { getCitationColor, shouldHighlight } from '../utils/citations';
 
 // Helper function to find citations based on element type and number
 export function findCitations(elementType: string, elementNum: number, citations: SourceTextWithCitations['citations']): number[] {
-  console.log('Finding citations for:', elementType, elementNum, citations);
+  //console.log('Finding citations for:', elementType, elementNum, citations);
   const cardIds: number[] = [];
   for (const citation of citations) {
     // Check if citation type matches any of our expected types
     if (citation.citation_type === elementType) {
       for (const [start, end] of citation.citation_data) {
         if (elementNum >= start && elementNum <= end) {
+          console.log('Found citation for:', elementType, elementNum);
           console.log('Found matching citation:', citation.card_id);
           cardIds.push(citation.card_id);
           break; // Only add each card once
@@ -25,25 +26,29 @@ export function findCitations(elementType: string, elementNum: number, citations
 
 // CitationTooltip interface
 interface CitationTooltipProps {
-  citations: Array<{
-    citation_id: number;
-    citation_type: string;
-    citation_data: [number, number][];
-    preview_text: string | null;
-    card_id: number;
-    card_front: string;
-    card_back: string;
-    card_index?: number;
-  }>;
-  cardIds: number[];
+  citations: SourceTextWithCitations['citations'];
   children: React.ReactNode;
   variant?: 'default' | 'block' | 'inline';
+  elementType: Citation['citation_type'];
+  elementNum: number;
 }
 
 // CitationTooltip component
-export function CitationTooltip({ citations, cardIds, children, variant = 'default' }: CitationTooltipProps) {
+export function CitationTooltip({ 
+  citations, 
+  children, 
+  variant = 'default',
+  elementType,
+  elementNum 
+}: CitationTooltipProps) {
   const [isOpen, setIsOpen] = useState(false);
-  const tooltipRef = useRef<HTMLDivElement>(null);
+  const tooltipRef = useRef<HTMLSpanElement>(null);
+  
+  // Find cardIds based on elementType and elementNum
+  const cardIds = useMemo(() => {
+
+    return findCitations(elementType, elementNum, citations);
+  }, [elementType, elementNum, citations]);
   
   // Create deterministic IDs based on the cardIds
   const tooltipBaseId = useMemo(() => {
@@ -80,12 +85,12 @@ export function CitationTooltip({ citations, cardIds, children, variant = 'defau
     };
   }, [isOpen]);
 
-  const handleClick = (e: React.MouseEvent<HTMLButtonElement>) => {
+  const handleClick = (e: React.MouseEvent<HTMLElement>) => {
     e.stopPropagation();
     setIsOpen(!isOpen);
   };
 
-  const handleKeyDown = (e: React.KeyboardEvent<HTMLButtonElement>) => {
+  const handleKeyDown = (e: React.KeyboardEvent<HTMLElement>) => {
     if (e.key === 'Enter' || e.key === ' ') {
       e.preventDefault();
       setIsOpen(!isOpen);
@@ -101,9 +106,12 @@ export function CitationTooltip({ citations, cardIds, children, variant = 'defau
     return getCitationColor(firstCardIndex - 1);
   }, [cardIds, sortedCitations]);
 
-  // Wrap children with citation styling based on variant
+  // Check if this element should be highlighted
+  const shouldShowHighlight = shouldHighlight(elementType, elementNum, citations);
+
+  // Wrap children with citation styling based on variant and highlight status
   const styledChildren = useMemo(() => {
-    if (!citationColor) return children;
+    if (!citationColor || !shouldShowHighlight) return children;
 
     switch (variant) {
       case 'block':
@@ -119,14 +127,13 @@ export function CitationTooltip({ citations, cardIds, children, variant = 'defau
           </span>
         );
       default:
-        // For 'default', we assume the parent will handle the layout
         return (
-          <div className={citationColor}>
+          <span className={citationColor}>
             {children}
-          </div>
+          </span>
         );
     }
-  }, [children, citationColor, variant]);
+  }, [children, citationColor, variant, shouldShowHighlight]);
 
   // Pre-calculate citation colors for the tooltip
   const citationColors = useMemo(() => {
@@ -138,14 +145,19 @@ export function CitationTooltip({ citations, cardIds, children, variant = 'defau
     );
   }, [sortedCitations]);
 
+  // If there are no citations or we shouldn't highlight, just render children
+  if (cardIds.length === 0 || !shouldShowHighlight) {
+    return <>{children}</>;
+  }
+
   return (
-    <div className="relative inline-block" ref={tooltipRef}>
+    <span className="relative inline" ref={tooltipRef}>
       <button
         id={buttonId.current}
         onClick={handleClick}
         onKeyDown={handleKeyDown}
         type="button"
-        className="inline-block text-left focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-blue-500 rounded"
+        className="inline-block text-left focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-blue-500"
         aria-expanded={isOpen}
         aria-haspopup="dialog"
         aria-controls={tooltipId.current}
@@ -188,6 +200,6 @@ export function CitationTooltip({ citations, cardIds, children, variant = 'defau
           </div>
         </div>
       )}
-    </div>
+    </span>
   );
 } 

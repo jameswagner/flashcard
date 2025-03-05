@@ -111,8 +111,8 @@ export interface Citation {
   id: number;
   source_file_id: number;
   citation_type: 'character_range' | 'line_numbers' | 'pdf_bbox' | 'semantic_chunk' | 
-                 'sentence_range' | 'html_paragraph' | 'html_section' | 'html_table' | 
-                 'html_list' | 'video_timestamp' | 'video_chapter' | 'block' | 'paragraph';
+                 'sentence_range' | 'paragraph' | 'section' | 'table' | 
+                 'list' | 'video_timestamp' | 'video_chapter' | 'block';
   citation_data: [number, number][];  // Array of [start, end] tuples
   preview_text: string | null;
 }

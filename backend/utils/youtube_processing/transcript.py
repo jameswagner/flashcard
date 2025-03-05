@@ -1,8 +1,8 @@
 """YouTube transcript processing for flashcard generation."""
 
 from youtube_transcript_api import YouTubeTranscriptApi
-from typing import List, Dict, Optional, TypedDict, Any
-from dataclasses import dataclass
+from typing import List, Dict, Optional, TypedDict, Any, Union
+from dataclasses import dataclass, field
 import json
 from pathlib import Path
 import re
@@ -23,6 +23,80 @@ logger.setLevel(logging.DEBUG)
 
 # Configuration
 SEGMENT_SIZE_SECONDS = 20  # Default segment size in seconds
+
+@dataclass
+class Segment:
+    """A segment of transcript text with timing information."""
+    text: str
+    start_time: float
+    end_time: float
+    chapter: Optional[str] = None
+
+@dataclass
+class Chapter:
+    """A chapter containing segments."""
+    title: str
+    start_seconds: float
+    segments: List[Segment] = field(default_factory=list)
+
+@dataclass
+class YouTubeContent:
+    """Structured content from a YouTube video."""
+    video_id: str
+    title: str
+    description: str
+    transcript_text: str
+    chapters: List[Dict[str, any]]
+    segments: List[Dict[str, any]]
+    structured_content: dict
+    # Additional metadata fields
+    channel: Optional[str] = None
+    published_at: Optional[str] = None
+    duration: Optional[str] = None
+    statistics: Optional[Dict[str, any]] = None
+    
+    def to_dict(self) -> dict:
+        """Convert to dictionary for JSON serialization."""
+        return {
+            "video_id": self.video_id,
+            "title": self.title,
+            "description": self.description,
+            "transcript_text": self.transcript_text,
+            "chapters": self.chapters,
+            "segments": self.segments,
+            "structured_content": self.structured_content,
+            "channel": self.channel,
+            "published_at": self.published_at,
+            "duration": self.duration,
+            "statistics": self.statistics
+        }
+    
+    @classmethod
+    def from_dict(cls, data: dict) -> 'YouTubeContent':
+        """Create YouTubeContent from dictionary."""
+        if isinstance(data, str):
+            logger.error("Expected dictionary but got string")
+            try:
+                data = json.loads(data)
+                logger.debug("Successfully parsed string as JSON")
+            except json.JSONDecodeError as e:
+                logger.error("Failed to parse string as JSON")
+                raise ValueError("Invalid data format - expected dictionary or valid JSON string")
+        
+        logger.debug(f"Creating YouTubeContent from dict with video_id: {data.get('video_id')}")
+        return cls(
+            video_id=data.get('video_id', ''),
+            title=data.get('title', ''),
+            description=data.get('description', ''),
+            transcript_text=data.get('transcript_text', ''),
+            chapters=data.get('chapters', []),
+            segments=data.get('segments', []),
+            structured_content=data.get('structured_content', {}),
+            channel=data.get('channel'),
+            published_at=data.get('published_at'),
+            duration=data.get('duration'),
+            statistics=data.get('statistics')
+        )
 
 def format_duration(duration: str) -> str:
     """
@@ -245,62 +319,6 @@ def get_video_info(video_id: str) -> dict:
         logger.error(f"Error getting video info for {video_id}: {str(e)}", exc_info=True)
         return {"error": str(e)}
 
-@dataclass
-class YouTubeContent:
-    """Structured content from a YouTube video."""
-    video_id: str
-    title: str
-    description: str
-    transcript_text: str
-    chapters: List[Dict[str, any]]
-    segments: List[Dict[str, any]]
-    # Additional metadata fields
-    channel: Optional[str] = None
-    published_at: Optional[str] = None
-    duration: Optional[str] = None
-    statistics: Optional[Dict[str, any]] = None
-    
-    def to_dict(self) -> dict:
-        """Convert to dictionary for JSON serialization."""
-        return {
-            "video_id": self.video_id,
-            "title": self.title,
-            "description": self.description,
-            "transcript_text": self.transcript_text,
-            "chapters": self.chapters,
-            "segments": self.segments,
-            "channel": self.channel,
-            "published_at": self.published_at,
-            "duration": self.duration,
-            "statistics": self.statistics
-        }
-    
-    @classmethod
-    def from_dict(cls, data: dict) -> 'YouTubeContent':
-        """Create YouTubeContent from dictionary."""
-        if isinstance(data, str):
-            logger.error("Expected dictionary but got string")
-            try:
-                data = json.loads(data)
-                logger.debug("Successfully parsed string as JSON")
-            except json.JSONDecodeError as e:
-                logger.error("Failed to parse string as JSON")
-                raise ValueError("Invalid data format - expected dictionary or valid JSON string")
-        
-        logger.debug(f"Creating YouTubeContent from dict with video_id: {data.get('video_id')}")
-        return cls(
-            video_id=data.get('video_id', ''),
-            title=data.get('title', ''),
-            description=data.get('description', ''),
-            transcript_text=data.get('transcript_text', ''),
-            chapters=data.get('chapters', []),
-            segments=data.get('segments', []),
-            channel=data.get('channel'),
-            published_at=data.get('published_at'),
-            duration=data.get('duration'),
-            statistics=data.get('statistics')
-        )
-
 def parse_chapters(description: str, existing_chapters: List[Dict[str, any]] = None) -> List[Dict[str, any]]:
     """Extract chapters from video description or use existing chapters if provided."""
     logger.info("Parsing chapters from description or using existing chapters")
@@ -326,13 +344,14 @@ def parse_chapters(description: str, existing_chapters: List[Dict[str, any]] = N
     
     # Otherwise, try to extract from description
     logger.info("No existing chapters provided, extracting from description")
-    timestamp_pattern = r'(\d+:(?:\d{1,2}:)?\d{2})\s*([-\s]+)?\s*(.+)'
+    
+    # Single pattern to match both formats:
+    # - Title followed by timestamp: "Title 00:00" or "Title - 00:00" or "Title: 00:00"
+    # - Timestamp followed by title: "00:00 Title" or "00:00 - Title" or "00:00: Title"
+    timestamp_pattern = r'^(?:(.+?)(?:[-:\s]+)|)(\d{1,2}:(?:\d{1,2}:)?\d{2})(?:(?:[-:\s]+)(.+)|)$'
     chapters = []
     
-    # Log a sample of the description for debugging
-    desc_sample = description[:100] + "..." if len(description) > 100 else description
-    logger.info(f"Description sample: {desc_sample}")
-    
+    # Process each line
     for line in description.split('\n'):
         line = line.strip()
         if not line:
@@ -340,215 +359,166 @@ def parse_chapters(description: str, existing_chapters: List[Dict[str, any]] = N
             
         match = re.match(timestamp_pattern, line)
         if match:
-            time, separator, title = match.groups()
-            logger.info(f"[+] Found chapter: {time} - {title}")
+            before, timestamp, after = match.groups()
+            title = (before or after).strip()
+            time = timestamp.strip()
             
             # Convert timestamp to seconds
             time_parts = time.split(':')
             try:
                 if len(time_parts) == 2:  # MM:SS
                     minutes, seconds = map(int, time_parts)
-                    seconds = minutes * 60 + seconds
+                    total_seconds = minutes * 60 + seconds
                 elif len(time_parts) == 3:  # HH:MM:SS
                     hours, minutes, seconds = map(int, time_parts)
-                    seconds = hours * 3600 + minutes * 60 + seconds
+                    total_seconds = hours * 3600 + minutes * 60 + seconds
+                else:
+                    logger.error(f"[x] Invalid time format: {time}")
+                    continue
                 
                 chapters.append({
-                    "title": title.strip(),
+                    "title": title,
                     "time": time,
-                    "start_seconds": seconds
+                    "start_seconds": total_seconds
                 })
-                logger.info(f"Converted time {time} to {seconds} seconds")
+                logger.info(f"Found chapter: {title} at {time} ({total_seconds}s)")
             except ValueError as e:
                 logger.error(f"[x] Error parsing time parts {time_parts}: {str(e)}")
     
+    # Sort chapters by start time
+    chapters.sort(key=lambda x: x['start_seconds'])
+    
     logger.info(f"[+] Found {len(chapters)} chapters in description")
-    # Log the first few extracted chapters
-    for i, chapter in enumerate(chapters[:3]):
-        logger.info(f"Extracted chapter {i+1}: {chapter['title']} at {chapter['time']} ({chapter['start_seconds']}s)")
-    if len(chapters) > 3:
-        logger.info(f"... and {len(chapters) - 3} more chapters")
-        
     return chapters
 
 def fetch_transcript(video_id: str, video_title: str, description: str = "", existing_chapters: List[Dict[str, any]] = None) -> Optional[YouTubeContent]:
-    """Fetch and process transcript for a YouTube video.
-    
-    Args:
-        video_id: YouTube video ID
-        video_title: Title of the video
-        description: Video description for chapter extraction
-        existing_chapters: Optional list of chapters from get_video_info
-        
-    Returns:
-        YouTubeContent object with transcript and metadata
-    """
+    """Fetch and process transcript for a YouTube video."""
     logger.info(f"Fetching transcript for video {video_id}: {video_title}")
     
     try:
         # Fetch raw transcript
         logger.info(f"Requesting transcript from YouTube API for video {video_id}")
-        transcript_segments = YouTubeTranscriptApi.get_transcript(video_id)
-        logger.info(f"Retrieved {len(transcript_segments)} transcript segments")
+        micro_segments = YouTubeTranscriptApi.get_transcript(video_id)
+        logger.info(f"Retrieved {len(micro_segments)} micro-segments from API")
         
-        # Debug log a brief sample of the first segment
-        if transcript_segments:
-            first_seg = transcript_segments[0]
-            logger.debug(f"First segment - Start: {first_seg['start']:.2f}s, Text: {first_seg['text']}")
-        
-        # Extract chapters if description is provided
-        logger.info("Parsing chapters from description or using existing chapters")
+        # Get chapters
         chapters = parse_chapters(description, existing_chapters)
         logger.info(f"Found {len(chapters)} chapters")
         
-        # Process transcript segments and add chapter information
-        logger.info("Processing transcript segments and adding chapter information")
-        full_text = ""
-        current_chapter = 0
+        # If no chapters found, create a default chapter
+        if not chapters:
+            chapters = [{
+                "title": "Video Transcript",
+                "time": "00:00",
+                "start_seconds": 0
+            }]
+            logger.info("No chapters found, using default chapter")
         
-        # Add first chapter marker if exists
-        if chapters:
-            full_text += f"\n## {chapters[0]['title']}\n\n"
-            logger.debug(f"Starting with chapter: {chapters[0]['title']}")
-        
-        # Group segments into SEGMENT_SIZE_SECONDS chunks
-        current_chunk = []
-        chunk_start_time = 0
-        chunk_text = ""
-        chunk_count = 0
-        
-        logger.info(f"Grouping segments into {SEGMENT_SIZE_SECONDS}-second chunks")
-        for segment in transcript_segments:
-            # Check if we've entered a new chapter
-            if chapters and current_chapter < len(chapters) - 1:
-                if segment['start'] >= chapters[current_chapter + 1]['start_seconds']:
-                    current_chapter += 1
-                    logger.info(f"Entering chapter: {chapters[current_chapter]['title']} at {segment['start']:.2f}s")
-                    full_text += f"\n## {chapters[current_chapter]['title']}\n\n"
+        # Initialize chapter objects
+        chapter_objects: List[Chapter] = []
+        for i, chapter in enumerate(chapters):
+            next_chapter_start = chapters[i + 1]["start_seconds"] if i < len(chapters) - 1 else float('inf')
+            current_chapter = Chapter(
+                title=chapter["title"],
+                start_seconds=chapter["start_seconds"]
+            )
+            chapter_objects.append(current_chapter)
             
-            # Add chapter information to segment
-            segment['chapter'] = chapters[current_chapter]['title'] if chapters else None
+            # Initialize variables for building larger segments from micro-segments
+            current_segment_start = chapter["start_seconds"]
+            current_segment_text = []
             
-            # If this is the first segment in a chunk, set the start time
-            if not current_chunk:
-                chunk_start_time = segment['start']
+            # Process micro-segments for this chapter
+            for micro_segment in micro_segments:
+                micro_start = float(micro_segment["start"])
+                micro_end = micro_start + float(micro_segment["duration"])
                 
-            # Add segment to current chunk
-            current_chunk.append(segment)
-            chunk_text += f"{segment['text']} "
+                # Skip micro-segments before this chapter
+                if micro_end <= chapter["start_seconds"]:
+                    continue
+                    
+                # If micro-segment starts in next chapter, it belongs there
+                if micro_start >= next_chapter_start:
+                    break
+                
+                # If micro-segment crosses chapter boundary, trim it to end at chapter boundary
+                if micro_end > next_chapter_start:
+                    micro_end = next_chapter_start
+                
+                # Calculate how long this segment would be if we add this micro-segment
+                potential_segment_duration = micro_end - current_segment_start
+                
+                # If adding this micro-segment would make our segment too long,
+                # create a new segment with what we have so far
+                if potential_segment_duration > SEGMENT_SIZE_SECONDS and current_segment_text:
+                    # Create new segment with accumulated text
+                    current_chapter.segments.append(Segment(
+                        text=" ".join(current_segment_text),
+                        start_time=current_segment_start,
+                        end_time=micro_start,  # End at start of current micro-segment
+                        chapter=current_chapter.title
+                    ))
+                    
+                    # Start new segment
+                    current_segment_text = []
+                    current_segment_start = micro_start
+                
+                # Add current micro-segment to accumulating text
+                current_segment_text.append(micro_segment["text"])
+                
+                # If we've reached the chapter boundary, create final segment
+                if micro_end >= next_chapter_start:
+                    current_chapter.segments.append(Segment(
+                        text=" ".join(current_segment_text),
+                        start_time=current_segment_start,
+                        end_time=next_chapter_start,
+                        chapter=current_chapter.title
+                    ))
+                    current_segment_text = []
             
-            # If we've reached SEGMENT_SIZE_SECONDS from chunk start, or this is the last segment
-            if (segment['start'] - chunk_start_time >= SEGMENT_SIZE_SECONDS) or (segment == transcript_segments[-1]):
-                # For the end time, use the start of the next segment (or current segment's start + 2s if last)
-                chunk_end_time = (
-                    transcript_segments[transcript_segments.index(segment) + 1]['start']
-                    if segment != transcript_segments[-1]
-                    else segment['start'] + 2.0
-                )
-                
-                # Format timestamp as raw seconds and add text
-                timestamp = f"[{chunk_start_time:.2f}s-{chunk_end_time:.2f}s]"
-                full_text += f"{timestamp} {chunk_text.strip()}\n"
-                
-                chunk_count += 1
-                if chunk_count % 10 == 0:
-                    logger.info(f"Processed {chunk_count} chunks so far")
-                
-                # Reset chunk and set next chunk start time
-                current_chunk = []
-                chunk_text = ""
-                if segment != transcript_segments[-1]:
-                    chunk_start_time = chunk_end_time
+            # Handle any remaining text in the current chapter
+            if current_segment_text:
+                current_chapter.segments.append(Segment(
+                    text=" ".join(current_segment_text),
+                    start_time=current_segment_start,
+                    end_time=min(current_segment_start + SEGMENT_SIZE_SECONDS, next_chapter_start),
+                    chapter=current_chapter.title
+                ))
         
-        logger.info(f"Processed transcript into {chunk_count} chunks, total length {len(full_text)} chars")
-        
-        # Create and return YouTubeContent object
-        youtube_content = YouTubeContent(
+        # Create YouTubeContent object
+        content = YouTubeContent(
             video_id=video_id,
             title=video_title,
             description=description,
-            transcript_text=full_text.strip(),
+            transcript_text="",  # We don't need this anymore as we have structured content
             chapters=chapters,
-            segments=transcript_segments
+            segments=[],  # Raw segments not needed as we have structured content
+            structured_content={
+                "title": video_title,
+                "sections": [
+                    {
+                        "header": chapter.title,
+                        "content": [
+                            {
+                                "type": "transcript_segment",
+                                "text": segment.text,
+                                "start_time": segment.start_time,
+                                "end_time": segment.end_time
+                            }
+                            for segment in chapter.segments
+                        ],
+                        "level": 1
+                    }
+                    for chapter in chapter_objects
+                ]
+            }
         )
         
-        logger.info(f"Successfully created YouTubeContent object for video {video_id}")
-        return youtube_content
+        return content
         
     except Exception as e:
         logger.error(f"Error processing transcript for video {video_id}: {str(e)}", exc_info=True)
         return None
-
-def generate_citations(content: YouTubeContent) -> List[Dict[str, any]]:
-    """Generate timestamp-based citations for a YouTube transcript."""
-    logger.info(f"Generating citations for video {content.video_id}: {content.title}")
-    
-    # Log some basic information about the content
-    logger.info(f"Content has {len(content.segments)} segments and {len(content.chapters)} chapters")
-    
-    citations = []
-    
-    # Group segments into SEGMENT_SIZE_SECONDS chunks
-    current_chunk = []
-    chunk_start_time = 0
-    
-    logger.info(f"Grouping segments into {SEGMENT_SIZE_SECONDS}-second chunks for citations")
-    
-    for segment in content.segments:
-        # If this is the first segment in a chunk, set the start time
-        if not current_chunk:
-            chunk_start_time = segment['start']
-            
-        # Add segment to current chunk
-        current_chunk.append(segment)
-        
-        # If we've reached SEGMENT_SIZE_SECONDS from chunk start, or this is the last segment
-        if (segment['start'] - chunk_start_time >= SEGMENT_SIZE_SECONDS) or (segment == content.segments[-1]):
-            # Get the end time of the last segment in chunk
-            chunk_end_time = segment['start'] + segment['duration']
-            
-            # Find the chapter for this chunk (using start time)
-            chapter = None
-            for i, ch in enumerate(content.chapters):
-                if i < len(content.chapters) - 1:
-                    if ch['start_seconds'] <= chunk_start_time < content.chapters[i + 1]['start_seconds']:
-                        chapter = ch['title']
-                        break
-                else:
-                    if ch['start_seconds'] <= chunk_start_time:
-                        chapter = ch['title']
-            
-            # Combine all text from segments in this chunk
-            preview_text = " ".join(seg['text'] for seg in current_chunk)
-            
-            citation = {
-                "citation_type": "video_timestamp",
-                "range": [int(chunk_start_time), int(chunk_end_time)],
-                "context": chapter or "Unknown Chapter",
-                "preview_text": preview_text
-            }
-            citations.append(citation)
-            
-            # Log every 10th citation or if we have few citations
-            if len(citations) <= 5 or len(citations) % 10 == 0:
-                logger.info(f"Created citation {len(citations)}: {int(chunk_start_time)}s-{int(chunk_end_time)}s in '{citation['context']}'")
-            
-            # Start a new chunk
-            current_chunk = []
-            chunk_start_time = chunk_end_time
-    
-    logger.info(f"Generated {len(citations)} timestamp-based citations")
-    
-    # Log a sample of the first few citations
-    for i, citation in enumerate(citations[:3]):
-        logger.info(f"Citation {i+1}: {citation['range'][0]}-{citation['range'][1]}s, Context: {citation['context']}")
-        preview_sample = citation['preview_text'][:50] + "..." if len(citation['preview_text']) > 50 else citation['preview_text']
-        logger.info(f"  Preview: {preview_sample}")
-    
-    if len(citations) > 3:
-        logger.info(f"... and {len(citations) - 3} more citations")
-    
-    return citations
 
 def save_transcript(content: YouTubeContent, output_file: str):
     """Save processed transcript to a JSON file."""
@@ -570,111 +540,40 @@ class YouTubeProcessor:
     def __init__(self):
         self.logger = logging.getLogger(__name__)
     
-    def to_structured_json(self, raw_content: str, title: Optional[str] = None) -> Dict:
-        """Convert raw YouTube content to structured JSON format.
+    def to_structured_json(self, raw_content: Any) -> Dict:
+        """Convert YouTube content to structured JSON format.
         
         Args:
-            raw_content: Raw YouTube content (YouTubeContent object)
-            title: Optional title override
+            raw_content: YouTubeContent object
             
         Returns:
             Dictionary with structured content
         """
-        self.logger.info("Converting YouTube content to structured JSON format")
-        
-        if isinstance(raw_content, str):
-            try:
-                self.logger.info("Parsing raw content from JSON string")
-                content = YouTubeContent.from_dict(json.loads(raw_content))
-                self.logger.info(f"Successfully parsed JSON for video {content.video_id}")
-            except json.JSONDecodeError:
-                self.logger.error("Failed to parse raw content as JSON")
-                raise ValueError("Invalid raw content format")
-        elif isinstance(raw_content, YouTubeContent):
-            self.logger.info(f"Using provided YouTubeContent object for video {raw_content.video_id}")
-            content = raw_content
-        else:
-            self.logger.error(f"Unexpected content type: {type(raw_content)}")
-            raise ValueError("Invalid content type")
+        try:
+            if not isinstance(raw_content, YouTubeContent):
+                raise ValueError("Expected YouTubeContent object")
             
-        # Structure the content with sections based on chapters
-        self.logger.info("Structuring content with sections based on chapters")
-        sections = []
-        current_section = None
-        
-        # Split transcript into lines
-        lines = content.transcript_text.split('\n')
-        self.logger.info(f"Processing {len(lines)} lines of transcript text")
-        
-        for line in lines:
-            line = line.strip()
-            if not line:
-                continue
-                
-            # Check for chapter marker
-            chapter_match = re.match(r'##\s*(.+)', line)
-            if chapter_match:
-                # If we have a current section, add it to sections
-                if current_section:
-                    sections.append(current_section)
-                    self.logger.debug(f"Added section: {current_section['header']} with {len(current_section['content'])} items")
-                
-                # Start new section
-                current_section = {
-                    'header': chapter_match.group(1).strip(),
-                    'content': [],
-                    'level': 1  # All YouTube chapters are top-level
+            # Return the structured content directly
+            result = {
+                "title": raw_content.title,
+                "sections": raw_content.structured_content["sections"],
+                "metadata": {
+                    "video_id": raw_content.video_id,
+                    "title": raw_content.title,
+                    "description": raw_content.description,
+                    "channel": raw_content.channel,
+                    "published_at": raw_content.published_at,
+                    "duration": raw_content.duration,
+                    "statistics": raw_content.statistics,
+                    "total_sections": len(raw_content.structured_content["sections"]),
+                    "has_chapters": len(raw_content.chapters) > 1  # More than just default chapter
                 }
-                self.logger.debug(f"Started new section: {current_section['header']}")
-            elif current_section is None:
-                # Create default section if none exists
-                current_section = {
-                    'header': 'Video Transcript',
-                    'content': [],
-                    'level': 1
-                }
-                self.logger.debug("Created default 'Video Transcript' section")
+            }
             
-            # Process transcript line with timestamp
-            timestamp_match = re.match(r'\[(\d+(?:\.\d+)?s)-(\d+(?:\.\d+)?s)\](.*)', line)
-            if timestamp_match:
-                start_time, end_time, text = timestamp_match.groups()
-                text = text.strip()
-                if text:
-                    current_section['content'].append({
-                        'type': 'transcript_segment',
-                        'text': text,
-                        'start_time': float(start_time.rstrip('s')),
-                        'end_time': float(end_time.rstrip('s'))
-                    })
-        
-        # Add final section if exists
-        if current_section:
-            sections.append(current_section)
-            self.logger.debug(f"Added final section: {current_section['header']} with {len(current_section['content'])} items")
-            
-        # Create metadata
-        self.logger.info("Creating metadata for structured JSON")
-        metadata = {
-            'video_id': content.video_id,
-            'title': title or content.title,
-            'description': content.description,
-            'channel': content.channel,
-            'published_at': content.published_at,
-            'duration': content.duration,
-            'statistics': content.statistics,
-            'total_sections': len(sections),
-            'has_chapters': bool(content.chapters)
-        }
-        
-        result = {
-            'title': metadata['title'],
-            'sections': sections,
-            'metadata': metadata
-        }
-        
-        self.logger.info(f"Successfully created structured JSON with {len(sections)} sections")
-        return result
+            return result
+        except Exception as e:
+            logger.error(f"Error converting content to structured JSON: {str(e)}", exc_info=True)
+            raise
     
     def to_prompt_text(self, structured_json: Dict) -> str:
         """Convert structured JSON to prompt text with markers.

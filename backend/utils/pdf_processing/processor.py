@@ -184,6 +184,7 @@ class ProcessedDocument:
         """Convert the document to a text format with section, paragraph, and sentence markers."""
         lines = []
         current_paragraph = 1
+        current_list = 1
         current_sentence = 1
 
         for section_num, section in enumerate(self.sections, 1):
@@ -200,21 +201,21 @@ class ProcessedDocument:
                     current_paragraph += 1
                 elif isinstance(item, DocumentList):
                     # Add list with all its items
-                    lines.append(f"[List {current_paragraph} Type: {item.marker_type}]")
+                    lines.append(f"[List {current_list} Type: {item.marker_type}]")
                     for list_item in item.items:
                         lines.append(list_item.text)
                         if list_item.continuation_texts:
                             for cont in list_item.continuation_texts:
                                 lines.append(cont)
-                    current_paragraph += 1
+                    current_list += 1
                 elif isinstance(item, ListItem):
                     # Handle single list items (for backward compatibility)
-                    lines.append(f"[List {current_paragraph}]")
+                    lines.append(f"[List {current_list}]")
                     lines.append(item.text)
                     if item.continuation_texts:
                         for cont in item.continuation_texts:
                             lines.append(cont)
-                    current_paragraph += 1
+                    current_list += 1
 
         return "\n".join(lines)
 

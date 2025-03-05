@@ -1,10 +1,12 @@
 'use client';
 
-import React from 'react';
+import React, { useMemo } from 'react';
 import { SourceTextWithCitations } from '@/types';
-import { CitationTooltip } from '../CitationTooltip';
-import { Card, CardContent } from '@/components/ui/card';
-import { findCitations } from '../../utils/citations';
+import { CitationTooltip, createCitationMap, getCombinedCitations } from '../CitationTooltipFixed';
+import { handleFormatterError } from './shared/errorHandler';
+import { ContentCard } from './shared/ContentCard';
+import { styles } from './shared/styles';
+import { withCitations } from './shared/withCitations';
 
 // Types
 interface HTMLContent {
@@ -32,9 +34,14 @@ interface HTMLContent {
 }
 
 // Content renderers
-function renderParagraph(contentItem: any, index: number, citations: SourceTextWithCitations['citations']) {
+function renderParagraph(
+  contentItem: any, 
+  index: number, 
+  citations: SourceTextWithCitations['citations'],
+  citationMap: ReturnType<typeof createCitationMap>
+) {
   const paragraphNum = contentItem.paragraph_number || index + 1;
-  const paragraphCardIds = findCitations('paragraph', paragraphNum, citations);
+  const paragraphCardIds = getCombinedCitations(citationMap, 'paragraphs', paragraphNum);
   const paragraphText = contentItem.text || '';
   
   // Process references in the text
@@ -78,15 +85,24 @@ function renderParagraph(contentItem: any, index: number, citations: SourceTextW
   );
 
   return paragraphCardIds.length > 0 ? (
-    <CitationTooltip key={`p-${index}`} citations={citations} cardIds={paragraphCardIds} variant="block">
+    <CitationTooltip 
+      key={`p-${index}`} 
+      citations={citations} 
+      cardIds={paragraphCardIds}
+    >
       {paragraphContent}
     </CitationTooltip>
   ) : paragraphContent;
 }
 
-function renderList(contentItem: any, index: number, citations: SourceTextWithCitations['citations']) {
+function renderList(
+  contentItem: any, 
+  index: number, 
+  citations: SourceTextWithCitations['citations'],
+  citationMap: ReturnType<typeof createCitationMap>
+) {
   const listId = contentItem.list_id || index;
-  const listCardIds = findCitations('list', listId, citations);
+  const listCardIds = getCombinedCitations(citationMap, 'lists', listId);
   const listItems = contentItem.items || [];
   const listType = contentItem.list_type === 'ordered' ? 'ol' : 'ul';
   
@@ -101,15 +117,24 @@ function renderList(contentItem: any, index: number, citations: SourceTextWithCi
   );
   
   return listCardIds.length > 0 ? (
-    <CitationTooltip key={`list-${index}`} citations={citations} cardIds={listCardIds} variant="block">
+    <CitationTooltip 
+      key={`list-${index}`} 
+      citations={citations} 
+      cardIds={listCardIds}
+    >
       {listElement}
     </CitationTooltip>
   ) : listElement;
 }
 
-function renderTable(contentItem: any, index: number, citations: SourceTextWithCitations['citations']) {
+function renderTable(
+  contentItem: any, 
+  index: number, 
+  citations: SourceTextWithCitations['citations'],
+  citationMap: ReturnType<typeof createCitationMap>
+) {
   const tableId = contentItem.table_id || index;
-  const tableCardIds = findCitations('table', tableId, citations);
+  const tableCardIds = getCombinedCitations(citationMap, 'tables', tableId);
   const tableContent = contentItem.content || [];
 
   if (!tableContent.length) return null;
@@ -133,20 +158,29 @@ function renderTable(contentItem: any, index: number, citations: SourceTextWithC
   );
 
   return tableCardIds.length > 0 ? (
-    <CitationTooltip key={`table-${index}`} citations={citations} cardIds={tableCardIds} variant="block">
+    <CitationTooltip 
+      key={`table-${index}`} 
+      citations={citations} 
+      cardIds={tableCardIds}
+    >
       {tableElement}
     </CitationTooltip>
   ) : tableElement;
 }
 
-function renderContent(contentItem: any, index: number, citations: SourceTextWithCitations['citations']) {
+function renderContent(
+  contentItem: any, 
+  index: number, 
+  citations: SourceTextWithCitations['citations'],
+  citationMap: ReturnType<typeof createCitationMap>
+) {
   switch (contentItem.type) {
     case 'paragraph':
-      return renderParagraph(contentItem, index, citations);
+      return renderParagraph(contentItem, index, citations, citationMap);
     case 'list':
-      return renderList(contentItem, index, citations);
+      return renderList(contentItem, index, citations, citationMap);
     case 'table':
-      return renderTable(contentItem, index, citations);
+      return renderTable(contentItem, index, citations, citationMap);
     default:
       return (
         <div key={`content-${index}`} className="mb-4 text-slate-700">
@@ -163,45 +197,34 @@ export function formatHTMLContent(
 ): React.ReactElement {
   try {
     const data = JSON.parse(content) as HTMLContent;
+    const citationMap = useMemo(() => createCitationMap(citations, data), [citations, data]);
 
     return (
-      <Card className="backdrop-blur-sm bg-white/50 shadow-sm border-0 ring-1 ring-slate-100">
-        <CardContent className="p-6">
-          <div className="flex items-center justify-between mb-4">
-            <h3 className="text-lg font-medium text-slate-900">{data.title || 'Untitled'}</h3>
-            <span className="text-sm text-slate-500">HTML</span>
-          </div>
-          <div className="prose prose-slate max-w-none">
-            <div className="space-y-8">
-              {data.sections.map((section, sectionIndex) => (
-                <div key={`section-${sectionIndex}`} className="mb-8">
-                  {section.header && (
-                    <h2 className="text-2xl font-semibold text-slate-900 mb-4">
-                      {section.header}
-                    </h2>
+      <ContentCard title={data.title || 'Untitled'} type="HTML">
+        <div className={styles.section.spacing}>
+          {data.sections.map((section, sectionIndex) => {
+            const sectionCardIds = getCombinedCitations(citationMap, 'sections', section.section_number[0]);
+            const sectionContent = (
+              <div key={`section-${sectionIndex}`} className={styles.section.container}>
+                {section.header && (
+                  <h2 className={styles.headers.h2}>
+                    {section.header}
+                  </h2>
+                )}
+                <div className={styles.section.contentSpacing}>
+                  {section.content?.map((item, index) => 
+                    renderContent(item, index, citations, citationMap)
                   )}
-                  <div className="space-y-4">
-                    {section.content?.map((item, index) => 
-                      renderContent(item, index, citations)
-                    )}
-                  </div>
                 </div>
-              ))}
-            </div>
-          </div>
-        </CardContent>
-      </Card>
+              </div>
+            );
+
+            return withCitations(sectionContent, sectionCardIds, citations);
+          })}
+        </div>
+      </ContentCard>
     );
   } catch (e: unknown) {
-    const error = e instanceof Error ? e : new Error('Unknown error parsing HTML content');
-    console.error('Error in formatHTMLContent:', error);
-    return (
-      <div className="text-red-600">
-        <p>Error parsing HTML content</p>
-        <pre className="mt-2 text-sm bg-red-50 p-2 rounded">
-          {error.toString()}
-        </pre>
-      </div>
-    );
+    return handleFormatterError(e, 'HTML');
   }
 } 
